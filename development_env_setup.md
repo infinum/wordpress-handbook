@@ -15,3 +15,5 @@ The main difference is that Vagrant uses virtual machines to run environments in
 **Vagrant** is easier to set up and get up and running, but can be resource intensive (RAM and space used on the disk).
 **Docker** is a bit harder to understand and set up, but is much faster and uses less CPU and RAM than Vagrant.
 
+In the following chapters you'll see how to set up various environments.
+

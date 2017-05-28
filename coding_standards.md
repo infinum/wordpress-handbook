@@ -1,0 +1,1 @@
+# WordPress coding standards

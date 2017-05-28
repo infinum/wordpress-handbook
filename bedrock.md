@@ -1,0 +1,1 @@
+# Setuping Bedrock WordPress stack
