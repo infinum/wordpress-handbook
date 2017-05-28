@@ -6,3 +6,21 @@ With the increased usage of WordPress in our company, we thought that it would b
 This is especially true for JavaScript as you will see explained in more detail a little later.
 
 We'll describe our development process here as well - setting the project locally, versioning practices, using linters, snffers etc.
+
+
+## Chapters
+
+  1. [Setting up development environment](development_env_setup.md)
+    1.1. [Local environments](#)
+      1.1.1. [Vagrant](#)
+      1.1.2. [Docker](#)
+      1.1.2. [MAMP, WAMP, XAMPP](#)
+    1.2. [Bedrock setup](#)
+    1.3. [Versioning](#)
+  2. [Coding standards](#)
+    2.1. [PHP Coding standards](#)
+    2.2. [JavaScript Coding standards](#)
+    2.3. [CSS Coding standards](#)
+  3. [WordPress as API](#)
+    3.1. [WordPress REST API](#)
+  4. [Useful links](#)
