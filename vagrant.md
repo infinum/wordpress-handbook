@@ -13,10 +13,11 @@ After VirtualBox installs install VMWare
 `brew cask install vagrant`
 
 Then you'll want to install few Vagrant plugins
+
 ```
 vagrant plugin install vagrant-hostsupdater
 vagrant plugin install vagrant-triggers
-``
+```
 
 After you install plugins, you'll want to install the VVV in the local folder
 
@@ -50,4 +51,4 @@ When you wish to close the Vagrant and save your ram just type
 
 Next time you start your Vagrant with `vagrant up` the cached box will start and it will boot in a minute or so. Reprovisioning your Vagrant is only necessary when adding new folders, which will be described below.
 
-## Adding new
+## Adding new sites
