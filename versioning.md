@@ -1,6 +1,6 @@
 # Versioning for WordPress
 
-> Commit Early, Commit Often
+*Commit Early, Commit Often*
 
 Your repository should consists of several main branches: `master`, `development`, `staging` and subbranches.
 
