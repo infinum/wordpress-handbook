@@ -2,7 +2,7 @@
 
 To install WordPress development environment on [Docker](https://www.docker.com/) you'll need to install Docker and [docker-compose](https://docs.docker.com/compose/).
 
-Once you have those installed, install your WordPress in the folder of your choice and add `docker-compose.yml` file
+Once you have those installed, install your WordPress in the folder of your choice and add `docker-compose.yml` file to the root of your WordPress installation folder
 
 ```
 version: '3'
@@ -60,6 +60,10 @@ Here are some useful docker commands that you might use.
 List all containers
 
 `docker ps -as`
+
+List all images
+
+`docker images`
 
 Stop all running containers
 
