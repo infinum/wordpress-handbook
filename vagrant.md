@@ -75,7 +75,7 @@ wordpress-infinum:
 
 We've told Vagrant that inside `www/wordpress-infinum` there should be a site it can access. So we need to create it. Inside that folder we need to create two additional folders: `provision` and `public_html`.
 
-`provision` folder holds scripts that will set up the database and nginx configuration. `public_html` holds the WordPress installation.
+`provision` folder holds the scripts that will set up the database and nginx configuration. `public_html` folder holds the WordPress installation.
 
 First file that you'll add to the `provision` folder will be `vvv-init.sh`
 
@@ -128,7 +128,7 @@ else
 fi
 ```
 
-VVV uses Nginx as a web server, so we need  the second file is the `vvv-nginx.conf`
+VVV uses Nginx as a web server, so the second file we need is the `vvv-nginx.conf`
 
 ```
 server {
@@ -146,7 +146,7 @@ server {
 }
 ```
 
-Any time we add a new site to `vvv-custom.yml` or the provisioner files we need to reprovision the VVV. To do this you need to run
+Any time we add a new site to `vvv-custom.yml`, or the provisioner files, we need to reprovision the VVV. To do this you need to run
 
 `vagrant reload --provision`
 
