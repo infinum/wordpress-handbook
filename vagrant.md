@@ -134,7 +134,7 @@ VVV uses Nginx as a web server, so the second file we need is the `vvv-nginx.con
 server {
   listen 80;
   listen 443 ssl;
-  server_name wordpress-infinum.com;
+  server_name wordpress-infinum.dev;
   root {vvv_path_to_site};
 
   error_log {vvv_path_to_site}/log/error.log;
