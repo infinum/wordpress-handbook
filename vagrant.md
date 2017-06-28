@@ -49,7 +49,99 @@ When you wish to close the Vagrant and save your ram just type
 
 `vagrant halt`
 
-Next time you start your Vagrant with `vagrant up` the cached box will start and it will boot in a minute or so. Reprovisioning your Vagrant is only necessary when adding new folders, which will be described below.
+Next time you start your Vagrant with `vagrant up` the cached box will start and it will boot in a minute or so. Reprovisioning your Vagrant is only necessary when adding new folders or changing your Vagrant configuration, which will be described below.
+
+## Making your vagrant public aware
+
+Modern web development is *mobile first* oriented. With that in mind, it is natural that you'd want to be able to see what you are developing locally on your mobile phone.
+
+To do that, you need to change your `Vagrantfile` that is located in the `vagrant-local` folder. Search for 
+
+`config.vm.network :public_network`
+
+And uncomment it. You can also enable port forwarding while you're at it
+
+`config.vm.network "forwarded_port", guest: 80, host: 8080`
+
+Now you need to reprovision your Vagrant
+
+`vagrant reload --provision`
+
+When you do that you'll be asked to which network interface you use to connect to the internet
+
+```
+==> default: Clearing any previously set forwarded ports...
+==> default: Clearing any previously set network interfaces...
+==> default: Available bridged network interfaces:
+1) en0: Wi-Fi (AirPort)
+2) en1: Thunderbolt 1
+3) en2: Thunderbolt 2
+4) bridge0
+5) p2p0
+6) awdl0
+==> default: When choosing an interface, it is usually the one that is
+==> default: being used to connect to the internet.
+    default: Which interface should the network bridge to?
+```
+
+In our case we connect via Wi-Fi, so choose 1. If you're connecting via ethernet, you'll need to select that as your network bridge.
+
+Once your vagrant finishes provisioning your can ssh to it
+
+`vagrant ssh`
+
+Type `ifconfig`, you should see something like this
+
+```
+vagrant@vvv:~$ ifconfig
+eth0      Link encap:Ethernet  HWaddr 08:00:27:36:92:90  
+          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:fe36:9290/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:13405 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:4884 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:12428370 (12.4 MB)  TX bytes:640262 (640.2 KB)
+
+eth1      Link encap:Ethernet  HWaddr 08:00:27:eb:20:58  
+          inet addr:192.168.50.4  Bcast:192.168.50.255  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:feeb:2058/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:7 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:17 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:602 (602.0 B)  TX bytes:1526 (1.5 KB)
+
+eth2      Link encap:Ethernet  HWaddr 08:00:27:17:ec:a3  
+          inet addr:192.168.2.167  Bcast:192.168.2.255  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:fe17:eca3/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:3066 errors:0 dropped:2 overruns:0 frame:0
+          TX packets:26 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:360118 (360.1 KB)  TX bytes:3524 (3.5 KB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:10 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:10 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:1230 (1.2 KB)  TX bytes:1230 (1.2 KB)
+```
+
+From this list we can figure out what IP address we can now use to access our local development from our mobile phones.
+
+Vagrant's default IP address (that you've seen in the Vagrant file) is `192.168.50.4`, and `127.0.0.1` points to home. So those two are out. That leaves you with `10.0.2.15` and `192.168.2.167`. Now if you check your laptop's IP address, you'll see that it starts with something like: `192.168.x.x`, so the second one is usually the one you want
+
+Type that IP address in your mobile browser and you should see this:
+
+![vvv.dev screen on mobile](https://github.com/dingo-d/wordpress-handbook/blob/master/images/mobile-vagrant.png)
+
+So how can we access our project via mobile? We use the name of the site we defined, for example say we have `wordpress-infinum.dev` site, instead of `.dev` add IP address and suffix `xip.io`
+
+`wordpress-infinum.192.168.2.167.xip.io`
 
 ## Adding new sites
 
@@ -151,5 +243,4 @@ Any time we add a new site to `vvv-custom.yml`, or the provisioner files, we nee
 `vagrant reload --provision`
 
 After that, either import the database via phpMyAdmin or wp-cli, or start from scratch.
-
 
