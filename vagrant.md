@@ -55,13 +55,13 @@ Next time you start your Vagrant with `vagrant up` the cached box will start and
 
 Modern web development is *mobile first* oriented. With that in mind, it is natural that you'd want to be able to see what you are developing locally on your mobile phone.
 
-To do that, you need to change your `Vagrantfile` that is located in the `vagrant-local` folder. Search for 
+To do that, you need to change your `Vagrantfile` that is located in the `vagrant-local` folder. Search for
 
 `config.vm.network :public_network`
 
 And uncomment it. You can also enable port forwarding while you're at it
 
-`config.vm.network "forwarded_port", guest: 80, host: 8080`
+`config.vm.network "forwarded_port", guest: 80, host: 8888`
 
 Now you need to reprovision your Vagrant
 
@@ -86,6 +86,10 @@ When you do that you'll be asked to which network interface you use to connect t
 
 In our case we connect via Wi-Fi, so choose 1. If you're connecting via ethernet, you'll need to select that as your network bridge.
 
+There are two ways to enable inspecting your theme on mobile
+
+### xip.io service
+
 Once your vagrant finishes provisioning your can ssh to it
 
 `vagrant ssh`
@@ -94,40 +98,40 @@ Type `ifconfig`, you should see something like this
 
 ```
 vagrant@vvv:~$ ifconfig
-eth0      Link encap:Ethernet  HWaddr 08:00:27:36:92:90  
+eth0      Link encap:Ethernet  HWaddr 08:00:27:36:92:90
           inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
           inet6 addr: fe80::a00:27ff:fe36:9290/64 Scope:Link
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
           RX packets:13405 errors:0 dropped:0 overruns:0 frame:0
           TX packets:4884 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000 
+          collisions:0 txqueuelen:1000
           RX bytes:12428370 (12.4 MB)  TX bytes:640262 (640.2 KB)
 
-eth1      Link encap:Ethernet  HWaddr 08:00:27:eb:20:58  
+eth1      Link encap:Ethernet  HWaddr 08:00:27:eb:20:58
           inet addr:192.168.50.4  Bcast:192.168.50.255  Mask:255.255.255.0
           inet6 addr: fe80::a00:27ff:feeb:2058/64 Scope:Link
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
           RX packets:7 errors:0 dropped:0 overruns:0 frame:0
           TX packets:17 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000 
+          collisions:0 txqueuelen:1000
           RX bytes:602 (602.0 B)  TX bytes:1526 (1.5 KB)
 
-eth2      Link encap:Ethernet  HWaddr 08:00:27:17:ec:a3  
+eth2      Link encap:Ethernet  HWaddr 08:00:27:17:ec:a3
           inet addr:192.168.2.167  Bcast:192.168.2.255  Mask:255.255.255.0
           inet6 addr: fe80::a00:27ff:fe17:eca3/64 Scope:Link
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
           RX packets:3066 errors:0 dropped:2 overruns:0 frame:0
           TX packets:26 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000 
+          collisions:0 txqueuelen:1000
           RX bytes:360118 (360.1 KB)  TX bytes:3524 (3.5 KB)
 
-lo        Link encap:Local Loopback  
+lo        Link encap:Local Loopback
           inet addr:127.0.0.1  Mask:255.0.0.0
           inet6 addr: ::1/128 Scope:Host
           UP LOOPBACK RUNNING  MTU:65536  Metric:1
           RX packets:10 errors:0 dropped:0 overruns:0 frame:0
           TX packets:10 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:0 
+          collisions:0 txqueuelen:0
           RX bytes:1230 (1.2 KB)  TX bytes:1230 (1.2 KB)
 ```
 
@@ -142,6 +146,12 @@ Type that IP address in your mobile browser and you should see this:
 So how can we access our project via mobile? We use the name of the site we defined, for example say we have `wordpress-infinum.dev` site, instead of `.dev` add IP address and suffix `xip.io`
 
 `wordpress-infinum.192.168.2.167.xip.io`
+
+### Using webpack and BrowserSyncPlugin
+
+At infinum we use [wp-boilerplate](https://github.com/infinum/wp-boilerplate) to kickstart our development. It is a modern way that uses [webpack](https://webpack.js.org/) to bundle your assets.
+
+By using that you'll be able to use [BrowserSync](https://www.npmjs.com/package/browser-sync-webpack-plugin) to test the development on your browser and mobile phone. Jus follow the instructions in the wp-boilerplate repo, and you should be able to easily inspect your site without much hassle.
 
 ## Adding new sites
 

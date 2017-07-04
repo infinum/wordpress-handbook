@@ -16,6 +16,8 @@ We'll describe our development process here as well - setting the project locall
     * [Docker](docker.md)
     * [MAMP, WAMP, XAMPP](mamp_xampp_wamp.md)
   * [Versioning](versioning.md)
+* [Theme development](theme_development.md)
+* [Plugin development](plugin_development.md)
 * [Coding standards](coding_standards.md)
   * [PHP Coding standards](php_coding_standards.md)
   * [JavaScript Coding standards](js_coding_standards.md)

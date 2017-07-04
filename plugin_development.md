@@ -1,0 +1,21 @@
+# Plugin development
+
+Plugin development is done according to the [WordPress Plugin Boilerplate](http://wppb.io/). You can find a simple generator for your plugin [here](https://wppb.me/).
+
+Note that plugins are written in object oriented way, whereas theme is usually written in procedural way. Object oriented programming allows for better separation of concerns.
+
+_When should I create a plugin?_
+
+Any time you want to create a custom post type or taxonomy, you need to create a plugin.
+
+Any time you are making a remote API call, create a plugin.
+
+When making a modification of the WordPress core APIs it's best to create a plugin for that.
+
+When creating a new REST endpoint create a plugin that will handle it.
+
+Be aware that plugin code executes before the theme ([action reference](https://codex.wordpress.org/Plugin_API/Action_Reference)), to avoid possible issues.
+
+_Won't having many plugins make my site slow?_
+
+No, unless they are poorly coded. But our coding standards are high so this tends not to happen.
