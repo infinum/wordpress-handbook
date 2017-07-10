@@ -14,14 +14,14 @@ After VirtualBox installs install VMWare
 
 Then you'll want to install few Vagrant plugins
 
-```
+```sh
 vagrant plugin install vagrant-hostsupdater
 vagrant plugin install vagrant-triggers
 ```
 
 After you install plugins, you'll want to install the VVV in the local folder
 
-```
+```sh
 cd ~
 git clone -b master git://github.com/Varying-Vagrant-Vagrants/VVV.git vagrant-local
 cd vagrant-local
@@ -69,7 +69,7 @@ Now you need to reprovision your Vagrant
 
 When you do that you'll be asked to which network interface you use to connect to the internet
 
-```
+```sh
 ==> default: Clearing any previously set forwarded ports...
 ==> default: Clearing any previously set network interfaces...
 ==> default: Available bridged network interfaces:
@@ -96,7 +96,7 @@ Once your vagrant finishes provisioning your can ssh to it
 
 Type `ifconfig`, you should see something like this
 
-```
+```sh
 vagrant@vvv:~$ ifconfig
 eth0      Link encap:Ethernet  HWaddr 08:00:27:36:92:90
           inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
@@ -159,7 +159,7 @@ There are few things you need to do when setting up a new site. First, you need 
 
 Let's say we want to create `wordpress-infinum` site. After the
 
-```
+```yaml
 wordpress-develop:
     repo: https://github.com/Varying-Vagrant-Vagrants/vvv-wordpress-develop.git
     hosts:
@@ -169,7 +169,7 @@ wordpress-develop:
 
 code in the file add
 
-```
+```yaml
 wordpress-infinum:
     hosts:
       - wordpress-infinum.dev
@@ -181,7 +181,7 @@ We've told Vagrant that inside `www/wordpress-infinum` there should be a site it
 
 First file that you'll add to the `provision` folder will be `vvv-init.sh`
 
-```
+```sh
 #!/usr/bin/env bash
 # Provision WordPress Stable
 
@@ -232,7 +232,7 @@ fi
 
 VVV uses Nginx as a web server, so the second file we need is the `vvv-nginx.conf`
 
-```
+```sh
 server {
   listen 80;
   listen 443 ssl;

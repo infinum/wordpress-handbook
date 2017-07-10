@@ -30,7 +30,7 @@ Constants should be in all upper-case with underscores separating words:
 
 ### Yoda Conditions
 
-We don't use Yoda Conditions, especially since code checker should take care of making sure that you don't assing a variable in the conditionals.
+We don't use [Yoda Conditions](https://en.wikipedia.org/wiki/Yoda_conditions), especially since code checker should take care of making sure that you don't assing a variable in the conditionals.
 
 ### Functions
 
@@ -40,7 +40,7 @@ When defining a function there should be no space between a function name and an
 
 Don't use anonymous functions for actions and filters because that makes it very hard to unhook later on
 
-```
+```php
 add_action( 'init', function() {
   call_function();
 }, 10 );
@@ -48,7 +48,7 @@ add_action( 'init', function() {
 
 Instead do this
 
-```
+```php
 add_action( 'init', 'my_callable_function', 10 );
 
 function my_callable_function() {
