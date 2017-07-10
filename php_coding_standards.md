@@ -185,7 +185,7 @@ endif;
 ?>
 ```
 
-Try to avoid post meta queries if possible, that is, don't try to fetch posts by their post meta. Instead use [taxonomies](https://codex.wordpress.org/Taxonomies) to group posts.
+Try to avoid post meta queries if possible, that is, don't try to fetch posts by their post meta. Instead use [taxonomies](https://codex.wordpress.org/Taxonomies) to group posts, taxonomy queries are fast and won't effect your performance.
 
 Fetching post meta if you know the post ID, or if you are in a post/page, on the other hand is fast and can be used anytime.
 
@@ -201,3 +201,36 @@ $query = new WP_Query( $args );
 // You can do this:
 $color = get_post_meta( get_the_id(), 'color', true );
 ```
+
+Avoid multi-dimensional queries - post queries based on terms across multiple taxonomies for instance.
+
+It's better to do a query with the minimum number of dimensions possible, and then filter out the results with PHP.
+
+### Array checking
+
+Avoid using `in_array()` check if possible, because it will traverse the entire array and check if the value of the array is present in the array. Instead look up by key and use `isset()` check.
+
+```php
+$array = array(
+ 'foo' => true,
+ 'bar' => true,
+);
+if ( isset( $array['bar'] ) ) {
+  // value is present in the array
+};
+```
+
+If you have no control over the created array (there are no distinguishable keys to choose from), set the third parameter in the `in_array()` function to `true`. This will force strict comparisons (value and type).
+
+`if( in_array( 'some value', $array, true ) ) { ... }`
+
+### Caching
+
+Use [caching](https://10up.github.io/Engineering-Best-Practices/php/#the-object-cache) to speed up the site.
+
+Use [`pre_get_posts`](https://developer.wordpress.org/reference/hooks/pre_get_posts/) hook to modify your queries in the back end and in the front end (search queries etc.).
+
+### I18n
+
+All text strings in a project have to bi internationalized using core localization functions. You can check a great guide by Samuel Wood about [internalization in WordPress](http://ottopress.com/2012/internationalization-youre-probably-doing-it-wrong/).
+
