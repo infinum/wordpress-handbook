@@ -239,6 +239,7 @@ foreach ( $other_array as $new_key => $new_value ) {
 foreach ( $other_array as $new_key => $new_value ) {
   array_push( $my_array, $new_value );
 }
+```
 
 This will avoid any unnecessary overhead of calling the php function, as PHP has to look up the function reference, find its position in memory and execute whatever code it defines.
 
