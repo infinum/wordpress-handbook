@@ -224,6 +224,24 @@ If you have no control over the created array (there are no distinguishable keys
 
 `if( in_array( 'some value', $array, true ) ) { ... }`
 
+### Using array_push() and similar functions
+
+When possible avoid using `array_push()`, and instead just append to the array directly
+
+```php
+$my_array = array();
+// Good.
+foreach ( $other_array as $new_key => $new_value ) {
+  $my_array[] = $new_value;
+}
+
+// Avoid if possible.
+foreach ( $other_array as $new_key => $new_value ) {
+  array_push( $my_array, $new_value );
+}
+
+This will avoid any unnecessary overhead of calling the php function, as PHP has to look up the function reference, find its position in memory and execute whatever code it defines.
+
 ### Caching
 
 Use [caching](https://10up.github.io/Engineering-Best-Practices/php/#the-object-cache) to speed up the site.
