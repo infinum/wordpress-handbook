@@ -98,6 +98,31 @@ echo esc_html( $x );
 ?>
 ```
 
+Writing conditionals, or control statements on a single line should be done with braces
+
+```php
+<?php if ( $some_variable === true ) { ?>
+  <div class="block"></div>
+<?php } ?>
+```
+
+Never write inline statements without braces. This is extremely bad practice because it produces code that is hard to read and hard to maintain.
+
+```php
+<?php
+// Bad code:
+if ( $some_variable === true )
+  $variable = 'This is inside true statement';
+
+// Worse:
+if ( $foo ) bar();
+
+// Good code:
+if ( $foo ) {
+  bar();
+}
+```
+
 ### Multiple statements
 
 Multiple statements should each be on its own line
@@ -112,6 +137,14 @@ echo esc_html( $x );
 // No:
 <?php $x++; echo esc_html( $x ) ?>
 ```
+
+### Strict comparison
+
+Always use strict comparison inside conditionals, `in_array()`, `array_search()` or any php function that has the option to check the value and type of the checked variable.
+
+It's important to use strict comparison because of [type juggling](http://php.net/manual/en/types.comparisons.php).
+
+If you're in doubt about what kind of value is returned from the WordPress core function, use [WordPress code reference](https://developer.wordpress.org/reference/) to check it.
 
 ### Documentation
 
@@ -252,4 +285,3 @@ Use [`pre_get_posts`](https://developer.wordpress.org/reference/hooks/pre_get_po
 ### I18n
 
 All text strings in a project have to bi internationalized using core localization functions. You can check a great guide by Samuel Wood about [internalization in WordPress](http://ottopress.com/2012/internationalization-youre-probably-doing-it-wrong/).
-
