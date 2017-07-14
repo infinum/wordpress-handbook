@@ -2,11 +2,11 @@
 
 *Commit Early, Commit Often*
 
-Your repository should consists of several main branches: `master`, `development`, `staging` and subbranches.
+Your repository should consists of several main branches: `master`, `develop`, `staging` and subbranches.
 
-The latest development branch is always the `development`. When submitting a patch, fix or a new feature, always open a new branch, and pull from `development` branch. For example, a bugfix branch would look like
+The latest development branch is always the `develop`. When submitting a patch, fix or a new feature, always open a new branch, and pull from `develop` branch. For example, a hotfix branch would look like
 
-`bugfix/task-123-missing-post-image`
+`hotfix/task-123-missing-post-image`
 
 A feature would be
 
@@ -14,7 +14,9 @@ A feature would be
 
 After that create a pull request to development and assign a reviewer.
 
-Development is periodically merged with `staging` branch that is used for user testing. After tests are completed, `development` should be merged with the master branch.
+Every merge is done via pull requests, manual merges are prohibited.
+
+Development is periodically merged with `staging` branch that is used for user testing. After tests are completed, `develop` should be merged with the master branch.
 
 Master branch has to be tagged according to [semver](http://semver.org/) before the release. Short introduction to semver can be found [here](https://www.sitepoint.com/semantic-versioning-why-you-should-using/).
 
