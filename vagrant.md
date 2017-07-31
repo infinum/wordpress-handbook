@@ -151,7 +151,7 @@ So how can we access our project via mobile? We use the name of the site we defi
 
 At infinum we use [wp-boilerplate](https://github.com/infinum/wp-boilerplate) to kickstart our development. It is a modern way that uses [webpack](https://webpack.js.org/) to bundle your assets.
 
-By using that you'll be able to use [BrowserSync](https://www.npmjs.com/package/browser-sync-webpack-plugin) to test the development on your browser and mobile phone. Jus follow the instructions in the wp-boilerplate repo, and you should be able to easily inspect your site without much hassle.
+By using that you'll be able to use [BrowserSync](https://www.npmjs.com/package/browser-sync-webpack-plugin) to test the development on your browser and mobile phone. Just follow the instructions in the wp-boilerplate repo, and you should be able to easily inspect your site without much hassle.
 
 ## Adding new sites
 
