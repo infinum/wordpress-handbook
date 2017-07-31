@@ -7,21 +7,35 @@ In the project root folder there should be a `README.md` file. At the beginning 
 A sample readme should look like this:
 
 ```md
-# Project readme
+# Development and deployment
 
 Project _project_ is the project about stuff and some other stuff.
 
-## Development details
+## Development environment
 
-*Development URL:* http://dev.projectname.org
-*Development database:* database_name
-*Database prefix:* db_
+ * **Development URL:** http://dev.projectname.org
+ * **Development database:** database_name
+ * **Database prefix:** db_
+
+## Staging server
+ * Staging server pulls code from `development` branch
+
+## Preproduction server
+
+  * staging branch
+  * preproduction ready features, test on actual content
+  * **DON'T OVERRIDE THE DATABASE**
+
+## Production server
+  * master branch
+  * only production ready features
+  * **DON'T OVERRIDE THE DATABASE**
 
 ## Additional details
 
 For theme quick start check [wp-boilerplate](https://github.com/infinum/wp-boilerplate) readme.
 
-Mention some additional details here. For instance if you have any special deployment techniques from development to staging.
+Mention some additional details here. For instance if you have any special deployment techniques from development to staging, additional constants and settings for `wp-config.php` or similar.
 ```
 
 You can include user name and password for the development database, but this is not that important, since it can vary depending on the development environment.
