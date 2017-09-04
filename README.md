@@ -13,6 +13,7 @@ We'll describe our development process here as well - setting the project locall
 * [Setting up development environment](development_env_setup.md)
   * Local environments
     * [Vagrant](vagrant.md)
+    * [Laravel Valet](valet.md)
     * [Docker](docker.md)
     * [MAMP, WAMP, XAMPP](mamp_xampp_wamp.md)
   * [Versioning](versioning.md)
