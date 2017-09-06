@@ -14,7 +14,9 @@ The setup for Valet is really easy.
 
 * Install PHP 7.1 using Homebrew via `brew install homebrew/php/php71`.
 
-* Install laravel via Composer via `composer global install laravel/installer`. Make sure the  `~/.composer/vendor/bin` directory is in your system's "PATH".
+* If you don't have Composer installed, install it via `brew install composer`. Be sure to restart the shell and add  `~/.composer/vendor/bin` directory in your system's "PATH" (see below for the instructions).
+
+* Install laravel via Composer via `composer global install laravel/installer`.
 
 * Install Valet with Composer via `composer global require laravel/valet`.
 
