@@ -63,8 +63,43 @@ $ wp core download
 
 And this is it. Once done you should be able to go to `http://wp-valet.dev` and you'd see the classic WordPress installation screen.
 
+## Possible issues
+
+### mysql not started and database not set up
+
+In the odd case that the installation isn't working, and you get blue 404 screen, try seeing if you are connected to the mysql database.
+
+```sh
+brew services list
+```
+
+You should see something like this:
+
+```sh
+Name       Status  User          Plist
+dnsmasq    started root          /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
+mysql      started infinum-denis /Users/infinum/Library/LaunchAgents/homebrew.mxcl.mysql.plist
+nginx      started root          /Library/LaunchDaemons/homebrew.mxcl.nginx.plist
+php71      started root          /Library/LaunchDaemons/homebrew.mxcl.php71.plist
+postgresql started infinum-denis /Users/infinum/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+```
+
+If mysql is not running, start it with
+
+```sh
+brew services start mysql
+```
+
+Log into your mysql with `mysql -u root` and create a desired database
 
 
+```sh
+create database db_name;
+grant all privileges on db_name.* to 'root'@'localhost' identified by "";
+flush privileges;
+exit;
+```
 
+This will create a database `db_name` (change this according to your project), and add root user to it.
 
-
+You should then be able to add those details to the `wp-config.php` and install WordPress.
