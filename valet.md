@@ -16,7 +16,7 @@ The setup for Valet is really easy.
 
 * If you don't have Composer installed, install it via `brew install composer`. Be sure to restart the shell and add  `~/.composer/vendor/bin` directory in your system's "PATH" (see below for the instructions).
 
-* Install laravel via Composer via `composer global install laravel/installer`.
+* Install laravel via Composer via `composer global require laravel/installer`.
 
 * Install Valet with Composer via `composer global require laravel/valet`.
 
