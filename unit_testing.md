@@ -1,0 +1,173 @@
+# Unit testing
+
+Unit testing is a level of software testing where individual units/components of a software are tested. The purpose of unit tests are to validate that each unit of the software performs as designed.
+
+There are two types of unit testing that you can perform.
+
+1. WordPress test suite
+2. Plugin unit tests
+
+The first one is the official tests that each core WordPress installation has to pass through before a stable release will be made. You can find them in the official repository of the WordPress core [here](https://core.trac.wordpress.org/browser/trunk/tests). For more info about that read [automated testing](https://make.wordpress.org/core/handbook/testing/automated-testing/) chapter in the core handbook.
+
+The other one is a wp-cli test setup for plugin unit tests.
+
+When testing a plugin or core patches it's best to have a separate, clean installation of WordPress that you are testing. You should never test on client project development environments, just to prevent accidental committing of the test to the repositories.
+
+## WordPress testing
+
+WordPress testing is useful when making a contribution to WordPress core. First thing you must do is to install PHPUnit.
+
+In your terminal run
+
+```sh
+curl https://phar.phpunit.de/phpunit.phar -L -o phpunit.phar
+chmod +x phpunit.phar
+mv phpunit.phar /usr/local/bin/phpunit
+```
+
+Or you can run
+
+```sh
+brew install phpunit
+chmod +x phpunit.phar
+mv phpunit.phar /usr/local/bin/phpunit
+```
+
+Then check out the test repository. The WordPress tests live in the core development repository, available via SVN at:
+
+```sh
+svn co https://develop.svn.wordpress.org/trunk/ wordpress-develop
+cd wordpress-develop
+```
+
+Or Git:
+
+```sh
+git clone git://develop.git.wordpress.org/ wordpress-develop
+cd wordpress-develop
+```
+
+Create an empty MySQL database. Be careful not to use existing project database, as test suite will delete all data from the designated database.
+
+Set up a config file. Copy `wp-tests-config-sample.php` to `wp-tests-config.php`, and enter the credentials of the newly created database.
+
+### Running the test suite
+
+In the root directory – next to `wp-tests-config.php, the `tests/` folder, and the `phpunit.xml.dist` file, run:
+
+```sh
+phpunit
+```
+
+Unit test symbol meaning
+
+* . – Each dot signifies one “test” that passed.
+* S means a test was skipped. This usually means that the test is only valid in certain configurations, such as when a test requires Multisite.
+* F means a test failed. More output will be shown for what exactly failed and where.
+* E means a test failed due to a PHP error, warning, or notice.
+* I means a test was marked as incomplete.
+
+### Testing inside VVV
+
+VVV comes with a test ready environment `wordpress-develop/` where you can test various patches. It already has the test suite set up so you don't need to do any manual steps.
+
+Once in the `wordpress-develop/public_html/` folder run
+
+```sh
+npm install
+```
+
+Then run
+
+```sh
+npm install -g grunt-cli
+```
+
+After `grunt-cli` has been installed run
+
+```sh
+grunt build
+```
+
+If the build fails on `node-sass` package, try rebuilding it again
+
+```sh
+npm rebuild node-sass
+```
+
+### Applying a patch
+
+Make sure vvv is running and the above steps were completed. Then you can ssh to the vagrant and go to `wordpress-develop/` folder and run
+
+```sh
+grunt watch &
+svn up
+```
+
+Now you’re ready to patch. Find a ticket with patches. This examples uses `#11863`.
+
+```sh
+grunt patch:11863
+```
+
+This will show the available patches that you can select. After you select it, you can log in to `http://src.wordpress-develop.dev/` (or `http://src.wordpress-develop.test/`). You can test the effects that patch had and after you're done with it you can revert it using
+
+```sh
+svn revert -R
+```
+
+You can comment on the trac ticket with the findings, or create you own patch.
+
+## Plugin testing
+
+Use WP-CLI to setup our plugin’s unit tests. If you don't have wp-cli installed on your system, install it. There is a documentation on starting unit tests which you can find [here](https://make.wordpress.org/cli/handbook/plugin-unit-tests/).
+
+Assuming you have a plugin on your testing environment, in the project root folder run
+
+```sh
+wp scaffold plugin-tests my-plugin
+```
+This will create several new files and folders in your plugin
+
+```
+bin/
+    install-wp-tests.sh
+tests/
+    bootstrap.php
+    test-sample.php
+phpunit.xml
+.travis.yml
+```
+
+
+To initialize the testing environment locally go to your plugin directory and run the install script
+
+```sh
+bin/install-wp-tests.sh wordpress_unit_tests root '' localhost latest
+```
+
+The install script first it installs a copy of WordPress in the `/tmp directory` (by default) as well as the WordPress unit testing tools. Then it creates a database to be used while running tests. The parameters that are passed to `install-wp-tests.sh` setup the test database.
+
+After that you can run the plugin tests by writing
+
+```sh
+phpunit
+```
+
+The wp-cli only provides one sample test
+
+```php
+class SampleTest extends WP_UnitTestCase {
+
+  /**
+   * A single example test.
+   */
+  function test_sample() {
+    // Replace this with some actual testing code.
+    $this->assertTrue( true );
+  }
+}
+```
+
+So you'll need to write your own tests.
+
