@@ -97,7 +97,7 @@ npm rebuild node-sass
 
 ### Applying a patch
 
-Make sure vvv is running and the above steps were completed. Then you can ssh to the vagrant and go to `wordpress-develop/` folder and run
+Make sure vvv is running and the above steps were completed. Then you can ssh to the vagrant and go to `wordpress-develop/public_html/` folder and run
 
 ```sh
 grunt watch &
@@ -110,13 +110,30 @@ Now you’re ready to patch. Find a ticket with patches. This examples uses `#11
 grunt patch:11863
 ```
 
-This will show the available patches that you can select. After you select it, you can log in to `http://src.wordpress-develop.dev/` (or `http://src.wordpress-develop.test/`). You can test the effects that patch had and after you're done with it you can revert it using
+This will show the available patches that you can select (if there were multiple patches). After you select it, you can log in to `http://src.wordpress-develop.dev/` (or `http://src.wordpress-develop.test/`). You can test the effects that patch had and after you're done with it you can revert it using
 
 ```sh
 svn revert -R
 ```
 
+or with
+
+```sh
+svn revert -R --cl revertme .
+```
+
 You can comment on the trac ticket with the findings, or create you own patch.
+
+### Testing outside wordpress-develop
+
+You can set up a custom clean installation of WordPress if you don't want to use the oficial one from VVV.
+In that case, just go to public_html and run
+
+```sh
+svn co https://develop.svn.wordpress.org/trunk/ .
+```
+
+This will download all the needed files for testing and patching like the above process.
 
 ## Plugin testing
 
