@@ -27,3 +27,15 @@ We'll describe our development process here as well - setting the project locall
 * [WordPress as API](wp_as_api.md)
   * [WordPress REST API](wp_rest_api.md)
 * [Useful links](useful_links.md)
+
+## Credits
+
+JSON post parser  is maintained and sponsored by
+[Infinum](https://www.infinum.co).
+
+<img src="https://infinum.co/infinum.png" width="264">
+
+## License
+
+JSON post parser is Copyright © 2017 Infinum. It is free software, and may be redistributed under the terms specified in the LICENSE file.
+
