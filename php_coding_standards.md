@@ -285,4 +285,3 @@ Use [`pre_get_posts`](https://developer.wordpress.org/reference/hooks/pre_get_po
 ### I18n
 
 All text strings in a project have to bi internationalized using core localization functions. You can check a great guide by Samuel Wood about [internalization in WordPress](http://ottopress.com/2012/internationalization-youre-probably-doing-it-wrong/).
-
