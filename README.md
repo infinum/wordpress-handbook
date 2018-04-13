@@ -24,6 +24,7 @@ We'll describe our development process here as well - setting the project locall
   * [PHP Coding standards](php_coding_standards.md)
   * [JavaScript Coding standards](js_coding_standards.md)
   * [CSS Coding standards](css_coding_standards.md)
+* [Unit testing](unit_testing.md)
 * [WordPress as API](wp_as_api.md)
   * [WordPress REST API](wp_rest_api.md)
 * [Useful links](useful_links.md)
