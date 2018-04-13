@@ -226,3 +226,11 @@ class SampleTest extends WP_UnitTestCase {
 ```
 
 So you'll need to write your own tests.
+
+### Debugging inside tests
+
+If you want to check the output of a variable inside your test just add
+
+```php
+fwrite( STDERR, print_r( $variable, true ) );
+```
