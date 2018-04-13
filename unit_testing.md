@@ -1,21 +1,21 @@
-# Unit testing
+# Unit/Integration testing
 
 Unit testing is a level of software testing where individual units/components of a software are tested. The purpose of unit tests are to validate that each unit of the software performs as designed.
 
-There are two types of unit testing that you can perform.
+Working within WordPress means that you're not actually running unit tests (unless you're working on core patches), rather integration tests.
+
+There are two major types of testing that you can perform.
 
 1. WordPress test suite
 2. Plugin unit tests
 
 The first one is the official tests that each core WordPress installation has to pass through before a stable release will be made. You can find them in the official repository of the WordPress core [here](https://core.trac.wordpress.org/browser/trunk/tests). For more info about that read [automated testing](https://make.wordpress.org/core/handbook/testing/automated-testing/) chapter in the core handbook.
 
-The other one is a wp-cli test setup for plugin unit tests.
-
-When testing a plugin or core patches it's best to have a separate, clean installation of WordPress that you are testing. You should never test on client project development environments, just to prevent accidental committing of the test to the repositories.
+The other one is a `wp-cli` test setup for plugin unit tests.
 
 ## WordPress testing
 
-WordPress testing is useful when making a contribution to WordPress core. First thing you must do is to install PHPUnit.
+WordPress testing is useful when making a contribution to WordPress core. First thing you must do is to install PHPUnit (version 6, because version 7 doesn't work with WordPress yet).
 
 In your terminal run
 
@@ -53,7 +53,44 @@ Set up a config file. Copy `wp-tests-config-sample.php` to `wp-tests-config.php`
 
 ### Running the test suite
 
-In the root directory – next to `wp-tests-config.php, the `tests/` folder, and the `phpunit.xml.dist` file, run:
+To run unit tests, you need to specify `phpunit.xml.dist` file. An example might look like
+
+```xml
+<?xml version="1.0"?>
+<phpunit
+  bootstrap="tests/bootstrap.php"
+  backupGlobals="false"
+  colors="true"
+  convertErrorsToExceptions="true"
+  convertNoticesToExceptions="true"
+  convertWarningsToExceptions="true"
+  >
+  <testsuites>
+    <testsuite>
+      <directory prefix="test-" suffix=".php">./tests/</directory>
+    </testsuite>
+  </testsuites>
+  <filter>
+    <whitelist>
+      <directory>./</directory>
+      <exclude>
+        <directory>./vendor</directory>
+        <directory>./tests</directory>
+      </exclude>
+    </whitelist>
+  </filter>
+  <logging>
+    <log type="coverage-clover" target="tests/_reports/logs/clover.xml"/>
+    <log type="coverage-html" target="tests/_reports/coverage" charset="UTF-8" yui="true" highlight="true" lowUpperBound="35" highLowerBound="70" />
+    <log type="testdox-text" target="tests/_reports/testdox/executed.txt"/>
+    <log type="testdox-html" target="tests/_reports/testdox/testdox.html" />
+  </logging>
+</phpunit>
+```
+
+Here we've specified that code coverage should be created. For that to be made, Xdebug has to be installed on your system. Be mindfull that Xdebug may significantly reduce the speed of your tests.
+
+In the root directory – next to `wp-tests-config.php`, the `tests/` folder, and the `phpunit.xml.dist` file, run:
 
 ```sh
 phpunit
@@ -95,9 +132,11 @@ If the build fails on `node-sass` package, try rebuilding it again
 npm rebuild node-sass
 ```
 
+**Notice**: The build process is currently under revision (https://core.trac.wordpress.org/ticket/43055?cversion=0&cnum_hist=23).
+
 ### Applying a patch
 
-Make sure vvv is running and the above steps were completed. Then you can ssh to the vagrant and go to `wordpress-develop/public_html/` folder and run
+Make sure VVV is running and the above steps were completed. Then you can ssh to the vagrant and go to `wordpress-develop/public_html/` folder and run
 
 ```sh
 grunt watch &
@@ -124,7 +163,7 @@ svn revert -R --cl revertme .
 
 You can comment on the trac ticket with the findings, or create you own patch.
 
-### Testing outside wordpress-develop
+### Testing outside of wordpress-develop
 
 You can set up a custom clean installation of WordPress if you don't want to use the oficial one from VVV.
 In that case, just go to public_html and run
@@ -163,7 +202,7 @@ To initialize the testing environment locally go to your plugin directory and ru
 bin/install-wp-tests.sh wordpress_unit_tests root '' localhost latest
 ```
 
-The install script first it installs a copy of WordPress in the `/tmp directory` (by default) as well as the WordPress unit testing tools. Then it creates a database to be used while running tests. The parameters that are passed to `install-wp-tests.sh` setup the test database.
+The install script first it installs a copy of WordPress in the `/tmp directory` (by default) as well as the WordPress unit testing tools. Then it creates a database to be used while running tests. The parameters that are passed to `install-wp-tests.sh` setup the test database. Be sure that your mysql service is up and running if you're running tests outside of VVV.
 
 After that you can run the plugin tests by writing
 
@@ -188,3 +227,10 @@ class SampleTest extends WP_UnitTestCase {
 
 So you'll need to write your own tests.
 
+### Debugging inside tests
+
+If you want to check the output of a variable inside your test just add
+
+```php
+fwrite( STDERR, print_r( $variable, true ) );
+```
