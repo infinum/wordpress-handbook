@@ -23,3 +23,10 @@ This is especially useful when you want to watch for any asynchronous calls, lik
 Optionally you can install [Xdebug](https://xdebug.org/), which is a debugger and profiler tool for PHP. It is really useful because you get better looking error messages, profiling and breakpoints in your php code.
 
 Besides that, when developing a theme or a plugin, you can use [Developer](https://wordpress.org/plugins/developer/) plugin by Automattic. This is a plugin that installs various useful plugins for development. The most important one being [Query Monitor](https://wordpress.org/plugins/query-monitor/).
+
+### Useful links
+
+[Debugging and profiling php with Xdebug](https://www.sitepoint.com/debugging-and-profiling-php-with-xdebug/)
+[View Xdebug cachegrind files on MacOS](http://nickology.com/2014/04/16/view-xdebug-cachegrind-files-on-mac-os/)
+[Testing WordPress performance](https://codex.wordpress.org/Testing_WordPress_Performance)
+[Code debugging in VVV](https://github.com/Varying-Vagrant-Vagrants/VVV/wiki/Code-Debugging)
