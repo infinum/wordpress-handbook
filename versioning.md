@@ -2,9 +2,19 @@
 
 *Commit Early, Commit Often*
 
+Repository naming follows this pattern
+
+`wordpress-{project}-{app}`
+
+With allowed characters `[a-z\-]`.
+
 Your repository should consist of several main branches: `master`, `develop`, `staging`, `edge` and `feature` branches.
 
 There is a difference how a `feature` branch is created pre-release and post-release.
+
+### Project setup
+
+Before each project, lead developer should fill the Project Setup sheet which specifies what language and framework will be used, versions, necessary scripts etc.
 
 ### Pre-release
 
