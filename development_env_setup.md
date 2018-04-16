@@ -1,6 +1,6 @@
 # Setting up development environment
 
-When you want to develop a WordPress app, or you are joining a development of an exisiting project, it is important that you have a local development ready. There are number of solutions that can be used.
+When you want to develop a WordPress app, or you are joining a development of an existing project, it is important that you have a local development ready. There are number of solutions that can be used.
 
 If you want to use simple solutions that only include bare minimum (server config), you can use [WAMP](www.wampserver.com/en/), [MAMP](https://www.mamp.info/en/) or [XAMPP](https://www.apachefriends.org/index.html).
 
