@@ -28,4 +28,5 @@ We'll describe our development process here as well - setting the project locall
 * [Unit testing](unit_testing.md)
 * [WordPress as API](wp_as_api.md)
   * [WordPress REST API](wp_rest_api.md)
+* [Security](security.md)
 * [Useful links](useful_links.md)
