@@ -2,7 +2,9 @@
 
 WordPress has evolved a lot since its beginnings. Apart from being a simple blog CMS, you can use it for other purposes - enterprise solutions for banks and large news portals, eCommerce solution, web apps and other.
 
-At Infinum we are always looking to advance our knowledge about modern technologies. This is why we developed a [wp-boilerplate](https://github.com/infinum/wp-boilerplate). This is sort of a back bone solution to start your project. It uses [webpack](https://webpack.js.org/) to bundle your files, [Sass](http://sass-lang.com/) with [susy](http://susy.oddbird.net/) for modern and quick styling using [BEM metodology](http://getbem.com/), [ESLint](http://eslint.org/) for javascript check and [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) for php check.
+At Infinum we are always looking to advance our knowledge about modern technologies. This is why we developed a [wp-boilerplate](https://github.com/infinum/wp-boilerplate). This is sort of a back bone solution to start your project. It uses [Webpack](https://webpack.js.org/) to bundle your files, [Sass](http://sass-lang.com/) for modern and quick styling using [BEM methodology](http://getbem.com/), [ESLint](http://eslint.org/) for JavaScript check and [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) for php check.
+
+It also uses OOP principles such as namespacing, classes and autoloading using Composer.
 
 Be careful not to pack too many custom functionalities in your theme. For any custom post types, create a plugin.
 
@@ -14,23 +16,17 @@ Front end can be built with traditional php templates, or we can use the [REST A
 
 ## Debugging
 
-When developing in WordPress it is essential to turn on the debugging in your `wp-config.php`
-
-```php
-define( 'WP_DEBUG', true );
-```
-
-This will catch all the notices, and some of the errors you may have on your page. Sometimes, however, this won’t be enough. So you can add
-
-```php
-ini_set( 'log_errors',TRUE );
-ini_set( 'error_reporting', E_ALL );
-ini_set( 'error_log', dirname(__FILE__) . '/error_log.txt' );
-```
-Right after the debug define. This will write any error you may have in `error_log.txt` file in the root of your WordPress installation.
+We've added a `wp-config-project.php` file that has environment specific constant definitions. Some of those are used for debugging your code.
 
 This is especially useful when you want to watch for any asynchronous calls, like `AJAX` or `fetch()`.
 
-Optionally you can install [Xdebug](https://xdebug.org/), which is a debugger and profiler tool for PHP.
+Optionally you can install [Xdebug](https://xdebug.org/), which is a debugger and profiler tool for PHP. It is really useful because you get better looking error messages, profiling and breakpoints in your php code.
 
-Besides that, when developing a theme or a plugin, you can use [Developer](https://wordpress.org/plugins/developer/) plugin by Automattic. This is a plugin that installs various useful plugins for development.
+Besides that, when developing a theme or a plugin, you can use [Developer](https://wordpress.org/plugins/developer/) plugin by Automattic. This is a plugin that installs various useful plugins for development. The most important one being [Query Monitor](https://wordpress.org/plugins/query-monitor/).
+
+### Useful links
+
+[Debugging and profiling php with Xdebug](https://www.sitepoint.com/debugging-and-profiling-php-with-xdebug/)
+[View Xdebug cachegrind files on MacOS](http://nickology.com/2014/04/16/view-xdebug-cachegrind-files-on-mac-os/)
+[Testing WordPress performance](https://codex.wordpress.org/Testing_WordPress_Performance)
+[Code debugging in VVV](https://github.com/Varying-Vagrant-Vagrants/VVV/wiki/Code-Debugging)

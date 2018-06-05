@@ -18,6 +18,7 @@ We'll describe our development process here as well - setting the project locall
     * [MAMP, WAMP, XAMPP](mamp_xampp_wamp.md)
   * [Versioning](versioning.md)
 * [Project setup](project_setup.md)
+* [Deployment scripts](deployment.md)
 * [Theme development](theme_development.md)
 * [Plugin development](plugin_development.md)
 * [Coding standards](coding_standards.md)
@@ -27,4 +28,5 @@ We'll describe our development process here as well - setting the project locall
 * [Unit testing](unit_testing.md)
 * [WordPress as API](wp_as_api.md)
   * [WordPress REST API](wp_rest_api.md)
+* [Security](security.md)
 * [Useful links](useful_links.md)

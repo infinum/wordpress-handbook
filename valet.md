@@ -2,7 +2,7 @@
 
 As stated on [the official documentation](https://laravel.com/docs/5.4/valet), Valet is a Laravel development environment for Mac minimalists.
 
-Laravel Valet configures your Mac to always run Nginx in the background when your machine starts. Then, using DnsMasq, Valet proxies all requests on the *.dev domain to point to sites installed on your local machine.
+Laravel Valet configures your Mac to always run Nginx in the background when your machine starts. Then, using DnsMasq, Valet proxies all requests on the `*.dev` domain to point to sites installed on your local machine.
 
 It is ideal for machines with low amount of RAM.
 
@@ -16,7 +16,7 @@ The setup for Valet is really easy.
 
 * If you don't have Composer installed, install it via `brew install composer`. Be sure to restart the shell and add  `~/.composer/vendor/bin` directory in your system's "PATH" (see below for the instructions).
 
-* Install laravel via Composer via `composer global require laravel/installer`.
+* Install Laravel via Composer via `composer global require laravel/installer`.
 
 * Install Valet with Composer via `composer global require laravel/valet`.
 
@@ -45,6 +45,7 @@ to the list. Then you need to restart the terminal and the composer should be ad
 ## Setting the site up
 
 Valet has a built in WordPress driver, so it supports running WordPress. You can serve your sites in two ways - using `park` or `link` option.
+
 The `park` option can be used to add a whole folder to Valet. Every folder in there will then be mapped to a site and get its own `.dev` domain. So if you add `~/Sites` folder to Valet and have a subfolder in there named `wp-valet`, the content of that folder will be served when you visit `http://wp-valet.dev` in your browser. No setup required. The `link` option can be used to serve a single site, without adding a whole directory.
 
 ```sh

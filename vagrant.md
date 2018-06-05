@@ -2,13 +2,13 @@
 
 ## Installing VVV
 
-Setting up VVV is easy. You can either follow the manuall install, as described in the [official documentation](https://varyingvagrantvagrants.org/docs/en-US/), or you can use `brew` package manager for quick and easy installation.
+Setting up VVV is easy. You can either follow the manual install, as described in the [official documentation](https://varyingvagrantvagrants.org/docs/en-US/), or you can use `brew` package manager for quick and easy installation.
 
 First install VirtualBox
 
 `brew cask install virtualbox`
 
-After VirtualBox installs install VMWare
+After VirtualBox installs install Vagrant
 
 `brew cask install vagrant`
 
@@ -29,6 +29,10 @@ cd vagrant-local
 
 This will clone the official VVV repository to your `vagrant-local` folder in the home folder.
 
+Before starting VVV up, go to `Vagrantfile` and uncomment `config.vm.network :public_network` line. This will enable you to debug across devices later on.
+
+You can either set up your custom sites by creating a copy of `vvv-config.yml` file and renaming it to `vvv-custom.yml`, or you can just start vagrant up.
+
 While in your `vagrant-local` folder type
 
 `vagrant up`
@@ -39,17 +43,17 @@ What Vagrant is actually doing is downloading a packaged box with Ubuntu virtual
 
 Once it installs everything you'll be all set to work on your local WordPress. You can type
 
-`vvv.dev`
+`vvv.test`
 
 in your browser, which will open up a screen with interesting links you can explore.
 
 ![vvv.dev screen](https://github.com/dingo-d/wordpress-handbook/blob/master/images/vagrant.png)
 
-When you wish to close the Vagrant and save your ram just type
+When you wish to close the Vagrant and save your RAM just type
 
 `vagrant halt`
 
-Next time you start your Vagrant with `vagrant up` the cached box will start and it will boot in a minute or so. Reprovisioning your Vagrant is only necessary when adding new folders or changing your Vagrant configuration, which will be described below.
+Next time you start your Vagrant with `vagrant up` the cached box will start and it will boot in a minute or so. Re-provisioning your Vagrant is only necessary when adding new folders or changing your Vagrant configuration, which will be described below.
 
 ## Making your vagrant public aware
 
@@ -63,7 +67,7 @@ And uncomment it. You can also enable port forwarding while you're at it
 
 `config.vm.network "forwarded_port", guest: 80, host: 8888`
 
-Now you need to reprovision your Vagrant
+Now you need to re-provision your Vagrant
 
 `vagrant reload --provision`
 
@@ -84,7 +88,7 @@ When you do that you'll be asked to which network interface you use to connect t
     default: Which interface should the network bridge to?
 ```
 
-In our case we connect via Wi-Fi, so choose 1. If you're connecting via ethernet, you'll need to select that as your network bridge.
+In our case we connect via Wi-Fi, so choose 1. If you're connecting via Ethernet, you'll need to select that as your network bridge.
 
 There are two ways to enable inspecting your theme on mobile
 
@@ -147,15 +151,18 @@ So how can we access our project via mobile? We use the name of the site we defi
 
 `wordpress-infinum.192.168.2.167.xip.io`
 
-### Using webpack and BrowserSyncPlugin
+### Using webpack and BrowserSync Plugin
 
-At infinum we use [wp-boilerplate](https://github.com/infinum/wp-boilerplate) to kickstart our development. It is a modern way that uses [webpack](https://webpack.js.org/) to bundle your assets.
+At Infinum we use [wp-boilerplate](https://github.com/infinum/wp-boilerplate) to kick start our development. It is a modern way that uses [Webpack](https://webpack.js.org/) to bundle your assets.
 
-By using that you'll be able to use [BrowserSync](https://www.npmjs.com/package/browser-sync-webpack-plugin) to test the development on your browser and mobile phone. Just follow the instructions in the wp-boilerplate repo, and you should be able to easily inspect your site without much hassle.
+By using that you'll be able to use [BrowserSync](https://www.npmjs.com/package/browser-sync-webpack-plugin) to test the development on your browser and mobile phone. Just follow the instructions in the `wp-boilerplate` repo, and you should be able to easily inspect your site without much hassle.
 
 ## Adding new sites
 
-There are few things you need to do when setting up a new site. First, you need to add your site to the `vvv-custom.yml` file. It is just a modified copy of the existing `vvv-config.yml` file.
+The official documentation on adding a new site is located [here](https://varyingvagrantvagrants.org/docs/en-US/adding-a-new-site/). Easier way of provisioning a new site is done using [site templates](https://varyingvagrantvagrants.org/docs/en-US/site-templates/).
+A site template is a git repo that contains scripts and files for setting up a new VVV site automatically.
+
+You can also create provision scripts manually. First, you need to add your site to the `vvv-custom.yml` file. It is just a modified copy of the existing `vvv-config.yml` file.
 
 Let's say we want to create `wordpress-infinum` site. After the
 
@@ -163,21 +170,23 @@ Let's say we want to create `wordpress-infinum` site. After the
 wordpress-develop:
     repo: https://github.com/Varying-Vagrant-Vagrants/vvv-wordpress-develop.git
     hosts:
-      - src.wordpress-develop.dev
-      - build.wordpress-develop.dev
+      - src.wordpress-develop.test
+      - build.wordpress-develop.test
 ```
 
 code in the file add
 
 ```yaml
 wordpress-infinum:
+    vm_dir: /srv/www/personal/wordpress-infinum
+    local_dir: www/personal/wordpress-infinum
     hosts:
-      - wordpress-infinum.dev
+      - wordpress-infinum.test
 ```
 
 We've told Vagrant that inside `www/wordpress-infinum` there should be a site it can access. So we need to create it. Inside that folder we need to create two additional folders: `provision` and `public_html`.
 
-`provision` folder holds the scripts that will set up the database and nginx configuration. `public_html` folder holds the WordPress installation.
+`provision` folder holds the scripts that will set up the database and Nginx configuration. `public_html` folder holds the WordPress installation.
 
 First file that you'll add to the `provision` folder will be `vvv-init.sh`
 
@@ -248,9 +257,11 @@ server {
 }
 ```
 
-Any time we add a new site to `vvv-custom.yml`, or the provisioner files, we need to reprovision the VVV. To do this you need to run
+Any time we add a new site to `vvv-custom.yml`, or the provisioner files, we need to re-provision the VVV. To do this you need to run
 
 `vagrant reload --provision`
 
-After that, either import the database via phpMyAdmin or wp-cli, or start from scratch.
+After that, either import the database via phpMyAdmin or `wp-cli`, or start from scratch.
+
+
 

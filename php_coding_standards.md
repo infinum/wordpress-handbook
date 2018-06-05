@@ -2,7 +2,7 @@
 
 In general we follow the [WordPress PHP Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/) with few modifications.
 
-For automatic code check we are using [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/).
+For automatic code check we are using [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/), with our [modified coding standards](https://github.com/infinum/coding-standards-wp).
 
 ### File Naming
 
@@ -10,33 +10,53 @@ File names should be in lowercase letters with `-` as a separator between words,
 
 Files containing a class should be named `class-{classname}.php`. There should always be only one class per file.
 
-Use [wp-boilerplate](https://github.com/infinum/wp-boilerplate) as a template for any template based web site. You should follow the exisitng structure of the theme there.
+Use [wp-boilerplate](https://github.com/infinum/wp-boilerplate) as a basis for any template based web site. You should follow the existing structure of the theme there.
 
 ### Naming Conventions
 
 Use lowercase letters in variable, action, and function names. Separate words via underscores. Don't abbreviate variable names unnecessarily - let the code be unambiguous and self-documenting.
 
-Always put a unique prefix to your functions. The prefix we use at Infinum is `inf_`.
+### Namespacing and class names
 
-`function inf_custom_function( $custom_variable ) { ... }`
+Namespacing should follow file structure. The main namespace is Capital_Cased version of the project name. So in the case of the boilerplate, the default namespace is
+
+```php
+Inf_Theme
+```
+
+Every folder which holds classes constitutes a subnamespace.
+
+Avoid using static methods in your classes if possible. Using static methods means that you are calling a function without an instance of the class. But it prevents the usage of many OOP features such as inheritance, interface implementations, dependency injections etc.
 
 Class names should use capitalized words separated by underscores.
 
-`class Inf_Custom_Class { ... }`
+`class Custom_Class { ... }`
 
 Constants should be in all upper-case with underscores separating words:
 
 `define( 'IMAGE_URL', get_template_directory_uri() . '/skin/public/images/' );`
 
+or
+
+`const THEME_VERSION = '1.0.0';`
+
 ### Yoda Conditions
 
-We don't use [Yoda Conditions](https://en.wikipedia.org/wiki/Yoda_conditions), especially since code checker should take care of making sure that you don't assing a variable in the conditionals.
+We don't use [Yoda Conditions](https://en.wikipedia.org/wiki/Yoda_conditions), especially since code checker should take care of making sure that you don't assign a variable in the conditionals.
 
 ### Functions
 
-When defining a function there should be no space between a function name and an opening parenthesis, but there should be a space between closing parenthesis and opened curly bracket like so:
+When defining a function or a method there should be no space between a function name and an opening parenthesis, but there should be a space between closing parenthesis and opened curly bracket like so:
 
-`function inf_function_name( $var ) { ... }`
+`function function_name( $var ) { ... }`
+
+Always add visibility keywords to methods and properties inside classes (`public`, `private` and `protected`).
+
+* `public` scope is used to make that variable/function available from anywhere, other classes and instances of the object.
+
+* `private` scope is used when you want your variable/function to be visible in its own class only.
+
+* `protected` scope is used when you want to make your variable/function visible in all classes that extend current class including the parent class.
 
 Don't use anonymous functions for actions and filters because that makes it very hard to unhook later on
 
@@ -106,7 +126,7 @@ Writing conditionals, or control statements on a single line should be done with
 <?php } ?>
 ```
 
-Never write inline statements without braces. This is extremely bad practice because it produces code that is hard to read and hard to maintain.
+Never write inline statements without braces. This is an extremely bad practice because it produces code that is hard to read and hard to maintain.
 
 ```php
 <?php
@@ -135,7 +155,7 @@ echo esc_html( $x );
 ?>
 
 // No:
-<?php $x++; echo esc_html( $x ) ?>
+<?php $x++; echo esc_html( $x ); ?>
 ```
 
 ### Strict comparison
@@ -206,15 +226,15 @@ $custom_query = new WP_Query( array(
     'posts_per_page' => 30 + count( $posts_to_exclude )
 ) );
 
-if ( $custom_query->have_posts() ) :
-    while ( $custom_query->have_posts() ) :
-        $custom_query->the_post();
-        if ( in_array( get_the_ID(), $posts_to_exclude ) ) {
-            continue;
-        }
-        the_title();
-    endwhile;
-endif;
+if ( $custom_query->have_posts() ) {
+  while ( $custom_query->have_posts() ) {
+    $custom_query->the_post();
+    if ( in_array( get_the_ID(), $posts_to_exclude ) ) {
+      continue;
+    }
+    the_title();
+  }
+}
 ?>
 ```
 
@@ -225,10 +245,11 @@ Fetching post meta if you know the post ID, or if you are in a post/page, on the
 ```php
 // Don't do this:
 $args = array(
-  'meta_key'     => 'color',
-  'meta_value'   => 'blue',
-  'meta_compare' => '!='
+    'meta_key'     => 'color',
+    'meta_value'   => 'blue',
+    'meta_compare' => '!='
 );
+
 $query = new WP_Query( $args );
 
 // You can do this:
@@ -245,8 +266,8 @@ Avoid using `in_array()` check if possible, because it will traverse the entire 
 
 ```php
 $array = array(
- 'foo' => true,
- 'bar' => true,
+    'foo' => true,
+    'bar' => true,
 );
 if ( isset( $array['bar'] ) ) {
   // value is present in the array
@@ -255,7 +276,7 @@ if ( isset( $array['bar'] ) ) {
 
 If you have no control over the created array (there are no distinguishable keys to choose from), set the third parameter in the `in_array()` function to `true`. This will force strict comparisons (value and type).
 
-`if( in_array( 'some value', $array, true ) ) { ... }`
+`if ( in_array( 'some value', $array, true ) ) { ... }`
 
 ### Using array_push() and similar functions
 
@@ -285,3 +306,7 @@ Use [`pre_get_posts`](https://developer.wordpress.org/reference/hooks/pre_get_po
 ### I18n
 
 All text strings in a project have to bi internationalized using core localization functions. You can check a great guide by Samuel Wood about [internalization in WordPress](http://ottopress.com/2012/internationalization-youre-probably-doing-it-wrong/).
+
+### A11y
+
+Accessibility is important. Always follow the official [WordPress a11y guidelines](https://make.wordpress.org/accessibility/handbook/).
