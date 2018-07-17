@@ -149,6 +149,8 @@ class User_Credentials {
 }
 ```
 
+Table with typehints per PHP versions: https://mlocati.github.io/articles/php-type-hinting.html
+
 ### Sanitization and escaping
 
 We follow WordPress [VIP's guidelines](https://vip.wordpress.com/documentation/vip/best-practices/security/validating-sanitizing-escaping/)
