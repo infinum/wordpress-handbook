@@ -56,7 +56,7 @@ docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
 
 The local SonarQube can be accessed in the browser on `localhost:9000`.
 
-![sonarqube](https://github.com/infinum/wordpress-handbook/blob/master/images/sonarqube.png)
+![sonarqube](/images/sonarqube.png)
 
 [Analyzing with scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) tutorial.
 
@@ -92,7 +92,7 @@ sonar-scanner -X &> ~/Desktop/sonar-log.txt
 
 After a scan is done (should take a while) you'll see the report in the SonarQube UI
 
-![sonarqube report](https://github.com/infinum/wordpress-handbook/blob/master/images/sonarqube-report.png)
+![sonarqube report](/images/sonarqube-report.png)
 
 ### WPScan
 

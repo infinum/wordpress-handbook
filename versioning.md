@@ -8,9 +8,9 @@ Repository naming follows this pattern
 
 With allowed characters `[a-z\-]`.
 
-Your repository should consist of several main branches: `master`, `develop`, `staging`, `edge` and `feature` branches.
+Your repository should consist of several main branches: `master`, `develop`, `staging`, `preproduction`, `edge` and `feature` branches.
 
-There is a difference how a `feature` branch is created pre-release and post-release.
+There is a difference how a `feature` branch is handled pre-release and post-release.
 
 ### Project setup
 
@@ -34,6 +34,8 @@ If the branch you want to work on depends on a branch that is still being worked
 
 Develop branch is usually connected with a staging server, using build and deploy scripts. After tests are completed, `staging` should be merged with the master branch.
 
+![Code flow](/images/code-flow.png)
+
 ### Post-release
 
 Master branch has to be tagged according to [semver](http://semver.org/) before the release. Short introduction to semver can be found [here](https://www.sitepoint.com/semantic-versioning-why-you-should-using/).
@@ -47,3 +49,6 @@ This should be handled by project lead and devops.
 Once a project is in production, every time you create a feature, make a branch off of `master` branch, then once you think it's ready submit a PR to `master` and `staging` branch and tag it accordingly. Once testing is completed, and feature branches are ready, lead developer will deploy them to `master` branch.
 
 Likewise with the pre-release, if you are working on a feature that depends on another feature that is merged on the staging branch, pull that branch in your branch to get the desired features.
+
+![Git flow](/images/gitflow.png)
+

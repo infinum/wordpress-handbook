@@ -18,7 +18,7 @@ services:
       - ./data:/data # Required if importing an existing database
       - ./:/var/www/html   # Theme development
     environment:
-      WORDPRESS_DB_NAME: db_name # Change to match the one from your wp-config.php
+      WORDPRESS_DB_NAME: db_name # pull this from env variables
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: root
       WORDPRESS_DB_PASSWORD: root
