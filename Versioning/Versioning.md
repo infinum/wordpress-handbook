@@ -36,7 +36,7 @@ If the branch you want to work on depends on a branch that is still being worked
 
 `staging` branch is usually connected with a staging server, using build and deploy scripts. After tests are completed, features should be merged with the `master` and `preproduction` branches.
 
-![Code flow](/images/code-flow.png)
+![Code flow](/img/code-flow.png)
 
 Master branch has to be tagged according to [semver](http://semver.org/) before the release. Short introduction to semver can be found [here](https://www.sitepoint.com/semantic-versioning-why-you-should-using/).
 
@@ -48,7 +48,7 @@ Once a project is in production, every time you create a feature, make a branch 
 
 Likewise with the pre-release, if you are working on a feature that depends on another feature that is merged on the staging branch, pull that branch in your branch to get the desired features.
 
-![Git flow](/images/gitflow.png)
+![Git flow](/img/gitflow.png)
 
 **Do not submit PR that has over 100 changed files**
 

@@ -47,7 +47,7 @@ Once it installs everything you'll be all set to work on your local WordPress. Y
 
 in your browser, which will open up a screen with interesting links you can explore.
 
-![vvv.dev screen](/images/vagrant.png)
+![vvv.dev screen](/img/vagrant.png)
 
 When you wish to close the Vagrant and save your RAM just type
 
@@ -145,7 +145,7 @@ Vagrant's default IP address (that you've seen in the Vagrant file) is `192.168.
 
 Type that IP address in your mobile browser and you should see this:
 
-![vvv.dev screen on mobile](/images/mobile-vagrant.png)
+![vvv.dev screen on mobile](/img/mobile-vagrant.png)
 
 So how can we access our project via mobile? We use the name of the site we defined, for example say we have `wordpress-infinum.dev` site, instead of `.dev` add IP address and suffix `xip.io`
 
