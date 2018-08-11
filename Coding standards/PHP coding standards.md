@@ -26,7 +26,7 @@ namespace Inf_Theme;
 
 Every folder which holds classes constitutes a subnamespace.
 
-Avoid using static methods in your classes if possible. Using static methods means that you are calling a function without an instance of the class. But it prevents the usage of many OOP features such as inheritance, interface implementations, dependency injections etc.
+Avoid using static methods in your classes if possible. Using static methods means that you are calling a function without an instance of the class. But it prevents the usage of many OOP features such as inheritance, interface implementations, dependency injections etc. Static methods are useful for certain things like helper functions.
 
 Class names should use capitalized words separated by underscores.
 
@@ -80,7 +80,7 @@ function my_callable_function() {
 
 Type declarations allow functions to require that parameters are of a certain type at call time. If the given value is of the incorrect type, then an error is generated: in PHP 5, this will be a recoverable fatal error, while PHP 7 will throw a `TypeError` exception. But we don't use or encourage using PHP < 7 in our projects.
 
-To specify a type declaration, the type name should be added before the parameter name. The declaration can be made to accept NULL values if the default value of the parameter is set to NULL.
+To specify a type declaration, the type name should be added before the parameter name. The declaration can be made to accept `NULL` values if the default value of the parameter is set to `NULL`.
 
 To enable strict typings in PHP, you need to set a `declare` directive at the top of your file, before `namespace` definition
 
@@ -105,7 +105,7 @@ You can typehint function arguments and return values, for example
   }
 ```
 
-When the method can return more than one types (string or boolean for instance), **don't specify the return type**, as this will most likely throw `TypeError` exceptions.
+When the method can return more than one types (string or boolean for instance), **don't specify the return type**, as this will most likely throw `TypeError` exceptions (the RFC for `mixed` typehint is opened for version 7.3, and you can read it [here](https://wiki.php.net/rfc/mixed-typehint)).
 
 From PHP 7.1 you can explicitly declare a variable to be `null`
 
@@ -115,7 +115,7 @@ public function get_array( ?string $some_string ) : array {
 }
 ```
 
-This is also important when working with dependency injections.
+Typehinting is also important when working with dependency injections.
 
 ```php
 /**
@@ -165,7 +165,7 @@ We follow WordPress [VIP's guidelines](https://vip.wordpress.com/documentation/v
 
 Every output has to be escaped. Even translatable strings. This means that instead of using `__()` and  `_e()` we need to use `esc_html__()`, `esc_html_e()`, `esc_attr__()`, `esc_attr_e()`, `wp_kses()`, `wp_kses_post()` and other escaping functions.
 
-When writing data to the database be sure to sanitize the variables
+When writing data to the database be sure to [sanitize](https://developer.wordpress.org/themes/theme-security/data-sanitization-escaping/) the variables
 
 `sanitize_text_field( wp_unslash( $_POST['my_data'] ) )`
 
@@ -362,6 +362,7 @@ When possible avoid using `array_push()`, and instead just append to the array d
 
 ```php
 $my_array = array();
+
 // Good.
 foreach ( $other_array as $new_key => $new_value ) {
   $my_array[] = $new_value;

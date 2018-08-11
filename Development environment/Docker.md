@@ -76,3 +76,7 @@ Remove all containers
 Remove all images
 
 `docker rmi $(docker images -q)`
+
+### Docker notes
+
+Depending on your project, the docker compose, or Dockerfile may differ. For more information, consult your friendly devops.

@@ -2,7 +2,7 @@
 
 Unit testing is a level of software testing where individual units/components of a software are tested. The purpose of unit tests are to validate that each unit of the software performs as designed.
 
-Working within WordPress means that you're not actually running unit tests (unless you're working on core patches), rather integration tests.
+Working within WordPress means that you're not actually running _unit_ tests (unless you're working on core patches), rather _integration_ tests.
 
 There are two major types of testing that you can perform.
 
@@ -11,7 +11,7 @@ There are two major types of testing that you can perform.
 
 The first one is the official tests that each core WordPress installation has to pass through before a stable release will be made. You can find them in the official repository of the WordPress core [here](https://core.trac.wordpress.org/browser/trunk/tests). For more info about that read [automated testing](https://make.wordpress.org/core/handbook/testing/automated-testing/) chapter in the core handbook.
 
-The other one is a `wp-cli` test setup for plugin unit tests.
+The other one is a `WP-CLI` test setup for plugin unit tests.
 
 ## WordPress testing
 
@@ -176,7 +176,7 @@ This will download all the needed files for testing and patching like the above 
 
 ## Plugin testing
 
-Use WP-CLI to setup our plugin’s unit tests. If you don't have wp-cli installed on your system, install it. There is a documentation on starting unit tests which you can find [here](https://make.wordpress.org/cli/handbook/plugin-unit-tests/).
+Use WP-CLI to setup our plugin’s unit tests. If you don't have WP-CLI installed on your system, install it. There is a documentation on starting unit tests which you can find [here](https://make.wordpress.org/cli/handbook/plugin-unit-tests/).
 
 Assuming you have a plugin on your testing environment, in the project root folder run
 
@@ -210,7 +210,7 @@ After that you can run the plugin tests by writing
 phpunit
 ```
 
-The wp-cli only provides one sample test
+The WP-CLI only provides one sample test
 
 ```php
 class SampleTest extends WP_UnitTestCase {

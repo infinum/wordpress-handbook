@@ -12,11 +12,11 @@ Your repository should consist of several main branches: `master`, `develop`, `s
 
 ### Project setup
 
-Before each project, lead developer should fill the Project Setup sheet which specifies what language and framework will be used, versions, necessary scripts etc.
+Before each project, lead developer should fill the Project Setup sheet which specifies what language and framework will be used, versions, necessary scripts, deployment setup, server requirements etc.
 
 ### Modified Git flow
 
-Before deploy scripts and any kind of CI/CD (Continuous integration/Continuous deployment) is set up by the devops, a `master` branch should be filled with the initial setup. Ideally this should contain renamed theme using the boilerplate and minimum necessary plugins so that the developers can work without always merging the branch with the plugins in it.
+Before deploy scripts and any kind of CI/CD (Continuous integration/Continuous deployment) is set up by the devops, a `master` branch should be filled with the initial setup. Ideally this should contain renamed theme using the boilerplate and, possibly, minimum necessary plugins so that the developers can work without always merging the branch with the plugins in it.
 
 In the case that the `master` branch only contains the theme, a feature branch should be made called `feature/add-update-plugins` which holds the necessary plugins, and is used for update and adding the new plugins from the wordpress.org repository, or paid plugins like ACF Pro.
 
@@ -44,7 +44,7 @@ Never merge to `master` branch. Project lead is usually the one who will do this
 
 `preproduction` branch should be linked to the preproduction server, so that the client can enter content on it that will be merged to the production once ready. `preproduction` is 1:1 clone of the `master`, and should contain only working and production ready code.
 
-Once a project is in production, every time you create a feature, make a branch off of `master` branch, then once you think it's ready submit a PR to `master`, `preproduction` and `staging` branch and tag it accordingly. Once testing is completed, and feature branches are ready, lead developer will deploy them to `master` branch.
+Once a project is in production, every time you create a feature, make a branch off of `master` branch, then once you think it's ready submit a PR to `master`, `preproduction` and `staging` branch and tag (label) it accordingly. Once testing is completed, and feature branches are ready, lead developer will deploy them to `master` branch.
 
 Likewise with the pre-release, if you are working on a feature that depends on another feature that is merged on the staging branch, pull that branch in your branch to get the desired features.
 
@@ -54,7 +54,7 @@ Likewise with the pre-release, if you are working on a feature that depends on a
 
 Submitting a huge PR is bad for many reasons. First one is that it can crash your browser if you're inspecting it in Github, second one is that it will take a large amount of time to review it, and most probably the reviewer will skim the PR because he has other tasks to do. When submitting a PR ask yourself: would I want to review this?
 
-Also **write good git commit messages**. Commit messages should be short and clear. Also, write subject in the imperative mood. A properly formed Git commit subject line should always be able to complete the following sentence:
+Also **write good git commit messages**. Commit messages should be short and clear. Write subject in the imperative mood. A properly formed Git commit subject line should always be able to complete the following sentence:
 
 ```
 If applied, this commit will *your subject line here*

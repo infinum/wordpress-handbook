@@ -2,9 +2,9 @@
 
 When you want to develop a WordPress app, or you are joining a development of an existing project, it is important that you have a local development ready. There are number of solutions that can be used.
 
-If you want to use simple solutions that only include bare minimum (server config), you can use [WAMP](www.wampserver.com/en/), [MAMP](https://www.mamp.info/en/) or [XAMPP](https://www.apachefriends.org/index.html).
+If you want to use simple solutions that only include bare minimum (server config), you can use [WAMP](www.wampserver.com/en/), [MAMP](https://www.mamp.info/en/), [XAMPP](https://www.apachefriends.org/index.html) or [Local by Flywheel](https://local.getflywheel.com/).
 
-However, we do recommend a more WordPress friendly solutions. One such solution is [Varying Vagrant Vagrants](https://github.com/Varying-Vagrant-Vagrants/VVV). It is a Vagrant configuration focused on WordPress development. The advantage of VVV over MAMP or XAMPP is that it comes bundled with WordPress ready server configuration and software packages such as `php-fpm`, `WP-CLI`, `Composer`, `NodeJs` and other useful packages.
+However, we do recommend more WordPress friendly solutions. One such solution is [Varying Vagrant Vagrants](https://github.com/Varying-Vagrant-Vagrants/VVV). It is a Vagrant configuration focused on WordPress development. The advantage of VVV over MAMP or XAMPP is that it comes bundled with WordPress ready server configuration and software packages such as `php-fpm`, `WP-CLI`, `Composer`, `NodeJs` and other useful packages.
 
 The advantage of using Vagrant is that it is configured independently of your machine, because it runs on a virtual machine. That way everyone on your team will develop on the same environment.
 

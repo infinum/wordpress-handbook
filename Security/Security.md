@@ -1,10 +1,42 @@
 # Security
 
-When working on enterprise projects, it is vital to follow the best security practices.
+When working on enterprise projects, it is vital to follow the best security practices. Security and risk assessment are a crutial part of software development. Security is also everyone's job and should be embedded in each business process and operation.
+
+## Core concepts
+
+The application security core concepts are primarily concerned with reducing the primary attack surface - our exposure, the reachable and exploitable vulnerabilities that we could have in our software. It's crucial to make it as small as possible because the app controls the access to the data and the sources of the software.
+
+The core security process is also known as the 'CIA triad'
+
+* Confidentiality
+* Integrity
+* Availability
+
+_Confidentiality_ means protecting sensitive data from improper disclosure, which can have legal and contractual consequences to you or the company you work for. One of the things you can do to mitigate this and ensure the confidentiality of your application is to mask and obfuscate access to the application through the usage of passwords, make view based access controls for the database access and use encryption when dealing with data transfer and data storage.
+
+_Integrity_ concerns with the protection of the sensitive data from unauthorized modification and ensure compliance and security of the data processing according to law. Some of the way you can ensure data integrity is by using digital signatures ([GPG](https://en.wikipedia.org/wiki/GNU_Privacy_Guard) or [PGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) using hashes). We need to be sure of the proof of sender - signed data by you so you cannot say you didn't do it/send it, and proof of non alteration in transit. This is what integrity is all about.
+
+_Availability_ is the prevention of destruction of data or systems and the ability to maintain the operational capability. We need to assess where the software could fail (single point of failure), and We need to provide fault tolerance - a redundancies that will automatically take over the running of the application/service in case of failure. If the application crashes on one container, for instance, another should automatically boot up to replace it with a minimal timeout. We need to take care of the scalability.
+
+## Risk management
+
+A risk is a likelihood (probability) of a threat exploiting a vulnerability, thereby causing damage to an asset.
+
+Risks will regulate the number of controls (limitations) that will be used to reduce the risk to the organization. Risk can be good or bad - investments are risky, but can pay off if you made a good investment.
+
+Risk is not eliminated, it is managed. We need to assess the possible risks, respond to them, and monitor them. This all constitutes a risk context or frame.
+
+Once we assess the risk we can choose to: _avoid the risk_ (don't implement certain feature that is deemed too risky and can introduce a vulnerability); _transfer the risk_ (third party insurance - you assigned somebody else to do a part of the app for instance); _accept the risk_ (know the limitations and implement the feature); _reduce/mitigate a risk_ (implement monitoring and logging on an application for instance).
+
+## OWASP
+
+The Open Web Application Security Project (OWASP) is an on-line community which produces freely-available articles, methodologies, documentation, tools, and technologies in the field of web application security
 
 Check the OWASP page for more information.
 
 [OWASP](https://www.owasp.org/)
+
+[OWASP Top 10](https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf)
 
 [OWASP PHP Top 5](https://www.owasp.org/index.php/PHP_Top_5)
 
