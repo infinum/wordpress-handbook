@@ -9,32 +9,15 @@ Example of build script looks like, the real implementation may differ per proje
 ### Build (`build.sh`)
 
 ```sh
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-set -o errexit
-set -o pipefail
-set -o nounset
-set -o xtrace # debugging purposes
-
-function composer_setup() {
-  echo "--> composer setup"
-  composer install --no-dev --no-scripts
-  composer update --no-dev --no-scripts
-  composer -o dump-autoload
-}
-
-function npm_setup() {
-  echo "--> npm setup"
+function build() {
   npm install
+  composer install --no-dev --no-scripts
   npm run build
 }
 
-function main() {
-  composer_setup
-  npm_setup
-}
-
-main "$@"
+build
 ```
 
 ### Tests (`test.sh`)
@@ -81,27 +64,6 @@ function main() {
   composer_tests
   npm_setup
   npm_tests
-}
-
-main "$@"
-```
-
-### Deploy (`deploy.sh`)
-
-```sh
-#!/usr/bin/env bash
-
-set -o errexit
-set -o pipefail
-set -o nounset
-# set -o xtrace # debugging purposes
-
-## custom functions block ##
-
-function main() {
-  bash build.sh
-  ssh-keyscan -p 123 server-instance.addres.test >> ~/.ssh/known_hosts
-  rsync -azqe 'ssh -p 123' --exclude-from='./ci-exclude.txt' ./ test_user@server-instance.addres.test:/home/test_user/www/server-instance.addres.test/
 }
 
 main "$@"

@@ -4,7 +4,7 @@ Plugin development is done according to the [WordPress Plugin Boilerplate](http:
 
 Note that plugins are written in object oriented way, whereas theme is usually written in procedural way. Object oriented programming allows for better separation of concerns.
 
-We are also working on our version of the plugin boilerplate which can be found [here](https://github.com/infinum/wp-boilerplate-plugin).
+We are also working on our version of the plugin boilerplate, and you can ask your team lead about the details for it.
 
 ### When should I create a plugin?
 
