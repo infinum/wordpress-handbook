@@ -21,12 +21,12 @@ Use lowercase letters in variable, action, and function names. Separate words vi
 Namespacing should follow file structure. The main namespace is Capital_Cased version of the project name. So in the case of the boilerplate, the default namespace is
 
 ```php
-Inf_Theme
+namespace Inf_Theme;
 ```
 
 Every folder which holds classes constitutes a subnamespace.
 
-Avoid using static methods in your classes if possible. Using static methods means that you are calling a function without an instance of the class. But it prevents the usage of many OOP features such as inheritance, interface implementations, dependency injections etc.
+Avoid using static methods in your classes if possible. Using static methods means that you are calling a function without an instance of the class. But it prevents the usage of many OOP features such as inheritance, interface implementations, dependency injections etc. Static methods are useful for certain things like helper functions.
 
 Class names should use capitalized words separated by underscores.
 
@@ -76,6 +76,81 @@ function my_callable_function() {
 }
 ```
 
+### Typehinting
+
+Type declarations allow functions to require that parameters are of a certain type at call time. If the given value is of the incorrect type, then an error is generated: in PHP 5, this will be a recoverable fatal error, while PHP 7 will throw a `TypeError` exception. But we don't use or encourage using PHP < 7 in our projects.
+
+To specify a type declaration, the type name should be added before the parameter name. The declaration can be made to accept `NULL` values if the default value of the parameter is set to `NULL`.
+
+To enable strict typings in PHP, you need to set a `declare` directive at the top of your file, before `namespace` definition
+
+```php
+declare(strict_types=1);
+```
+
+You can typehint function arguments and return values, for example
+
+```php
+/**
+   * Get user data
+   *
+   * A method that will return an array with user data.
+   *
+   * @param string $user_token Auth token got from url param.
+   *
+   * @return array             User data array.
+   */
+  public function get_user_data( string $user_token ) : array {
+    //...
+  }
+```
+
+When the method can return more than one types (string or boolean for instance), **don't specify the return type**, as this will most likely throw `TypeError` exceptions (the RFC for `mixed` typehint is opened for version 7.3, and you can read it [here](https://wiki.php.net/rfc/mixed-typehint)).
+
+From PHP 7.1 you can explicitly declare a variable to be `null`
+
+```php
+public function get_array( ?string $some_string ) : array {
+  //...
+}
+```
+
+Typehinting is also important when working with dependency injections.
+
+```php
+/**
+ * Class User credentials
+ *
+ * Class that stores user credentials.
+ */
+class User_Credentials {
+  /**
+   * General Helper object
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  protected $general_helper;
+
+  /**
+   * Initialize class
+   *
+   * Load helper on class init.
+   *
+   * @param General_Helper $general_helper Helper class instance.
+   * @since 1.0.0
+   */
+  public function __construct( General_Helper $general_helper ) {
+    $this->general_helper = $general_helper;
+  }
+
+  //...
+}
+```
+
+Table with typehints per PHP versions: https://mlocati.github.io/articles/php-type-hinting.html
+
 ### Sanitization and escaping
 
 We follow WordPress [VIP's guidelines](https://vip.wordpress.com/documentation/vip/best-practices/security/validating-sanitizing-escaping/)
@@ -90,7 +165,7 @@ We follow WordPress [VIP's guidelines](https://vip.wordpress.com/documentation/v
 
 Every output has to be escaped. Even translatable strings. This means that instead of using `__()` and  `_e()` we need to use `esc_html__()`, `esc_html_e()`, `esc_attr__()`, `esc_attr_e()`, `wp_kses()`, `wp_kses_post()` and other escaping functions.
 
-When writing data to the database be sure to sanitize the variables
+When writing data to the database be sure to [sanitize](https://developer.wordpress.org/themes/theme-security/data-sanitization-escaping/) the variables
 
 `sanitize_text_field( wp_unslash( $_POST['my_data'] ) )`
 
@@ -179,7 +254,7 @@ Every file should have a beginning documentation that is describing the contents
  * Author URI: https://infinum.co/
  * Version: 0.1.0
  *
- * @package Project name
+ * @package Namespace
  */
 ```
 
@@ -200,6 +275,8 @@ Every class should have the documentation before it, and the methods inside shou
  * @param stdClass $args   An object of wp_nav_menu() arguments.
  */
 public function start_lvl( &$output, $depth = 0, $args = array() ) {
+  //...
+}
 ```
 
 ### Database Queries
@@ -269,6 +346,7 @@ $array = array(
     'foo' => true,
     'bar' => true,
 );
+
 if ( isset( $array['bar'] ) ) {
   // value is present in the array
 };
@@ -284,6 +362,7 @@ When possible avoid using `array_push()`, and instead just append to the array d
 
 ```php
 $my_array = array();
+
 // Good.
 foreach ( $other_array as $new_key => $new_value ) {
   $my_array[] = $new_value;
@@ -302,6 +381,8 @@ This will avoid any unnecessary overhead of calling the php function, as PHP has
 Use [caching](https://10up.github.io/Engineering-Best-Practices/php/#the-object-cache) to speed up the site.
 
 Use [`pre_get_posts`](https://developer.wordpress.org/reference/hooks/pre_get_posts/) hook to modify your queries in the back end and in the front end (search queries etc.).
+
+Use [tranisents](https://codex.wordpress.org/Transients_API) to further speed up your site.
 
 ### I18n
 
