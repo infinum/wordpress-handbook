@@ -181,7 +181,7 @@ server {
   listen 80;
   listen 443 ssl;
   server_name wordpress-infinum.test;
-  root {vvv_path_to_site};
+  root {vvv_path_to_site}/public_html;
 
   error_log {vvv_path_to_site}/log/error.log;
   access_log {vvv_path_to_site}/log/access.log;
