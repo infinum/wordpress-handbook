@@ -50,6 +50,19 @@ Likewise with the pre-release, if you are working on a feature that depends on a
 
 ![Git flow](/img/gitflow.png)
 
+**In case of conflicts don't panic**
+Also don't fix conflicts in the Gihub. Use terminal. Say you have 2 PRs open - one to `staging` and one to `master` branch. In case of conflicts on the PR toward the staging branch, you want to do the following:
+
+```bash
+git checkout staging
+git merge --no-ff feature/conflict-branch-name
+git push staging
+```
+
+Once you merge the frature branch to staging, you'll have conflicts. Fix them, commit them and push to staging. This won't impact the other PR to master. If you use the first Github suggestion or their edit tool, you will merge the entire staging branch to your feature branch, and that will have impact on the PR to the master branch (bunch of unwanted commits and messed up history).
+
+If you're unsure what to do, ask someone who does :)
+
 **Do not submit PR that has over 100 changed files**
 
 Submitting a huge PR is bad for many reasons. First one is that it can crash your browser if you're inspecting it in Github, second one is that it will take a large amount of time to review it, and most probably the reviewer will skim the PR because he has other tasks to do. When submitting a PR ask yourself: would I want to review this?

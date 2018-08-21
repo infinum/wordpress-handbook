@@ -234,3 +234,33 @@ If you want to check the output of a variable inside your test just add
 ```php
 fwrite( STDERR, print_r( $variable, true ) );
 ```
+
+## Possible issues
+
+### Require error
+
+When running `phpunit` for your plugin, outside VVV, you get error that looks like this
+
+```bash
+Warning: require_once(.../wordpress//wp-includes/class-phpmailer.php): failed to open stream: No such file or directory in .../wordpress-tests-lib/includes/mock-mailer.php on line 2
+
+Fatal error: require_once(): Failed opening required '.../wordpress//wp-includes/class-phpmailer.php' (include_path='.:/opt/lampp/lib/php') in .../wordpress-tests-lib/includes/mock-mailer.php on line 2
+```
+
+In that case, delete the database (using sequel Pro or via terminal), delete the temporary folder where WordPress is installed (either in `/tmp/wordpress/` or somewhere in `/var/folders/..` subfolders), and run
+
+```bash
+bash bin/install-wp-tests.sh wordpress_test root '' localhost latest
+```
+
+in the terminal. Then the `phpunit` should work.
+
+### Xdebugg inside VVV
+
+For some reason, when Xdebugg is enabled in the VVV, when you run unit tests, and want to have the coverage generated, it will take an extreme amount of time to check it. In that case either disable creating code coverage
+
+```bash
+phpunit --no-coverage
+```
+
+Or run the test outside the VVV. Running tests outside of VVV with Xdebug is significantly faster (fev sec vs ~10 minutes).
