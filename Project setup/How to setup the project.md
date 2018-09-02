@@ -1,5 +1,3 @@
-# Project setup
-
 When creating a project on bitbucket or github, it is paramount to specify few crucial details for project setup. This will help with quick onboarding of new developers on the project.
 
 In the project root folder there should be a `README.md` file. At the beginning of this file you should give few details about the project and details about the development setup.

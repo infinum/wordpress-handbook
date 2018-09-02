@@ -1,5 +1,3 @@
-# WordPress as API
-
 WordPress app can be used to provide endpoints for the front end app (based on any of the popular view libraries) to consume.
 
 In that case theme should consist of minimum necessary files for admin functionality - `functions.php`, `index.php`, `screenshot.png` (optional) and `style.css`.

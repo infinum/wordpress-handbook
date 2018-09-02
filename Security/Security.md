@@ -1,5 +1,3 @@
-# Security
-
 When working on enterprise projects, it is vital to follow the best security practices. Security and risk assessment are a crutial part of software development. Security is also everyone's job and should be embedded in each business process and operation.
 
 ## Core concepts

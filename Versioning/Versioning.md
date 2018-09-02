@@ -1,5 +1,3 @@
-# Versioning for WordPress
-
 *Commit Early, Commit Often*
 
 Repository naming follows this pattern
@@ -51,7 +49,10 @@ Likewise with the pre-release, if you are working on a feature that depends on a
 ![Git flow](/img/gitflow.png)
 
 **In case of conflicts don't panic**
-Also don't fix conflicts in the Gihub. Use terminal. Say you have 2 PRs open - one to `staging` and one to `master` branch. In case of conflicts on the PR toward the staging branch, you want to do the following:
+
+Once you fix the possible issues in the PR, make sure the conflicts are fixed.
+
+**Don't fix conflicts in the Gihub**. Use terminal. Say you have 2 PRs open - one to `staging` and one to `master` branch. In case of conflicts on the PR toward the staging branch, you want to do the following:
 
 ```bash
 git checkout staging

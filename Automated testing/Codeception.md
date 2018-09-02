@@ -1,5 +1,3 @@
-# Codeception
-
 Codeception collects and shares best practices and solutions for testing PHP web applications. With a flexible set of included modules tests are easy to write, easy to use and easy to maintain. Codeception encourages developers and QA engineers to concentrate on testing and not on building test suite.
 
 ## Codeception for WordPress
