@@ -1,5 +1,3 @@
-# Varying Vagrant Vagrants setup
-
 ## Installing VVV
 
 Setting up VVV is easy. You can either follow the manual install, as described in the [official documentation](https://varyingvagrantvagrants.org/docs/en-US/), or you can use `brew` package manager for quick and easy installation.

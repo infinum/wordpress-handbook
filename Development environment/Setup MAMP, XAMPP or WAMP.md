@@ -1,5 +1,3 @@
-# Setuping MAMP, XAMPP or WAMP
-
 Setuping MAMP, XAMPP or WAMP is easy as just downloading and installing them.
 
 [MAMP install](https://www.mamp.info/en/)

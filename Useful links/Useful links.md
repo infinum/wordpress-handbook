@@ -1,5 +1,3 @@
-# Useful links
-
 [WordPress developer reference](https://developer.wordpress.org/reference/)
 
 [WordPress Core handbook](https://make.wordpress.org/core/handbook/)

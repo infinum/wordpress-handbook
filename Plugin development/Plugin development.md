@@ -1,5 +1,3 @@
-# Plugin development
-
 Plugin development is done according to the [WordPress Plugin Boilerplate](http://wppb.io/). You can find a simple generator for your plugin [here](https://wppb.me/).
 
 Note that plugins are written in object oriented way, whereas theme is usually written in procedural way. Object oriented programming allows for better separation of concerns.
