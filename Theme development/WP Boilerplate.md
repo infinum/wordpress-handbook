@@ -14,58 +14,7 @@ This is the in-depth documentation on how to run and modify the WordPress boiler
 
 ## Getting started
 
-First you need to install WordPress locally, using any of the local development environment you prefer. You can use XAMPP, MAMP, WAMP, VVV, Docker or Laravel Valet. You'll also need to have `Node.js`, `Composer` and `WP-CLI` installed.
-
-To start, fork this repository to your own, and then clone it
-
-```bash
-git clone git@github.com:your-name/wp-boilerplate.git
-```
-
-If you are using VVV clone it in the `public_html` folder
-
-```bash
-git clone git@github.com:your-name/wp-boilerplate.git public_html
-```
-
-Run node script to setup your project and rename all files via wizard. Run this first and only once
-
-```bash
-npm run rename
-```
-
-This will make changes to theme name, description, author, text domain, package, namespace, and constants (this is important when specifying environment variable).
-
-## Development Pre Start
-
-After renaming your theme, run this to setup WordPress on the server.
-The script will install `npm` and `composer` dependencies and install the latest version of WordPress.
-
-```bash
-bash bin/setup.sh
-```
-
-After running setup script, you'll need to create `wp-config.php`. You can do that manually, or use WP-CLI
-
-```bash
-wp config create --dbname={DBNAME} --dbuser={DBUSER} --dbpass={DBPASS}
-wp core install --url={dev.boilerplate.com} --title={THEMENAME} --admin_user={ADMINUSER} --admin_email={ADMINMAIL}
-wp theme activate {THEMENAME}
-```
-
-## Development Start
-
-Builds assets in watch mode using Webpack.
-
-```bash
-npm start
-```
-
-## Browser sync
-
-We are using BrowserSync to sync assets and enable easy cross-device testing.
-It is tested on MAMP and Vagrant (VVV).
-
+Read the [readme](https://github.com/infinum/wp-boilerplate/blob/master/README.md) of the project to get going with the theme development.
 
 ## Wiki
 
