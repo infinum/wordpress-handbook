@@ -132,9 +132,42 @@ Brain Monkey allows to mock WordPress function (just like any PHP function), and
 
 For more details about using Brain Monkey check the [official documentation](https://brain-wp.github.io/BrainMonkey/docs/wordpress-setup.html).
 
+## WP_Mock
+
+[WP_Mock](https://github.com/10up/wp_mock) is an API mocking framework, built and maintained by 10up for the purpose of making it possible to properly unit test within WordPress.
+
+The documentation is located [here](https://github.com/10up/wp_mock/blob/master/README.md).
+
+## Tips and tricks
+
+### Mocking static methods
+
+When your code depends on outside resources such as AWS or other services like Redis, it's best to mock those. Mocking is essentially replacing the real method/class with a fake one that has the similar behavior.
+
+This is why it's a good idea to wrap your outside dependencies in wrapper classes that you can then mock in entirety, without the need to connect to outside service.
+
+If you need to mock static methods in a class, you'd need to alias it
+
+```php
+$mock = \Mockery::mock('alias:Namespace\My_Class');
+```
+
+Then, you'd create a mock class and add mocked static methods in it. Every time a call to mocked class is found in the tested code, this alias will be used.
+
+A thing to beware is that using `alias:` will apply for the remainder of the PHP sessions's life, so you'll need to add
+
+```php
+/**
+ * @runTestsInSeparateProcesses
+ * @preserveGlobalState disabled
+ */
+ ```
+
+to the test class which uses alias mocks. This will tell PHPUnit to run a separate PHP process, so other tests won't be affected.
+
 ## Useful links
 
-[Unit Tests for PHP code](https://inpsyde.com/en/php-unit-tests-without-wordpress/)
-[An Introduction To Automated Testing Of WordPress Plugins With PHPUnit](https://www.smashingmagazine.com/2017/12/automated-testing-wordpress-plugins-phpunit/)
-[Unit Tests for WordPress Plugins](https://pippinsplugins.com/unit-tests-wordpress-plugins-introduction/)
-[An introduction to unit testing (for WordPress)](https://tfrommen.de/an-introduction-to-unit-testing-for-wordpress/)
+[Unit Tests for PHP code](https://inpsyde.com/en/php-unit-tests-without-wordpress/)  
+[An Introduction To Automated Testing Of WordPress Plugins With PHPUnit](https://www.smashingmagazine.com/2017/12/automated-testing-wordpress-plugins-phpunit/)  
+[Unit Tests for WordPress Plugins](https://pippinsplugins.com/unit-tests-wordpress-plugins-introduction/)  
+[An introduction to unit testing (for WordPress)](https://tfrommen.de/an-introduction-to-unit-testing-for-wordpress/)  
