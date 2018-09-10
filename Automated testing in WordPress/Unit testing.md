@@ -165,6 +165,61 @@ A thing to beware is that using `alias:` will apply for the remainder of the PHP
 
 to the test class which uses alias mocks. This will tell PHPUnit to run a separate PHP process, so other tests won't be affected.
 
+### Overload vs Alias
+
+Taken from [stackoverflow](https://stackoverflow.com/questions/31219542/what-is-the-difference-between-overload-and-alias-in-mockery):
+
+`Overload` is used to create an "instance mock". This will "intercept" when a new instance of a class is created and the mock will be used instead. For example if this code is to be tested:
+
+```php
+class ClassToTest {
+  public function methodToTest() {
+    $myClass = new MyClass();
+    $result  = $myClass->someMethod();
+
+    return $result;
+  }
+}
+```
+
+You would create an instance mock using `overload` and define the expectations like this:
+
+```php
+public function testMethodToTest() {
+  $mock = Mockery::mock('overload:MyClass');
+  $mock->shouldreceive('someMethod')->andReturn('someResult');
+
+  $classToTest = new ClassToTest();
+  $result      = $classToTest->methodToTest();
+
+  $this->assertEquals('someResult', $result);
+}
+```
+
+`Alias` is used to mock public static methods. For example if this code is to be tested:
+
+```php
+class ClassToTest {
+  public function methodToTest() {
+    return MyClass::someStaticMethod();
+  }
+}
+```
+
+You would create an alias mock using `alias` and define the expectations like this:
+
+```php
+public function testNewMethodToTest() {
+  $mock = Mockery::mock('alias:MyClass');
+  $mock->shouldreceive('someStaticMethod')->andReturn('someResult');
+
+  $classToTest = new ClassToTest();
+  $result      = $classToTest->methodToTest();
+
+  $this->assertEquals('someResult', $result);
+}
+```
+
 ## Useful links
 
 [Unit Tests for PHP code](https://inpsyde.com/en/php-unit-tests-without-wordpress/)  
