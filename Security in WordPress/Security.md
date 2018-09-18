@@ -187,7 +187,7 @@ _______________________________________________________________
 [+] Requests made: 61
 [+] Memory used: 35.848 MB
 ```
-## Code snippets
+## Useful hardening code snippets
 
 ### Remove WP version from generator in head
 ```
@@ -200,7 +200,7 @@ _______________________________________________________________
     return '';
   }
 ```
-Hooks into:
+Hooks into (`$security` is a class containing `empty_generator_version` method):
 ```
 $this->loader->add_filter( 'the_generator', $security, 'empty_generator_version' );
 ```
@@ -221,7 +221,7 @@ $this->loader->add_filter( 'the_generator', $security, 'empty_generator_version'
     return $src;
   }
 ```
-Hooks into:
+Hooks into (`$security` is a class containing `remove_version_scripts_styles` method):
 ```
 $this->loader->add_filter( 'style_loader_src', $security, 'remove_version_scripts_styles', 9999 );
 $this->loader->add_filter( 'script_loader_src', $security, 'remove_version_scripts_styles', 9999 );
