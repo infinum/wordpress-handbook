@@ -109,7 +109,7 @@ sonar.projectName=Project Name
 sonar.projectVersion=1.0.0
 sonar.login=4CqVnlU9PzqKUjBqaHu3oGiPhHAv1PrC4pRrhgOA
 
-sonar.sources=sonar.sources=wp-content/themes/,wp-content/plugins/
+sonar.sources=wp-content/themes/,wp-content/plugins/
 ```
 
 After that you should go to the project root and run `sonar-scanner`.
