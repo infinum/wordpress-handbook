@@ -127,9 +127,14 @@ After a scan is done (should take a while) you'll see the report in the SonarQub
 If you already have an existing docker image, you can start it by
 
 ```bash
-docker run sonarqube
+docker start sonarqube
 ```
 
+And you can stop it with
+
+```bash
+docker stop sonarqube
+```
 ### WPScan
 
 [WPScan](https://wpscan.org/) is a WordPress scanning tool that runs on docker.
