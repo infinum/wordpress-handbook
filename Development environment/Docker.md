@@ -170,6 +170,10 @@ Remove all images
 
 `docker rmi $(docker images -q)`
 
+Prune system from unused images and containers (use with caution!)
+
+`docker system prune`
+
 ### Docker notes
 
 Depending on your project, the docker compose, or Dockerfile may differ. For more information, consult your friendly devops.
