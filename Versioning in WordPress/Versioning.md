@@ -28,7 +28,7 @@ When submitting a patch, fix or a new feature, always open a new branch, and pul
 
 After that create a pull request to `staging` and `master` (and/or `preproduction`) and assign a reviewer.
 
-Every merge is done via pull requests, manual merges are prohibited.
+Every merge is done via pull requests, manual merges are prohibited (or not possible in case of `master` branch).
 
 If the branch you want to work on depends on a branch that is still being worked on, pull the changes from that branch into your branch to get the updates. Be sure to track the changes on that branch.
 
@@ -36,9 +36,9 @@ If the branch you want to work on depends on a branch that is still being worked
 
 ![Code flow](/img/code-flow.png)
 
-Master branch has to be tagged according to [semver](http://semver.org/) before the release. Short introduction to semver can be found [here](https://www.sitepoint.com/semantic-versioning-why-you-should-using/).
+`master` branch has to be tagged according to [semver](http://semver.org/) before the release. Short introduction to semver can be found [here](https://www.sitepoint.com/semantic-versioning-why-you-should-using/).
 
-Never merge to `master` branch. Project lead is usually the one who will do this periodically.
+`master` branch is usually protected so that direct merge to it is not possible. Merges to `master` are done periodically when new featrues are ready to be released.
 
 `preproduction` branch should be linked to the preproduction server, so that the client can enter content on it that will be merged to the production once ready. `preproduction` is 1:1 clone of the `master`, and should contain only working and production ready code.
 

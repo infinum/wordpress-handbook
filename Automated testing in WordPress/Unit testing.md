@@ -132,9 +132,97 @@ Brain Monkey allows to mock WordPress function (just like any PHP function), and
 
 For more details about using Brain Monkey check the [official documentation](https://brain-wp.github.io/BrainMonkey/docs/wordpress-setup.html).
 
+## WP_Mock
+
+[WP_Mock](https://github.com/10up/wp_mock) is an API mocking framework, built and maintained by 10up for the purpose of making it possible to properly unit test within WordPress.
+
+The documentation is located [here](https://github.com/10up/wp_mock/blob/master/README.md).
+
+## Tips and tricks
+
+### Mocking static methods
+
+When your code depends on outside resources such as AWS or other services like Redis, it's best to mock those. Mocking is essentially replacing the real method/class with a fake one that has the similar behavior.
+
+This is why it's a good idea to wrap your outside dependencies in wrapper classes that you can then mock in entirety, without the need to connect to outside service.
+
+If you need to mock static methods in a class, you'd need to alias it
+
+```php
+$mock = \Mockery::mock('alias:Namespace\My_Class');
+```
+
+Then, you'd create a mock class and add mocked static methods in it. Every time a call to mocked class is found in the tested code, this alias will be used.
+
+A thing to beware is that using `alias:` will apply for the remainder of the PHP sessions's life, so you'll need to add
+
+```php
+/**
+ * @runTestsInSeparateProcesses
+ * @preserveGlobalState disabled
+ */
+ ```
+
+to the test class which uses alias mocks. This will tell PHPUnit to run a separate PHP process, so other tests won't be affected.
+
+### Overload vs Alias
+
+Taken from [stackoverflow](https://stackoverflow.com/questions/31219542/what-is-the-difference-between-overload-and-alias-in-mockery):
+
+`Overload` is used to create an "instance mock". This will "intercept" when a new instance of a class is created and the mock will be used instead. For example if this code is to be tested:
+
+```php
+class ClassToTest {
+  public function methodToTest() {
+    $myClass = new MyClass();
+    $result  = $myClass->someMethod();
+
+    return $result;
+  }
+}
+```
+
+You would create an instance mock using `overload` and define the expectations like this:
+
+```php
+public function testMethodToTest() {
+  $mock = Mockery::mock('overload:MyClass');
+  $mock->shouldreceive('someMethod')->andReturn('someResult');
+
+  $classToTest = new ClassToTest();
+  $result      = $classToTest->methodToTest();
+
+  $this->assertEquals('someResult', $result);
+}
+```
+
+`Alias` is used to mock public static methods. For example if this code is to be tested:
+
+```php
+class ClassToTest {
+  public function methodToTest() {
+    return MyClass::someStaticMethod();
+  }
+}
+```
+
+You would create an alias mock using `alias` and define the expectations like this:
+
+```php
+public function testNewMethodToTest() {
+  $mock = Mockery::mock('alias:MyClass');
+  $mock->shouldreceive('someStaticMethod')->andReturn('someResult');
+
+  $classToTest = new ClassToTest();
+  $result      = $classToTest->methodToTest();
+
+  $this->assertEquals('someResult', $result);
+}
+```
+
 ## Useful links
 
-[Unit Tests for PHP code](https://inpsyde.com/en/php-unit-tests-without-wordpress/)
-[An Introduction To Automated Testing Of WordPress Plugins With PHPUnit](https://www.smashingmagazine.com/2017/12/automated-testing-wordpress-plugins-phpunit/)
-[Unit Tests for WordPress Plugins](https://pippinsplugins.com/unit-tests-wordpress-plugins-introduction/)
-[An introduction to unit testing (for WordPress)](https://tfrommen.de/an-introduction-to-unit-testing-for-wordpress/)
+[Unit Tests for PHP code](https://inpsyde.com/en/php-unit-tests-without-wordpress/)  
+[An Introduction To Automated Testing Of WordPress Plugins With PHPUnit](https://www.smashingmagazine.com/2017/12/automated-testing-wordpress-plugins-phpunit/)  
+[Unit Tests for WordPress Plugins](https://pippinsplugins.com/unit-tests-wordpress-plugins-introduction/)  
+[An introduction to unit testing (for WordPress)](https://tfrommen.de/an-introduction-to-unit-testing-for-wordpress/)  

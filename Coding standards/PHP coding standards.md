@@ -24,7 +24,25 @@ namespace Inf_Theme;
 
 Every folder which holds classes constitutes a subnamespace.
 
+Be aware that WordPress 'lives' in a global namespace. So, when using functions and classes from the WordPress core, it's necessary to put a slash in front of class or function name, so that it's called from the global namespace. For example, calling `WP_Query` inside your class should be done like sources
+
+```php
+$query = new \WP_Query( $arguments );
+```
+
+And core functions would be used like this
+
+```php
+\wp_unslash( $_POST['someKey'] );
+```
+
+This will be important especially if you are writing automated tests.
+
 Avoid using static methods in your classes if possible. Using static methods means that you are calling a function without an instance of the class. But it prevents the usage of many OOP features such as inheritance, interface implementations, dependency injections etc. Static methods are useful for certain things like helper functions.
+
+If you are using same method in many different classes, it's useful to put it in a [Trait](http://php.net/manual/en/language.oop5.traits.php).
+
+A Trait is similar to a class, but only intended to group functionality in a fine-grained and consistent way. It is not possible to instantiate a Trait on its own. It is an addition to traditional inheritance and enables horizontal composition of behavior; that is, the application of class members without requiring inheritance.
 
 Class names should use capitalized words separated by underscores.
 
