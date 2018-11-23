@@ -170,7 +170,7 @@ Remove all images
 
 `docker rmi $(docker images -q)`
 
-Prune system from unused images and containers (use with caution!)
+Prune system from unused images, containers, and networks [documentation link](https://docs.docker.com/config/pruning/#prune-everything)
 
 `docker system prune`
 
