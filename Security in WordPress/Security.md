@@ -109,7 +109,7 @@ sonar.projectName=Project Name
 sonar.projectVersion=1.0.0
 sonar.login=4CqVnlU9PzqKUjBqaHu3oGiPhHAv1PrC4pRrhgOA
 
-sonar.sources=sonar.sources=wp-content/themes/,wp-content/plugins/
+sonar.sources=wp-content/themes/,wp-content/plugins/
 ```
 
 After that you should go to the project root and run `sonar-scanner`.
@@ -192,5 +192,42 @@ _______________________________________________________________
 [+] Requests made: 61
 [+] Memory used: 35.848 MB
 ```
+## Useful hardening code snippets
 
+### Remove WP version from generator in head
+```
+  /**
+   * Return empty string in the 'wp_generator'
+   *
+   * @return string Returns an empty string.
+   */
+  public function empty_generator_version() : string {
+    return '';
+  }
+```
+Hooks into (`$security` is a class containing `empty_generator_version` method):
+```
+$this->loader->add_filter( 'the_generator', $security, 'empty_generator_version' );
+```
 
+### Remove WP version from scripts 
+```
+  /**
+   * Remove the version number from all enqueued scripts
+   *
+   * @param  string $src Source string of the enqueued file.
+   * @return string      Modified string without the version in the enqueued file.
+   */
+  public function remove_version_scripts_styles( string $src ) : string {
+    if ( strpos( $src, 'ver=' ) ) {
+      $src = remove_query_arg( 'ver', $src );
+    }
+
+    return $src;
+  }
+```
+Hooks into (`$security` is a class containing `remove_version_scripts_styles` method):
+```
+$this->loader->add_filter( 'style_loader_src', $security, 'remove_version_scripts_styles', 9999 );
+$this->loader->add_filter( 'script_loader_src', $security, 'remove_version_scripts_styles', 9999 );
+```
