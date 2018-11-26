@@ -24,7 +24,7 @@ namespace Inf_Theme;
 
 Every folder which holds classes constitutes a subnamespace.
 
-Be aware that WordPress 'lives' in a global namespace. So, when using functions and classes from the WordPress core, it's necessary to put a slash in front of class or function name, so that it's called from the global namespace. For example, calling `WP_Query` inside your class should be done like sources
+Be aware that WordPress 'lives' in a global namespace. So, when using functions and classes from the WordPress core, it's necessary to either put a slash in front of class or function name, so that it's called from the global namespace, or use the `use` statement at the top of the file. For example, calling `WP_Query` inside your class should be done like
 
 ```php
 $query = new \WP_Query( $arguments );
@@ -34,6 +34,17 @@ And core functions would be used like this
 
 ```php
 \wp_unslash( $_POST['someKey'] );
+```
+
+Or
+
+```php
+use \WP_Query;
+
+//...
+
+$query = new WP_Query( $arguments );
+
 ```
 
 This will be important especially if you are writing automated tests.
