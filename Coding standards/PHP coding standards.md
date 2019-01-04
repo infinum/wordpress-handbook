@@ -2,6 +2,40 @@ In general we follow the [WordPress PHP Coding Standards](https://make.wordpress
 
 For automatic code check we are using [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/), with our [modified coding standards](https://github.com/infinum/coding-standards-wp).
 
+## Table of contents
+
+- [Naming](#naming)
+  * [File Naming](#file-naming)
+  * [Naming Conventions](#naming-conventions)
+  * [Namespacing and class names](#namespacing-and-class-names)
+  * [Yoda Conditions](#yoda-conditions)
+  * [Functions](#functions)
+    + [Class method visibility](#class-method-visibility)
+- [Writing style](#writing-style)
+  * [Inline statements](#inline-statements)
+  * [Multiple statements](#multiple-statements)
+  * [Strict comparison](#strict-comparison)
+- [Typehinting](#typehinting)
+- [Sanitization and escaping](#sanitization-and-escaping)
+- [Documentation](#documentation)
+- [Database Queries](#database-queries)
+- [Functional programming](#functional-programming)
+  * [Mapping](#mapping)
+  * [Reducing](#reducing)
+  * [Filtering](#filtering)
+  * [Anonymous functions](#anonymous-functions)
+  * [Closures](#closures)
+  * [Memoization](#memoization)
+  * [Links on functional PHP programming](#links-on-functional-php-programming)
+- [Optimizations](#optimizations)
+  * [Array checking](#array-checking)
+  * [Using array_push() and similar functions](#using-array-push---and-similar-functions)
+  * [Caching](#caching)
+  * [I18n](#i18n)
+  * [A11y](#a11y)
+
+## Naming
+
 ### File Naming
 
 File names should be in lowercase letters with `-` as a separator between words, e.g. `theme-helpers.php`. In certain cases - creating 'page builder' using ACF, underscore (`_`) is allowed, but generally you should follow the dash as a separator.
@@ -51,7 +85,7 @@ This will be important especially if you are writing automated tests.
 
 Avoid using static methods in your classes if possible. Using static methods means that you are calling a function without an instance of the class. But it prevents the usage of many OOP features such as inheritance, interface implementations, dependency injections etc. Static methods are useful for certain things like helper functions.
 
-If you are using same method in many different classes, it's useful to put it in a [Trait](http://php.net/manual/en/language.oop5.traits.php).
+If you are using same method in many different classes, it's useful to put it in a [Trait](https://php.net/manual/en/language.oop5.traits.php).
 
 A Trait is similar to a class, but only intended to group functionality in a fine-grained and consistent way. It is not possible to instantiate a Trait on its own. It is an addition to traditional inheritance and enables horizontal composition of behavior; that is, the application of class members without requiring inheritance.
 
@@ -77,6 +111,8 @@ When defining a function or a method there should be no space between a function
 
 `function function_name( $var ) { ... }`
 
+#### Class method visibility
+
 Always add visibility keywords to methods and properties inside classes (`public`, `private` and `protected`).
 
 * `public` scope is used to make that variable/function available from anywhere, other classes and instances of the object.
@@ -85,25 +121,71 @@ Always add visibility keywords to methods and properties inside classes (`public
 
 * `protected` scope is used when you want to make your variable/function visible in all classes that extend current class including the parent class.
 
-Don't use anonymous functions for actions and filters because that makes it very hard to unhook later on
+## Writing style
+
+### Inline statements
+
+Inline statements should have starting and ending php tags on the same line
 
 ```php
-add_action( 'init', function() {
-  call_function();
-}, 10 );
+// Yes:
+<?php echo esc_html( $x ); ?>
+
+// No:
+<?php
+echo esc_html( $x );
+?>
 ```
 
-Instead do this
+Writing conditionals, or control statements on a single line should be done with braces
 
 ```php
-add_action( 'init', 'my_callable_function', 10 );
+<?php if ( $some_variable === true ) { ?>
+  <div class="block"></div>
+<?php } ?>
+```
 
-function my_callable_function() {
-  call_function();
+Never write inline statements without braces. This is an extremely bad practice because it produces code that is hard to read and hard to maintain.
+
+```php
+<?php
+// Bad code:
+if ( $some_variable === true )
+  $variable = 'This is inside true statement';
+
+// Worse:
+if ( $foo ) bar();
+
+// Good code:
+if ( $foo ) {
+  bar();
 }
 ```
 
-### Typehinting
+### Multiple statements
+
+Multiple statements should each be on its own line
+
+```php
+// Yes:
+<?php
+$x++;
+echo esc_html( $x );
+?>
+
+// No:
+<?php $x++; echo esc_html( $x ); ?>
+```
+
+### Strict comparison
+
+Always use strict comparison inside conditionals, `in_array()`, `array_search()` or any php function that has the option to check the value and type of the checked variable.
+
+It's important to use strict comparison because of [type juggling](https://php.net/manual/en/types.comparisons.php).
+
+If you're in doubt about what kind of value is returned from the WordPress core function, use [WordPress code reference](https://developer.wordpress.org/reference/) to check it.
+
+## Typehinting
 
 Type declarations allow functions to require that parameters are of a certain type at call time. If the given value is of the incorrect type, then an error is generated: in PHP 5, this will be a recoverable fatal error, while PHP 7 will throw a `TypeError` exception. But we don't use or encourage using PHP < 7 in our projects.
 
@@ -165,10 +247,10 @@ class User_Credentials {
    *
    * Load helper on class init.
    *
-   * @param General_Helper $general_helper Helper class instance.
+   * @param Helper $general_helper General helper class that implements Helper interface.
    * @since 1.0.0
    */
-  public function __construct( General_Helper $general_helper ) {
+  public function __construct( Helper $general_helper ) {
     $this->general_helper = $general_helper;
   }
 
@@ -178,7 +260,7 @@ class User_Credentials {
 
 Table with typehints per PHP versions: https://mlocati.github.io/articles/php-type-hinting.html
 
-### Sanitization and escaping
+## Sanitization and escaping
 
 We follow WordPress [VIP's guidelines](https://vip.wordpress.com/documentation/vip/best-practices/security/validating-sanitizing-escaping/)
 
@@ -206,69 +288,7 @@ $post_id = 12;
 $wpdb->query( $wpdb->prepare( "DELETE FROM $wpdb->postmeta WHERE post_id = %d AND meta_key = %s", $post_id, $meta ) );
 ```
 
-### Inline statements
-
-Inline statements should have starting and ending php tags on the same line
-
-```php
-// Yes:
-<?php echo esc_html( $x ); ?>
-
-// No:
-<?php
-echo esc_html( $x );
-?>
-```
-
-Writing conditionals, or control statements on a single line should be done with braces
-
-```php
-<?php if ( $some_variable === true ) { ?>
-  <div class="block"></div>
-<?php } ?>
-```
-
-Never write inline statements without braces. This is an extremely bad practice because it produces code that is hard to read and hard to maintain.
-
-```php
-<?php
-// Bad code:
-if ( $some_variable === true )
-  $variable = 'This is inside true statement';
-
-// Worse:
-if ( $foo ) bar();
-
-// Good code:
-if ( $foo ) {
-  bar();
-}
-```
-
-### Multiple statements
-
-Multiple statements should each be on its own line
-
-```php
-// Yes:
-<?php
-$x++;
-echo esc_html( $x );
-?>
-
-// No:
-<?php $x++; echo esc_html( $x ); ?>
-```
-
-### Strict comparison
-
-Always use strict comparison inside conditionals, `in_array()`, `array_search()` or any php function that has the option to check the value and type of the checked variable.
-
-It's important to use strict comparison because of [type juggling](http://php.net/manual/en/types.comparisons.php).
-
-If you're in doubt about what kind of value is returned from the WordPress core function, use [WordPress code reference](https://developer.wordpress.org/reference/) to check it.
-
-### Documentation
+## Documentation
 
 Every file should have a beginning documentation that is describing the contents of the file. `functions.php` should have a description block about the theme/project
 
@@ -306,7 +326,7 @@ public function start_lvl( &$output, $depth = 0, $args = array() ) {
 }
 ```
 
-### Database Queries
+## Database Queries
 
 Querying the database should be done via `WP_Query` object. [Don't use query_posts()](https://wordpress.stackexchange.com/a/1755/58895) ever. It can affect other queries on the page because it reassigns the `global wp_query` object.
 
@@ -364,24 +384,232 @@ Avoid multi-dimensional queries - post queries based on terms across multiple ta
 
 It's better to do a query with the minimum number of dimensions possible, and then filter out the results with PHP.
 
+## Functional programming
+
+While we cannot write our code fully functionally, because PHP is not a functional programming language, we can use some of the functional techniques while writing our code. This can improve on the code readability and ease of maintenance.
+
+Functions are first class citizens in PHP:
+
+```php
+// Function as a variable.
+$function_name = function() {
+  return 42;
+};
+
+// Function as a return type.
+function create_function() {
+  return function() {
+    return 'Return from an anonymous function.';
+  };
+};
+
+$new_func = create_function();
+
+// Function as a parameter.
+function display( $function ) {
+  echo $func() , "\n\n";
+}
+
+// Call a function by name.
+call_user_func_array( 'strtoupper', $some_string );
+
+// objects as functions.
+class Some_Class {
+  public function __invoke( $param1, $param2 ) {
+    [...]
+  }
+}
+
+$instance = new Some_Class();
+$instance( 'First', 'Second' ); // call the __invoke() method
+```
+
+Even though looping though iterable objects is generally faster if you use `for` or `foreach`, you can use some functional programming techniques which will make your code a bit less _boilerplatey_. Also the performance effects are [negligible](https://stackoverflow.com/questions/18144782/performance-of-foreach-array-map-with-lambda-and-array-map-with-static-function).
+
+### Mapping
+
+Applying a function to all elements:
+
+```php
+// Old way (imperative):
+foreach ( $iterable as $iterable_key => $iterable_value ) {
+  $iterable[ $iterable_key ] = strtoupper( $iterable_value );
+}
+
+// New way (functional):
+$result = array_map( 'strtoupper', $iterable );
+```
+
+[array_map manual](https://php.net/manual/en/function.array-map.php)
+
+### Reducing
+
+Reduce an array to a single value:
+
+```php
+// Old way (imperative):
+$result = 0;
+
+foreach ( $int_array as $value ) {
+  $result += $value;
+}
+
+// New way (functional):
+$result = array_reduce( $int_array, function( $carry, $item ) { return $carry + $item; }, 0 );
+```
+
+[array_reduce manual](https://php.net/manual/en/function.array-reduce.php)
+
+### Filtering
+
+Iterating over an array but returning only those results that pass some conditions:
+
+[array_filter manual](https://php.net/manual/en/function.array-filter.php)
+
+```php
+// Old way (imperative):
+$result = [];
+
+foreach ( $int_array as $value ) {
+  if( $value % 2 === 0 ) {
+    $result[] = $value;
+  }
+}
+
+// New way (functional):
+$result = array_filter( $int_array, function( $item ) { return ( $item % 2 === 0); } );
+```
+
+### Anonymous functions
+
+Using anonymous functions for actions and filters could be problematic because that makes it very hard to unhook them later on
+
+```php
+add_action( 'init', function() {
+  call_function();
+}, 10 );
+```
+
+Instead do this
+
+```php
+add_action( 'init', 'my_callable_function', 10 );
+
+function my_callable_function() {
+  call_function();
+}
+```
+
+If you are working in a 'public' project that can be extended the above should be followed, in client projects these are not that important, as you don't expect anybody to remove your added hooks (in themes or in plugins).
+
+### Closures
+
+In JavaScript, a closure can be thought of as a scope, when you define a function, it silently inherits the scope it's defined in, which is called its closure, and it retains that no matter where it's used. It's possible for multiple functions to share the same closure, and they can have access to multiple closures as long as they are within their accessible scope.
+
+In PHP, a closure is a callable class, to which you've bound your parameters manually.
+
+It's a slight distinction but one that bears mentioning.
+
+A Closure is essentially the same as a Lambda apart from it can access variables outside the scope that it was created.
+
+```php
+// Set a multiplier.
+ $multiplier = 3;
+
+// Create a list of numbers.
+ $numbers = array( 1, 2, 3, 4 );
+
+// Use array_walk to iterate through the list and multiply.
+array_walk( $numbers, function( $number ) use ( $multiplier ) {
+  echo $number * $multiplier;
+} );
+```
+
+[Closures in PHP](http://php.net/manual/en/class.closure.php)
+
+### Memoization
+
+Memoization is an optimization technique where we cache function results. If we have a pure function (one that has no side affects), we can cache the result the first time we run it and then just use cache. We can use static variables:
+
+```php
+function factorial( $n ) {
+  static $cache = [];
+
+  if ( $n === 1 ) {
+    return 1;
+  }
+
+  if ( ! array_key_exists( $n, $cache ) ) {
+    $cache[ $n ] = $n * factorial( $n - 1 );
+  }
+
+  return $cache[ $n ];
+}
+```
+
+We can generalize this using helper function:
+
+```php
+function memoize( $func ) {
+  return function() use ( $func ) {
+    static $cache = [];
+
+    $args = func_get_args();
+    $key  = serialize( $args );
+
+    if( ! array_key_exists( $key, $cache ) ) {
+      $cache[ $key ] = call_user_func_array( $func, $args );
+    }
+
+    return $cache[ $key ];
+  }
+}
+```
+
+And then do:
+
+```php
+$factorial = function( $n ) use( &$factorial ) {
+  if( $n === 1 ) {
+    return 1
+  };
+
+  return $n * $factorial( $n -1 );
+}
+
+$mem_factorial = memoize( $factorial );
+```
+
+### Links on functional PHP programming
+
+[PHP The Right Way](https://phptherightway.com/pages/Functional-Programming.html)  
+[Functional Programming in PHP](https://www.liip.ch/en/blog/functional-programming-in-php)  
+[Functional PHP](https://apiumhub.com/tech-blog-barcelona/functional-php/)  
+
+## Optimizations
+
 ### Array checking
 
 Avoid using `in_array()` check if possible, because it will traverse the entire array and check if the value of the array is present in the array. Instead look up by key and use `isset()` check.
 
 ```php
 $array = array(
-    'foo' => true,
-    'bar' => true,
+  'foo' => true,
+  'bar' => true,
 );
 
 if ( isset( $array['bar'] ) ) {
-  // value is present in the array
+  // value is present in the array.
 };
 ```
 
 If you have no control over the created array (there are no distinguishable keys to choose from), set the third parameter in the `in_array()` function to `true`. This will force strict comparisons (value and type).
 
-`if ( in_array( 'some value', $array, true ) ) { ... }`
+```php
+if ( in_array( 'some value', $array, true ) ) {
+  // code goes here.
+}
+```
 
 ### Using array_push() and similar functions
 
@@ -413,7 +641,7 @@ Use [tranisents](https://codex.wordpress.org/Transients_API) to further speed up
 
 ### I18n
 
-All text strings in a project have to bi internationalized using core localization functions. You can check a great guide by Samuel Wood about [internalization in WordPress](http://ottopress.com/2012/internationalization-youre-probably-doing-it-wrong/).
+All text strings in a project have to bi internationalized using core localization functions. You can check a great guide by Samuel Wood about [internalization in WordPress](https://ottopress.com/2012/internationalization-youre-probably-doing-it-wrong/).
 
 ### A11y
 
