@@ -2,38 +2,6 @@ In general we follow the [WordPress PHP Coding Standards](https://make.wordpress
 
 For automatic code check we are using [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/), with our [modified coding standards](https://github.com/infinum/coding-standards-wp).
 
-## Table of contents
-
-- [Naming](#naming)
-  * [File Naming](#file-naming)
-  * [Naming Conventions](#naming-conventions)
-  * [Namespacing and class names](#namespacing-and-class-names)
-  * [Yoda Conditions](#yoda-conditions)
-  * [Functions](#functions)
-    + [Class method visibility](#class-method-visibility)
-- [Writing style](#writing-style)
-  * [Inline statements](#inline-statements)
-  * [Multiple statements](#multiple-statements)
-  * [Strict comparison](#strict-comparison)
-- [Typehinting](#typehinting)
-- [Sanitization and escaping](#sanitization-and-escaping)
-- [Documentation](#documentation)
-- [Database Queries](#database-queries)
-- [Functional programming](#functional-programming)
-  * [Mapping](#mapping)
-  * [Reducing](#reducing)
-  * [Filtering](#filtering)
-  * [Anonymous functions](#anonymous-functions)
-  * [Closures](#closures)
-  * [Memoization](#memoization)
-  * [Links on functional PHP programming](#links-on-functional-php-programming)
-- [Optimizations](#optimizations)
-  * [Array checking](#array-checking)
-  * [Using array_push() and similar functions](#using-array-push---and-similar-functions)
-  * [Caching](#caching)
-  * [I18n](#i18n)
-  * [A11y](#a11y)
-
 ## Naming
 
 ### File Naming
@@ -53,6 +21,8 @@ Use lowercase letters in variable, action, and function names. Separate words vi
 Namespacing should follow file structure. The main namespace is Capital_Cased version of the project name. So in the case of the boilerplate, the default namespace is
 
 ```php
+<?php
+
 namespace Inf_Theme;
 ```
 
@@ -61,18 +31,22 @@ Every folder which holds classes constitutes a subnamespace.
 Be aware that WordPress 'lives' in a global namespace. So, when using functions and classes from the WordPress core, it's necessary to either put a slash in front of class or function name, so that it's called from the global namespace, or use the `use` statement at the top of the file. For example, calling `WP_Query` inside your class should be done like
 
 ```php
+<?php
+
 $query = new \WP_Query( $arguments );
 ```
 
 And core functions would be used like this
 
 ```php
+<?php
 \wp_unslash( $_POST['someKey'] );
 ```
 
 Or
 
 ```php
+<?php
 use \WP_Query;
 
 //...
@@ -91,15 +65,24 @@ A Trait is similar to a class, but only intended to group functionality in a fin
 
 Class names should use capitalized words separated by underscores.
 
-`class Custom_Class { ... }`
+```php
+<?php
+class Custom_Class { ... }
+```
 
 Constants should be in all upper-case with underscores separating words:
 
-`define( 'IMAGE_URL', get_template_directory_uri() . '/skin/public/images/' );`
+```php
+<?php
+define( 'IMAGE_URL', get_template_directory_uri() . '/skin/public/images/' );
+```
 
 or
 
-`const THEME_VERSION = '1.0.0';`
+```php
+<?php
+const THEME_VERSION = '1.0.0';
+```
 
 ### Yoda Conditions
 
@@ -109,7 +92,10 @@ We don't use [Yoda Conditions](https://en.wikipedia.org/wiki/Yoda_conditions), e
 
 When defining a function or a method there should be no space between a function name and an opening parenthesis, but there should be a space between closing parenthesis and opened curly bracket like so:
 
-`function function_name( $var ) { ... }`
+```php
+<?php
+function function_name( $var ) { ... }
+```
 
 #### Class method visibility
 
@@ -128,19 +114,19 @@ Always add visibility keywords to methods and properties inside classes (`public
 Inline statements should have starting and ending php tags on the same line
 
 ```php
+<?php
 // Yes:
-<?php echo esc_html( $x ); ?>
+echo esc_html( $x );
 
 // No:
-<?php
 echo esc_html( $x );
-?>
 ```
 
 Writing conditionals, or control statements on a single line should be done with braces
 
 ```php
-<?php if ( $some_variable === true ) { ?>
+<?php
+if ( $some_variable === true ) { ?>
   <div class="block"></div>
 <?php } ?>
 ```
@@ -167,14 +153,13 @@ if ( $foo ) {
 Multiple statements should each be on its own line
 
 ```php
-// Yes:
 <?php
+// Yes:
 $x++;
 echo esc_html( $x );
-?>
 
 // No:
-<?php $x++; echo esc_html( $x ); ?>
+$x++; echo esc_html( $x ); ?>
 ```
 
 ### Strict comparison
@@ -194,12 +179,14 @@ To specify a type declaration, the type name should be added before the paramete
 To enable strict typings in PHP, you need to set a `declare` directive at the top of your file, before `namespace` definition
 
 ```php
+<?php
 declare(strict_types=1);
 ```
 
 You can typehint function arguments and return values, for example
 
 ```php
+<?php
 /**
    * Get user data
    *
@@ -219,6 +206,7 @@ When the method can return more than one types (string or boolean for instance),
 From PHP 7.1 you can explicitly declare a variable to be `null`
 
 ```php
+<?php
 public function get_array( ?string $some_string ) : array {
   //...
 }
@@ -227,6 +215,7 @@ public function get_array( ?string $some_string ) : array {
 Typehinting is also important when working with dependency injections.
 
 ```php
+<?php
 /**
  * Class User credentials
  *
@@ -281,6 +270,7 @@ When writing data to the database be sure to [sanitize](https://developer.wordpr
 And to [prepare](https://developer.wordpress.org/reference/classes/wpdb/prepare/) your database queries.
 
 ```php
+<?php
 $meta = 'Custom meta';
 
 $post_id = 12;
@@ -310,6 +300,7 @@ We follow the [DocBlock](https://phpdoc.org/docs/latest/guides/docblocks.html) f
 Every class should have the documentation before it, and the methods inside should also be documented.
 
 ```php
+<?php
 /**
  * Starts the list before the elements are added.
  *
@@ -367,6 +358,7 @@ Try to avoid post meta queries if possible, that is, don't try to fetch posts by
 Fetching post meta if you know the post ID, or if you are in a post/page, on the other hand is fast and can be used anytime.
 
 ```php
+<?php
 // Don't do this:
 $args = array(
     'meta_key'     => 'color',
@@ -391,6 +383,7 @@ While we cannot write our code fully functionally, because PHP is not a function
 Functions are first class citizens in PHP:
 
 ```php
+<?php
 // Function as a variable.
 $function_name = function() {
   return 42;
@@ -431,6 +424,7 @@ Even though looping though iterable objects is generally faster if you use `for`
 Applying a function to all elements:
 
 ```php
+<?php
 // Old way (imperative):
 foreach ( $iterable as $iterable_key => $iterable_value ) {
   $iterable[ $iterable_key ] = strtoupper( $iterable_value );
@@ -447,6 +441,7 @@ $result = array_map( 'strtoupper', $iterable );
 Reduce an array to a single value:
 
 ```php
+<?php
 // Old way (imperative):
 $result = 0;
 
@@ -467,6 +462,7 @@ Iterating over an array but returning only those results that pass some conditio
 [array_filter manual](https://php.net/manual/en/function.array-filter.php)
 
 ```php
+<?php
 // Old way (imperative):
 $result = [];
 
@@ -485,6 +481,7 @@ $result = array_filter( $int_array, function( $item ) { return ( $item % 2 === 0
 Using anonymous functions for actions and filters could be problematic because that makes it very hard to unhook them later on
 
 ```php
+<?php
 add_action( 'init', function() {
   call_function();
 }, 10 );
@@ -493,6 +490,7 @@ add_action( 'init', function() {
 Instead do this
 
 ```php
+<?php
 add_action( 'init', 'my_callable_function', 10 );
 
 function my_callable_function() {
@@ -513,6 +511,7 @@ It's a slight distinction but one that bears mentioning.
 A Closure is essentially the same as a Lambda apart from it can access variables outside the scope that it was created.
 
 ```php
+<?php
 // Set a multiplier.
  $multiplier = 3;
 
@@ -532,6 +531,7 @@ array_walk( $numbers, function( $number ) use ( $multiplier ) {
 Memoization is an optimization technique where we cache function results. If we have a pure function (one that has no side affects), we can cache the result the first time we run it and then just use cache. We can use static variables:
 
 ```php
+<?php
 function factorial( $n ) {
   static $cache = [];
 
@@ -550,6 +550,7 @@ function factorial( $n ) {
 We can generalize this using helper function:
 
 ```php
+<?php
 function memoize( $func ) {
   return function() use ( $func ) {
     static $cache = [];
@@ -569,6 +570,7 @@ function memoize( $func ) {
 And then do:
 
 ```php
+<?php
 $factorial = function( $n ) use( &$factorial ) {
   if( $n === 1 ) {
     return 1
@@ -593,6 +595,7 @@ $mem_factorial = memoize( $factorial );
 Avoid using `in_array()` check if possible, because it will traverse the entire array and check if the value of the array is present in the array. Instead look up by key and use `isset()` check.
 
 ```php
+<?php
 $array = array(
   'foo' => true,
   'bar' => true,
@@ -606,6 +609,7 @@ if ( isset( $array['bar'] ) ) {
 If you have no control over the created array (there are no distinguishable keys to choose from), set the third parameter in the `in_array()` function to `true`. This will force strict comparisons (value and type).
 
 ```php
+<?php
 if ( in_array( 'some value', $array, true ) ) {
   // code goes here.
 }
@@ -616,6 +620,7 @@ if ( in_array( 'some value', $array, true ) ) {
 When possible avoid using `array_push()`, and instead just append to the array directly
 
 ```php
+<?php
 $my_array = array();
 
 // Good.
