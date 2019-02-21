@@ -187,7 +187,7 @@ in the terminal. Then the `phpunit` should work.
 
 ### Xdebugg inside VVV
 
-For some reason, when Xdebugg is enabled in the VVV, when you run unit tests, and want to have the coverage generated, it will take an extreme amount of time to check it. In that case either disable creating code coverage
+For some reason, when Xdebugg is enabled in the VVV, when you run unit tests and want to have the coverage generated, it will take an extreme amount of time to check it. In that case either disable creating code coverage
 
 ```bash
 phpunit --no-coverage
