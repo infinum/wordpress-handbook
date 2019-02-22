@@ -183,7 +183,7 @@ In that case, delete the database (using sequel Pro or via terminal), delete the
 bash bin/install-wp-tests.sh wordpress_test root '' localhost latest
 ```
 
-in the terminal. Then the `phpunit` should work.
+in the terminal. Then the `phpunit` should work fine.
 
 ### Xdebugg inside VVV
 
