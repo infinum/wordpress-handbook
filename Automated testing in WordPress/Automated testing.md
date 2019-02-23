@@ -1,4 +1,4 @@
-Setting up tests for WordPress is relatively easy. First you need to add `"phpunit/phpunit": "^6.5"` and `"brain/monkey": "^2.2"` to your composer `require-dev` part in `composer.json`.
+Setting up tests for WordPress is relatively easy. First, you need to add `"phpunit/phpunit": "^6.5"` and `"brain/monkey": "^2.2"` to your composer `require-dev` part in `composer.json`.
 
 Or you can add it from the terminal
 
@@ -10,9 +10,9 @@ composer require --dev brain/monkey:2.2
 composer require --dev phpunit/phpunit:6.5
 ```
 
-This will load [PHPUnit](https://phpunit.de/) and [Brain Monkey](https://brain-wp.github.io/BrainMonkey/). PHPUnit is the testing suite, and Brain Monkey is helper for testing in WordPress.
+This will load [PHPUnit](https://phpunit.de/) and [Brain Monkey](https://brain-wp.github.io/BrainMonkey/). PHPUnit is the testing suite, and Brain Monkey is a helper for testing in WordPress.
 
-After that, in the `tests` folder add `bootstrap.php` file that looks like
+After that, in the `tests` folder add the `bootstrap.php` file that looks like
 
 ```php
 <?php
@@ -70,7 +70,7 @@ class InitTestCase extends TestCase {
 }
 ```
 
-In the root of your project add `phpunit.xml.dist`
+Add `phpunit.xml.dist` in the root of your project
 
 ```xml
 <?xml version="1.0"?>
@@ -106,7 +106,7 @@ In the root of your project add `phpunit.xml.dist`
 
 ## Plugin testing
 
-Use WP-CLI to setup our plugin’s unit tests. If you don't have WP-CLI installed on your system, install it. There is a documentation on starting unit tests which you can find [here](https://make.wordpress.org/cli/handbook/plugin-unit-tests/).
+Use WP-CLI to set up our plugin’s unit tests. If you don't have WP-CLI installed on your system, install it. Documentation on starting unit tests can be found [here](https://make.wordpress.org/cli/handbook/plugin-unit-tests/).
 
 Assuming you have a plugin on your testing environment, in the project root folder run
 
@@ -126,21 +126,21 @@ phpunit.xml
 ```
 
 
-To initialize the testing environment locally go to your plugin directory and run the install script
+To initialize the testing environment locally, go to your plugin directory and run the install script
 
 ```bash
 bin/install-wp-tests.sh wordpress_unit_tests root '' localhost latest
 ```
 
-The install script first it installs a copy of WordPress in the `/tmp directory` (by default) as well as the WordPress unit testing tools. Then it creates a database to be used while running tests. The parameters that are passed to `install-wp-tests.sh` setup the test database. Be sure that your mysql service is up and running if you're running tests outside of VVV.
+The install script first installs a copy of WordPress in the `/tmp directory` (by default) as well as the WordPress unit testing tools. Then it creates a database to be used while running tests. The parameters that are passed to `install-wp-tests.sh` set up the test database. Be sure that your mysql service is up and running if you're running tests outside VVV.
 
-After that you can run the plugin tests by writing
+After that, you can run the plugin tests by writing
 
 ```bash
 vendor/bin/phpunit
 ```
 
-The WP-CLI only provides one sample test
+The WP-CLI provides only one sample test
 
 ```php
 class SampleTest extends WP_UnitTestCase {
@@ -159,7 +159,7 @@ So you'll need to write your own tests.
 
 ### Debugging inside tests
 
-If you want to check the output of a variable inside your test just add
+If you want to check the output of a variable inside your test, just add
 
 ```php
 fwrite( STDERR, print_r( $variable, true ) );
@@ -169,7 +169,7 @@ fwrite( STDERR, print_r( $variable, true ) );
 
 ### Require error
 
-When running `phpunit` for your plugin, outside VVV, you get error that looks like this
+When running `phpunit` for your plugin outside VVV, you get an error that looks like this
 
 ```bash
 Warning: require_once(.../wordpress//wp-includes/class-phpmailer.php): failed to open stream: No such file or directory in .../wordpress-tests-lib/includes/mock-mailer.php on line 2
@@ -177,20 +177,20 @@ Warning: require_once(.../wordpress//wp-includes/class-phpmailer.php): failed to
 Fatal error: require_once(): Failed opening required '.../wordpress//wp-includes/class-phpmailer.php' (include_path='.:/opt/lampp/lib/php') in .../wordpress-tests-lib/includes/mock-mailer.php on line 2
 ```
 
-In that case, delete the database (using sequel Pro or via terminal), delete the temporary folder where WordPress is installed (either in `/tmp/wordpress/` or somewhere in `/var/folders/..` subfolders), and run
+In this case, delete the database (using sequel Pro or via terminal), delete the temporary folder where WordPress is installed (either in `/tmp/wordpress/` or somewhere in `/var/folders/..` subfolders), and run
 
 ```bash
 bash bin/install-wp-tests.sh wordpress_test root '' localhost latest
 ```
 
-in the terminal. Then the `phpunit` should work.
+in the terminal. After that, `phpunit` should work.
 
 ### Xdebugg inside VVV
 
-For some reason, when Xdebugg is enabled in the VVV, when you run unit tests, and want to have the coverage generated, it will take an extreme amount of time to check it. In that case either disable creating code coverage
+For some reason, when Xdebugg is enabled in VVV, and you want to have coverage generated when running unit test, it will take extremely long to check it. In that case, either disable creating code coverage
 
 ```bash
 phpunit --no-coverage
 ```
 
-Or run the test outside the VVV. Running tests outside of VVV with Xdebug is significantly faster (fev sec vs ~10 minutes).
+or run the test outside VVV. Running tests outside VVV with Xdebug is significantly faster (a few seconds vs ~10 minutes).
