@@ -1,8 +1,8 @@
-Deployment to servers is done using continuous integration (CI). You can use CI to add build scripts, execute unit/integration tests, check for code validity using `phpcs` and deploy to various environments.
+Deployment to servers is carried out using continuous integration (CI). You can use CI to add build scripts, execute unit/integration tests, check for code validity using `phpcs` and deploy to various environments.
 
-In the root of the project folder, a `ci` (or `bin`) folder should be made. In that folder will be all the scripts related to building the app and deploying the app. For example we can have `build.sh`, `deploy.sh`, `test.sh` and `qa.sh`.
+A `ci` (or `bin`) folder should be created in the root of the project folder. That folder will contain all scripts related to building and deploying the app. For example, we can have `build.sh`, `deploy.sh`, `test.sh`, and `qa.sh`.
 
-Example of build script looks like, the real implementation may differ per project basis.
+Here's an example of what a build script looks like, the real implementation may differ for each project.
 
 ### Build (`build.sh`)
 
@@ -67,4 +67,4 @@ function main() {
 main "$@"
 ```
 
-Of course, the details of the server are provided by your friendly devops.
+Of course, your friendly devops provide the details of the server.
