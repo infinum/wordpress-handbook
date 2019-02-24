@@ -1,10 +1,10 @@
-Unit testing is a level of software testing where individual units/components of a software are tested. The purpose of unit tests are to validate that each unit of the software performs as designed.
+Unit testing is a level of software testing where individual units/components of software are tested. The purpose of unit tests is to validate that each unit of software performs as designed.
 
-In terms of PHP and WordPress, a single 'unit' is a function or a class. Unit testing is a dynamic testing of individual units in isolation. That means the code has to be executed (dynamic). In contrast, static tesiting is checking for code smells, for which we use linters and code sniffers.
+In terms of PHP and WordPress, a single 'unit' is a function or a class. Unit testing is dynamic testing of individual units in isolation. This means that code has to be executed (dynamic). In contrast, static testing is checking for code smells, for which we use linters and code sniffers.
 
-Testing in isolation means that we only execute the code that we want to test and no other unit. We are not interested in coupling - this is what integration tests are for.
+Testing in isolation means that we only execute code that we want to test and no other unit. We are not interested in coupling—this is what integration tests are for.
 
-An example of a _non unit_ test would be
+An example of a _non-unit_ test would be
 
 ```php
 function test_register_taxonomy() {
@@ -24,7 +24,7 @@ function test_register_taxonomy() {
 
 You can see that this test calls to multiple WordPress functions like `taxonomy_exists()` and `register_taxonomy()`.
 
-What if your code depends on some core functionality? In that case we need to mock our functions. In the world of unit testing there are things like mocks, stubs, spies, fake objects, fake functions, dummy functions, test doubles, and other things. We won't be going into detail about them. What we want to do is to execute the real method under test without any errors thrown and that other units are fake ones without any real logic (mocks).
+What if your code depends on some core functionality? In that case, we need to mock our functions. In the world of unit testing, there are things like mocks, stubs, spies, fake objects, fake functions, dummy functions, test doubles, and other. We won't be going into detail about them. We want to execute the real methods for the test without any errors and other fake units without any real logic (mocks) thrown in.
 
 For instance, say you have a method that will disable certain REST endpoints in your code, that looks like this
 
@@ -57,7 +57,7 @@ public function disable_default_rest_fields( array $endpoints ) : array {
 }
 ```
 
-You are not interested in that this method is hooked on some action. The only thing you are interested in is that when you pass the `disable_default_rest_fields()` method some array of endpoints, that those endpoints won't contain the ones unset in the method. So you'll write a test that looks like this:
+You are not interested whether this method is hooked on some action. The only thing you are interested in is that when you pass an array of endpoints to the `disable_default_rest_fields()` method, they don't contain the ones unset in the method. So you'll write a test that looks like this:
 
 ```php
 class My_Test extends InitTestCase {
@@ -120,41 +120,41 @@ class My_Test extends InitTestCase {
 }
 ```
 
-We've mocked the endpoint list, and use it to test if the method does what it needs to do. We are not interested if this will acutally remove the endpoints in the WordPress. For that we'd need to make integration tests, load WordPress and mock a REST server and then test if the endpoints were removed.
+We've mocked the endpoint list and used it to check if the method does what it has to do. We are not interested in whether this will actually remove the endpoints in the WordPress. For that, we'd need to create integration tests, load WordPress, mock a REST server, and then test if the endpoints are removed.
 
-For more information on unit testing check [this article](https://tfrommen.de/an-introduction-to-unit-testing-for-wordpress/).
+For more information on unit testing read [this article](https://tfrommen.de/an-introduction-to-unit-testing-for-wordpress/).
 
 ## Brain Monkey
 
-Writing mocks and unit tests from scratch would take a lot of time. That's why we use ready made packages. One such package is [Brain Monkey](https://brain-wp.github.io/BrainMonkey/).
+Writing mocks and unit tests from scratch takes a lot of time. That's why we use ready-made packages. One such package is [Brain Monkey](https://brain-wp.github.io/BrainMonkey/).
 
-Brain Monkey allows to mock WordPress function (just like any PHP function), and to check how they are called inside your code.
+Brain Monkey allows you to mock WordPress functions (just like any PHP function) and check what they are called inside your code.
 
-For more details about using Brain Monkey check the [official documentation](https://brain-wp.github.io/BrainMonkey/docs/wordpress-setup.html).
+You can find more details about using Brain Monkey in the [official documentation](https://brain-wp.github.io/BrainMonkey/docs/wordpress-setup.html).
 
 ## WP_Mock
 
-[WP_Mock](https://github.com/10up/wp_mock) is an API mocking framework, built and maintained by 10up for the purpose of making it possible to properly unit test within WordPress.
+[WP_Mock](https://github.com/10up/wp_mock) is an API mocking framework, built and maintained by 10up to make proper testing of units within WordPress possible.
 
-The documentation is located [here](https://github.com/10up/wp_mock/blob/master/README.md).
+You can find documentation [here](https://github.com/10up/wp_mock/blob/master/README.md).
 
 ## Tips and tricks
 
 ### Mocking static methods
 
-When your code depends on outside resources such as AWS or other services like Redis, it's best to mock those. Mocking is essentially replacing the real method/class with a fake one that has the similar behavior.
+When your code depends on outside resources, such as AWS, or other services like Redis, it's best to mock those. Mocking is essentially replacing the real method/class with a fake one that behaves in a similar way.
 
-This is why it's a good idea to wrap your outside dependencies in wrapper classes that you can then mock in entirety, without the need to connect to outside service.
+This is why it's a good idea to wrap your outside dependencies in wrapper classes that you can then mock in entirety, without the need to connect to an outside service.
 
-If you need to mock static methods in a class, you'd need to alias it
+If you need to mock static methods in a class, you need to alias it
 
 ```php
 $mock = \Mockery::mock('alias:Namespace\My_Class');
 ```
 
-Then, you'd create a mock class and add mocked static methods in it. Every time a call to mocked class is found in the tested code, this alias will be used.
+Then you create a mock class and add mocked static methods in it. This alias is used every time a call to a mocked class is found in the code that is being tested.
 
-A thing to beware is that using `alias:` will apply for the remainder of the PHP sessions's life, so you'll need to add
+Beware—using `alias:` will apply for the remainder of the PHP sessions's life, so you'll need to add
 
 ```php
 /**
@@ -163,13 +163,13 @@ A thing to beware is that using `alias:` will apply for the remainder of the PHP
  */
  ```
 
-to the test class which uses alias mocks. This will tell PHPUnit to run a separate PHP process, so other tests won't be affected.
+to the test class which uses alias mocks. This will tell PHPUnit to run a separate PHP process so other tests won't be affected.
 
 ### Overload vs Alias
 
-Taken from [stackoverflow](https://stackoverflow.com/questions/31219542/what-is-the-difference-between-overload-and-alias-in-mockery):
+Taken from [Stack Overflow](https://stackoverflow.com/questions/31219542/what-is-the-difference-between-overload-and-alias-in-mockery):
 
-`Overload` is used to create an "instance mock". This will "intercept" when a new instance of a class is created and the mock will be used instead. For example if this code is to be tested:
+`Overload` is used to create an "instance mock". This will "intercept" when a new instance of a class is created and the mock will be used instead. For example, if this code is to be tested:
 
 ```php
 class ClassToTest {
@@ -182,7 +182,7 @@ class ClassToTest {
 }
 ```
 
-You would create an instance mock using `overload` and define the expectations like this:
+you would create an instance mock using `overload` and define the expectations like this:
 
 ```php
 public function testMethodToTest() {
@@ -196,7 +196,7 @@ public function testMethodToTest() {
 }
 ```
 
-`Alias` is used to mock public static methods. For example if this code is to be tested:
+`Alias` is used to mock public static methods. For example, if this code is to be tested:
 
 ```php
 class ClassToTest {
@@ -206,7 +206,7 @@ class ClassToTest {
 }
 ```
 
-You would create an alias mock using `alias` and define the expectations like this:
+you would create an alias mock using `alias` and define the expectations like this:
 
 ```php
 public function testNewMethodToTest() {
