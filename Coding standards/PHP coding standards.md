@@ -1,24 +1,24 @@
-In general we follow the [WordPress PHP Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/) with few modifications.
+In general, we follow the [WordPress PHP Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/) with a few modifications.
 
-For automatic code check we are using [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/), with our [modified coding standards](https://github.com/infinum/coding-standards-wp).
+To check code automatically, we use [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/), together with our [modified coding standards](https://github.com/infinum/coding-standards-wp).
 
 ## Naming
 
-### File Naming
+### File naming
 
-File names should be in lowercase letters with `-` as a separator between words, e.g. `theme-helpers.php`. In certain cases - creating 'page builder' using ACF, underscore (`_`) is allowed, but generally you should follow the dash as a separator.
+File names should be written in lowercase letters with `-` as a separator between words, for example `theme-helpers.php`. In certain cases, such as creating a 'page builder' using ACF, the underscore (`_`) is allowed, but generally you should use the hyphen as a separator.
 
 Files containing a class should be named `class-{classname}.php`. There should always be only one class per file.
 
-Use [wp-boilerplate](https://github.com/infinum/wp-boilerplate) as a basis for any template based web site. You should follow the existing structure of the theme there.
+Use [wp-boilerplate](https://github.com/infinum/wp-boilerplate) as a basis for any template-based website. You should follow the existing structure of the theme there.
 
-### Naming Conventions
+### Naming conventions
 
-Use lowercase letters in variable, action, and function names. Separate words via underscores. Don't abbreviate variable names unnecessarily - let the code be unambiguous and self-documenting.
+Use lowercase letters in variable, action, and function names. Separate words with underscores. Don't abbreviate variable names unnecessarily—let the code be unambiguous and self-documenting.
 
 ### Namespacing and class names
 
-Namespacing should follow file structure. The main namespace is Capital_Cased version of the project name. So in the case of the boilerplate, the default namespace is
+Namespacing should follow the file structure. The main namespace is a Capital_Cased version of the project name. So, in the case of boilerplate, the default namespace is
 
 ```php
 <?php
@@ -26,9 +26,9 @@ Namespacing should follow file structure. The main namespace is Capital_Cased ve
 namespace Inf_Theme;
 ```
 
-Every folder which holds classes constitutes a subnamespace.
+Every folder that holds classes constitutes a subnamespace.
 
-Be aware that WordPress 'lives' in a global namespace. So, when using functions and classes from the WordPress core, it's necessary to either put a slash in front of class or function name, so that it's called from the global namespace, or use the `use` statement at the top of the file. For example, calling `WP_Query` inside your class should be done like
+Be aware that WordPress 'lives' in a global namespace. Therefore, when using functions and classes from the WordPress core, it's necessary to either put a slash in front of the class or function name, so that it's called from the global namespace, or use the `use` statement at the top of the file. For example, calling `WP_Query` inside your class should be done like this:
 
 ```php
 <?php
@@ -36,14 +36,14 @@ Be aware that WordPress 'lives' in a global namespace. So, when using functions 
 $query = new \WP_Query( $arguments );
 ```
 
-And core functions would be used like this
+And core functions should be used like this:
 
 ```php
 <?php
 \wp_unslash( $_POST['someKey'] );
 ```
 
-Or
+or
 
 ```php
 <?php
@@ -55,13 +55,13 @@ $query = new WP_Query( $arguments );
 
 ```
 
-This will be important especially if you are writing automated tests.
+This is especially important if you are writing automated tests.
 
-Avoid using static methods in your classes if possible. Using static methods means that you are calling a function without an instance of the class. But it prevents the usage of many OOP features such as inheritance, interface implementations, dependency injections etc. Static methods are useful for certain things like helper functions.
+Avoid using static methods in your classes if possible. Using static methods means that you are calling a function without an instance of the class. But it prevents the usage of many OOP features, such as inheritance, interface implementations, dependency injections, etc. Static methods are useful as helper functions for certain things.
 
-If you are using same method in many different classes, it's useful to put it in a [Trait](https://php.net/manual/en/language.oop5.traits.php).
+If you are using the same method in many different classes, it's useful to put it in a [Trait](https://php.net/manual/en/language.oop5.traits.php).
 
-A Trait is similar to a class, but only intended to group functionality in a fine-grained and consistent way. It is not possible to instantiate a Trait on its own. It is an addition to traditional inheritance and enables horizontal composition of behavior; that is, the application of class members without requiring inheritance.
+A Trait is similar to a class, but only intended to group functionality in a fine-grained and consistent way. It is not possible to instantiate a Trait on its own. It is an addition to traditional inheritance and enables horizontal composition of behavior, that is, the application of class members without requiring inheritance.
 
 Class names should use capitalized words separated by underscores.
 
@@ -70,7 +70,7 @@ Class names should use capitalized words separated by underscores.
 class Custom_Class { ... }
 ```
 
-Constants should be in all upper-case with underscores separating words:
+Constants should be in all uppercase with underscores separating words:
 
 ```php
 <?php
@@ -86,11 +86,11 @@ const THEME_VERSION = '1.0.0';
 
 ### Yoda Conditions
 
-We don't use [Yoda Conditions](https://en.wikipedia.org/wiki/Yoda_conditions), especially since code checker should take care of making sure that you don't assign a variable in the conditionals.
+We don't use [Yoda Conditions](https://en.wikipedia.org/wiki/Yoda_conditions), especially since the code checker should make sure that you don't assign a variable in conditionals.
 
 ### Functions
 
-When defining a function or a method there should be no space between a function name and an opening parenthesis, but there should be a space between closing parenthesis and opened curly bracket like so:
+When defining a function or a method, there should be no space between the function name and opening parenthesis, but there should be a space between the closing parenthesis and open curly bracket like this:
 
 ```php
 <?php
@@ -105,13 +105,13 @@ Always add visibility keywords to methods and properties inside classes (`public
 
 * `private` scope is used when you want your variable/function to be visible in its own class only.
 
-* `protected` scope is used when you want to make your variable/function visible in all classes that extend current class including the parent class.
+* `protected` scope is used when you want to make your variable/function visible in all classes that extend the current class, including the parent class.
 
 ## Writing style
 
 ### Inline statements
 
-Inline statements should have starting and ending php tags on the same line
+Inline statements should have opening and closing PHP tags on the same line
 
 ```php
 <?php
@@ -122,7 +122,7 @@ echo esc_html( $x );
 echo esc_html( $x );
 ```
 
-Writing conditionals, or control statements on a single line should be done with braces
+Use braces to write conditionals or control statements on a single line
 
 ```php
 <?php
@@ -131,7 +131,7 @@ if ( $some_variable === true ) { ?>
 <?php } ?>
 ```
 
-Never write inline statements without braces. This is an extremely bad practice because it produces code that is hard to read and hard to maintain.
+Never write inline statements without braces. This is an extremely bad practice because it produces code that is hard to read and maintain.
 
 ```php
 <?php
@@ -150,7 +150,7 @@ if ( $foo ) {
 
 ### Multiple statements
 
-Multiple statements should each be on its own line
+Each multiple statement should be on its own line
 
 ```php
 <?php
@@ -164,26 +164,26 @@ $x++; echo esc_html( $x ); ?>
 
 ### Strict comparison
 
-Always use strict comparison inside conditionals, `in_array()`, `array_search()` or any php function that has the option to check the value and type of the checked variable.
+Always use strict comparison inside conditionals, `in_array()`, `array_search()`, or any PHP function that has the option to check the value and type of the variable.
 
 It's important to use strict comparison because of [type juggling](https://php.net/manual/en/types.comparisons.php).
 
-If you're in doubt about what kind of value is returned from the WordPress core function, use [WordPress code reference](https://developer.wordpress.org/reference/) to check it.
+If you're not sure what kind of value is returned from the WordPress core function, use [WordPress code reference](https://developer.wordpress.org/reference/) to check it.
 
-## Typehinting
+## Type hinting
 
-Type declarations allow functions to require that parameters are of a certain type at call time. If the given value is of the incorrect type, then an error is generated: in PHP 5, this will be a recoverable fatal error, while PHP 7 will throw a `TypeError` exception. But we don't use or encourage using PHP < 7 in our projects.
+Type declarations allow functions to require that parameters are of a certain type at call time. If the given value is of the incorrect type, then an error is generated—in PHP 5, this will be a recoverable fatal error, while PHP 7 will throw a `TypeError` exception. But we don't use or encourage using PHP < 7 in our projects.
 
 To specify a type declaration, the type name should be added before the parameter name. The declaration can be made to accept `NULL` values if the default value of the parameter is set to `NULL`.
 
-To enable strict typings in PHP, you need to set a `declare` directive at the top of your file, before `namespace` definition
+To enable strict typing in PHP, you need to set a `declare` directive at the top of your file, before the `namespace` definition
 
 ```php
 <?php
 declare(strict_types=1);
 ```
 
-You can typehint function arguments and return values, for example
+You can type hint function arguments and return values, for example
 
 ```php
 <?php
@@ -201,7 +201,7 @@ You can typehint function arguments and return values, for example
   }
 ```
 
-When the method can return more than one types (string or boolean for instance), **don't specify the return type**, as this will most likely throw `TypeError` exceptions (the RFC for `mixed` typehint is opened for version 7.3, and you can read it [here](https://wiki.php.net/rfc/mixed-typehint)).
+When the method can return more than one types (for instance, string or boolean), **don't specify the return type**, as this will most likely throw `TypeError` exceptions (you can read the RFC for `mixed` typehint for version 7.3 [here](https://wiki.php.net/rfc/mixed-typehint)).
 
 From PHP 7.1 you can explicitly declare a variable to be `null`
 
@@ -212,7 +212,7 @@ public function get_array( ?string $some_string ) : array {
 }
 ```
 
-Typehinting is also important when working with dependency injections.
+Type hinting is also important when working with dependency injections.
 
 ```php
 <?php
@@ -247,7 +247,7 @@ class User_Credentials {
 }
 ```
 
-Table with typehints per PHP versions: https://mlocati.github.io/articles/php-type-hinting.html
+A table with typehints for each PHP versions: https://mlocati.github.io/articles/php-type-hinting.html
 
 ## Sanitization and escaping
 
@@ -261,13 +261,13 @@ We follow WordPress [VIP's guidelines](https://vip.wordpress.com/documentation/v
 6. Sanitation is okay, but validation/rejection is better.
 7. Never trust user input.
 
-Every output has to be escaped. Even translatable strings. This means that instead of using `__()` and  `_e()` we need to use `esc_html__()`, `esc_html_e()`, `esc_attr__()`, `esc_attr_e()`, `wp_kses()`, `wp_kses_post()` and other escaping functions.
+Every output has to be escaped. Even translatable strings. This means that instead of using `__()` and  `_e()`, we have to use `esc_html__()`, `esc_html_e()`, `esc_attr__()`, `esc_attr_e()`, `wp_kses()`, `wp_kses_post()`, and other escaping functions.
 
-When writing data to the database be sure to [sanitize](https://developer.wordpress.org/themes/theme-security/data-sanitization-escaping/) the variables
+When writing data to the database, be sure to [sanitize](https://developer.wordpress.org/themes/theme-security/data-sanitization-escaping/) the variables
 
 `sanitize_text_field( wp_unslash( $_POST['my_data'] ) )`
 
-And to [prepare](https://developer.wordpress.org/reference/classes/wpdb/prepare/) your database queries.
+and to [prepare](https://developer.wordpress.org/reference/classes/wpdb/prepare/) your database queries.
 
 ```php
 <?php
@@ -280,7 +280,7 @@ $wpdb->query( $wpdb->prepare( "DELETE FROM $wpdb->postmeta WHERE post_id = %d AN
 
 ## Documentation
 
-Every file should have a beginning documentation that is describing the contents of the file. `functions.php` should have a description block about the theme/project
+Every file should have introductory documentation that describes the contents of the file. `functions.php` should have a description block about the theme/project
 
 ```php
 <?php
@@ -297,7 +297,7 @@ Every file should have a beginning documentation that is describing the contents
 
 We follow the [DocBlock](https://phpdoc.org/docs/latest/guides/docblocks.html) format of comments.
 
-Every class should have the documentation before it, and the methods inside should also be documented.
+Every class should have documentation before it, and the methods inside should also be documented.
 
 ```php
 <?php
@@ -319,7 +319,7 @@ public function start_lvl( &$output, $depth = 0, $args = array() ) {
 
 ## Database Queries
 
-Querying the database should be done via `WP_Query` object. [Don't use query_posts()](https://wordpress.stackexchange.com/a/1755/58895) ever. It can affect other queries on the page because it reassigns the `global wp_query` object.
+Querying the database should be done using a `WP_Query` object. [Don't use query_posts()](https://wordpress.stackexchange.com/a/1755/58895) ever. It can affect other queries on the page because it reassigns the `global wp_query` object.
 
 You can optimize your query by removing unnecessary queries
 
@@ -328,11 +328,11 @@ You can optimize your query by removing unnecessary queries
 * `update_post_term_cache => false`: useful when taxonomy terms will not be utilized.
 * `fields => 'ids`': useful when only the post IDs are needed (less typical).
 
-Never use `posts_per_page => -1`, as this will return every single post in the query, which can have detrimental effects if you have a large amount of posts. It's better to set a big number (500 or 1000) as the upper limit.
+Never use `posts_per_page => -1`, as this will return every single post in the query, which can have detrimental effects if you have a large number of posts. It's better to set a big number (500 or 1000) as the upper limit.
 
 Direct database calls should be discouraged (`$wpdb`), as well as using `get_posts()`. But use them if you cannot avoid them.
 
-Don't use `post__not_in`. If you need to skip posts, do it in php
+Don't use `post__not_in`. If you need to skip posts, do it in PHP
 
 ```php
 <?php
@@ -353,9 +353,9 @@ if ( $custom_query->have_posts() ) {
 ?>
 ```
 
-Try to avoid post meta queries if possible, that is, don't try to fetch posts by their post meta. Instead use [taxonomies](https://codex.wordpress.org/Taxonomies) to group posts, taxonomy queries are fast and won't effect your performance.
+Try to avoid post meta queries if possible, that is, don't try to fetch posts by their post meta. Instead, use [taxonomies](https://codex.wordpress.org/Taxonomies) to group posts. Taxonomy queries are fast and won't affect your performance.
 
-Fetching post meta if you know the post ID, or if you are in a post/page, on the other hand is fast and can be used anytime.
+On the other hand, fetching post meta if you know the post ID, or if you are in a post/page, is fast and can be used anytime.
 
 ```php
 <?php
@@ -372,15 +372,15 @@ $query = new WP_Query( $args );
 $color = get_post_meta( get_the_id(), 'color', true );
 ```
 
-Avoid multi-dimensional queries - post queries based on terms across multiple taxonomies for instance.
+Avoid multi-dimensional queries—post queries based on terms across multiple taxonomies, for instance.
 
-It's better to do a query with the minimum number of dimensions possible, and then filter out the results with PHP.
+It's better to do a query with the smallest possible number of dimensions, and then filter out the results with PHP.
 
 ## Functional programming
 
-While we cannot write our code fully functionally, because PHP is not a functional programming language, we can use some of the functional techniques while writing our code. This can improve on the code readability and ease of maintenance.
+Although we cannot write fully functional code because PHP is not a functional programming language, we can use some of the functional techniques while writing our code. This can improve code readability and ease of maintenance.
 
-Functions are first class citizens in PHP:
+Functions are first-class citizens in PHP:
 
 ```php
 <?php
@@ -417,7 +417,7 @@ $instance = new Some_Class();
 $instance( 'First', 'Second' ); // call the __invoke() method
 ```
 
-Even though looping though iterable objects is generally faster if you use `for` or `foreach`, you can use some functional programming techniques which will make your code a bit less _boilerplatey_. Also the performance effects are [negligible](https://stackoverflow.com/questions/18144782/performance-of-foreach-array-map-with-lambda-and-array-map-with-static-function).
+Even though looping through iterable objects is generally faster if you use `for` or `foreach`, you can use some functional programming techniques that will make your code a bit less _boilerplatey_. Also, the performance effects are [negligible](https://stackoverflow.com/questions/18144782/performance-of-foreach-array-map-with-lambda-and-array-map-with-static-function).
 
 ### Mapping
 
@@ -457,7 +457,7 @@ $result = array_reduce( $int_array, function( $carry, $item ) { return $carry + 
 
 ### Filtering
 
-Iterating over an array but returning only those results that pass some conditions:
+Iterating over an array, but returning only those results that pass some conditions:
 
 [array_filter manual](https://php.net/manual/en/function.array-filter.php)
 
@@ -478,7 +478,7 @@ $result = array_filter( $int_array, function( $item ) { return ( $item % 2 === 0
 
 ### Anonymous functions
 
-Using anonymous functions for actions and filters could be problematic because that makes it very hard to unhook them later on
+Using anonymous functions for actions and filters could be problematic because it makes them very hard to unhook later on
 
 ```php
 <?php
@@ -487,7 +487,7 @@ add_action( 'init', function() {
 }, 10 );
 ```
 
-Instead do this
+Instead do this:
 
 ```php
 <?php
@@ -498,17 +498,17 @@ function my_callable_function() {
 }
 ```
 
-If you are working in a 'public' project that can be extended the above should be followed, in client projects these are not that important, as you don't expect anybody to remove your added hooks (in themes or in plugins).
+If you are working in a 'public' project that can be extended, you should follow the above instruction. In client projects, these are not that important, as you don't expect anybody to remove your added hooks (in themes or in plugins).
 
 ### Closures
 
-In JavaScript, a closure can be thought of as a scope, when you define a function, it silently inherits the scope it's defined in, which is called its closure, and it retains that no matter where it's used. It's possible for multiple functions to share the same closure, and they can have access to multiple closures as long as they are within their accessible scope.
+In JavaScript, a closure can be thought of as a scope. When you define a function, it silently inherits the scope it's defined in, which is called its closure, and it retains that no matter where it's used. It's possible for multiple functions to share the same closure, and they can have access to multiple closures as long as they are within their accessible scope.
 
-In PHP, a closure is a callable class, to which you've bound your parameters manually.
+In PHP, a closure is a callable class to which you've bound your parameters manually.
 
-It's a slight distinction but one that bears mentioning.
+It's a slight distinction, but one that bears mentioning.
 
-A Closure is essentially the same as a Lambda apart from it can access variables outside the scope that it was created.
+A Closure is essentially the same as a Lambda, but unlike a Lambda, it can access variables outside the scope that it was created in.
 
 ```php
 <?php
@@ -528,7 +528,7 @@ array_walk( $numbers, function( $number ) use ( $multiplier ) {
 
 ### Memoization
 
-Memoization is an optimization technique where we cache function results. If we have a pure function (one that has no side affects), we can cache the result the first time we run it and then just use cache. We can use static variables:
+Memoization is an optimization technique used to cache function results. If we have a pure function (one that has no side effects), we can cache the result the first time we run it and then just use cache. We can use static variables:
 
 ```php
 <?php
@@ -547,7 +547,7 @@ function factorial( $n ) {
 }
 ```
 
-We can generalize this using helper function:
+We can generalize this using a helper function:
 
 ```php
 <?php
@@ -567,7 +567,7 @@ function memoize( $func ) {
 }
 ```
 
-And then do:
+and then do:
 
 ```php
 <?php
@@ -592,7 +592,7 @@ $mem_factorial = memoize( $factorial );
 
 ### Array checking
 
-Avoid using `in_array()` check if possible, because it will traverse the entire array and check if the value of the array is present in the array. Instead look up by key and use `isset()` check.
+If possible, avoid using the `in_array()` check because it will traverse the entire array and check if the value of the array is present in the array. Instead, look up by key and use the `isset()` check.
 
 ```php
 <?php
@@ -617,7 +617,7 @@ if ( in_array( 'some value', $array, true ) ) {
 
 ### Using array_push() and similar functions
 
-When possible avoid using `array_push()`, and instead just append to the array directly
+Avoid using `array_push()` when possible. Instead, just append directly to the array
 
 ```php
 <?php
@@ -634,19 +634,19 @@ foreach ( $other_array as $new_key => $new_value ) {
 }
 ```
 
-This will avoid any unnecessary overhead of calling the php function, as PHP has to look up the function reference, find its position in memory and execute whatever code it defines.
+This will avoid any unnecessary overhead of calling the PHP function, as PHP has to look up the function reference, find its position in memory, and execute whatever code it defines.
 
 ### Caching
 
 Use [caching](https://10up.github.io/Engineering-Best-Practices/php/#the-object-cache) to speed up the site.
 
-Use [`pre_get_posts`](https://developer.wordpress.org/reference/hooks/pre_get_posts/) hook to modify your queries in the back end and in the front end (search queries etc.).
+Use the [`pre_get_posts`](https://developer.wordpress.org/reference/hooks/pre_get_posts/) hook to modify your queries in the back end and in the front end (search queries, etc.).
 
-Use [tranisents](https://codex.wordpress.org/Transients_API) to further speed up your site.
+Use [transients](https://codex.wordpress.org/Transients_API) to further speed up your site.
 
 ### I18n
 
-All text strings in a project have to bi internationalized using core localization functions. You can check a great guide by Samuel Wood about [internalization in WordPress](https://ottopress.com/2012/internationalization-youre-probably-doing-it-wrong/).
+All text strings in a project have to be internationalized using core localization functions. You can check out a great guide to [internalization in WordPress](https://ottopress.com/2012/internationalization-youre-probably-doing-it-wrong/) by Samuel Wood.
 
 ### A11y
 
