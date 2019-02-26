@@ -1,8 +1,8 @@
-WordPress app can be used to provide endpoints for the front end app (based on any of the popular view libraries) to consume.
+The WordPress app can be used to provide endpoints for the front end app (based on any popular view library) to consume.
 
-In that case theme should consist of minimum necessary files for admin functionality - `functions.php`, `index.php`, `screenshot.png` (optional) and `style.css`.
+In that case, the theme should consist of files that are the required minimum for admin functionality—`functions.php`, `index.php`, `screenshot.png` (optional), and `style.css`.
 
-Usually `functions.php` contains redirection so that users can never access the 'php' WordPress front
+Usually, `functions.php` contains redirection so that users can never access the 'php' WordPress front
 
 ```php
 add_action( 'template_redirect', 'inf_theme_redirect' );
@@ -23,6 +23,6 @@ if ( ! function_exists( 'inf_theme_redirect' ) ) {
 }
 ```
 
-The endpoints for the front end app should be created either using [REST API](https://developer.wordpress.org/rest-api/), or using [Decoupled JSON Content plugin](https://github.com/infinum/decoupled-json-content).
+The endpoints for the front end app should be created using either [REST API](https://developer.wordpress.org/rest-api/) or [Decoupled JSON Content plugin](https://github.com/infinum/decoupled-json-content).
 
 This functionality should be defined in a plugin.
