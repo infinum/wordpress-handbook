@@ -1,6 +1,6 @@
 Setting up tests for WordPress is relatively easy. First, you need to add `"phpunit/phpunit": "^6.5"` and `"brain/monkey": "^2.2"` to your composer `require-dev` part in `composer.json`.
 
-Or you can add it from the terminal
+Or you can add it from the terminal:
 
 ```bash
 composer require --dev brain/monkey:2.2
@@ -12,7 +12,7 @@ composer require --dev phpunit/phpunit:6.5
 
 This will load [PHPUnit](https://phpunit.de/) and [Brain Monkey](https://brain-wp.github.io/BrainMonkey/). PHPUnit is the testing suite, and Brain Monkey is a helper for testing in WordPress.
 
-After that, in the `tests` folder add the `bootstrap.php` file that looks like
+After that, in the `tests` folder add the `bootstrap.php` file that looks like this:
 
 ```php
 <?php
@@ -70,7 +70,7 @@ class InitTestCase extends TestCase {
 }
 ```
 
-Add `phpunit.xml.dist` in the root of your project
+Add `phpunit.xml.dist` in the root of your project.
 
 ```xml
 <?xml version="1.0"?>
@@ -113,7 +113,7 @@ Assuming you have a plugin on your testing environment, in the project root fold
 ```bash
 wp scaffold plugin-tests my-plugin
 ```
-This will create several new files and folders in your plugin
+This will create several new files and folders in your plugin.
 
 ```
 bin/
@@ -126,7 +126,7 @@ phpunit.xml
 ```
 
 
-To initialize the testing environment locally, go to your plugin directory and run the install script
+To initialize the testing environment locally, go to your plugin directory and run the install script:
 
 ```bash
 bin/install-wp-tests.sh wordpress_unit_tests root '' localhost latest
@@ -134,7 +134,7 @@ bin/install-wp-tests.sh wordpress_unit_tests root '' localhost latest
 
 The install script first installs a copy of WordPress in the `/tmp directory` (by default) as well as the WordPress unit testing tools. Then it creates a database to be used while running tests. The parameters that are passed to `install-wp-tests.sh` set up the test database. Be sure that your mysql service is up and running if you're running tests outside VVV.
 
-After that, you can run the plugin tests by writing
+After that, you can run plugin tests by writing:
 
 ```bash
 vendor/bin/phpunit
@@ -177,7 +177,7 @@ Warning: require_once(.../wordpress//wp-includes/class-phpmailer.php): failed to
 Fatal error: require_once(): Failed opening required '.../wordpress//wp-includes/class-phpmailer.php' (include_path='.:/opt/lampp/lib/php') in .../wordpress-tests-lib/includes/mock-mailer.php on line 2
 ```
 
-In this case, delete the database (using sequel Pro or via terminal), delete the temporary folder where WordPress is installed (either in `/tmp/wordpress/` or somewhere in `/var/folders/..` subfolders), and run
+In this case, delete the database (using Sequel Pro or via terminal), delete the temporary folder where WordPress is installed (either in `/tmp/wordpress/` or somewhere in `/var/folders/..` subfolders), and run
 
 ```bash
 bash bin/install-wp-tests.sh wordpress_test root '' localhost latest
