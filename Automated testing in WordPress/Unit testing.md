@@ -2,7 +2,7 @@ Unit testing is a level of software testing where individual units/components of
 
 In terms of PHP and WordPress, a single 'unit' is a function or a class. Unit testing is dynamic testing of individual units in isolation. This means that code has to be executed (dynamic). In contrast, static testing is checking for code smells, for which we use linters and code sniffers.
 
-Testing in isolation means that we only execute code that we want to test and no other unit. We are not interested in coupling—this is what integration tests are for.
+Testing in isolation means that we only execute the code that we want to test and no other unit. We are not interested in coupling—this is what integration tests are for.
 
 An example of a _non-unit_ test would be
 
@@ -24,7 +24,7 @@ function test_register_taxonomy() {
 
 You can see that this test calls to multiple WordPress functions like `taxonomy_exists()` and `register_taxonomy()`.
 
-What if your code depends on some core functionality? In that case, we need to mock our functions. In the world of unit testing, there are things like mocks, stubs, spies, fake objects, fake functions, dummy functions, test doubles, and other. We won't be going into detail about them. We want to execute the real methods for the test without any errors and other fake units without any real logic (mocks) thrown in.
+What if your code is dependent on some core functionality? In that case, we need to mock our functions. In the world of unit testing, there are things like mocks, stubs, spies, fake objects, fake functions, dummy functions, test doubles, and other. We won't be going into detail about them. We want to execute real methods for the test without any errors and other fake units without any real logic (mocks) thrown in.
 
 For instance, say you have a method that will disable certain REST endpoints in your code, that looks like this
 
@@ -120,7 +120,7 @@ class My_Test extends InitTestCase {
 }
 ```
 
-We've mocked the endpoint list and used it to check if the method does what it has to do. We are not interested in whether this will actually remove the endpoints in the WordPress. For that, we'd need to create integration tests, load WordPress, mock a REST server, and then test if the endpoints are removed.
+We've mocked the endpoint list and used it to check if the method does what it is supposed to do. We are not interested in whether this will actually remove the endpoints in WordPress. For that, we'd have to create integration tests, load WordPress, mock a REST server, and then test if the endpoints are removed.
 
 For more information on unit testing read [this article](https://tfrommen.de/an-introduction-to-unit-testing-for-wordpress/).
 
@@ -136,7 +136,7 @@ You can find more details about using Brain Monkey in the [official documentatio
 
 [WP_Mock](https://github.com/10up/wp_mock) is an API mocking framework, built and maintained by 10up to make proper testing of units within WordPress possible.
 
-You can find documentation [here](https://github.com/10up/wp_mock/blob/master/README.md).
+You can find the documentation [here](https://github.com/10up/wp_mock/blob/master/README.md).
 
 ## Tips and tricks
 
@@ -154,7 +154,7 @@ $mock = \Mockery::mock('alias:Namespace\My_Class');
 
 Then you create a mock class and add mocked static methods in it. This alias is used every time a call to a mocked class is found in the code that is being tested.
 
-Beware—using `alias:` will apply for the remainder of the PHP sessions's life, so you'll need to add
+Bear in mind—using `alias:` will apply for the remainder of the PHP sessions's life, so you'll need to add
 
 ```php
 /**
@@ -163,7 +163,7 @@ Beware—using `alias:` will apply for the remainder of the PHP sessions's life,
  */
  ```
 
-to the test class which uses alias mocks. This will tell PHPUnit to run a separate PHP process so other tests won't be affected.
+to the test class which uses alias mocks. This will tell PHPUnit to run a separate PHP process so other tests wouldn't be affected.
 
 ### Overload vs Alias
 
