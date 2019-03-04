@@ -1,4 +1,4 @@
-When creating a project on Bitbucket or GitHub, the most important thing is to specify a few crucial details for project setup. This will help with quick onboarding of new developers on the project.
+When creating a project on Bitbucket or GitHub, the most important thing is to specify a few key details for project setup. This will help with quick onboarding of new developers on the project.
 
 There should be a `README.md` file in the project root folder. At the beginning of this file, you should give a few details about the project and information about the development setup.
 
@@ -36,4 +36,4 @@ For theme quick start check out the [wp-boilerplate](https://github.com/infinum/
 Mention some additional details here—for instance, if you have any special deployment techniques from development to staging, additional constants and settings for `wp-config.php`, or similar.
 ```
 
-Never write data which is meant to be secure in your readme file, or commit them directly to the repository.
+Never write data which is meant to be secure in your readme file or commit them directly to the repository.
