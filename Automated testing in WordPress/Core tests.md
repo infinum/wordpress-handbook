@@ -16,7 +16,7 @@ chmod +x phpunit.phar
 mv phpunit.phar /usr/local/bin/phpunit
 ```
 
-Then check out the test repository. The WordPress tests live in the core development repository, available via SVN at:
+Then check the test repository. WordPress tests live in the core development repository, available via SVN at:
 
 ```bash
 svn co https://develop.svn.wordpress.org/trunk/ wordpress-develop
@@ -84,7 +84,7 @@ Unit test symbol meaning
 * . – Each dot signifies one “test” that passed.
 * S means a test was skipped. This usually means that the test is only valid in certain configurations, such as when a test requires Multisite.
 * F means a test failed. More output on what exactly failed and where will be shown.
-* E means a test failed due to a PHP error, warning, or notice.
+* E means a test failed because of a PHP error, warning, or notice.
 * I means a test was marked as incomplete.
 
 ### Testing inside VVV
@@ -115,11 +115,11 @@ If the build fails on the `node-sass` package, try rebuilding it again
 npm rebuild node-sass
 ```
 
-**Notice**: The build process is currently under revision (https://core.trac.wordpress.org/ticket/43055?cversion=0&cnum_hist=23).
+**Note**: The build process is currently under revision (https://core.trac.wordpress.org/ticket/43055?cversion=0&cnum_hist=23).
 
 ### Applying a patch
 
-Make sure VVV is running, and the above steps have been completed. Then you can ssh to Vagrant, go to the `wordpress-develop/public_html/` folder and run
+Make sure that VVV is running and the above steps have been completed. Then you can ssh to Vagrant, go to the `wordpress-develop/public_html/` folder and run
 
 ```bash
 grunt watch &
