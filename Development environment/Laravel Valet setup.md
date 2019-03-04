@@ -1,8 +1,8 @@
 As stated in [the official documentation](https://laravel.com/docs/5.4/valet), Valet is a Laravel development environment for Mac minimalists.
 
-Laravel Valet configures your Mac to always run Nginx in the background when your machine starts. Then, using DnsMasq, Valet proxies all requests on the `*.dev` domain to point to sites installed on your local machine.
+Laravel Valet configures your Mac to always run Nginx in the background when your machine starts. Then, Valet proxies all requests on the `*.dev` domain using DnsMasq to point to sites installed on your local machine.
 
-It is ideal for machines with a low amount of RAM.
+It is ideal for machines with a small amount of RAM.
 
 ## Installing Laravel Valet
 
@@ -44,7 +44,7 @@ to the list. Then you need to restart the terminal, and the composer should be a
 
 Valet has a built-in WordPress driver, so it supports running WordPress. You can serve your sites in two ways—using the `park` or `link` option.
 
-The `park` option can be used to add a whole folder to Valet. Every folder in there will then be mapped to a site and get its own `.dev` domain. So if you add `~/Sites` folder to Valet and have a subfolder in there named `wp-valet`, the content of that folder will be served when you visit `http://wp-valet.dev` in your browser. No setup required. The `link` option can be used to serve a single site, without adding a whole directory.
+The `park` option can be used to add a whole folder to Valet. Every folder in there will then be mapped to a site and get its own `.dev` domain. So, if you add `~/Sites` folder to Valet and have a subfolder in there named `wp-valet`, the content of that folder will be served when you visit `http://wp-valet.dev` in your browser. No setup required. The `link` option can be used to serve a single site, without adding a whole directory.
 
 ```sh
 $ mkdir ~/Sites
@@ -89,7 +89,7 @@ If mysql is not running, start it with
 brew services start mysql
 ```
 
-Log into your mysql with `mysql -u root`, and create the desired database
+Log into your mysql with `mysql -u root` and create the desired database.
 
 
 ```sh
@@ -99,6 +99,6 @@ flush privileges;
 exit;
 ```
 
-This will create a database `db_name` (change this according to your project), and add a root user to it.
+This will create a `db_name` (change this according to your project) database and add a root user to it.
 
 You should then be able to add those details to `wp-config.php` and install WordPress.
