@@ -1,6 +1,6 @@
 In order to install a WordPress development environment on [Docker](https://www.docker.com/), you'll need to install Docker and [docker-compose](https://docs.docker.com/compose/).
 
-Once you have those installed, install your WordPress in the folder of your choice, and add `docker-compose.yml` file to the root of your WordPress installation folder
+Once you have those installed, install your WordPress in the folder of your choice, and add `docker-compose.yml` file to the root of your WordPress installation folder.
 
 ```yml
 version: '3'
@@ -51,7 +51,7 @@ which is useful because it gives you WP log output.
 
 For more information about setting up and using Docker with WordPress, click [here](https://docs.docker.com/samples/wordpress/).
 
-Another way of using Docker, which is especially useful when working on continuous integration and deployment (CI/CD), is to use `Dockerfile`. For instance, one such Dockerfile can look like this
+Another way of using Docker is to use `Dockerfile`, which is especially useful when working on continuous integration and deployment (CI/CD). For instance, one such Dockerfile can look like this
 
 ```dockerfile
 # Stage 0, build app
@@ -113,9 +113,9 @@ WORKDIR /var/www/html/
 CMD ["exec","php-fpm"]
 ```
 
-This Dockerfile will first build a local container with php, composer, and node, and in that stage your theme/plugins can be built. Notice the `RUN bash bin/build-plugins.sh` command. You can replace this with your installation script (be it for plugins or theme). You'll place composer and npm builds in that shell script.
+This Dockerfile will first build a local container with php, composer, and node, and in that stage your theme/plugins can be built. It also contains the `RUN bash bin/build-plugins.sh` command. You can replace this with your installation script (be it for plugins or theme). You'll place composer and npm builds in that shell script.
 
-After that, you'll build the WordPress container, and copy the plugins built in the previous stage. You can modify this to your liking. Beside this, you'll probably need a Docker image for nginx. But we won't be going into too much detail about it.
+After that, you'll build the WordPress container and copy the plugins built in the previous stage. You can modify this to your liking. Beside this, you'll probably need a Docker image for nginx. But we won't be going into too much detail about it.
 
 If you named this file `Dockerfile`, you'll run
 
