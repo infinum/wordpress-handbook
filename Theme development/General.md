@@ -4,11 +4,11 @@ Here at Infinum, we are always looking to advance our knowledge about modern tec
 
 It also uses OOP principles, such as namespacing, classes, and autoloading using Composer.
 
-Be careful not to pack too many custom functionalities in your theme. Any custom functionality should be placed in a plugin.
+Be careful not to pack too many custom functionalities in your theme. All custom functionalities should be placed in a plugin.
 
 ## Front end and back end
 
-The back end part (admin interface) is written in PHP. When writing various functionalities, always use WordPress [core functions](https://developer.wordpress.org/) when possible. They are created to work specifically with WordPress core, and will not only make your code more future-proof, but safer as well.
+The back end part (admin interface) is written in PHP. When writing various functionalities, always use WordPress [core functions](https://developer.wordpress.org/) when possible. They are created to work specifically with WordPress core, and will not only make your code more future-proof but safer as well.
 
 Front end can be built with traditional PHP templates, or we can use the [REST API](https://developer.wordpress.org/rest-api/), that has been included in WordPress core since version 4.4, and use modern frameworks like React, Vue, or Angular to build our web apps (decoupled approach).
 
