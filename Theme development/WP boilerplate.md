@@ -1,4 +1,4 @@
-Infinum's WordPress boilerplate is the basis of every WordPress-based project we use at Infinum.
+Infinum's WordPress boilerplate is the basis of every WordPress-based project we work on at Infinum.
 
 The repository can be found [here](https://github.com/infinum/wp-boilerplate).
 
