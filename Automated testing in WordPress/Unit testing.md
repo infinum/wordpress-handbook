@@ -62,7 +62,7 @@ You are not interested whether this method is hooked on some action. The only th
 ```php
 class My_Test extends InitTestCase {
   /**
-   * Initial set up for the test
+   * Initial setup for the test
    */
   public function setUp() {
     parent::setUp();
@@ -93,7 +93,7 @@ class My_Test extends InitTestCase {
   }
 
   /**
-   * Tear down after test ends
+   * Tear down after the test ends
    */
   public function tearDown() {
     parent::tearDown();
