@@ -24,7 +24,7 @@ After that, in the `tests` folder add the `bootstrap.php` file that looks like t
 
 /**
  * We need to include autoloader to use our plugin
- * and to use Brain Monkey for running unit test.
+ * and to use Brain Monkey for running a unit test.
  */
 require_once dirname( dirname( __FILE__ ) ) . '/vendor/autoload.php';
 ```
@@ -62,7 +62,7 @@ class InitTestCase extends TestCase {
   }
 
   /**
-   * This method is only set to silence warning
+   * This method is only set to silence warnings
    */
   public function test_silence_warning() {
     $this->assertTrue( true, true );
