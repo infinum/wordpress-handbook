@@ -8,7 +8,8 @@ Usually, `functions.php` contains redirection so that users can never access the
 add_action( 'template_redirect', 'inf_theme_redirect' );
 if ( ! function_exists( 'inf_theme_redirect' ) ) {
   /**
-   * Check if you are on any other page then admin and redirect accordingly.
+   * Check if the user is logged in or is trying to access the frontend page.
+   * In either case, the user should be redirected to the WordPress admin page.
    *
    * @return void
    */
