@@ -1,10 +1,10 @@
-Integration tests check how components work inside WordPress.
+Integration tests are used to check how components work inside WordPress.
 
-For integration test setup the best way to set it up is either using [Codeception]((https://codeception.com/for/wordpress)), or WP-CLI.
+For the integration test setup, the best way to set it up is using either [Codeception]((https://codeception.com/for/wordpress)) or WP-CLI.
 
 ## WP-CLI
 
-If you don't have WP-CLI installed on your system, install it. There is a documentation on starting unit tests which you can find [here](https://make.wordpress.org/cli/handbook/plugin-unit-tests/).
+If you don't have WP-CLI installed on your system, install it. You can find documentation on starting unit tests [here](https://make.wordpress.org/cli/handbook/plugin-unit-tests/).
 
 Assuming you have a plugin on your testing environment, in the project root folder run
 
@@ -23,15 +23,15 @@ phpunit.xml
 .travis.yml
 ```
 
-To initialize the testing environment locally go to your plugin directory and run the install script
+To initialize the testing environment locally, go to your plugin directory and run the install script
 
 ```bash
 bin/install-wp-tests.sh wordpress_unit_tests root '' localhost latest
 ```
 
-The install script first it installs a copy of WordPress in the `/tmp directory` (by default) as well as the WordPress unit testing tools. Then it creates a database to be used while running tests. The parameters that are passed to `install-wp-tests.sh` setup the test database. Be sure that your mysql service is up and running if you're running tests outside of VVV.
+The install script first installs a copy of WordPress in the `/tmp directory` (by default) as well as the WordPress unit testing tools. Then it creates a database to be used while running tests. The parameters that are passed to `install-wp-tests.sh` set up the test database. Be sure that your mysql service is up and running if you're running tests outside VVV.
 
-After that you can run the plugin tests by writing
+After that, you can run the plugin tests by writing
 
 ```bash
 vendor/bin/phpunit

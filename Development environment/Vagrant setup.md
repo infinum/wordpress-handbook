@@ -1,16 +1,16 @@
 ## Installing VVV
 
-Setting up VVV is easy. You can either follow the manual install, as described in the [official documentation](https://varyingvagrantvagrants.org/docs/en-US/), or you can use `brew` package manager for quick and easy installation.
+Setting up VVV is easy. You can either follow the manual install, as described in the [official documentation](https://varyingvagrantvagrants.org/docs/en-US/), or you can use the `brew` package manager for quick and easy installation.
 
-First install [VirtualBox 5.x](https://www.virtualbox.org/wiki/Downloads)
+First, install [VirtualBox 5.x](https://www.virtualbox.org/wiki/Downloads)
 
 `brew cask install virtualbox`
 
-After VirtualBox installs install [Vagrant 2.1+](https://www.vagrantup.com/downloads.html)
+After VirtualBox is installed, install [Vagrant 2.1+](https://www.vagrantup.com/downloads.html)
 
 `brew cask install vagrant`
 
-Then you'll want to install few Vagrant plugins
+Then you'll want to install a few Vagrant plugins.
 
 ```sh
 vagrant plugin install vagrant-hostsupdater
@@ -18,7 +18,7 @@ vagrant plugin install vagrant-hostsupdater
 
 It's recommended to reboot your computer to avoid any networking issues.
 
-After you install plugins, you'll want to install the VVV in the local folder
+After you install plugins, you'll want to install VVV in the local folder.
 
 ```sh
 cd ~
@@ -26,43 +26,43 @@ git clone -b master git://github.com/Varying-Vagrant-Vagrants/VVV.git ~/vagrant-
 cd vagrant-local
 ```
 
-This will clone the official VVV repository to your `vagrant-local` folder in the home folder. If you want latest updates and features, it's recommended to switch to the `develop` branch instead of `master` branch.
+This will clone the official VVV repository to your `vagrant-local` folder in the home folder. If you want latest updates and features, it's recommended to switch to the `develop` branch instead of the `master` branch.
 
-Before starting VVV up, go to `Vagrantfile` and uncomment `config.vm.network :public_network` line. This will enable you to debug across devices later on.
+Before starting VVV, go to `Vagrantfile` and uncomment the `config.vm.network :public_network` line. This will enable you to debug across devices later on.
 
-You can either set up your custom sites by creating a copy of `vvv-config.yml` file and renaming it to `vvv-custom.yml`, or you can just start vagrant up.
+You can either set up your custom sites by creating a copy of the `vvv-config.yml` file and renaming it to `vvv-custom.yml`, or you can just start vagrant.
 
-While in your `vagrant-local` folder type
+While in your `vagrant-local` folder, type
 
 `vagrant up`
 
-This will set up VVV for the first time. This may take some time (about 10 minutes or so on an average network). While this is happening, you can read the rest of this handbook.
+This will set up VVV for the first time. This may take some time (about 10 minutes on an average network). While VVV is setting up, you can read the rest of this handbook.
 
-What Vagrant is actually doing is downloading a packaged box with Ubuntu virtual machine and caching it for future use. After downloading, it will provision the running script that will download other packages necessary for local development.
+What Vagrant is actually doing is downloading a packaged box with the Ubuntu virtual machine and caching it for future use. After downloading, it will provision the running script that will download other packages necessary for local development.
 
-Once it installs everything you'll be all set to work on your local WordPress. You can type
+Once it has installed everything, you'll be all set to work on your local WordPress. You can type
 
 `http://vvv.test`
 
-in your browser, which will open up a screen with interesting links you can explore.
+in your browser, which will open a screen with interesting links you can explore.
 
 ![vvv.dev screen](/img/vagrant.png)
 
-When you wish to close the Vagrant and save your RAM just type
+When you want to close Vagrant and save your RAM, just type
 
 `vagrant halt`
 
-Next time you start your Vagrant with `vagrant up` the cached box will start and it will boot in a minute or so. Re-provisioning your Vagrant is only necessary when adding new folders or changing your Vagrant configuration, which will be described below.
+Next time you start your Vagrant with `vagrant up`, the cached box will start and boot in a minute or so. Re-provisioning your Vagrant is necessary only when adding new folders or changing your Vagrant configuration, which will be described below.
 
-## Making your vagrant public aware
+## Making your vagrant public-friendly
 
-Modern web development is *mobile first* oriented. With that in mind, it is natural that you'd want to be able to see what you are developing locally on your mobile phone.
+Modern web development is *mobile first* oriented. With that in mind, it is natural that you want to be able to see what you are developing locally on your mobile phone.
 
-To do that, you need to change your `Vagrantfile` that is located in the `vagrant-local` folder. Search for
+To do that, you need to change your `Vagrantfile` located in the `vagrant-local` folder. Search for
 
 `config.vm.network :public_network`
 
-And uncomment it. You can also enable port forwarding while you're at it
+and uncomment it. You can also enable port forwarding while you're at it:
 
 `config.vm.network "forwarded_port", guest: 80, host: 8888`
 
@@ -70,7 +70,7 @@ Now you need to re-provision your Vagrant
 
 `vagrant reload --provision`
 
-When you do that you'll be asked to which network interface you use to connect to the internet
+When you do that, you'll be asked which network interface you use to connect to the internet
 
 ```sh
 ==> default: Clearing any previously set forwarded ports...
@@ -87,22 +87,22 @@ When you do that you'll be asked to which network interface you use to connect t
     default: Which interface should the network bridge to?
 ```
 
-In our case we connect via Wi-Fi, so choose 1. If you're connecting via Ethernet, you'll need to select that as your network bridge.
+In our case, we connect via Wi-Fi, so choose 1. If you're connecting via Ethernet, you'll need to select that as your network bridge.
 
 ### Using Webpack and BrowserSync Plugin
 
-At Infinum we use [wp-boilerplate](https://github.com/infinum/wp-boilerplate) to kick start our development. It is a modern way that uses [Webpack](https://webpack.js.org/) to bundle your assets.
+Here at Infinum, we use [wp-boilerplate](https://github.com/infinum/wp-boilerplate) to kick start our development. It is a modern method that uses [Webpack](https://webpack.js.org/) to bundle your assets.
 
-By using that you'll be able to use [BrowserSync](https://www.npmjs.com/package/browser-sync-webpack-plugin) to test the development on your browser and mobile phone. Just follow the instructions in the `wp-boilerplate` repo, and you should be able to easily inspect your site without much hassle.
+By using that, you'll be able to use [BrowserSync](https://www.npmjs.com/package/browser-sync-webpack-plugin) to test the development in your browser and on a mobile phone. Just follow the instructions in the `wp-boilerplate` repo, and you should be able to easily inspect your site without much hassle.
 
 ## Adding new sites
 
-The official documentation on adding a new site is located [here](https://varyingvagrantvagrants.org/docs/en-US/adding-a-new-site/). Easier way of provisioning a new site is done using [site templates](https://varyingvagrantvagrants.org/docs/en-US/site-templates/).
-A site template is a git repo that contains scripts and files for setting up a new VVV site automatically.
+The official documentation on adding a new site can be found [here](https://varyingvagrantvagrants.org/docs/en-US/adding-a-new-site/). An easier way to provision a new site is using [site templates](https://varyingvagrantvagrants.org/docs/en-US/site-templates/).
+A site template is a Git repo that contains scripts and files necessary to set up a new VVV site automatically.
 
 You can also create provision scripts manually. First, you need to add your site to the `vvv-custom.yml` file. It is just a modified copy of the existing `vvv-config.yml` file.
 
-Let's say we want to create `wordpress-infinum` site. After the
+Let's say we want to create a `wordpress-infinum` site. After the
 
 ```yaml
 wordpress-develop:
@@ -122,11 +122,11 @@ wordpress-infinum:
       - wordpress-infinum.test
 ```
 
-We've told Vagrant that inside `www/wordpress-infinum` there should be a site it can access. So we need to create it. Inside that folder we need to create two additional folders: `provision` and `public_html`.
+We've told Vagrant that there should be a site it can access inside `www/wordpress-infinum`. So we need to create it. We need to create two additional folders inside that folder—`provision` and `public_html`.
 
-`provision` folder holds the scripts that will set up the database and Nginx configuration. `public_html` folder holds the WordPress installation.
+The `provision` folder holds scripts that will set up the database and Nginx configuration. The `public_html` folder holds the WordPress installation.
 
-First file that you'll add to the `provision` folder will be `vvv-init.sh`
+The first file that you'll add to the `provision` folder will be `vvv-init.sh`
 
 ```sh
 #!/usr/bin/env bash
@@ -172,7 +172,7 @@ else
 fi
 ```
 
-VVV uses Nginx as a web server, so the second file we need is the `vvv-nginx.conf`
+VVV uses Nginx as a web server, so the second file we need is `vvv-nginx.conf`
 
 ```sh
 server {
@@ -190,7 +190,7 @@ server {
 }
 ```
 
-Any time we add a new site to `vvv-custom.yml`, or the provisioner files, we need to re-provision the VVV. To do this you need to run
+Every time we add a new site to `vvv-custom.yml` or the provisioner files, we need to reprovision VVV. To do this, you need to run
 
 `vagrant reload --provision`
 
@@ -198,7 +198,7 @@ After that, either import the database via phpMyAdmin or `WP-CLI`, or start from
 
 ### Alternative way of adding sites
 
-Another way you can add new sites is by using the `custom site template`. In the `vvv-custom.yml`file add
+Another way you can add new sites is by using the `custom site template`. In the `vvv-custom.yml` file add
 
 ```yaml
 sites:
@@ -211,4 +211,4 @@ sites:
       - example.test
 ```
 
-Then, save `vvv-custom.yml` and run `vagrant reload --provision` to update VVV with the new site. Always reprovision after making changes to `vvv-custom.yml`. Be sure to indent correctly as whitespace matters in YAML files, VVV prefers to indent using 2 spaces.
+Then save `vvv-custom.yml` and run `vagrant reload --provision` to update VVV with the new site. Always reprovision after making changes to `vvv-custom.yml`. Be sure to indent correctly as whitespace matters in YAML files. VVV prefers to indent using two spaces.

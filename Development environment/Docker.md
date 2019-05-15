@@ -1,6 +1,7 @@
-To install WordPress development environment on [Docker](https://www.docker.com/) you'll need to install Docker and use [docker-compose](https://docs.docker.com/compose/).
+In order to install a WordPress development environment on [Docker](https://www.docker.com/), you'll need to install Docker and use [docker-compose](https://docs.docker.com/compose/).
 
 Once you have those installed, in your desired folder add `docker-compose.yml` file
+
 
 ```yml
 version: '3.3'
@@ -69,7 +70,7 @@ volumes:
 
 ```
 
-Besides this, create `bin` folder with two files in it: `nginx.conf` and `php.ini` for your nginx and php settings. The `nginx.conf` looks like this
+Besides adding `docker-compose.yml` file, create `bin` folder with two files in it: `nginx.conf` and `php.ini` for your nginx and php settings. The `nginx.conf` looks like this
 
 ```bash
 ## secure headers
@@ -123,13 +124,13 @@ post_max_size = 64M
 max_execution_time = 600
 ```
 
-After adding those files, from your terminal run
+After adding those files, from your terminal, run the following command
 
 `docker-compose up -d`
 
 This will build docker container and image with the specified settings from the `.yml` file in the detached state.
 
-For more information about setting and using docker with WordPress click [here](https://docs.docker.com/samples/wordpress/).
+For more information about setting up and using Docker with WordPress, click [here](https://docs.docker.com/samples/wordpress/).
 
 You can see if the containers are running by typing 
 
@@ -149,7 +150,7 @@ e1f1d0799b40    mysql:5.7                 "docker-entrypoint.s…"   10 seconds 
 
 Your project will be available on `http://localhost:8010`. Setting up HTTPS is a bit tricky but doable (you can try it yourself 😄).
 
-Another way that you can use Docker, which is especially useful when working on continuous integration and deployment (CI/CD) is to use `Dockerfile`. For instance, one such dockerfile can look like this
+Another way of using Docker is to use `Dockerfile`, which is especially useful when working on continuous integration and deployment (CI/CD). For instance, one such Dockerfile can look like this
 
 ```dockerfile
 # Stage 0, build app
@@ -211,9 +212,9 @@ WORKDIR /var/www/html/
 CMD ["exec","php-fpm"]
 ```
 
-This dockerfile will first build a local container with php, composer and node and in that stage your theme/plugins will be able to build. Notice the `RUN bash bin/build-plugins.sh` command. You can replace this with your installation script (be it for plugins or theme). In that shell script you'll place composer and npm builds.
+This Dockerfile will first build a local container with php, composer, and node, and in that stage your theme/plugins can be built. It also contains the `RUN bash bin/build-plugins.sh` command. You can replace this with your installation script (be it for plugins or theme). You'll place composer and npm builds in that shell script.
 
-After that you'll build the WordPress container, and copy the built plugins from the previous stage. You can modify this to your liking. Alongside this, you'll probably need a docker image for nginx. But we won't be going into too much details about it.
+After that, you'll build the WordPress container and copy the plugins built in the previous stage. You can modify this to your liking. Beside this, you'll probably need a Docker image for nginx. But we won't be going into too much detail about it.
 
 If you named this file `Dockerfile`, you'll run
 
@@ -221,7 +222,7 @@ If you named this file `Dockerfile`, you'll run
 docker build -t yourtag .
 ```
 
-In case you named it like `Dockerfile.php` (if you need multiple stages and builds) you'll run
+In case you named it something like `Dockerfile.php` (if you need multiple stages and builds), you'll run
 
 ```bash
 docker build -t yourtag -f Dockerfile.php .
@@ -229,24 +230,24 @@ docker build -t yourtag -f Dockerfile.php .
 
 The Dockerfiles should be located in the root of your project.
 
-To go in the interactive shell of the built image type
+To go in the interactive shell of the built image, type
 
 ```bash
 docker run -it CONTAINER_NAME bash
 ```
 
-If that fails you can try
+If that fails, you can try
 
 ```bash
 docker run -d CONTAINER_NAME
 docker exec -it CONTAINER_NAME bash
 ```
 
-Running the `docker run` with `-d` means you are detaching it, and you can check the logs that happened while buidling it.
+Running the `docker run` with `-d` means you are detaching it, and you can check the logs created while building it.
 
 ## Useful Docker commands
 
-Here are some useful docker commands that you might use.
+Here are some useful Docker commands that you might use.
 
 List all containers
 
@@ -268,10 +269,10 @@ Remove all images
 
 `docker rmi $(docker images -q)`
 
-Prune system from unused images, containers, and networks [documentation link](https://docs.docker.com/config/pruning/#prune-everything)
+Prune the system from unused images, containers, and networks [documentation link](https://docs.docker.com/config/pruning/#prune-everything)
 
 `docker system prune`
 
 ### Docker notes
 
-Depending on your project, the docker compose, or Dockerfile may differ. For more information, consult your friendly devops.
+Depending on your project, the Docker compose or Dockerfile may differ. For more information, consult your friendly devops.
