@@ -6,11 +6,11 @@ Naming a repository follows this pattern:
 
 With allowed characters `[a-z\-]`.
 
-Your repository should consist of several main branches: `master`, `develop`, `staging`, `preproduction`, `edge` and `feature` branches.
+Your repository should consist of several main branches: `master`, `develop`, `staging`, `preproduction`, `edge`, and `feature` branche.
 
 ### Project setup
 
-Before each project, the lead developer should fill out the Project Setup sheet which specifies what language and framework will be used, versions, necessary scripts, deployment setup, server requirements, etc.
+Before each project, the lead developer should fill out the Project Setup Sheet that specifies what language and framework will be used, versions, necessary scripts, deployment setup, server requirements, etc.
 
 ### Modified Git flow
 
@@ -36,13 +36,13 @@ The `staging` branch is usually connected with a staging server using build and 
 
 ![Code flow](/img/code-flow.png)
 
-The `master` branch has to be tagged according to [semver](http://semver.org/) before the release. A short introduction to semver can be found [here](https://www.sitepoint.com/semantic-versioning-why-you-should-using/).
+The `master` branch has to be tagged according to [SemVer](http://semver.org/) before the release. A short introduction to SemVer can be found [here](https://www.sitepoint.com/semantic-versioning-why-you-should-using/).
 
 The `master` branch is usually protected so that it is not possible to merge directly to it. Merges to `master` are done periodically when new features are ready to be released.
 
 The `preproduction` branch should be linked to the preproduction server so that the client can enter content that will be merged to the production once ready. The `preproduction` is a 1:1 clone of the `master`, and should contain only working and production-ready code.
 
-Once a project is in production, every time you create a feature, make a branch from the `master` branch. Then, once you think it's ready, submit a PR to the `master`, `preproduction` and `staging` branch, and tag (label) it accordingly. Once testing is completed, and feature branches are ready, the lead developer will deploy them to the `master` branch.
+Once a project is in production, every time you create a feature, make a branch from the `master` branch. Then, once you think it's ready, submit a PR to the `master`, `preproduction`, and `staging` branch, and tag (label) it accordingly. Once testing is completed, and feature branches are ready, the lead developer will deploy them to the `master` branch.
 
 It's the same with the pre-release—if you are working on a feature that depends on another feature that is merged to the staging branch, pull that branch in your branch to get the desired features.
 
@@ -66,7 +66,7 @@ If you're not sure what to do, ask someone who is :)
 
 **Do not submit PR that has over 100 changed files**
 
-There are many reasons why submitting a huge PR is bad. The first one is that it can crash your browser if you're inspecting it in GitHub. The second one is that it will take a lot of time to review it, and the reviewer will most probably just skim through the PR because they have other tasks to do. When submitting a PR, ask yourself, "Would I want to review this?"
+There are many reasons why submitting a huge PR is bad. The first one is that it can crash your browser if you're inspecting it in GitHub. The second one is that it will take a lot of time to review it, and the reviewer will most probably just skim through the PR because they have other things to do. When submitting a PR, ask yourself, "Would I want to review this?"
 
 Also **write good Git commit messages**. Commit messages should be short and clear. Write the subject in the imperative mood. A properly formed Git commit subject line should always complete the following sentence:
 

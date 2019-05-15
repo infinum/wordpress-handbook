@@ -10,7 +10,7 @@ After VirtualBox is installed, install [Vagrant 2.1+](https://www.vagrantup.com/
 
 `brew cask install vagrant`
 
-Then you'll want to install a few Vagrant plugins
+Then you'll want to install a few Vagrant plugins.
 
 ```sh
 vagrant plugin install vagrant-hostsupdater
@@ -18,7 +18,7 @@ vagrant plugin install vagrant-hostsupdater
 
 It's recommended to reboot your computer to avoid any networking issues.
 
-After you install plugins, you'll want to install VVV in the local folder
+After you install plugins, you'll want to install VVV in the local folder.
 
 ```sh
 cd ~
@@ -48,7 +48,7 @@ in your browser, which will open a screen with interesting links you can explore
 
 ![vvv.dev screen](/img/vagrant.png)
 
-When you wish to close Vagrant and save your RAM, just type
+When you want to close Vagrant and save your RAM, just type
 
 `vagrant halt`
 
@@ -58,7 +58,7 @@ Next time you start your Vagrant with `vagrant up`, the cached box will start an
 
 Modern web development is *mobile first* oriented. With that in mind, it is natural that you want to be able to see what you are developing locally on your mobile phone.
 
-To do that, you need to change your `Vagrantfile` that is located in the `vagrant-local` folder. Search for
+To do that, you need to change your `Vagrantfile` located in the `vagrant-local` folder. Search for
 
 `config.vm.network :public_network`
 
@@ -91,14 +91,14 @@ In our case, we connect via Wi-Fi, so choose 1. If you're connecting via Etherne
 
 ### Using Webpack and BrowserSync Plugin
 
-Here at Infinum, we use [wp-boilerplate](https://github.com/infinum/wp-boilerplate) to kick start our development. It is a modern way that uses [Webpack](https://webpack.js.org/) to bundle your assets.
+Here at Infinum, we use [wp-boilerplate](https://github.com/infinum/wp-boilerplate) to kick start our development. It is a modern method that uses [Webpack](https://webpack.js.org/) to bundle your assets.
 
 By using that, you'll be able to use [BrowserSync](https://www.npmjs.com/package/browser-sync-webpack-plugin) to test the development in your browser and on a mobile phone. Just follow the instructions in the `wp-boilerplate` repo, and you should be able to easily inspect your site without much hassle.
 
 ## Adding new sites
 
 The official documentation on adding a new site can be found [here](https://varyingvagrantvagrants.org/docs/en-US/adding-a-new-site/). An easier way to provision a new site is using [site templates](https://varyingvagrantvagrants.org/docs/en-US/site-templates/).
-A site template is a git repo that contains scripts and files for setting up a new VVV site automatically.
+A site template is a Git repo that contains scripts and files necessary to set up a new VVV site automatically.
 
 You can also create provision scripts manually. First, you need to add your site to the `vvv-custom.yml` file. It is just a modified copy of the existing `vvv-config.yml` file.
 
@@ -122,7 +122,7 @@ wordpress-infinum:
       - wordpress-infinum.test
 ```
 
-We've told Vagrant that inside `www/wordpress-infinum` there should be a site it can access. So we need to create it. We need to create two additional folders inside that folder—`provision` and `public_html`.
+We've told Vagrant that there should be a site it can access inside `www/wordpress-infinum`. So we need to create it. We need to create two additional folders inside that folder—`provision` and `public_html`.
 
 The `provision` folder holds scripts that will set up the database and Nginx configuration. The `public_html` folder holds the WordPress installation.
 
@@ -211,4 +211,4 @@ sites:
       - example.test
 ```
 
-Then, save `vvv-custom.yml` and run `vagrant reload --provision` to update VVV with the new site. Always reprovision after making changes to `vvv-custom.yml`. Be sure to indent correctly as whitespace matters in YAML files. VVV prefers to indent using two spaces.
+Then save `vvv-custom.yml` and run `vagrant reload --provision` to update VVV with the new site. Always reprovision after making changes to `vvv-custom.yml`. Be sure to indent correctly as whitespace matters in YAML files. VVV prefers to indent using two spaces.
