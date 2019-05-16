@@ -1,7 +1,6 @@
 In order to install a WordPress development environment on [Docker](https://www.docker.com/), you'll need to install Docker and use [docker-compose](https://docs.docker.com/compose/).
 
-Once you have those installed, in your desired folder add `docker-compose.yml` file
-
+Once you have those installed, add the `docker-compose.yml` file in the desired folder.
 
 ```yml
 version: '3.3'
@@ -70,7 +69,7 @@ volumes:
 
 ```
 
-Besides adding `docker-compose.yml` file, create `bin` folder with two files in it: `nginx.conf` and `php.ini` for your nginx and php settings. The `nginx.conf` looks like this
+Besides adding the `docker-compose.yml` file, create a `bin` folder with two files in it — `nginx.conf` and `php.ini` — for your nginx and php settings. The `nginx.conf` file looks like this
 
 ```bash
 ## secure headers
@@ -128,7 +127,7 @@ After adding those files, from your terminal, run the following command
 
 `docker-compose up -d`
 
-This will build docker container and image with the specified settings from the `.yml` file in the detached state.
+This will build a Docker container and image with the specified settings from the `.yml` file in the detached state.
 
 For more information about setting up and using Docker with WordPress, click [here](https://docs.docker.com/samples/wordpress/).
 
