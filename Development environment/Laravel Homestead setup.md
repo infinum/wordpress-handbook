@@ -141,6 +141,7 @@ Sometimes you'll need to change some things inside the virtual machine eg. run a
 
 Vagrant offers a way to temporarily make your local site publicly accessible. That can work with command `vagrant share`, but will only work if only one site is set up for that Vagrant instance.
 Homestead has its own implementation of that feature that supports sharing of multiple sites. It uses Ngrok to tunnel to your local machine.
+
 To do this first access your virtual machine with `vagrant ssh` and then run `share sitename.domain`. Ngrok will do its thing and provide you with publicly accessible URLs for you local site.
 
 For all other advanced feature please check out the [official documentation](https://laravel.com/docs/homestead)
