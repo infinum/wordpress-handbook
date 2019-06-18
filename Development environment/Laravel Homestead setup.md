@@ -110,9 +110,13 @@ databases:
   - wordpress
   ```
 
+Other thing to note is that default Homestead database name is `homestead` and password is `secret`.
+
 ## Using Homestead
 
-When we are done with Homestead configuration, we can start the server with command `vagrant up`, stop the server with `vagrant halt`, restart it with `vagrant reload`. If something is changed in `Homestead.yml` configuration server will need to be reprovisioned so that all changes in configuration are reflected on our sites. To reprovision a server use `vagrant reload --provision`
+When we are done with Homestead configuration, we can start the server with command `vagrant up`, stop the server with `vagrant halt`, restart it with `vagrant reload`. If something is changed in `Homestead.yml` configuration server will need to be reprovisioned so that all changes in configuration are reflected on our sites. To reprovision a server use `vagrant reload --provision`.
+
+Now you have everything to run your WordPress site. Download the instance of WordPress in your preferred way and set it up in `wp-config.php`. To finish installation go to your local site URL (eg. `wordpress.test`).
 
 ## Extra features
 
