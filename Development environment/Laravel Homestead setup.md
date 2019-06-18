@@ -51,7 +51,7 @@ init.bat
 
 Now that we have `Homestead.yml` we can start configuring our environment.
 
-### Configuring Homestead
+## Configuring Homestead
 
 Open `Homestead.yml` in your code editor. You'll see that some parts are already filled.
 
@@ -96,4 +96,47 @@ sites:
       to: /home/vagrant/homestead/www/
   ```
 
-TBC ...
+Sites domain name must also be mapped to the actual IP address of the Vagrant server. That is done by editing `hosts` file of the local machine. This can be done manually, but for a more automated approach it is recommended to use [vagrant-hostsupdater](https://github.com/cogitatio/vagrant-hostsupdater) plugin.
+
+Install it by running: `vagrant plugin install vagrant-hostsupdater` inside the terminal while in `/homestead` directory. Homestead already has config for `vagrant-hostsupdater` plugin and should map all sites domains to Vagrants IP address.
+By default IP address is defined in `Homestead.yml` but you can change it to some other address.
+
+Note for Windows users: You'll need to change permissions on `hosts` file to allow current user write access to that file.
+
+Last thing for basic configuration is database property. With this we define all databases that will be created on server startup or reprovision.
+```yml
+databases:
+  - homestead
+  - wordpress
+  ```
+
+## Using Homestead
+
+When we are done with Homestead configuration, we can start the server with command `vagrant up`, stop the server with `vagrant halt`, restart it with `vagrant reload`. If something is changed in `Homestead.yml` configuration server will need to be reprovisioned so that all changes in configuration are reflected on our sites. To reprovision a server use `vagrant reload --provision`
+
+## Extra features
+
+### Mailhog
+
+Mailhog is really useful tool for intercepting incoming and outgoing emails on local machine. To set it up first create `.env` file in `/homestead` directory and place Mailhog config inside:
+```
+MAIL_DRIVER=smtp
+MAIL_HOST=localhost
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+```
+After that Mailhog interface is accessible on `http://localhost:8025`
+
+### Accessing Vagrant from inside
+
+Sometimes you'll need to change some things inside the virtual machine eg. run a database export or edit `php.ini` file. To access it type `vagrant ssh` and you are in.
+
+### Sharing your sites
+
+Vagrant offers a way to temporarily make your local site publicly accessible. That can work with command `vagrant share`, but will only work if only one site is set up for that Vagrant instance.
+Homestead has its own implementation of that feature that supports sharing of multiple sites. It uses Ngrok to tunnel to your local machine.
+To do this first access your virtual machine with `vagrant ssh` and then run `share sitename.domain`. Ngrok will do its thing and provide you with publicly accessible URLs for you local site.
+
+For all other advanced feature please check out the [official documentation](https://laravel.com/docs/homestead)
