@@ -135,7 +135,9 @@ After that Mailhog interface is accessible on `http://localhost:8025`
 
 ### Accessing Vagrant from inside
 
-Sometimes you'll need to change some things inside the virtual machine eg. run a database export or edit `php.ini` file. To access it type `vagrant ssh` and you are in.
+Sometimes you'll need to change some things inside the virtual machine eg. access your MySQL database, edit `php.ini` file or run some WP CLI functions. To access it type `vagrant ssh` and you are in. Since server and database are inside the virtual machine this is the only way to access them.
+
+You will be positioned in `/home` directory that will contain only `/homestead` directory (the same one that holds Homestead configuration and sites). From there you can navigate to the root folder and other parts of the Linux installation.
 
 ### Sharing your sites
 
