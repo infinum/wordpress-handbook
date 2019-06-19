@@ -14,6 +14,8 @@ As any other Vagrant boxes, Homestead requires a few prerequisites installed:
 
 <sup>2 Not free, but has a free trial period and requires a free Vagrant plug-in</sup>
 
+<sup>If you want to use one of the paid options, you can use your educational budget to cover the cost. For more information consult with your team lead</sup>
+
 For easiest setup use [VirtualBox](https://www.virtualbox.org/wiki/Downloads) as it is free, multi-platform and regularly updated.
 
 After everything is installed we can begin with Homestead setup.
@@ -35,7 +37,9 @@ Go into the directory that repo was cloned in and checkout the latest stable rel
 ```sh
 cd ~/homestead
 
-# Checkout 8.4.0, or a newer stable tag.
+# Checkout latest stable tag.
+# At the time of writing v8.4.0 is latest stable version
+# Check the latest version on https://github.com/laravel/homestead/releases
 git checkout v8.4.0
 ```
 
