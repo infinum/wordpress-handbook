@@ -124,6 +124,26 @@ Now you have everything to run your WordPress site. Download the instance of Wor
 
 ## Extra features
 
+### Accessing Vagrant from inside
+
+Sometimes you'll need to change some things inside the virtual machine eg. access your MySQL database, edit `php.ini` file or run some WP CLI functions. To access it type `vagrant ssh` and you are in. Since server and database are inside the virtual machine this is the only way to access them.
+
+You will be positioned in `/home` directory that will contain only `/homestead` directory (the same one that holds Homestead configuration and sites). From there you can navigate to the root folder and other parts of the Linux installation.
+
+### Installing PHPMyAdmin
+
+To install PHPMyAdmin on Homestead you will need to setup a new site in `Homestead.yml` for specific Homestead instance. Define a local URL to PHPMyAdmin application and
+
+```yml
+sites:
+    - map: phpmyadmin.test
+      to: /home/vagrant/homestead/www/phpmyadmin
+```
+
+After that log into homestead box with `vagrant ssh` and position yourself in a directory that holds all your projects (in this case that would be `www` directory).
+
+Run `curl -sS https://raw.githubusercontent.com/grrnikos/pma/master/pma.sh | sh` and that would be it. Visit the PHPMyAdmin local URL and log in with default Homestead database credentials.
+
 ### Mailhog
 
 Mailhog is really useful tool for intercepting incoming and outgoing emails on local machine. To set it up first create `.env` file in `/homestead` directory and place Mailhog config inside:
@@ -136,12 +156,6 @@ MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null
 ```
 After that Mailhog interface is accessible on `http://localhost:8025`
-
-### Accessing Vagrant from inside
-
-Sometimes you'll need to change some things inside the virtual machine eg. access your MySQL database, edit `php.ini` file or run some WP CLI functions. To access it type `vagrant ssh` and you are in. Since server and database are inside the virtual machine this is the only way to access them.
-
-You will be positioned in `/home` directory that will contain only `/homestead` directory (the same one that holds Homestead configuration and sites). From there you can navigate to the root folder and other parts of the Linux installation.
 
 ### Sharing your sites
 
