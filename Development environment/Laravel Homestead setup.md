@@ -107,6 +107,7 @@ The IP address is by default defined in `Homestead.yml`, but you can change it t
 Note for Windows users: You'll need to change permissions on the `hosts` file to give the current user write access to that file.
 
 The last thing in basic configuration is database property. With this, we define all databases that will be created on server startup or reprovision.
+
 ```yml
 databases:
   - homestead
@@ -146,6 +147,7 @@ Run `curl -sS https://raw.githubusercontent.com/grrnikos/pma/master/pma.sh | sh`
 ### Mailhog
 
 Mailhog is a really useful tool for intercepting incoming and outgoing emails on a local machine. To set it up, first create a `.env` file in the `/homestead` directory and place the Mailhog config inside:
+
 ```
 MAIL_DRIVER=smtp
 MAIL_HOST=localhost
