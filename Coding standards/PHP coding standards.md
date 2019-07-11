@@ -379,8 +379,7 @@ It's better to do a query with the smallest possible number of dimensions, and t
 ### Post status security
 
 When setting the `post_status` to anything other than `public` always add `'perm' => 'readable'` argument.
-This is due to a possible information disclosure vulnerability that you can read more about here: [WP_Query docs](https://developer.wordpress.org/reference/classes/wp_query/#comment-2378).
-
+This is due to a possible information disclosure vulnerability which you can read more about here: [WP_Query docs](https://developer.wordpress.org/reference/classes/wp_query/#comment-2378).
 
 ## Functional programming
 
