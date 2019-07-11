@@ -376,6 +376,11 @@ Avoid multi-dimensional queries—post queries based on terms across multiple ta
 
 It's better to do a query with the smallest possible number of dimensions, and then filter out the results with PHP.
 
+### Post status security
+
+When setting the `post_status` to anything other than `public` always add `'perm' => 'readable'` argument.
+This is due to a possible information disclosure vulnerability which you can read more about here: [WP_Query docs](https://developer.wordpress.org/reference/classes/wp_query/#comment-2378).
+
 ## Functional programming
 
 Although we cannot write fully functional code because PHP is not a functional programming language, we can use some of the functional techniques while writing our code. This can improve code readability and ease of maintenance.

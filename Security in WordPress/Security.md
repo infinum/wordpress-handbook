@@ -148,7 +148,7 @@ docker pull wpscanteam/wpscan
 Start the scan with
 
 ```bash
-docker run -it --rm wpscanteam/wpscan -u https://yourblog.com [options]
+docker run -it --rm wpscanteam/wpscan --url https://yourblog.com [options]
 ```
 
 You replace `https://yourblog.com` with your local installation of WordPress. You can see the list of options [here](https://github.com/wpscanteam/wpscan#wpscan-arguments). Or just leave that empty.

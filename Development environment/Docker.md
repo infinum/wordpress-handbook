@@ -275,3 +275,7 @@ Prune the system from unused images, containers, and networks [documentation lin
 ### Docker notes
 
 Depending on your project, the Docker compose or Dockerfile may differ. For more information, consult your friendly devops.
+
+### Useful links
+
+[Structuring the Docker setup for PHP projects](https://www.pascallandau.com/blog/structuring-the-docker-setup-for-php-projects/)
