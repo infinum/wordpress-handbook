@@ -1,9 +1,9 @@
 [WordPress developer reference](https://developer.wordpress.org/reference/)
 
-[WordPress Core handbook](https://make.wordpress.org/core/handbook/)
-[WordPress Themes handbook](https://make.wordpress.org/themes/handbook/)
-[WordPress Plugins handbook](https://make.wordpress.org/plugins/handbook/)
-[Gutenberg documentation](https://developer.wordpress.org/block-editor/)
+[WordPress Core Handbook](https://make.wordpress.org/core/handbook/)
+[WordPress Themes Handbook](https://make.wordpress.org/themes/handbook/)
+[WordPress Plugins Handbook](https://make.wordpress.org/plugins/handbook/)
+[Gutenberg Documentation](https://developer.wordpress.org/block-editor/)
 
 [Infinum Handbooks](https://handbook.infinum.co/)
 
