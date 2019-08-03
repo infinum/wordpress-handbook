@@ -1,4 +1,4 @@
-When working on enterprise projects, it is vital to follow the best security practices. Security and risk assessment are a crucial part of software development. Security is also everyone's job and should be embedded in every business process and operation.
+When working on enterprise projects, it is vital to follow the recommended security practices. Security and risk assessment are a crucial part of software development. Security is also everyone's job and should be embedded in every business process and operation.
 
 ## Core concepts
 
@@ -64,7 +64,7 @@ Boilerplate already comes bundled with [coding standards](https://github.com/inf
 composer require infinum/coding-standards-wp --dev
 ```
 
-The code sniffer tokenizes your code against a set of sniffs that look for best practices and possible security issues.
+The code sniffer tokenizes your code against a set of sniffs that look for certain common practices and possible security issues.
 
 ### SonarQube
 
