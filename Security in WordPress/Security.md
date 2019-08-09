@@ -1,4 +1,4 @@
-When working on enterprise projects, it is vital to follow the recommended security practices. Security and risk assessment are a crucial part of software development. Security is also everyone's job and should be embedded in every business process and operation.
+When working on enterprise projects, it is vital to follow recommended security practices. Security and risk assessment are a crucial part of software development. Security is also everyone's job and should be embedded in every business process and operation.
 
 ## Core concepts
 
