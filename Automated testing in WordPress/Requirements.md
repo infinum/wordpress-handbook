@@ -1,7 +1,7 @@
 In order to set up tests and run code coverage, you need to have certain software on your local Mac.
 
 1. Composer—to download test libraries and PHPUnit
-2. Xdebug—to generate code coverage
+2. Xdebug or PCOV—to generate code coverage
 3. Node.js—if you want to write JS tests for your projects
 
 While Composer and Node should be installed on your computer by now, the Xdebug module is most probably not installed.
@@ -116,11 +116,52 @@ You can see that `pecl` is symlinked to `/usr/local/lib/php/pecl`, but `which pe
 ```bash
 unlink pecl
 ```
+
 Now you can install Xdebug again, and it should work as described in the previous case (follow the steps described above to add it correctly in your `php.ini`).
 
 ## Possible side effects
 
 A possible side effect of running Xdebug, especially if you enable profiler output in Xdebug settings in `php.ini`, is that that file can grow very large. To prevent this, just make sure you delete it every once in a while, or simply don't enable logging.
 
+## Installing PCOV
 
+The problem with using Xdebug to generate code coverage is that it's primarily a debugging tool. That means that it adds a huge overhead when generating code coverage. Which ultimately means that the tests take a long time to execute (when generating code coverage).
 
+Luckily for us there is a way to shorten that time and use less memory. [PCOV](https://github.com/krakjoe/pcov) is a self contained [CodeCoverage](https://github.com/sebastianbergmann/php-code-coverage) compatible driver for PHP7. By default it comes enabled on PHPUnit8, but since PHPUnit8 has introduced some typehints only compatible with PHP 7.2 (or newer), that means that we cannot (yet) use it for running the tests.
+
+We can install PCOV as an extension, and use [pcov-clobber](https://github.com/krakjoe/pcov-clobber) to run it on PHPUnit7.
+
+You can install PCOV using pecl
+
+```bash
+pecl install pcov
+```
+
+Or by cloning it and compiling it manually
+
+```bash
+git clone https://github.com/krakjoe/pcov.git
+cd pcov
+phpize
+./configure --enable-pcov
+make
+make test
+make install
+```
+
+Then you need to add to your `php.ini`
+
+```bash
+extension=/usr/local/Cellar/php/7.3.7/pecl/20180731/pcov.so # This can vary on your system
+pcov.enabled = 1
+```
+
+Finally, using composer install the `pcov-clobber` in your project
+
+```bash
+composer require pcov/clobber --dev
+```
+
+and run `vendor/bin/pcov clobber`.
+
+Be sure to disable the Xdebug extension in your `php.ini` (you can comment it using `;`).
