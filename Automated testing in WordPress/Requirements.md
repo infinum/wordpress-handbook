@@ -165,4 +165,3 @@ composer require pcov/clobber --dev
 and run `vendor/bin/pcov clobber`.
 
 Be sure to disable the Xdebug extension in your `php.ini` (you can comment it using `;`).
-
