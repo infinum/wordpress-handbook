@@ -1,6 +1,6 @@
 When you want to develop a WordPress app, or you are joining an existing project, it is important to have local development ready. There are a number of solutions that can be used.
 
-If you want to use simple solutions that only include the bare minimum (server config), you can use [WAMP](www.wampserver.com/en/), [MAMP](https://www.mamp.info/en/), [XAMPP](https://www.apachefriends.org/index.html), or [Local by Flywheel](https://local.getflywheel.com/).
+If you want to use simple solutions that only include the bare minimum (server config), you can use [WAMP](http://www.wampserver.com/en/), [MAMP](https://www.mamp.info/en/), [XAMPP](https://www.apachefriends.org/index.html), or [Local by Flywheel](https://local.getflywheel.com/).
 
 However, we do recommend more WordPress-friendly solutions. One such solution is [Varying Vagrant Vagrants](https://github.com/Varying-Vagrant-Vagrants/VVV). It is a Vagrant configuration focused on WordPress development. The advantage of VVV over MAMP or XAMPP is that it comes bundled with a WordPress-ready server configuration and software packages, such as `php-fpm`, `WP-CLI`, `Composer`, `NodeJs`, and other useful packages.
 
