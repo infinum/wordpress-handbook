@@ -2,6 +2,39 @@ In general, we follow the [WordPress PHP Coding Standards](https://make.wordpres
 
 To check code automatically, we use [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/), together with our [modified coding standards](https://github.com/infinum/coding-standards-wp).
 
+## Table of contents
+
+- [Naming](#naming)
+  * [File Naming](#file-naming)
+  * [Naming Conventions](#naming-conventions)
+  * [Namespacing and class names](#namespacing-and-class-names)
+  * [Yoda Conditions](#yoda-conditions)
+  * [Functions](#functions)
+    + [Class method visibility](#class-method-visibility)
+- [Writing style](#writing-style)
+  * [Inline statements](#inline-statements)
+  * [Multiple statements](#multiple-statements)
+  * [Strict comparison](#strict-comparison)
+- [Type hinting](#type-hinting)
+- [Sanitization and escaping](#sanitization-and-escaping)
+- [Documentation](#documentation)
+- [Database Queries](#database-queries)
+- [Functional programming](#functional-programming)
+  * [Mapping](#mapping)
+  * [Reducing](#reducing)
+  * [Filtering](#filtering)
+  * [Anonymous functions](#anonymous-functions)
+  * [Closures](#closures)
+  * [Memoization](#memoization)
+  * [Links on functional PHP programming](#links-on-functional-php-programming)
+- [Optimizations](#optimizations)
+  * [Array checking](#array-checking)
+  * [Using array_push() and similar functions](#using-array-push---and-similar-functions)
+  * [Caching](#caching)
+  * [I18n](#i18n)
+  * [A11y](#a11y)
+
+
 ## Naming
 
 ### File naming
@@ -122,7 +155,7 @@ echo esc_html( $x );
 echo esc_html( $x );
 ```
 
-Use braces to write conditionals or control statements on a single line
+Writing conditionals, or control statements on a single line should be done with braces
 
 ```php
 <?php
@@ -131,7 +164,7 @@ if ( $some_variable === true ) { ?>
 <?php } ?>
 ```
 
-Never write inline statements without braces. This is an extremely bad practice because it produces code that is hard to read and maintain.
+Never write inline statements without braces. This is an extremely bad practice because it produces code that is hard to read and hard to maintain.
 
 ```php
 <?php
