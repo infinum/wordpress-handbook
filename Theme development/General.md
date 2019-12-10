@@ -1,6 +1,6 @@
 WordPress has evolved a lot since its beginnings. Apart from being a simple blog CMS, you can use it for other purposes—enterprise solutions for banks and large news portals, eCommerce solutions, web apps, etc.
 
-Here at Infinum, we are always looking to advance our knowledge about modern technologies. This is why we've developed a [wp-boilerplate](https://github.com/infinum/wp-boilerplate). This is sort of a backbone solution to start your project. It uses [Webpack](https://webpack.js.org/) to bundle your files, [Sass](http://sass-lang.com/) for modern and quick styling using [BEM methodology](http://getbem.com/), [ESLint](http://eslint.org/) for JavaScript check, and [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) for checking PHP files.
+Here at Infinum, we are always looking to advance our knowledge about modern technologies. This is why we've developed a [eightshift-boilerplate](https://github.com/infinum/eightshift-boilerplate). This is sort of a backbone solution to start your project. It uses [Webpack](https://webpack.js.org/) to bundle your files, [Sass](http://sass-lang.com/) for modern and quick styling using [BEM methodology](http://getbem.com/), [ESLint](http://eslint.org/) for JavaScript check, and [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) for checking PHP files.
 
 It also uses OOP principles, such as namespacing, classes, and autoloading using Composer.
 

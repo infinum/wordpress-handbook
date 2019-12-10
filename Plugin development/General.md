@@ -1,8 +1,6 @@
-Plugin development is carried out using the [WordPress Plugin Boilerplate](http://wppb.io/). You can find a simple generator for your plugin [here](https://wppb.me/).
+Plugin development doesn't really differ from the theme development. You can use our boilerplate with libs to build a plugin in pretty much the same way you'd build a theme.
 
-Note that plugins are written in an object-oriented way, whereas the theme is usually written in a procedural way. Object-oriented programming allows for better separation of concerns.
-
-We are also working on our version of the plugin boilerplate, which can be found [here](https://github.com/infinum/wp-boilerplate-plugin).
+Themes usually handle presentational logic, while plugins handle business logic.
 
 ### When should I create a plugin?
 
@@ -20,4 +18,4 @@ No, unless they are poorly coded. But our coding standards are high, so this usu
 
 Write plugins only if you don't find a good free or paid plugin online. For instance, there is no need to write your own contact form plugin when a good plugin is already available—([Contact Form 7](https://wordpress.org/plugins/contact-form-7/)). The same goes for a SEO plugin—([Yoast SEO](https://wordpress.org/plugins/wordpress-seo/)).
 
-Reverse logic also applies—if a plugin for some functionality already exists, but it has a lot of unnecessary overhead code that you don't need, it would be better to write your own plugin (if the time and budget constraints of the project allow it, of course).
+Reverse logic also applies — if a plugin for some functionality already exists, but it has a lot of unnecessary overhead code that you don't need, it would be better to write your own plugin (if the time and budget constraints of the project allow it, of course).

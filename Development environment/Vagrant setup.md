@@ -91,9 +91,9 @@ In our case, we connect via Wi-Fi, so choose 1. If you're connecting via Etherne
 
 ### Using Webpack and BrowserSync Plugin
 
-Here at Infinum, we use [wp-boilerplate](https://github.com/infinum/wp-boilerplate) to kick start our development. It is a modern method that uses [Webpack](https://webpack.js.org/) to bundle your assets.
+Here at Infinum, we use [eightshift-boilerplate](https://github.com/infinum/eightshift-boilerplate) to kick start our development. It is a modern method that uses [Webpack](https://webpack.js.org/) to bundle your assets.
 
-By using that, you'll be able to use [BrowserSync](https://www.npmjs.com/package/browser-sync-webpack-plugin) to test the development in your browser and on a mobile phone. Just follow the instructions in the `wp-boilerplate` repo, and you should be able to easily inspect your site without much hassle.
+By using that, you'll be able to use [BrowserSync](https://www.npmjs.com/package/browser-sync-webpack-plugin) to test the development in your browser and on a mobile phone. Just follow the instructions in the `eightshift-boilerplate` repo, and you should be able to easily inspect your site without much hassle.
 
 ## Adding new sites
 
