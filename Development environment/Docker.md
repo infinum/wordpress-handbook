@@ -1,127 +1,6 @@
 In order to install a WordPress development environment on [Docker](https://www.docker.com/), you'll need to install Docker and use [docker-compose](https://docs.docker.com/compose/).
 
-Once you have those installed, add the `docker-compose.yml` file in the desired folder.
-
-```yml
-version: '3.3'
-
-services:
-
-  app:
-    image: wordpress:5.2-fpm
-    container_name: wp-docker-app
-    depends_on:
-      - db
-    restart: always
-    volumes:
-      - ./bin/php.ini:/usr/local/etc/php/conf.d/local.ini
-      - .:/var/www/html
-    environment:
-      WORDPRESS_DB_HOST: wp-docker-db
-      WORDPRESS_DB_NAME: wordpress-handbook-app
-      WORDPRESS_DB_USER: wp
-      WORDPRESS_DB_PASSWORD: wp
-    expose:
-      - "80"
-
-  db:
-    image: mysql:5.7
-    container_name: wp-docker-db
-    restart: always
-    volumes:
-      - db_data:/var/lib/mysql
-    environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: 1
-      MYSQL_DATABASE: wordpress-handbook-app
-      MYSQL_USER: wp
-      MYSQL_PASSWORD: wp
-    ports:
-      - "33066:3306"
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: wp-docker-phpmyadmin
-    external_links:
-      - db
-    ports:
-      - 8181:80
-    environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: 1
-      MYSQL_USERNAME: root
-
-  nginx:
-    image: nginx
-    container_name: wp-docker-nginx
-    restart: always
-    volumes:
-      - ./:/var/www/html
-    depends_on:
-      - app
-    volumes:
-      - ./bin/nginx.conf:/etc/nginx/conf.d/default.conf
-      - .:/var/www/html
-      - ./logs:/var/log/nginx
-    ports:
-      - 8010:80
-
-volumes:
-  db_data:
-
-```
-
-Besides adding the `docker-compose.yml` file, create a `bin` folder with two files in it — `nginx.conf` and `php.ini` — for your nginx and php settings. The `nginx.conf` file looks like this
-
-```bash
-## secure headers
-# https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#xxxsp
-add_header X-Xss-Protection "1; mode=block" always;
-# https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#xfo
-add_header X-Frame-Options "SAMEORIGIN" always;
-# https://www.owasp.org/index.php/OWASP_Secure_Headers_Project#xcto
-add_header X-Content-Type-Options "nosniff" always;
-
-## global fastcgi config
-fastcgi_hide_header X-Powered-By;
-fastcgi_pass_header Authorization;
-
-server {
-    listen 80;
-
-    add_header Strict-Transport-Security "max-age=31536000" always;
-
-    root /var/www/html;
-    index index.php;
-
-    access_log /var/log/nginx/access.log;
-    error_log /var/log/nginx/error.log;
-
-    client_max_body_size 64M;
-
-    location / {
-        try_files $uri $uri/ /index.php?$args;
-    }
-
-    location ~ \.php$ {
-        try_files $uri =404;
-        fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass app:9000;
-        fastcgi_index index.php;
-        include fastcgi_params;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param PATH_INFO $fastcgi_path_info;
-    }
-}
-```
-
-And `php.ini` looks like this
-
-```bash
-file_uploads = On
-memory_limit = 512M
-upload_max_filesize = 64M
-post_max_size = 64M
-max_execution_time = 600
-```
+For setting up docker with SSL enabled you can check the [wordpress-docker](https://github.com/dingo-d/wordpress-docker) repository.
 
 After adding those files, from your terminal, run the following command
 
@@ -147,7 +26,7 @@ e1f1d0799b40    mysql:5.7                 "docker-entrypoint.s…"   10 seconds 
 352d5f6f64a9    phpmyadmin/phpmyadmin     "/run.sh supervisord…"   10 seconds ago  Up 8 seconds   9000/tcp, 0.0.0.0:8181->80/tcp          wp-docker-phpmyadmin
 ```
 
-Your project will be available on `http://localhost:8010`. Setting up HTTPS is a bit tricky but doable (you can try it yourself 😄).
+Your project will be available on `https://your.custom.url.test:8443`. 
 
 Another way of using Docker is to use `Dockerfile`, which is especially useful when working on continuous integration and deployment (CI/CD). For instance, one such Dockerfile can look like this
 
