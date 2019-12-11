@@ -4,35 +4,37 @@ To check code automatically, we use [PHP_CodeSniffer](https://github.com/squizla
 
 ## Table of contents
 
+- [Table of contents](#table-of-contents)
 - [Naming](#naming)
-  * [File Naming](#file-naming)
-  * [Naming Conventions](#naming-conventions)
-  * [Namespacing and class names](#namespacing-and-class-names)
-  * [Yoda Conditions](#yoda-conditions)
-  * [Functions](#functions)
-    + [Class method visibility](#class-method-visibility)
+  - [File naming](#file-naming)
+  - [Naming conventions](#naming-conventions)
+  - [Namespacing and class names](#namespacing-and-class-names)
+  - [Yoda Conditions](#yoda-conditions)
+  - [Functions](#functions)
+    - [Class method visibility](#class-method-visibility)
 - [Writing style](#writing-style)
-  * [Inline statements](#inline-statements)
-  * [Multiple statements](#multiple-statements)
-  * [Strict comparison](#strict-comparison)
+  - [Inline statements](#inline-statements)
+  - [Multiple statements](#multiple-statements)
+  - [Strict comparison](#strict-comparison)
 - [Type hinting](#type-hinting)
 - [Sanitization and escaping](#sanitization-and-escaping)
 - [Documentation](#documentation)
 - [Database Queries](#database-queries)
+  - [Post status security](#post-status-security)
 - [Functional programming](#functional-programming)
-  * [Mapping](#mapping)
-  * [Reducing](#reducing)
-  * [Filtering](#filtering)
-  * [Anonymous functions](#anonymous-functions)
-  * [Closures](#closures)
-  * [Memoization](#memoization)
-  * [Links on functional PHP programming](#links-on-functional-php-programming)
+  - [Mapping](#mapping)
+  - [Reducing](#reducing)
+  - [Filtering](#filtering)
+  - [Anonymous functions](#anonymous-functions)
+  - [Closures](#closures)
+  - [Memoization](#memoization)
+  - [Links on functional PHP programming](#links-on-functional-php-programming)
 - [Optimizations](#optimizations)
-  * [Array checking](#array-checking)
-  * [Using array_push() and similar functions](#using-array-push---and-similar-functions)
-  * [Caching](#caching)
-  * [I18n](#i18n)
-  * [A11y](#a11y)
+  - [Array checking](#array-checking)
+  - [Using array_push() and similar functions](#using-arraypush-and-similar-functions)
+  - [Caching](#caching)
+  - [I18n](#i18n)
+  - [A11y](#a11y)
 
 
 ## Naming
@@ -147,12 +149,13 @@ Always add visibility keywords to methods and properties inside classes (`public
 Inline statements should have opening and closing PHP tags on the same line
 
 ```php
-<?php
 // Yes:
-echo esc_html( $x );
+<?php echo esc_html( $x ); ?>
 
 // No:
-echo esc_html( $x );
+<?php
+  echo esc_html
+?>
 ```
 
 Writing conditionals, or control statements on a single line should be done with braces
