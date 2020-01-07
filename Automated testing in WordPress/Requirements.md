@@ -4,7 +4,7 @@ In order to set up tests and run code coverage, you need to have certain softwar
 2. Xdebug or PCOV—to generate code coverage
 3. Node.js—if you want to write JS tests for your projects
 
-While Composer and Node should be installed on your computer by now, the Xdebug module is most probably not installed.
+While Composer and Node should have been installed on your computer by now, the Xdebug module is most probably not installed.
 
 ## Installing Xdebug
 
@@ -16,13 +16,13 @@ which pecl
 /usr/local/bin/pecl
 ```
 
-Try to install xdebug
+Try to install xdebug:
 
 ```bash
 pecl install xdebug
 ```
 
-That can be done in two ways: your installation passes, and you get a message like this
+That can be done in two ways: your installation passes, and you get a message like this:
 
 ### Successful installation
 
@@ -35,7 +35,7 @@ install ok: channel://pecl.php.net/xdebug-2.7.2
 Extension xdebug enabled in php.ini
 ```
 
-In this case, all you need to check is if PHP has linked the module correctly.
+In this case, all you need to check is whether PHP has linked the module correctly.
 
 ```bash
 php -v
@@ -47,7 +47,7 @@ Zend Engine v3.3.7, Copyright (c) 1998-2018 Zend Technologies
     with Zend OPcache v7.3.7, Copyright (c) 1999-2018, by Zend Technologies
 ```
 
-If you get an error message, you'll need to find your `php.ini` file
+If you get an error message, you'll need to find your `php.ini` file.
 
 ```bash
 php -i | grep .ini
@@ -79,7 +79,7 @@ That's it, you're ready to go.
 
 ### Unsuccessful installation
 
-When installing Xdebug, you might get the following error
+When installing Xdebug, you might get the following error:
 
 ```bash
 Build process completed successfully
@@ -92,7 +92,7 @@ Warning: mkdir(): File exists in /usr/local/Cellar/php/7.3.7/share/php/pear/Syst
 ERROR: failed to mkdir /usr/local/Cellar/php/7.3.7/pecl/20180731
 ```
 
-Go to your php installation folder (`/usr/local/Cellar/php/7.3.7/`, for instance) and type
+Go to your PHP installation folder (`/usr/local/Cellar/php/7.3.7/`, for instance) and type
 
 ```bash
 ls -all
@@ -111,23 +111,23 @@ drwxr-xr-x   3 infinum-denis  staff    96B Jul  3 13:30 sbin
 drwxr-xr-x   4 infinum-denis  staff   128B Jul  3 13:30 share
 ```
 
-You can see that `pecl` is symlinked to `/usr/local/lib/php/pecl`, but `which pecl` specified `/usr/local/bin/pecl`, which is itself a symlink to `/usr/local/Cellar/php/7.3.7/bin/pecl`. So you need to remove the symlink
+You can see that `pecl` is symlinked to `/usr/local/lib/php/pecl`, but `which pecl` specified `/usr/local/bin/pecl`, which is itself a symlink to `/usr/local/Cellar/php/7.3.7/bin/pecl`. Therefore, you need to remove the symlink.
 
 ```bash
 unlink pecl
 ```
 
-Now you can install Xdebug again, and it should work as described in the previous case (follow the steps described above to add it correctly in your `php.ini`).
+Now you can install Xdebug again, and it should work as described in the previous case (follow the steps described above to add it correctly into your `php.ini`).
 
 ## Possible side effects
 
-A possible side effect of running Xdebug, especially if you enable profiler output in Xdebug settings in `php.ini`, is that that file can grow very large. To prevent this, just make sure you delete it every once in a while, or simply don't enable logging.
+A possible side effect of running Xdebug, especially if you enable profiler output in Xdebug settings in `php.ini`, is that the file can grow very large. To prevent this, just make sure you delete it every once in a while, or simply don't enable logging.
 
 ## Installing PCOV
 
-The problem with using Xdebug to generate code coverage is that it's primarily a debugging tool. That means that it adds a huge overhead when generating code coverage. Which ultimately means that the tests take a long time to execute (when generating code coverage).
+The problem with using Xdebug to generate code coverage is that it is primarily a debugging tool. That means that it adds a huge overhead when generating code coverage, so, ultimately, the tests take a long time to execute.
 
-Luckily for us there is a way to shorten that time and use less memory. [PCOV](https://github.com/krakjoe/pcov) is a self contained [CodeCoverage](https://github.com/sebastianbergmann/php-code-coverage) compatible driver for PHP7. By default it comes enabled on PHPUnit8, but since PHPUnit8 has introduced some typehints only compatible with PHP 7.2 (or newer), that means that we cannot (yet) use it for running the tests.
+Luckily for us, there is a way to shorten that time and use less memory. [PCOV](https://github.com/krakjoe/pcov) is a self contained [CodeCoverage](https://github.com/sebastianbergmann/php-code-coverage) compatible driver for PHP7. It comes enabled on PHPUnit8 by default. However, since PHPUnit8 has introduced some typehints compatible with PHP 7.2 (or newer) only, we cannot (yet) use it for running the tests.
 
 We can install PCOV as an extension, and use [pcov-clobber](https://github.com/krakjoe/pcov-clobber) to run it on PHPUnit7.
 
@@ -137,7 +137,7 @@ You can install PCOV using pecl
 pecl install pcov
 ```
 
-Or by cloning it and compiling it manually
+or by cloning and compiling it manually.
 
 ```bash
 git clone https://github.com/krakjoe/pcov.git
@@ -149,14 +149,14 @@ make test
 make install
 ```
 
-Then you need to add to your `php.ini`
+Then, you need to add the following to your `php.ini`:
 
 ```bash
 extension=/usr/local/Cellar/php/7.3.7/pecl/20180731/pcov.so # This can vary on your system
 pcov.enabled = 1
 ```
 
-Finally, using composer install the `pcov-clobber` in your project
+Finally, install the `pcov-clobber` in your project using composer:
 
 ```bash
 composer require pcov/clobber --dev

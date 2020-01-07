@@ -8,7 +8,7 @@ chmod +x phpunit.phar
 mv phpunit.phar /usr/local/bin/phpunit
 ```
 
-or you can run
+You can also run
 
 ```bash
 brew install phpunit
@@ -73,7 +73,7 @@ To run unit tests, you need to specify the `phpunit.xml.dist` file. An example m
 
 Here we've specified that code coverage should be created. For that to be done, you need to have Xdebug installed on your system. Keep in mind that Xdebug may significantly reduce the speed of your tests.
 
-In the root directory—next to `wp-tests-config.php`, the `tests/` folder, and the `phpunit.xml.dist` file, run:
+In the root directory—next to `wp-tests-config.php`, the `tests/` folder, and the `phpunit.xml.dist` file—run:
 
 ```bash
 vendor/bin/phpunit
@@ -109,7 +109,7 @@ After `grunt-cli` has been installed, run
 grunt build
 ```
 
-If the build fails on the `node-sass` package, try rebuilding it again
+If the build fails on the `node-sass` package, try rebuilding it again.
 
 ```bash
 npm rebuild node-sass
@@ -119,7 +119,7 @@ npm rebuild node-sass
 
 ### Applying a patch
 
-Make sure that VVV is running and the above steps have been completed. Then you can ssh to Vagrant, go to the `wordpress-develop/public_html/` folder and run
+Make sure that VVV is running and the above steps have been completed. You can then ssh to Vagrant, go to the `wordpress-develop/public_html/` folder and run
 
 ```bash
 grunt watch &
@@ -132,19 +132,19 @@ Now you’re ready to patch. Find a ticket with patches. This example uses `#118
 grunt patch:11863
 ```
 
-This will show the available patches that you can select from (if there are multiple patches). After you select it, you can log in to `http://src.wordpress-develop.dev/` (or `http://src.wordpress-develop.test/`). You can test the effects of that patch and, after you're done with it, you can revert it using
+This will show the available patches you can choose from (if there are multiple patches). After you select the patch, you can log into `http://src.wordpress-develop.dev/` (or `http://src.wordpress-develop.test/`). You can test the effects of that patch and, after you're done with it, you can revert it using
 
 ```bash
 svn revert -R
 ```
 
-or with
+or
 
 ```bash
 svn revert -R --cl revertme .
 ```
 
-You can comment on the Trac ticket with the findings, or create you own patch.
+You can comment on the Trac ticket with the findings or create you own patch.
 
 ### Testing outside wordpress-develop
 
@@ -155,4 +155,4 @@ In that case, just go to public_html and run
 svn co https://develop.svn.wordpress.org/trunk/ .
 ```
 
-This will download all necessary files for testing and patching as described above.
+This will download all files that are necessary for testing and patching, as described above.

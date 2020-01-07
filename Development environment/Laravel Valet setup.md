@@ -24,13 +24,13 @@ The setup for Valet is really easy.
 
 ### Composer not in the global system `$PATH`
 
-When you type `echo $PATH`, you should get something like this
+When you type `echo $PATH`, you should get something like this:
 
 ```sh
 /Users/infinum/.composer/vendor/bin:/usr/local/sbin:/Users/infinum/wpcs/vendor/bin:/Users/infinum/.rbenv/shims:/Users/infinum/.rbenv/bin:/Users/infinum/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
 ```
 
-If you don't have the `/Users/infinum/.composer/vendor/bin` part, that means you need to add the composer to the global system `$PATH`, so that it is available for use through your terminal.
+If the `/Users/infinum/.composer/vendor/bin` part is missing, it means that you need to add the composer to the global system `$PATH`, so that it is available for use through your terminal.
 
 If you are using Z shell, you need to edit your `/.zshrc` file, and add
 
@@ -42,9 +42,9 @@ to the list. Then you need to restart the terminal, and the composer should be a
 
 ## Setting up the site
 
-Valet has a built-in WordPress driver, so it supports running WordPress. You can serve your sites in two ways—using the `park` or `link` option.
+Valet has a built-in WordPress driver, so it supports running WordPress. You can serve your sites in two ways — by using the `park` or `link` option.
 
-The `park` option can be used to add a whole folder to Valet. Every folder in there will then be mapped to a site and get its own `.dev` domain. So, if you add `~/Sites` folder to Valet and have a subfolder in there named `wp-valet`, the content of that folder will be served when you visit `http://wp-valet.dev` in your browser. No setup required. The `link` option can be used to serve a single site, without adding a whole directory.
+The `park` option can be used to add a whole folder to Valet. Every folder in there will then be mapped to a site and get its own `.dev` domain. So, if you add `~/Sites` folder to Valet and have a subfolder in there named `wp-valet`, the content of that folder will be served when you visit `http://wp-valet.dev` in your browser. No setup is required. The `link` option can be used to serve a single site, without adding a whole directory.
 
 ```sh
 $ mkdir ~/Sites
@@ -52,7 +52,7 @@ $ cd ~/Sites
 $ valet park
 ```
 
-Then you need to add the `wp-valet` folder and use [WP CLI](http://wp-cli.org/) to install WordPress.
+Then, you need to add the `wp-valet` folder and use [WP CLI](http://wp-cli.org/) to install WordPress.
 
 ```sh
 $ mkdir wp-valet
@@ -64,9 +64,9 @@ And this is it. Once you do this, you should be able to go to `http://wp-valet.d
 
 ## Possible issues
 
-### mysql not started and database not set up
+### MySQL not started and database not set up
 
-In the odd case that installation doesn't work, and you get the blue 404 screen, try checking that you are connected to the mysql database.
+In the odd case that installation does not work and you get the blue 404 screen, try checking whether you are connected to the MySQL database.
 
 ```sh
 brew services list
@@ -83,13 +83,13 @@ php71      started root          /Library/LaunchDaemons/homebrew.mxcl.php71.plis
 postgresql started infinum-denis /Users/infinum/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 ```
 
-If mysql is not running, start it with
+If MySQL is not running, start it with
 
 ```sh
 brew services start mysql
 ```
 
-Log into your mysql with `mysql -u root` and create the desired database.
+Log into your MySQL with `mysql -u root` and create the desired database.
 
 
 ```sh

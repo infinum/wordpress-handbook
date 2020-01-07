@@ -1,10 +1,10 @@
 Unit testing is a level of software testing where individual units/components of software are tested. The purpose of unit tests is to validate that each unit of software performs as designed.
 
-In terms of PHP and WordPress, a single 'unit' is a function or a class. Unit testing is dynamic testing of individual units in isolation. This means that code has to be executed (dynamic). In contrast, static testing is checking for code smells, for which we use linters and code sniffers.
+In terms of PHP and WordPress, a single 'unit' is a function or a class. Unit testing is dynamic testing of individual units in isolation. This means that the code has to be executed (dynamic). In contrast, static testing is checking for code smells, for which we use linters and code sniffers.
 
 Testing in isolation means that we only execute the code that we want to test and no other unit. We are not interested in coupling—this is what integration tests are for.
 
-An example of a _non-unit_ test would be
+An example of a _non-unit_ test would be:
 
 ```php
 function test_register_taxonomy() {
@@ -26,7 +26,7 @@ You can see that this test calls to multiple WordPress functions like `taxonomy_
 
 What if your code is dependent on some core functionality? In that case, we need to mock our functions. In the world of unit testing, there are things like mocks, stubs, spies, fake objects, fake functions, dummy functions, test doubles, and other. We won't be going into detail about them. We want to execute real methods for the test without any errors and other fake units without any real logic (mocks) thrown in.
 
-For instance, say you have a method that will disable certain REST endpoints in your code, that looks like this
+For instance, let's say you have a method that will disable certain REST endpoints in your code. That looks like this:
 
 ```php
 public function disable_default_rest_fields( array $endpoints ) : array {
@@ -120,9 +120,9 @@ class My_Test extends InitTestCase {
 }
 ```
 
-We've mocked the endpoint list and used it to check if the method does what it is supposed to do. We are not interested in whether this will actually remove the endpoints in WordPress. For that, we'd have to create integration tests, load WordPress, mock a REST server, and then test if the endpoints are removed.
+We've mocked the endpoint list and used it to check whether the method does what it is supposed to do. We are not interested in whether this will actually remove the endpoints in WordPress. For that, we would have to create integration tests, load WordPress, mock a REST server, and then test if the endpoints are removed.
 
-For more information on unit testing read [this article](https://tfrommen.de/an-introduction-to-unit-testing-for-wordpress/).
+For more information on unit testing, read [this article](https://tfrommen.de/an-introduction-to-unit-testing-for-wordpress/).
 
 ## Brain Monkey
 
@@ -134,7 +134,7 @@ You can find more details about using Brain Monkey in the [official documentatio
 
 ## WP_Mock
 
-[WP_Mock](https://github.com/10up/wp_mock) is an API mocking framework, built and maintained by 10up to make proper testing of units within WordPress possible.
+[WP_Mock](https://github.com/10up/wp_mock) is an API mocking framework built and maintained by 10up in order to make proper testing of units within WordPress possible.
 
 You can find the documentation [here](https://github.com/10up/wp_mock/blob/master/README.md).
 
@@ -142,19 +142,19 @@ You can find the documentation [here](https://github.com/10up/wp_mock/blob/maste
 
 ### Mocking static methods
 
-When your code depends on outside resources, such as AWS, or other services like Redis, it's best to mock those. Mocking is essentially replacing the real method/class with a fake one that behaves in a similar way.
+When your code depends on the outside resources, such as AWS, or other services like Redis, it's best to mock those. Mocking is essentially replacing the real method/class with a fake one that behaves in a similar way.
 
-This is why it's a good idea to wrap your outside dependencies in wrapper classes that you can then mock in entirety, without the need to connect to an outside service.
+This is why it's a good idea to wrap your outside dependencies in wrapper classes you can then mock in entirety, without the need to connect to an outside service.
 
-If you need to mock static methods in a class, you need to alias it
+If you need to mock static methods in a class, you need to alias it:
 
 ```php
 $mock = \Mockery::mock('alias:Namespace\My_Class');
 ```
 
-Then you create a mock class and add mocked static methods in it. This alias is used every time a call to a mocked class is found in the code that is being tested.
+Then, you create a mock class and add mocked static methods in it. This alias is used every time a call to a mocked class is found in the code that is being tested.
 
-Bear in mind—using `alias:` will apply for the remainder of the PHP sessions's life, so you'll need to add
+Bear in mind that using `alias:` will apply for the remainder of the PHP sessions's life, so you'll need to add
 
 ```php
 /**
@@ -163,7 +163,7 @@ Bear in mind—using `alias:` will apply for the remainder of the PHP sessions's
  */
  ```
 
-to the test class which uses alias mocks. This will tell PHPUnit to run a separate PHP process so other tests wouldn't be affected.
+to the test class which uses alias mocks. This will tell the PHPUnit to run a separate PHP process so that the other tests wouldn't be affected.
 
 ### Overload vs Alias
 
@@ -225,4 +225,4 @@ public function testNewMethodToTest() {
 [Unit Tests for PHP code](https://inpsyde.com/en/php-unit-tests-without-wordpress/)  
 [An Introduction To Automated Testing Of WordPress Plugins With PHPUnit](https://www.smashingmagazine.com/2017/12/automated-testing-wordpress-plugins-phpunit/)  
 [Unit Tests for WordPress Plugins](https://pippinsplugins.com/unit-tests-wordpress-plugins-introduction/)  
-[An introduction to unit testing (for WordPress)](https://tfrommen.de/an-introduction-to-unit-testing-for-wordpress/)  
+[An Introduction to Unit Testing (for WordPress)](https://tfrommen.de/an-introduction-to-unit-testing-for-wordpress/)

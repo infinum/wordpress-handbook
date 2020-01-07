@@ -1,10 +1,10 @@
-When working on enterprise projects, it is vital to follow recommended security practices. Security and risk assessment are a crucial part of software development. Security is also everyone's job and should be embedded in every business process and operation.
+When working on enterprise projects, it is vital to follow the recommended security practices. Security and risk assessment are a crucial part of software development. Security is also everyone's job and should be embedded into every business process and operation.
 
 ## Core concepts
 
-The application security core concepts are primarily concerned with reducing the primary attack surface—our exposure, reachable and exploitable vulnerabilities that we might have in our software. It's crucial to make it as small as possible because the app controls access to the data and sources of software.
+The application security core concepts are primarily concerned with reducing the primary attack surface—our exposure, reachable and exploitable vulnerabilities that we might have in our software. It is crucial to make it as small as possible because the app controls access to the data and sources of software.
 
-The core security process is also known as the 'CIA triad'
+The core security process is also known as the 'CIA triad':
 
 * Confidentiality
 * Integrity
@@ -12,15 +12,15 @@ The core security process is also known as the 'CIA triad'
 
 _Confidentiality_ means protecting sensitive data from improper disclosure, which can have legal and contractual consequences for you or the company you work for. One of the things you can do to mitigate this and ensure the confidentiality of your application is to mask and obfuscate access to the application by using passwords, make view-based access controls for accessing the database, and use encryption when dealing with data transfer and storage.
 
-_Integrity_ involves the protection of sensitive data from unauthorized modification and ensuring compliance and security of data processing according to law. One way to ensure data integrity is by using digital signatures ([GPG](https://en.wikipedia.org/wiki/GNU_Privacy_Guard) or [PGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) using hashes). We need to have proof of the sender's identity—data signed by you so you cannot say you didn't do it/send it, and proof that data was not altered in transit. This is what integrity is all about.
+_Integrity_ involves the protection of sensitive data from unauthorized modification and ensures compliance and security of data processing according to law. One way to ensure data integrity is by using digital signatures ([GPG](https://en.wikipedia.org/wiki/GNU_Privacy_Guard) or [PGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) using hashes). We need to have proof of the sender's identity—data signed by you so you cannot say you didn't do it/send it, and proof that data was not altered in transit. This is what integrity is all about.
 
-_Availability_ is the prevention of data or system destruction and the ability to maintain operational capability. We need to assess where software could fail (single point of failure), and we need to provide fault tolerance—redundancies that automatically take over the running of the application/service in case of failure. For instance, if the application crashes on one container, another one should automatically boot up to replace it with a minimal timeout. We need to take care of scalability.
+_Availability_ is the prevention of data or system destruction and the ability to maintain operational capability. We need to assess where the software could fail (single point of failure) and provide fault tolerance—redundancies that automatically take over the running of the application/service in case of failure. For instance, if the application crashes on one container, another one should automatically boot up to replace it with a minimal timeout. We need to take care of scalability.
 
 ## Risk management
 
-Risk can be defined as likelihood (probability) of a threat exploiting a vulnerability, thereby causing damage to an asset.
+Risk can be defined as the likelihood (probability) of a threat exploiting a vulnerability, thereby causing damage to an asset.
 
-Risks will regulate the number of controls (limitations) that will be used to reduce the risk to the organization. Risk can be good or bad—investments are risky, but can pay off if you've made a good investment.
+Risks will regulate the number of controls (limitations) that will be used to reduce the risk to the organization. Risk can be good or bad;  investments are risky, but can pay off if you've made a good one.
 
 Risk is not eliminated, it is managed. We need to assess the possible risks, respond to them, and monitor them. All this constitutes the risk context or frame.
 
@@ -44,11 +44,11 @@ Check the OWASP page for more information.
 
 Never store passwords or critical information on Git or any versioning system. Never store `wp-config.php` credentials in your code as well.
 
-One secure way would be to use environment variables that can be injected in the app during deployment. Then you can use them in your application with the [`getenv()`](http://php.net/manual/en/function.getenv.php) function.
+One secure way is to use the environment variables that can be injected into the app during deployment. You can then use them in your application with the [`getenv()`](http://php.net/manual/en/function.getenv.php) function.
 
-When working with environment variables in PHP, be sure to disable the `phpinfo()` function, as environment variables are usually visible in it.
+When working with environment variables in PHP, make sure to disable the `phpinfo()` function, since the environment variables are usually visible in it.
 
-Another way, if you are using the AWS and EC2 or ECS instances, could be to store credentials in an encrypted S3 bucket, and pull them using the methods available in [aws-sdk-php](https://aws.amazon.com/sdk-for-php/).
+Another way, if you are using the AWS and EC2 or ECS instances, is to store credentials in an encrypted S3 bucket and pull them using the methods available in [aws-sdk-php](https://aws.amazon.com/sdk-for-php/).
 
 Read more here: https://aws.amazon.com/blogs/security/using-iam-roles-to-distribute-non-aws-credentials-to-your-ec2-instances/
 
@@ -58,7 +58,7 @@ Read more here: https://aws.amazon.com/blogs/security/using-iam-roles-to-distrib
 
 The first tool to install in every project is [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/).
 
-Boilerplate already comes bundled with [coding standards](https://github.com/infinum/coding-standards-wp), which depends on the code sniffer. You can install it using composer:
+Boilerplate already comes bundled with [coding standards](https://github.com/infinum/coding-standards-wp) which depend on the code sniffer. You can install the coding standards using composer:
 
 ```bash
 composer require infinum/coding-standards-wp --dev
@@ -72,7 +72,7 @@ SonarQube is an open-source quality management platform. It does a static code a
 
 It can be run from Docker. You can find the installation instructions [here](https://hub.docker.com/_/sonarqube/).
 
-You have to [install Docker](https://docs.docker.com/docker-for-mac/install/) first. After that, pull the SonarQube Docker image
+You have to [install Docker](https://docs.docker.com/docker-for-mac/install/) first. After that, pull the SonarQube Docker image.
 
 ```bash
 docker pull sonarqube
@@ -90,9 +90,9 @@ The local SonarQube can be accessed through the browser on `localhost:9000`.
 
 [Analyzing with scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) tutorial.
 
-You can log in as admin with the `admin` user and `admin` password. You can add the project by going to `Administration->Projects`. You may be prompted to enter a token name and generate a token. Be sure to remember that token, as it will be used when creating a `sonar-project.properties` file which is necessary to run the scan.
+You can log in as admin with the `admin` user and `admin` password. You can add the project by going to `Administration->Projects`. You may be prompted to enter a token name and generate a token. Be sure to remember that token because it will be used when creating a `sonar-project.properties` file which is necessary to run the scan.
 
-You'll also need to install the Java Virtual Machine (JVM) and `sonar-scanner` using brew
+You'll also need to install the Java Virtual Machine (JVM) and `sonar-scanner` using brew.
 
 ```bash
 brew update
@@ -120,11 +120,11 @@ In the event of a failure, you can capture the output in a log file with
 sonar-scanner -X &> ~/Desktop/sonar-log.txt
 ```
 
-After the scan is finished (it will take a while), you'll see the report in the SonarQube UI
+After the scan is finished (it takes a while), you will see the report in the SonarQube UI.
 
 ![sonarqube report](/img/sonarqube-report.png)
 
-If you already have an existing Docker image, you can start it by
+If you already have an existing Docker image, you can start it with
 
 ```bash
 docker start sonarqube
@@ -151,9 +151,9 @@ Start the scan with
 docker run -it --rm wpscanteam/wpscan --url https://yourblog.com [options]
 ```
 
-You replace `https://yourblog.com` with your local installation of WordPress. You can see the list of options [here](https://github.com/wpscanteam/wpscan#wpscan-arguments). Or just leave that empty.
+You should replace `https://yourblog.com` with your local installation of WordPress. You can see the list of options [here](https://github.com/wpscanteam/wpscan#wpscan-arguments). You can also leave it empty.
 
-That will run WPScan and provide output that looks something like this (output may vary):
+That will run WPScan and provide an output that looks something like this (output may vary):
 
 ```bash
 _______________________________________________________________
@@ -210,7 +210,7 @@ Hooks into (`$security` is a class containing the `empty_generator_version` meth
 $this->loader->add_filter( 'the_generator', $security, 'empty_generator_version' );
 ```
 
-### Remove WP version from scripts 
+### Remove WP version from scripts
 ```
   /**
    * Remove the version number from all enqueued scripts

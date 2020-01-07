@@ -4,7 +4,7 @@ As defined in the [official documentation](https://make.wordpress.org/core/handb
 
 >The WordPress community developed the standards contained in this section of the handbook, and those standards are part of the best practices that developers and core contributors are recommended to follow.
 
-At Infinum, we have developed our [own set of coding standards](https://github.com/infinum/coding-standards-wp). You can install them using `Composer`
+At Infinum, we have developed our [own set of coding standards](https://github.com/infinum/coding-standards-wp). You can install them using `Composer`.
 
 ```bash
 composer require infinum/coding-standards-wp

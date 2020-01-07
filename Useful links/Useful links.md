@@ -1,4 +1,4 @@
-[WordPress developer reference](https://developer.wordpress.org/reference/)
+[WordPress Developer Reference](https://developer.wordpress.org/reference/)
 
 [WordPress Core Handbook](https://make.wordpress.org/core/handbook/)
 [WordPress Themes Handbook](https://make.wordpress.org/themes/handbook/)
