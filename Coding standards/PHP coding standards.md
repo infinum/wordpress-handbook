@@ -43,7 +43,7 @@ File names should be written in lowercase letters with `-` as a separator betwee
 
 Files containing a class should be named `class-{classname}.php`. There should always be only one class per file.
 
-Use [wp-boilerplate](https://github.com/infinum/wp-boilerplate) as a basis for any template-based website. You should follow the existing structure of the theme there.
+Use [eightshift-boilerplate](https://github.com/infinum/eightshift-boilerplate) as a basis for any template-based website. You should follow the existing structure of the theme there.
 
 ### Naming conventions
 
@@ -149,10 +149,12 @@ Inline statements should have the opening and closing PHP tags on the same line.
 ```php
 <?php
 // Yes:
-echo esc_html( $x );
+<?php echo esc_html( $x ); ?>
 
 // No:
+<?php
 echo esc_html( $x );
+?>
 ```
 
 Writing conditionals, or control statements on a single line should be done with braces.

@@ -1,6 +1,6 @@
 Infinum's WordPress boilerplate is the basis of every WordPress-based project we work on at Infinum.
 
-The repository can be found [here](https://github.com/infinum/wp-boilerplate).
+The repository can be found [here](https://github.com/infinum/eightshift-boilerplate).
 
 ## General info
 
@@ -14,8 +14,8 @@ This is in-depth documentation on how to run and modify the WordPress boilerplat
 
 ## Getting started
 
-Read the [readme](https://github.com/infinum/wp-boilerplate/blob/master/README.md) of the project to get started with theme development.
+Read the [readme](https://github.com/infinum/eightshift-boilerplate/blob/master/README.md) of the project to get started with theme development.
 
 ## Wiki
 
-Check out the official [wiki page](https://github.com/infinum/wp-boilerplate/wiki) for more information about the boilerplate.
+Check out the official [wiki page](https://github.com/infinum/eightshift-boilerplate/wiki) for more information about the boilerplate.

@@ -1,4 +1,4 @@
-WordPress testing (core) is useful when contributing to the WordPress core. The first thing you have to do is install PHPUnit (version 6 because version 7 doesn't work with WordPress yet).
+WordPress testing (core) is useful when contributing to the WordPress core. The first thing you have to do is install PHPUnit 7 (8 doesn't work with WordPress yet).
 
 In your terminal, run
 
@@ -73,7 +73,7 @@ To run unit tests, you need to specify the `phpunit.xml.dist` file. An example m
 
 Here we've specified that code coverage should be created. For that to be done, you need to have Xdebug installed on your system. Keep in mind that Xdebug may significantly reduce the speed of your tests.
 
-In the root directory—next to `wp-tests-config.php`, the `tests/` folder, and the `phpunit.xml.dist` file—run:
+In the root directory, where `wp-tests-config.php` file, the `tests/` folder, and the `phpunit.xml.dist` file are located, run:
 
 ```bash
 vendor/bin/phpunit

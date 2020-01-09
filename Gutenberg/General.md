@@ -28,7 +28,7 @@ More development details can be found in the [WordPress Handbook](https://develo
 
 ## Documentation
 We work with our custom-built Eightshift Boilerplate Internal project. You will be working with these libs and should also read their Readme and Wiki materials:
-1. [Eightshift Boilerplate Internal](https://github.com/infinum/eightshift-boilerplate-internal)
+
+1. [Eightshift Boilerplate](https://github.com/infinum/eightshift-boilerplate)
 2. [Eightshift Libs](https://github.com/infinum/eightshift-libs)
-3. [Eightshift Blocks](https://github.com/infinum/eightshift-blocks)
-4. [Eightshift Frontend Libs](https://github.com/infinum/eightshift-frontend-libs)
+3. [Eightshift Frontend Libs](https://github.com/infinum/eightshift-frontend-libs)
