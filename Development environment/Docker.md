@@ -10,7 +10,7 @@ This will build a Docker container and image with the specified settings from th
 
 For more information about setting up and using Docker with WordPress, click [here](https://docs.docker.com/samples/wordpress/).
 
-You can see if the containers are running by typing 
+You can see if the containers are running by typing
 
 ```bash
 docker ps --all
@@ -90,7 +90,7 @@ WORKDIR /var/www/html/
 CMD ["exec","php-fpm"]
 ```
 
-This Dockerfile will first build a local container with php, composer, and node, and in that stage your theme/plugins can be built. It also contains the `RUN bash bin/build-plugins.sh` command. You can replace this with your installation script (be it for plugins or theme). You'll place composer and npm builds in that shell script.
+This Dockerfile will first build a local container with PHP, composer, and node. At that stage, your theme/plugins can be built. It also contains the `RUN bash bin/build-plugins.sh` command. You can replace this with your installation script (be it for plugins or theme). You'll place composer and npm builds in that shell script.
 
 After that, you'll build the WordPress container and copy the plugins built in the previous stage. You can modify this to your liking. Beside this, you'll probably need a Docker image for nginx. But we won't be going into too much detail about it.
 
@@ -121,11 +121,11 @@ docker run -d CONTAINER_NAME
 docker exec -it CONTAINER_NAME bash
 ```
 
-Running the `docker run` with `-d` means you are detaching it, and you can check the logs created while building it.
+Running the `docker run` with `-d` means that you are detaching it, and you can check the logs created while building it.
 
 ## Useful Docker commands
 
-Here are some useful Docker commands that you might use.
+Here are some useful Docker commands you might use.
 
 List all containers
 
@@ -153,7 +153,7 @@ Prune the system from unused images, containers, and networks [documentation lin
 
 ### Docker notes
 
-Depending on your project, the Docker compose or Dockerfile may differ. For more information, consult your friendly devops.
+Depending on your project, the Docker compose or Dockerfile may differ. For more information, consult your friendly DevOps.
 
 ### Useful links
 

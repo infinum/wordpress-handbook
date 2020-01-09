@@ -29,7 +29,7 @@ After that, in the `tests` folder add the `bootstrap.php` file that looks like t
 require_once dirname( dirname( __FILE__ ) ) . '/vendor/autoload.php';
 ```
 
-And dump your autoload to load all the necessary classess and files. It's also good to add the init class that you'll extend called `init-setup.php`
+Dump your autoload to load all the necessary classes and files. It's also good to add the init class that you'll extend called `init-setup.php`.
 
 ```php
 <?php
@@ -108,7 +108,7 @@ Add `phpunit.xml.dist` in the root of your project.
 
 Use WP-CLI to set up our plugin’s unit tests. If you don't have WP-CLI installed on your system, install it. Documentation on starting unit tests can be found [here](https://make.wordpress.org/cli/handbook/plugin-unit-tests/).
 
-Assuming you have a plugin on your testing environment, in the project root folder run
+Assuming you have the plugin in your testing environment, in the project root folder, run the following:
 
 ```bash
 wp scaffold plugin-tests my-plugin
@@ -132,7 +132,7 @@ To initialize the testing environment locally, go to your plugin directory and r
 bin/install-wp-tests.sh wordpress_unit_tests root '' localhost latest
 ```
 
-The install script first installs a copy of WordPress in the `/tmp directory` (by default) as well as the WordPress unit testing tools. Then it creates a database to be used while running tests. The parameters that are passed to `install-wp-tests.sh` set up the test database. Be sure that your mysql service is up and running if you're running tests outside VVV.
+The install script first installs a copy of WordPress in the `/tmp directory` (by default) as well as the WordPress unit testing tools. Then, it creates a database to be used while running tests. The parameters that are passed to `install-wp-tests.sh` set up the test database. Be sure that your MySQL service is up and running if you're running tests outside VVV.
 
 After that, you can run plugin tests by writing:
 
@@ -155,7 +155,7 @@ class SampleTest extends WP_UnitTestCase {
 }
 ```
 
-So you'll need to write your own tests.
+That is why you'll need to write your own tests.
 
 ### Debugging inside tests
 
@@ -169,7 +169,7 @@ fwrite( STDERR, print_r( $variable, true ) );
 
 ### Require error
 
-When running `phpunit` for your plugin outside VVV, you get an error that looks like this
+When running `phpunit` for your plugin outside VVV, you get an error that looks like this:
 
 ```bash
 Warning: require_once(.../wordpress//wp-includes/class-phpmailer.php): failed to open stream: No such file or directory in .../wordpress-tests-lib/includes/mock-mailer.php on line 2
@@ -187,7 +187,7 @@ in the terminal. After that, `phpunit` should work.
 
 ### Xdebugg inside VVV
 
-For some reason, when Xdebugg is enabled in VVV, and you want to have coverage generated when running unit test, it will take extremely long to check it. In that case, either disable creating code coverage
+For some reason, when Xdebugg is enabled in VVV, and you want to have coverage generated when running a unit test, it will take extremely long to check it. In that case, either disable creating code coverage
 
 ```bash
 phpunit --no-coverage

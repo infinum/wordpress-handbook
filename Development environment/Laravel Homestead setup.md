@@ -1,6 +1,6 @@
-Homestead is an official, pre-packaged Vagrant box from the Laravel team. Its default approach is having multiple sites set up on a single Vagrant instance, which makes adding new sites a trivial task. For more advanced requirements, each site can also be set up on its own instance.
+Homestead is an official, pre-packaged Vagrant box from the Laravel team. Its default approach is to have multiple sites set up on a single Vagrant instance, which makes adding new sites a trivial task. For more advanced requirements, each site can also be set up on its own instance.
 
-Homestead runs on any Windows, Mac, or Linux system, and includes the Nginx web server, PHP 7.3, PHP 7.2, PHP 7.1, MySQL, PostgreSQL, Redis, Memcached, Node, etc. For a full list of features, check out the [offical documentation](https://laravel.com/docs/5.8/homestead)
+Homestead runs on any Windows, Mac, or Linux system and includes the Nginx web server, PHP 7.3, PHP 7.2, PHP 7.1, MySQL, PostgreSQL, Redis, Memcached, Node, etc. For a full list of features, check out the [official documentation](https://laravel.com/docs/5.8/homestead)
 
 ## Installing Laravel Homestead
 
@@ -12,7 +12,7 @@ As any other Vagrant box, Homestead requires a few prerequisites installed:
 
 <sup>1 Requires the purchase of both VMware Fusion / Workstation and the VMware Vagrant plug-in.</sup>
 
-<sup>2 Not free but has a free trial period and requires a free Vagrant plug-in</sup>
+<sup>2 Not free but has a free trial period and requires a free Vagrant plug-in.</sup>
 
 <sup>If you want to use one of the paid options, you can use your education budget to cover the cost. For more information, consult your team lead.</sup>
 
@@ -32,7 +32,7 @@ Clone the Homestead repository into a directory that will hold all your Homestea
 git clone https://github.com/laravel/homestead.git ~/homestead
 ```
 
-Go into the directory that the repo was cloned to, and check out the latest stable release tag:
+Go into the directory the repo was cloned into, and check out the latest stable release tag:
 
 ```sh
 cd ~/homestead
@@ -53,7 +53,7 @@ bash init.sh
 init.bat
 ```
 
-Now that we have `Homestead.yml` we can start configuring our environment.
+Now that we have `Homestead.yml`, we can start configuring our environment.
 
 ## Configuring Homestead
 
@@ -99,14 +99,14 @@ sites:
       to: /home/vagrant/homestead/www/
   ```
 
-The sites domain name must also be mapped to the actual IP address of the Vagrant server. This is done by editing the `hosts` file of the local machine. You can do this manually. However, for a more automated approach, it is recommended to use the [vagrant-hostsupdater](https://github.com/cogitatio/vagrant-hostsupdater) plugin.
+The site's domain name must also be mapped to the actual IP address of the Vagrant server. This is done by editing the `hosts` file of the local machine. You can do this manually. However, for a more automated approach, it is recommended to use the [vagrant-hostsupdater](https://github.com/cogitatio/vagrant-hostsupdater) plugin.
 
-Install it by running `vagrant plugin install vagrant-hostsupdater` inside the terminal while in the `/homestead` directory. Homestead already has a config for the `vagrant-hostsupdater` plugin and should map all sites domains to the Vagrant's IP address.
+Install it by running `vagrant plugin install vagrant-hostsupdater` inside the terminal while in the `/homestead` directory. Homestead already has a config for the `vagrant-hostsupdater` plugin and should map all site's domains to the Vagrant's IP address.
 The IP address is by default defined in `Homestead.yml`, but you can change it to some other address.
 
 Note for Windows users: You'll need to change permissions on the `hosts` file to give the current user write access to that file.
 
-The last thing in basic configuration is database property. With this, we define all databases that will be created on server startup or reprovision.
+The last thing in the basic configuration is database property. With this, we define all databases that will be created on server startup or reprovision.
 
 ```yml
 databases:
@@ -118,9 +118,9 @@ Another thing to note is that the default Homestead database name is `homestead`
 
 ## Using Homestead
 
-When we are done with Homestead configuration, we can start the server with the `vagrant up` command, stop the server with `vagrant halt`, and restart it with `vagrant reload`. If something is changed in `Homestead.yml`, the configuration server will need to be reprovisioned so that all changes in the configuration are visible on our sites. Use `vagrant reload --provision` to reprovision a server.
+When we are done with the Homestead configuration, we can start the server with the `vagrant up` command, stop the server with `vagrant halt`, and restart it with `vagrant reload`. If something is changed in `Homestead.yml`, the configuration server will need to be reprovisioned so that all changes in the configuration are visible on our sites. Use `vagrant reload --provision` to reprovision a server.
 
-Now you have everything to run your WordPress site. Download the instance of WordPress in your preferred way and set it up in `wp-config.php`. To finish installation, go to your local site URL (e.g., `wordpress.test`).
+Now you have everything you need to run your WordPress site. Download the instance of WordPress in your preferred way and set it up in `wp-config.php`. To finish the installation, go to your local site URL (e.g., `wordpress.test`).
 
 ## Extra features
 
@@ -132,7 +132,7 @@ You will be positioned in the `/home` directory that will contain only the `/hom
 
 ### Installing PHPMyAdmin
 
-To install PHPMyAdmin on Homestead you will need to setup a new site in `Homestead.yml` for specific Homestead instance. Define a local URL to PHPMyAdmin application and
+To install PHPMyAdmin on Homestead you will need to setup a new site in `Homestead.yml` for a specific Homestead instance. Define a local URL to PHPMyAdmin application and
 
 ```yml
 sites:
@@ -140,9 +140,9 @@ sites:
       to: /home/vagrant/homestead/www/phpmyadmin
 ```
 
-After that log into homestead box with `vagrant ssh` and position yourself in a directory that holds all your projects (in this case that would be `www` directory).
+After that, log into the homestead box with `vagrant ssh` and position yourself in a directory that holds all your projects (in this case that would be the `www` directory).
 
-Run `curl -sS https://raw.githubusercontent.com/grrnikos/pma/master/pma.sh | sh` and that would be it. Visit the PHPMyAdmin local URL and log in with default Homestead database credentials.
+Run `curl -sS https://raw.githubusercontent.com/grrnikos/pma/master/pma.sh | sh` and that should be it. Visit the PHPMyAdmin local URL and log in with the default Homestead database credentials.
 
 ### Mailhog
 
@@ -156,13 +156,13 @@ MAIL_USERNAME=null
 MAIL_PASSWORD=null
 MAIL_ENCRYPTION=null
 ```
-After that, the Mailhog interface is accessible at `http://localhost:8025`.
+After that, the Mailhog interface will be accessible at `http://localhost:8025`.
 
 ### Sharing your sites
 
 Vagrant offers a way to temporarily make your local site publicly accessible. That can be done with the `vagrant share` command, but it will work only if only one site is set up for that Vagrant instance.
 Homestead has its own implementation of that feature that supports sharing multiple sites. It uses Ngrok to tunnel to your local machine.
 
-To do this, first access your virtual machine with `vagrant ssh`, and then run `share sitename.domain`. Ngrok will do its thing and provide you with publicly accessible URLs for you local site.
+To do this, first access your virtual machine with `vagrant ssh` and then run `share sitename.domain`. Ngrok will do its thing and provide you with the publicly accessible URLs for you local site.
 
-For all other advanced features, please check out the [official documentation](https://laravel.com/docs/homestead).
+For other advanced features, please check out the [official documentation](https://laravel.com/docs/homestead).
