@@ -131,10 +131,10 @@ You can add composer scripts so that you can access certain test scripts easier.
   "test:setup": "@php ./vendor/bin/codecept init wpbrowser",
   "test:prepare": "@php ./vendor/bin/pcov clobber",
   "test:revert": "@php ./vendor/bin/pcov unclobber",
-  "test:acceptance": "codecept run acceptance",
-  "test:functional": "codecept run functional",
-  "test:integration": "codecept run wpunit",
-  "test:coverage": "codecept run wpunit --coverage --coverage-xml --coverage-html",
+  "test:acceptance": "@php ./vendor/bin/codecept run acceptance",
+  "test:functional": "@php ./vendor/bin/codecept run functional",
+  "test:integration": "@php ./vendor/bin/codecept run wpunit",
+  "test:coverage": "@php ./vendor/bin/codecept run wpunit --coverage --coverage-xml --coverage-html",
   "test:generate-scenarios": "@php vendor/bin/codecept generate:scenarios"
 },
 ```
@@ -148,12 +148,24 @@ You can add composer scripts so that you can access certain test scripts easier.
 `test:coverage`- a shorthand way to run integration tests with code coverage (this run is usually slower than just test run)
 `test:generate-scenarios`- a shorthand way to generate user scenarios. You need to provide a sute for which a scenario can be generated (`acceptance`, `functional` or `integration`).
 
-You can also autoload your test folder using either `psr-4` or `classmap` autoloading process:
+You can also [autoload](https://getcomposer.org/doc/01-basic-usage.md#autoloading) your test folder using either `psr-4` or `classmap` autoloading process:
+
+PSR-4:
 
 ```json
 "autoload-dev": {
   "psr-4": {
     "Tests\\": "tests/"
+  }
+}
+```
+
+Classmap:
+
+```json
+"autoload-dev": {
+  "classmap": {
+    "tests/"
   }
 }
 ```
