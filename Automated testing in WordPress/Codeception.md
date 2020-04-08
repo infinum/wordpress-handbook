@@ -12,7 +12,7 @@ First, install the latest stable `WPBrowser` package via Composer in the root fo
 composer require --dev lucatume/wp-browser
 ```
 
-In order for your tests to work, you'll need to set up a test instance. You can your preferred method of development environments - Valet+, VVV, Docker, Local by Flywheel etc. It's important to have a working WordPress instance, so that you can run acceptance and integration tests on it.
+In order for your tests to work, you'll need to set up a test instance. You can use your preferred method of setting up development environments - Valet+, VVV, Docker, Local by Flywheel etc. It's important to have a working WordPress instance, so that you can run acceptance and integration tests on it.
 
 Then, while in the root of your plugin or theme where you've installed the Codeception, run
 
@@ -146,7 +146,7 @@ You can add composer scripts so that you can access certain test scripts easier.
 `test:functional`- a shorthand way to run functional tests
 `test:integration`- a shorthand way to run integration tests
 `test:coverage`- a shorthand way to run integration tests with code coverage (this run is usually slower than just test run)
-`test:generate-scenarios`- a shorthand way to generate user scenarios. You need to provide a sute for which a scenario can be generated (`acceptance`, `functional` or `integration`).
+`test:generate-scenarios`- a shorthand way to generate user scenarios. You need to provide a suite for which a scenario can be generated (`acceptance`, `functional` or `integration`).
 
 You can also [autoload](https://getcomposer.org/doc/01-basic-usage.md#autoloading) your test folder using either `psr-4` or `classmap` autoloading process:
 
