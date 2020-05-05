@@ -28,6 +28,8 @@ This is the folder where all project blocks live. One block can reuse multiple c
 
 This is a folder where JS and SCSS registration specific to blocks lives. It's where the code for registering blocks is held, but also where you can place any JS or SCSS related to blocks only.
 
+Note that all block / component specific JS / SCSS should be added to that specific block / component folder rather than here.
+
 ### wrapper
 
 This is a special component that will be used if we want to share variables between multiple blocks and if we want to have a section ability for the block.
@@ -51,5 +53,4 @@ Then you'll probably need a piece of paper.
 ## Reuse, reuse, reuse
 
 The main thing we wanted to achieve using our libs is reusability across projects. There are a lots of ready components and blocks we worked on (you can check them out in the [Storybook](https://infinum.github.io/eightshift-docs/storybook)). You can just copy/paste them in your project, style them and that's it.
-
 
