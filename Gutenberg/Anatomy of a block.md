@@ -49,8 +49,7 @@ Then you'll probably need a piece of paper.
 5. When editor markup is done, you can copy that HTML to the PHP, and change the naming a bit, and you should be done.
 6. Test to see if everything works in the admin editor screen, and on the front end
 7. Celebrate when you've created a functional block 🎉
-
+Other thing you can do is run `npm run blocksExample` which will copy Example block from `eightshift-frontend-libs` to your project. Example block contains all the files you would need to write a custom block. You will need to rename all the files, classes, text domain definitions and namespaces to match your project and block name.
 ## Reuse, reuse, reuse
 
 The main thing we wanted to achieve using our libs is reusability across projects. There are a lots of ready components and blocks we worked on (you can check them out in the [Storybook](https://infinum.github.io/eightshift-docs/storybook)). You can just copy/paste them in your project, style them and that's it.
-
