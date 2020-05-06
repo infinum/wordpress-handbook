@@ -2,6 +2,10 @@ Plugin development doesn't really differ from the theme development. You can use
 
 Themes usually handle presentational logic, while plugins handle business logic.
 
+## Documentation
+
+Read the [eightshift-docs](https://infinum.github.io/eightshift-docs/) to get started with project development.
+
 ### When should I create a plugin?
 
 When working on enterprise projects, it is easier to bundle the usual plugin content (custom post types, taxonomies, API calls) to the theme instead of a separate plugin. Enterprise projects won't change much over time, so it's useful to have all code in one central place.

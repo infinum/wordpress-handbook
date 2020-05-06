@@ -14,8 +14,4 @@ This is in-depth documentation on how to run and modify the WordPress boilerplat
 
 ## Getting started
 
-Read the [readme](https://github.com/infinum/eightshift-boilerplate/blob/master/README.md) of the project to get started with theme development.
-
-## Wiki
-
-Check out the official [wiki page](https://github.com/infinum/eightshift-boilerplate/wiki) for more information about the boilerplate.
+Read the [eightshift-docs](https://infinum.github.io/eightshift-docs/) to get started with project development.
