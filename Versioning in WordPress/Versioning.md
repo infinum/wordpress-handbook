@@ -6,7 +6,7 @@ Naming a repository follows this pattern:
 
 with allowed characters `[a-z\-]`.
 
-Your repository should consist of several main branches: `master`, `develop`, `staging`, `preproduction`, `edge`, and `feature` branch.
+Your repository should consist of several main branches: `master`, `develop`, `staging` and some optional: `preproduction`, `edge`, and `feature` (depending on the project).
 
 ### Project setup
 

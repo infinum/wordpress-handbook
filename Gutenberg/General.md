@@ -7,6 +7,7 @@ All development details can be found on:
 - [Handbook](https://developer.wordpress.org/block-editor/)
 
 ## Block types
+
 Gutenberg gives us the ability to create blocks we are going to use on the front end and the back end for the website. We have two kinds of blocks at our disposal.
 
 ### 1. Standard blocks.
@@ -30,8 +31,4 @@ More development details can be found in the [WordPress Handbook](https://develo
 
 ## Documentation
 
-We work with our custom-built Eightshift Boilerplate Internal project. You will be working with these libs and should also read their Readme and Wiki materials:
-
-1. [Eightshift Boilerplate](https://github.com/infinum/eightshift-boilerplate)
-2. [Eightshift Libs](https://github.com/infinum/eightshift-libs)
-3. [Eightshift Frontend Libs](https://github.com/infinum/eightshift-frontend-libs)
+Read the [eightshift-docs](https://infinum.github.io/eightshift-docs/) to get started with project development.

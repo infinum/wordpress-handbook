@@ -9,10 +9,12 @@ Here are some useful links that will help you during the onboarding, but will al
 [WordPress Plugins Handbook](https://make.wordpress.org/plugins/handbook/)  
 [Gutenberg Documentation](https://developer.wordpress.org/block-editor/)  
 
+
 ### Infinum
 
 [Infinum Handbooks](https://handbook.infinum.co/)
 
+[Eightshift Docs](https://infinum.github.io/eightshift-docs/)  
 [Eightshift Boilerplate](https://github.com/infinum/eightshift-boilerplate)  
 [Eightshift Boilerplate Plugin](https://github.com/infinum/eightshift-boilerplate-plugin)  
 [Eightshift Libs](https://github.com/infinum/eightshift-libs)  
