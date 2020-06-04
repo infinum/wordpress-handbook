@@ -318,3 +318,63 @@ In the context of WordPress, integration might also mean testing that filters us
 Unit test always __test single classes or functions (units) in isolation__.
 
 Say we have a validator class that validates email. We would want to make sure that class works as expected, regardless if it's in the WordPress context or not. Unit tests is where stubbing/mocking/spying of dependencies is used to gain total control over the input and context the class is using.
+
+### Setting up acceptance/feature testing environment
+
+While wp-browser comes with a `WPBrowser` module which will help you run acceptance and functional tests, that module simulates a user interaction with the site **without JavaScript support**. If you need to test your project with JavaScript support, you'll need to use the `WPWebDriver` module.
+
+Detailed instructions are located here: https://wpbrowser.wptestkit.dev/modules/wpwebdriver
+
+In order to run that module you'll need to set it up in your `suite.yml` files like
+
+```yaml
+WPWebDriver:
+    url: '%TEST_SITE_WP_URL%'
+    adminUsername: '%TEST_SITE_ADMIN_USERNAME%'
+    adminPassword: '%TEST_SITE_ADMIN_PASSWORD%'
+    adminPath: '%TEST_SITE_WP_ADMIN_PATH%'
+    browser: chrome
+    host: localhost
+    port: 9515
+    window_size: false #disabled for Chrome driver
+    capabilities:
+        # Used in more recent releases of Selenium.
+        "goog:chromeOptions":
+            args: ["--no-sandbox", "--headless", "--disable-gpu", "--user-agent=wp-browser"]
+        # Support the old format for back-compatibility purposes.
+        "chromeOptions":
+            args: ["--no-sandbox", "--headless", "--disable-gpu", "--user-agent=wp-browser"]
+```
+
+There is a catch, though. In order for it to run, you'll need a web driver and a framework in which you can run that web driver. In this case we'll use [Selenium](https://www.selenium.dev/) and [Chrome Webdriver](https://sites.google.com/a/chromium.org/chromedriver/)
+
+Selenium can be downloaded using `brew`
+
+```bash
+brew install selenium-server-standalone
+```
+
+While for Chrome webdriver you'd need to go to [downloads section](https://sites.google.com/a/chromium.org/chromedriver/downloads), and download **the same version of the driver as is your local Chrome**. This is important, because otherwise the tests won't be able to run - if you have v83 of Chrome, your webdriver has to be v83 as well.
+Be careful about that when updating your local Chrome.
+
+After downloading the correct zip file, extract it and move it to local bin directory
+
+```bash
+mv chromedriver /usr/local/bin
+```
+
+Make sure you allow the driver in the MacOS security settings (Preference -> Security). You can test if it works by runnning
+
+```bash
+chromedriver --version
+
+ChromeDriver 83.0.4103.39 (ccbf011cb2d2b19b506d844400483861342c20cd-refs/branch-heads/4103@{#416})
+``` 
+
+Similarly, you can do for Selenium
+
+```bash
+selenium-server --version
+
+Selenium server version: 3.141.59, revision: e82be7d358
+``` 
