@@ -340,13 +340,13 @@ WPWebDriver:
     capabilities:
         # Used in more recent releases of Selenium.
         "goog:chromeOptions":
-            args: ["--no-sandbox", "--headless", "--disable-gpu", "--user-agent=wp-browser"]
+            args: ["--no-sandbox", "--headless", "--disable-gpu", "--user-agent=wp-browser", "allow-insecure-localhost", "--ignore-certificate-errors"]
         # Support the old format for back-compatibility purposes.
         "chromeOptions":
-            args: ["--no-sandbox", "--headless", "--disable-gpu", "--user-agent=wp-browser"]
+            args: ["--no-sandbox", "--headless", "--disable-gpu", "--user-agent=wp-browser", "allow-insecure-localhost", "--ignore-certificate-errors"]
 ```
 
-There is a catch, though. In order for it to run, you'll need a web driver and a framework in which you can run that web driver. In this case we'll use [Selenium](https://www.selenium.dev/) and [Chrome Webdriver](https://sites.google.com/a/chromium.org/chromedriver/)
+There is a catch, though. In order for it to run, you'll need a web driver and a framework in which you can run that web driver. In this case we'll use [Selenium](https://www.selenium.dev/). [Chrome Webdriver](https://sites.google.com/a/chromium.org/chromedriver/) should be installed, but doesn't have to be run, like Selenium.
 
 Selenium can be downloaded using `brew`
 
@@ -377,4 +377,6 @@ Similarly, you can do for Selenium
 selenium-server --version
 
 Selenium server version: 3.141.59, revision: e82be7d358
-``` 
+```
+
+If your URL points to `https` local url, it's a good idea to add `"allow-insecure-localhost"` and `"--ignore-certificate-errors"` to chrome options to avoid the certificate issues that can happen when using local certificates.
