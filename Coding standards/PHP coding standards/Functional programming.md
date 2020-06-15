@@ -118,7 +118,7 @@ function my_callable_function() {
 }
 ```
 
-If you are working on a 'public' project that can be extended, you should follow the above instructions. When working on client projects, these are not that important, as you don't expect anybody to remove your added hooks (in themes or in plugins).
+If you are working on a 'public' project that can be extended, you should follow the above instructions. When working on client projects, there is a smaller chance that your hooks will be removed. In that case, anonymous functions can be used as callbacks.
 
 ### Closures
 
