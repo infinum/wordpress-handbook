@@ -24,7 +24,7 @@ In addition to that, you can use the [Developer](https://wordpress.org/plugins/d
 
 ### Useful links
 
-[Debugging and profiling PHP with Xdebug](https://www.sitepoint.com/debugging-and-profiling-php-with-xdebug/)
-[View Xdebug cachegrind files on MacOS](http://nickology.com/2014/04/16/view-xdebug-cachegrind-files-on-mac-os/)
-[Testing WordPress performance](https://codex.wordpress.org/Testing_WordPress_Performance)
-[Code debugging in VVV](https://github.com/Varying-Vagrant-Vagrants/VVV/wiki/Code-Debugging)
+[Debugging and profiling PHP with Xdebug](https://www.sitepoint.com/debugging-and-profiling-php-with-xdebug/)  
+[View Xdebug cachegrind files on MacOS](http://nickology.com/2014/04/16/view-xdebug-cachegrind-files-on-mac-os/)  
+[Testing WordPress performance](https://codex.wordpress.org/Testing_WordPress_Performance)  
+[Code debugging in VVV](https://github.com/Varying-Vagrant-Vagrants/VVV/wiki/Code-Debugging)  
