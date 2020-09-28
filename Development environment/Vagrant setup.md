@@ -46,7 +46,7 @@ Once it has installed everything, you'll be all set to work on your local WordPr
 
 in your browser, which will open a screen with some interesting links you can explore.
 
-![vvv.dev screen](/img/vagrant.png)
+![vvv.test screen](/img/vagrant.png)
 
 When you want to close Vagrant and save your RAM, just type
 
