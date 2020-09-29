@@ -1,6 +1,6 @@
 As stated in [the official documentation](https://laravel.com/docs/5.4/valet), Valet is a Laravel development environment for Mac minimalists.
 
-Laravel Valet configures your Mac to always run Nginx in the background when your machine starts. Then, Valet proxies all requests on the `*.dev` domain using DnsMasq to point to sites installed on your local machine.
+Laravel Valet configures your Mac to always run Nginx in the background when your machine starts. Then, Valet proxies all requests on the `*.test` domain using DnsMasq to point to sites installed on your local machine.
 
 It is ideal for machines with a small amount of RAM.
 
@@ -10,7 +10,7 @@ The setup for Valet is really easy.
 
 * Install or update Homebrew to the latest version using the brew update.
 
-* Install PHP 7.1 using Homebrew via `brew install homebrew/php/php71`.
+* Install PHP using Homebrew via `brew install php`.
 
 * If you don't have Composer installed, install it via `brew install composer`. Be sure to restart the shell and add the  `~/.composer/vendor/bin` directory in your system's "PATH" (see instructions below).
 
@@ -44,7 +44,7 @@ to the list. Then you need to restart the terminal, and the composer should be a
 
 Valet has a built-in WordPress driver, so it supports running WordPress. You can serve your sites in two ways — by using the `park` or `link` option.
 
-The `park` option can be used to add a whole folder to Valet. Every folder in there will then be mapped to a site and get its own `.dev` domain. So, if you add `~/Sites` folder to Valet and have a subfolder in there named `wp-valet`, the content of that folder will be served when you visit `http://wp-valet.dev` in your browser. No setup is required. The `link` option can be used to serve a single site, without adding a whole directory.
+The `park` option can be used to add a whole folder to Valet. Every folder in there will then be mapped to a site and get its own `.test` domain. So, if you add the `~/Sites` folder to Valet and have a subfolder in there named `wp-valet`, the content of that folder will be served when you visit `http://wp-valet.test` in your browser. No setup is required. The `link` option can be used to serve a single site, without adding a whole directory.
 
 ```sh
 $ mkdir ~/Sites
@@ -60,7 +60,7 @@ $ cd wp-valet
 $ wp core download
 ```
 
-And this is it. Once you do this, you should be able to go to `http://wp-valet.dev` and see the classic WordPress installation screen.
+And this is it. Once you do this, you should be able to go to `http://wp-valet.test` and see the classic WordPress installation screen.
 
 ## Possible issues
 
