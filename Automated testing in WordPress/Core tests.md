@@ -132,7 +132,7 @@ Now you’re ready to patch. Find a ticket with patches. This example uses `#118
 grunt patch:11863
 ```
 
-This will show the available patches you can choose from (if there are multiple patches). After you select the patch, you can log into `http://src.wordpress-develop.dev/` (or `http://src.wordpress-develop.test/`). You can test the effects of that patch and, after you're done with it, you can revert it using
+This will show the available patches you can choose from (if there are multiple patches). After you select the patch, you can log into `http://src.wordpress-develop.test/` (or `http://src.wordpress-develop.test/`). You can test the effects of that patch and, after you're done with it, you can revert it using
 
 ```bash
 svn revert -R

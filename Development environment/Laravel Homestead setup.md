@@ -1,6 +1,6 @@
 Homestead is an official, pre-packaged Vagrant box from the Laravel team. Its default approach is to have multiple sites set up on a single Vagrant instance, which makes adding new sites a trivial task. For more advanced requirements, each site can also be set up on its own instance.
 
-Homestead runs on any Windows, Mac, or Linux system and includes the Nginx web server, PHP 7.3, PHP 7.2, PHP 7.1, MySQL, PostgreSQL, Redis, Memcached, Node, etc. For a full list of features, check out the [official documentation](https://laravel.com/docs/5.8/homestead)
+Homestead runs on any Windows, Mac, or Linux system and includes the Nginx web server, PHP 7.3, PHP 7.2, PHP 7.1, MySQL, PostgreSQL, Redis, Memcached, Node, etc. For a full list of features, check out the [official documentation](https://laravel.com/docs/8.x/homestead)
 
 ## Installing Laravel Homestead
 
