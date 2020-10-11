@@ -18,5 +18,4 @@ vendor/bin/phpcs --standard=Infinum .
 
 You can customize the commands and output with [additional commands](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage).
 
-There are a few key differences between Infinum's coding standards for WordPress and the WordPress Coding Standards. We do not use tabs but spaces, and we use two spaces instead of four.
-Since we use linters for `scss` and `js`, we only sniff `php` files.
+There are a few key differences between Infinum's coding standards for WordPress and the WordPress Coding Standards. We use PSR-12 standards for our PHP files, and organize our code according to PSR-4 standards. This way we can use Composer's PSR-4 autoloading.

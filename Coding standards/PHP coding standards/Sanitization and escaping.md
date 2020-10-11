@@ -20,9 +20,14 @@ and to [prepare](https://developer.wordpress.org/reference/classes/wpdb/prepare/
 <?php
 $meta = 'Custom meta';
 
-$post_id = 12;
+$postId = $_GET['post_id'];
 
-$wpdb->query( $wpdb->prepare( "DELETE FROM $wpdb->postmeta WHERE post_id = %d AND meta_key = %s", $post_id, $meta ) );
+$wpdb->query(
+    $wpdb->prepare(
+        "DELETE FROM $wpdb->postmeta WHERE post_id = %d AND meta_key = %s",
+        $postId, $meta
+    )
+);
 ```
 
 This is especially important when dealing with user input from front end (forms).

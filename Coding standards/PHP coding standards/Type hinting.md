@@ -18,12 +18,13 @@ You can type hint function arguments and return values, for example:
    *
    * A method that will return an array with user data.
    *
-   * @param string $user_token Auth token got from url param.
+   * @param string $userToken Auth token got from url param.
    *
    * @return array             User data array.
    */
-  public function get_user_data( string $user_token ) : array {
-    //...
+  public function getUserData(string $userToken): array
+  {
+      //...
   }
 ```
 
@@ -33,8 +34,9 @@ Since PHP 7.1, you can explicitly declare a variable to be `null`
 
 ```php
 <?php
-public function get_array( ?string $some_string ) : array {
-  //...
+public function getArray(?string $someString): array
+{
+    //...
 }
 ```
 
@@ -47,7 +49,7 @@ Type hinting is also important when working with dependency injections.
  *
  * Class that stores user credentials.
  */
-class User_Credentials {
+class UserCredentials {
   /**
    * General Helper object
    *
@@ -55,18 +57,19 @@ class User_Credentials {
    *
    * @since 1.0.0
    */
-  protected $general_helper;
+  private $generalHelper;
 
   /**
    * Initialize class
    *
    * Load helper on class init.
    *
-   * @param Helper $general_helper General helper class that implements Helper interface.
+   * @param Helper $generalHelper General helper class that implements Helper interface.
    * @since 1.0.0
    */
-  public function __construct( Helper $general_helper ) {
-    $this->general_helper = $general_helper;
+  public function __construct(Helper $generalHelper)
+  {
+      $this->generalHelper = $generalHelper;
   }
 
   //...
