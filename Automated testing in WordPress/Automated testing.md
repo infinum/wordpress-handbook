@@ -1,196 +1,30 @@
-Setting up tests for WordPress is relatively easy. First, you need to add `"phpunit/phpunit": "^6.5"` and `"brain/monkey": "^2.2"` to your composer `require-dev` part in `composer.json`.
+### What is the point of testing in WordPress?
 
-Or you can add it from the terminal:
+You may be wondering: what do I need tests for? I will see if my custom post type has been registered. Or if the change I made to my page template changes on the front end. And you are completly right.
 
-```bash
-composer require --dev brain/monkey:2.2
-```
+In most cases, you won't need tests. Especially if working on just simple presentational websites. But more often we get requests from clients to implement some third party integration into our system. This requires more elaborate business logic.
 
-```bash
-composer require --dev phpunit/phpunit:6.5
-```
+Here is where tests shine through. Not only do they speed up your development process, they assure that you always code to the result you want. And in the future, if there is any change request, you can be sure that that change won't break your existing functionality.
 
-This will load [PHPUnit](https://phpunit.de/) and [Brain Monkey](https://brain-wp.github.io/BrainMonkey/). PHPUnit is the testing suite, and Brain Monkey is a helper for testing in WordPress.
+Tests are a safety net when working on complex projects.
 
-After that, in the `tests` folder add the `bootstrap.php` file that looks like this:
+When working with some third-party API integrations, they are useful because you can just mock your requests. When coding you can just run a test to get the result from the API (mocked). Instead of actually calling the API.
 
-```php
-<?php
-/**
- * PHPUnit bootstrap file
- *
- * @package My_Project
- */
+### Levels of testing
 
-/**
- * We need to include autoloader to use our plugin
- * and to use Brain Monkey for running a unit test.
- */
-require_once dirname( dirname( __FILE__ ) ) . '/vendor/autoload.php';
-```
+There are different types of tests, and they all serve a different purpose. There is a concept called the test pyramid that groups software tests into departments based on speed of execution, distance from the code, development cost and reliability.
 
-Dump your autoload to load all the necessary classes and files. It's also good to add the init class that you'll extend called `init-setup.php`.
+![Test pyramid](/img/test-pyramid.png)
 
-```php
-<?php
-/**
- * Class Init tests
- *
- * @package My_Project\Tests
- */
+The basis of all the tests are unit tests. They are the easiest to perform. You test one piece of your code in isolation of other code. You depend on mocks. They are mostly used to validate that your methods and functions do what you want them to do. They are super fast (because you just run the code in isolation).
 
-namespace My_Project\Tests;
+After that we have integration tests. We want to make sure that our code works within the context of our app. In our case it's the WordPress app. So we test if our modifications (mostly filters and actions) work the way we intended them to work. Or if the custom post types or REST routes are registered and work the way we want them to.
 
-use PHPUnit\Framework\TestCase;
-use Brain\Monkey;
+After that we have acceptance and functional tests. Acceptance and functional tests are very similar, with a distinction that acceptance tests are __testing the functionality of the project from the viewpoint of the business user__.
+They are very similar to end to end (E2E) tests, but those are performed from the viewpoint of the QA engineer.
 
-class InitTestCase extends TestCase {
-  /**
-   * Setup method necessary for Brain Monkey to function
-   */
-  protected function setUp() {
-    parent::setUp();
-    Monkey\setUp();
-  }
+Acceptance and functional tests are reserved for UI testing. We want to check if our modifications work on the front end (if we have certain buttons, or if the form is working properly). They are easiest to write (given we have a good framework), but take most time to execute. You need to have an environment set up (usually Selenium) and then it needs to execute steps, so that takes time.
 
-  /**
-   * Teardown method necessary for Brain Monkey to function
-   */
-  protected function tearDown() {
-    Monkey\tearDown();
-    parent::tearDown();
-  }
+Last level is the manual testing by the QA, and UAT or user acceptance tests. QA engineers manually test every functionality, and users (usually clients) will also go through your app and test its functionality.
 
-  /**
-   * This method is only set to silence warnings
-   */
-  public function test_silence_warning() {
-    $this->assertTrue( true, true );
-  }
-}
-```
-
-Add `phpunit.xml.dist` in the root of your project.
-
-```xml
-<?xml version="1.0"?>
-<phpunit
-  bootstrap="tests/bootstrap.php"
-  backupGlobals="false"
-  colors="true"
-  convertErrorsToExceptions="true"
-  convertNoticesToExceptions="true"
-  convertWarningsToExceptions="true"
-  >
-  <testsuites>
-    <testsuite>
-      <directory prefix="test-" suffix=".php">./tests/</directory>
-    </testsuite>
-  </testsuites>
-  <filter>
-    <whitelist>
-      <directory>./</directory>
-      <exclude>
-        <directory>./node_modules</directory>
-        <directory>./vendor</directory>
-        <directory>./tests</directory>
-      </exclude>
-    </whitelist>
-  </filter>
-  <logging>
-    <log type="coverage-clover" target="tests/_reports/logs/clover.xml"/>
-    <log type="coverage-html" target="tests/_reports/coverage" charset="UTF-8" yui="true" highlight="true" lowUpperBound="35" highLowerBound="70" />
-  </logging>
-</phpunit>
-```
-
-## Plugin testing
-
-Use WP-CLI to set up our plugin’s unit tests. If you don't have WP-CLI installed on your system, install it. Documentation on starting unit tests can be found [here](https://make.wordpress.org/cli/handbook/plugin-unit-tests/).
-
-Assuming you have the plugin in your testing environment, in the project root folder, run the following:
-
-```bash
-wp scaffold plugin-tests my-plugin
-```
-This will create several new files and folders in your plugin.
-
-```
-bin/
-    install-wp-tests.sh
-tests/
-    bootstrap.php
-    test-sample.php
-phpunit.xml
-.travis.yml
-```
-
-
-To initialize the testing environment locally, go to your plugin directory and run the install script:
-
-```bash
-bin/install-wp-tests.sh wordpress_unit_tests root '' localhost latest
-```
-
-The install script first installs a copy of WordPress in the `/tmp directory` (by default) as well as the WordPress unit testing tools. Then, it creates a database to be used while running tests. The parameters that are passed to `install-wp-tests.sh` set up the test database. Be sure that your MySQL service is up and running if you're running tests outside VVV.
-
-After that, you can run plugin tests by writing:
-
-```bash
-vendor/bin/phpunit
-```
-
-The WP-CLI provides only one sample test
-
-```php
-class SampleTest extends WP_UnitTestCase {
-
-  /**
-   * A single example test.
-   */
-  function test_sample() {
-    // Replace this with some actual testing code.
-    $this->assertTrue( true );
-  }
-}
-```
-
-That is why you'll need to write your own tests.
-
-### Debugging inside tests
-
-If you want to check the output of a variable inside your test, just add
-
-```php
-fwrite( STDERR, print_r( $variable, true ) );
-```
-
-## Possible issues
-
-### Require error
-
-When running `phpunit` for your plugin outside VVV, you get an error that looks like this:
-
-```bash
-Warning: require_once(.../wordpress//wp-includes/class-phpmailer.php): failed to open stream: No such file or directory in .../wordpress-tests-lib/includes/mock-mailer.php on line 2
-
-Fatal error: require_once(): Failed opening required '.../wordpress//wp-includes/class-phpmailer.php' (include_path='.:/opt/lampp/lib/php') in .../wordpress-tests-lib/includes/mock-mailer.php on line 2
-```
-
-In this case, delete the database (using Sequel Pro or via terminal), delete the temporary folder where WordPress is installed (either in `/tmp/wordpress/` or somewhere in `/var/folders/..` subfolders), and run
-
-```bash
-bash bin/install-wp-tests.sh wordpress_test root '' localhost latest
-```
-
-in the terminal. After that, `phpunit` should work.
-
-### Xdebugg inside VVV
-
-For some reason, when Xdebugg is enabled in VVV, and you want to have coverage generated when running a unit test, it will take extremely long to check it. In that case, either disable creating code coverage
-
-```bash
-phpunit --no-coverage
-```
-
-or run the test outside VVV. Running tests outside VVV with Xdebug is significantly faster (a few seconds vs ~10 minutes).
+These are slowest as they are completly manual.

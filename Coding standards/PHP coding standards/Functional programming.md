@@ -4,40 +4,41 @@ Functions are first-class citizens in PHP:
 
 ```php
 <?php
+
 // Function as a variable.
-$function_name = function() {
+$functionName = function() {
   return 42;
 };
 
 // Function as a return type.
-function create_function() {
+function createFunction() {
   return function() {
     return 'Return from an anonymous function.';
   };
 };
 
-$new_func = create_function();
+$newFunc = createFunction();
 
 // Function as a parameter.
-function display( $function ) {
+function display($function) {
   echo $func() , "\n\n";
 }
 
 // Call a function by name.
-call_user_func_array( 'strtoupper', $some_string );
+call_user_func_array('strtoupper', $someString);
 
-// objects as functions.
-class Some_Class {
-  public function __invoke( $param1, $param2 ) {
+// Objects as functions.
+class SomeClass {
+  public function __invoke($param1, $param2) {
     [...]
   }
 }
 
-$instance = new Some_Class();
-$instance( 'First', 'Second' ); // call the __invoke() method
+$instance = new SomeClass();
+$instance('First', 'Second'); // call the __invoke() method.
 ```
 
-Even though looping through iterable objects is generally faster if you use `for` or `foreach`, you can use some functional programming techniques that will make your code a bit less _boilerplatey_. Also, the performance effects are [negligible](https://stackoverflow.com/questions/18144782/performance-of-foreach-array-map-with-lambda-and-array-map-with-static-function).
+Even though looping through iterable objects is generally faster if you use `for` or `foreach`, you can use some functional programming techniques that will make your code a bit less _boilerplatey_. The performance effects are [negligible](https://stackoverflow.com/questions/18144782/performance-of-foreach-array-map-with-lambda-and-array-map-with-static-function).
 
 ### Mapping
 
@@ -45,13 +46,14 @@ Applying a function to all elements:
 
 ```php
 <?php
+
 // Old way (imperative):
-foreach ( $iterable as $iterable_key => $iterable_value ) {
-  $iterable[ $iterable_key ] = strtoupper( $iterable_value );
+foreach ($iterable as $iterableKey => $iterableValue) {
+  $iterable[$iterableKey] = strtoupper($iterableValue);
 }
 
 // New way (functional):
-$result = array_map( 'strtoupper', $iterable );
+$result = array_map('strtoupper', $iterable);
 ```
 
 [array_map manual](https://php.net/manual/en/function.array-map.php)
@@ -62,15 +64,22 @@ Reduce an array to a single value:
 
 ```php
 <?php
+
 // Old way (imperative):
 $result = 0;
+$intArray = [1,2,3,4,5,6];
 
-foreach ( $int_array as $value ) {
+foreach ($intArray as $value) {
   $result += $value;
 }
 
 // New way (functional):
-$result = array_reduce( $int_array, function( $carry, $item ) { return $carry + $item; }, 0 );
+$result = array_reduce($intArray, function($carry, $item) {
+  return $carry + $item;
+}, 0);
+
+// Or using arrow functions (PHP >= 7.4):
+$result = array_reduce($intArray, fn($carry, $item) => $carry + $item);
 ```
 
 [array_reduce manual](https://php.net/manual/en/function.array-reduce.php)
@@ -83,17 +92,24 @@ Iterating over an array, but returning only those results that pass some conditi
 
 ```php
 <?php
+
 // Old way (imperative):
 $result = [];
+$intArray = [1,2,3,4,5,6];
 
-foreach ( $int_array as $value ) {
+foreach ($intArray as $value) {
   if( $value % 2 === 0 ) {
     $result[] = $value;
   }
 }
 
 // New way (functional):
-$result = array_filter( $int_array, function( $item ) { return ( $item % 2 === 0); } );
+$result = array_filter($intArray, function($item) {
+  return $item % 2 === 0;
+});
+
+// Or using arrow functions (PHP >= 7.4):
+$result = array_filter($intArray, fn($item) => $item % 2 === 0);
 ```
 
 ### Anonymous functions
@@ -102,7 +118,8 @@ Using anonymous functions for actions and filters could be problematic because i
 
 ```php
 <?php
-add_action( 'init', function() {
+
+add_action('init', function() {
   call_function();
 }, 10 );
 ```
@@ -111,9 +128,11 @@ Do this instead:
 
 ```php
 <?php
-add_action( 'init', 'my_callable_function', 10 );
 
-function my_callable_function() {
+add_action('init', 'myCallableFunction', 10);
+
+function myCallableFunction()
+{
   call_function();
 }
 ```
@@ -128,21 +147,24 @@ In PHP, a closure is a callable class to which you have bound your parameters ma
 
 It's a slight distinction, but one that bears mentioning.
 
-A closure is essentially the same as a Lambda, but unlike a Lambda, it can access variables outside the scope that it was created in.
+A closure is essentially the same as a lambda, but unlike a lambda, it can access variables outside the scope that it was created in.
 
 ```php
 <?php
+
 // Set a multiplier.
  $multiplier = 3;
 
 // Create a list of numbers.
- $numbers = array( 1, 2, 3, 4 );
+ $numbers = [1, 2, 3, 4];
 
 // Use array_walk to iterate through the list and multiply.
-array_walk( $numbers, function( $number ) use ( $multiplier ) {
+array_walk($numbers, function($number) use ($multiplier) {
   echo $number * $multiplier;
-} );
+});
 ```
+
+A lambda is a function which can be treated like a variable. It is a function that is not assigned a name at the time of the definition.
 
 [Closures in PHP](http://php.net/manual/en/class.closure.php)
 
@@ -152,18 +174,19 @@ Memoization is an optimization technique used to cache function results. If we h
 
 ```php
 <?php
-function factorial( $n ) {
-  static $cache = [];
+function factorial($n)
+{
+  static $cache = []; // Notice the static keyword!
 
-  if ( $n === 1 ) {
+  if ($n === 1) {
     return 1;
   }
 
-  if ( ! array_key_exists( $n, $cache ) ) {
-    $cache[ $n ] = $n * factorial( $n - 1 );
+  if (! array_key_exists($n, $cache)) {
+    $cache[$n] = $n * factorial($n - 1);
   }
 
-  return $cache[ $n ];
+  return $cache[$n];
 }
 ```
 
@@ -171,19 +194,21 @@ We can generalize this using a helper function:
 
 ```php
 <?php
-function memoize( $func ) {
-  return function() use ( $func ) {
+
+function memoize($func)
+{
+  return function() use ($func) {
     static $cache = [];
 
     $args = func_get_args();
-    $key  = serialize( $args );
+    $key  = serialize($args);
 
-    if( ! array_key_exists( $key, $cache ) ) {
-      $cache[ $key ] = call_user_func_array( $func, $args );
+    if(! isset($cache[$key]) || ! array_key_exists($key, $cache)) {
+      $cache[$key] = $func(...$args);
     }
 
-    return $cache[ $key ];
-  }
+    return $cache[$key];
+  };
 }
 ```
 
@@ -191,15 +216,18 @@ and then do:
 
 ```php
 <?php
-$factorial = function( $n ) use( &$factorial ) {
-  if( $n === 1 ) {
-    return 1
+
+$factorial = function($n) use(&$factorial) {
+  if($n === 1) {
+    return 1;
   };
 
-  return $n * $factorial( $n -1 );
-}
+  return $n * $factorial($n - 1);
+};
 
-$mem_factorial = memoize( $factorial );
+$memFactorial = memoize($factorial);
+
+var_dump($memFactorial(5)); // int(120).
 ```
 
 ### Links on functional PHP programming
@@ -207,3 +235,5 @@ $mem_factorial = memoize( $factorial );
 [PHP The Right Way](https://phptherightway.com/pages/Functional-Programming.html)  
 [Functional Programming in PHP](https://www.liip.ch/en/blog/functional-programming-in-php)  
 [Functional PHP](https://apiumhub.com/tech-blog-barcelona/functional-php/)  
+[Functional Programming in PHP, 2nd Edition](https://www.phparch.com/books/functional-programming-in-php/)
+

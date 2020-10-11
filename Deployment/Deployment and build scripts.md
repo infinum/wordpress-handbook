@@ -6,7 +6,7 @@ Here's an example of what a build script looks like. The real implementation may
 
 ### Build (`build.sh`)
 
-```sh
+```bash
 #!/usr/bin/env sh
 
 function build() {
@@ -20,7 +20,7 @@ build
 
 ### Tests (`test.sh`)
 
-```sh
+```bash
 #!/usr/bin/env bash
 
 set -o errexit

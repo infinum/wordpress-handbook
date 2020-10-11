@@ -5,24 +5,24 @@
 
 ### File naming
 
-File names should be written in lowercase letters with `-` as a separator between words, for example `theme-helpers.php`. In certain cases, such as creating a 'page builder' using ACF, the underscore (`_`) is allowed, but generally you should use the hyphen as a separator.
+File names should be written in lowercase letters with `-` as a separator between words, for example `theme-helpers.php`. In certain cases, such as creating a 'page builder' using ACF, the underscore (`_`) is allowed, but generally you should use the hyphen as a separator. This is used when naming view files.
 
-Files containing a class should be named `class-{classname}.php`. There should always be only one class per file.
+Files containing a class should be named like the class `{Classname}.php`. There should always be only one class per file. The first letter should be capitalized.
 
 Use [eightshift-boilerplate](https://github.com/infinum/eightshift-boilerplate) as a basis for any template-based website. You should follow the existing structure of the theme there.
 
 ### Naming conventions
 
-Use lowercase letters in variable, action, and function names. Separate words with underscores. Don't abbreviate variable names unnecessarily—let the code be unambiguous and self-documenting.
+Use `camelCase` when naming methods and functions. Don't abbreviate variable names unnecessarily — let the code be unambiguous and self-documenting.
 
 ### Namespacing and class names
 
-Namespacing should follow the file structure. The main namespace is a Capital_Cased version of the project name. So, in the case of boilerplate, the default namespace is
+Namespacing should follow the file structure. The main namespace is a CapitalCased version of the project name. So, in the case of boilerplate, the default namespace is
 
 ```php
 <?php
 
-namespace Inf_Theme;
+namespace InfTheme;
 ```
 
 Every folder that holds classes constitutes a subnamespace.
@@ -62,11 +62,11 @@ If you are using the same method in many different classes, it is useful to put 
 
 A Trait is similar to a class, but only intended to group functionality in a fine-grained and consistent way. It is not possible to instantiate a Trait on its own. It is an addition to traditional inheritance and enables horizontal composition of behavior, that is, the application of class members without requiring inheritance.
 
-Class names should use capitalized words separated by underscores.
+Class names should use capitalized words.
 
 ```php
 <?php
-class Custom_Class { ... }
+class CustomClass { ... }
 ```
 
 Constants should be in all uppercase letters with underscores separating the words:
@@ -85,15 +85,15 @@ const THEME_VERSION = '1.0.0';
 
 ### Yoda Conditions
 
-We don't use [Yoda Conditions](https://en.wikipedia.org/wiki/Yoda_conditions), especially since the code checker should make sure that you don't assign a variable in conditionals.
+We don't use [Yoda Conditions](https://en.wikipedia.org/wiki/Yoda_conditions), especially since the code checker should make sure that you don't assign a variable in conditionals. They add unnecessary overhead and are hard to read.
 
 ### Functions
 
-When defining a function or a method, there should be no space between the function name and the opening parenthesis, but there should be a space between the closing parenthesis and the open curly bracket.
+When defining a function or a method, there should be no space between the function name and the opening parenthesis, and between the closing parenthesis and the open curly bracket.
 
 ```php
 <?php
-function function_name( $var ) { ... }
+function functionName($var) {... }
 ```
 
 #### Class method visibility
@@ -105,3 +105,5 @@ Always add visibility keywords to methods and properties inside classes (`public
 * `private` scope is used when you want your variable/function to be visible in its own class only.
 
 * `protected` scope is used when you want to make your variable/function visible in all classes that extend the current class, including the parent class.
+
+If you are working on projects with latest PHP version, use latest features. This means that you should add constant visibiliy modifiers as well if you are working on PHP >= 7.1

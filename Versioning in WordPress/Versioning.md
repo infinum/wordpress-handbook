@@ -1,10 +1,10 @@
-*Commit early, commit often*
+> code*Commit early, commit often*
 
 Naming a repository follows this pattern:
 
-`wordpress-{project}-{app}`
+`{technology}-{project name}`
 
-with allowed characters `[a-z\-]`.
+with allowed characters `[a-z\-]`. `technology` is usually `wordpress`, but can be some other PHP framework like `laravel` or `symfony`.
 
 Your repository should consist of several main branches: `master`, `develop`, `staging` and some optional: `preproduction`, `edge`, and `feature` (depending on the project).
 
@@ -30,7 +30,7 @@ After that, create a pull request to `staging` and `master` (and/or `preproducti
 
 Every merge is done via pull requests. Manual merges are prohibited (or not possible in the case of a `master` branch).
 
-If the branch you want to work on depends on a branch that is still being worked on, pull the changes from that branch into your branch to get updates. Be sure to track the changes on that branch.
+If the branch you want to work on depends on a branch that is still being worked on, pull the changes from that branch into your branch to get updates (cherry pick). Be sure to track the changes on that branch.
 
 The `staging` branch is usually connected with a staging server using build and deploy scripts. After the tests are completed, the features should be merged with the `master` and `preproduction` branches.
 
@@ -62,7 +62,7 @@ git push staging
 
 Once you have merged the feature branch to staging, you'll have conflicts. Fix them, commit them, and push to staging. This won't impact the other PR to the master. If you use the first GitHub suggestion or their edit tool, you will merge the entire staging branch to your feature branch, and that will impact the PR to the master branch (a bunch of unwanted commits and messed up history).
 
-If you're not sure what to do, ask someone who is. :)
+If you're not sure what to do, ask someone who is. 🙂
 
 **Do not submit PR that has over 100 changed files**
 

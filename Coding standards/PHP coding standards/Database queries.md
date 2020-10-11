@@ -7,55 +7,91 @@ You can optimize your query by removing unnecessary queries.
 * `update_post_term_cache => false`: useful when taxonomy terms will not be utilized.
 * `fields => 'ids`': useful when only the post IDs are needed (less typical).
 
-Never use `posts_per_page => -1`, as this will return every single post in the query, which can have detrimental effects if you have a large number of posts. It's better to set a big number (500 or 1000) as the upper limit.
+**Never** use `posts_per_page => -1`, as this will return every single post in the query, which can have detrimental effects if you have a large number of posts. It's better to set a big number (500 or 1000) as the upper limit.
 
-Direct database calls should be discouraged (`$wpdb`), as well as using `get_posts()`. But use them if you cannot avoid them.
+Direct database calls should be discouraged (`$wpdb`), as well as using `get_posts()`. But use them if you cannot avoid them. `$wpdb` is mostly used if you are creating and using custom database tables. `get_posts()` should be avoided, because its results are not cached.
+
+You can read more about uncached calls in the [WordPress VIP documentation](https://wpvip.com/documentation/vip-go/uncached-functions/).
 
 Don't use `post__not_in`. If you need to skip posts, do it in PHP
 
 ```php
 <?php
-$custom_query = new WP_Query( array(
-    'post_type' => 'post',
-    'posts_per_page' => 30 + count( $posts_to_exclude )
-) );
 
-if ( $custom_query->have_posts() ) {
-  while ( $custom_query->have_posts() ) {
-    $custom_query->the_post();
-    if ( in_array( get_the_ID(), $posts_to_exclude ) ) {
+$postsToExclude = [
+    '123' => 1,
+    '345' => 1,
+    '2' => 1,
+    '67' => 1,
+];
+
+$customQuery = new WP_Query([
+    'post_type' => 'post',
+    'posts_per_page' => 30 + count( $postsToExclude )
+]);
+
+if ( $customQuery->have_posts() ) {
+  while ( $customQuery->have_posts() ) {
+    $customQuery->the_post();
+    if ( isset($postsToExclude[get_the_id()]) ) {
       continue;
     }
+
     the_title();
   }
 }
 ?>
 ```
 
-Try to avoid post meta queries if possible, that is, don't try to fetch posts by their post meta. Instead, use [taxonomies](https://codex.wordpress.org/Taxonomies) to group posts. Taxonomy queries are fast and won't affect your performance.
+Try to avoid post meta queries if possible, that is, **don't try to fetch posts by their post meta**. Instead, use [taxonomies](https://codex.wordpress.org/Taxonomies) to group posts. Taxonomy queries are fast and won't affect your performance.
 
 On the other hand, fetching post meta if you know the post ID or if you are in a post/page is fast and can be used anytime.
 
 ```php
 <?php
 // Don't do this:
-$args = array(
-    'meta_key'     => 'color',
-    'meta_value'   => 'blue',
+$args = [
+    'meta_key' => 'color',
+    'meta_value' => 'blue',
     'meta_compare' => '!='
-);
+];
 
-$query = new WP_Query( $args );
+$query = new WP_Query($args);
 
 // You can do this:
-$color = get_post_meta( get_the_id(), 'color', true );
+$color = get_post_meta(get_the_id(), 'color', true);
 ```
 
-Avoid multi-dimensional queries—post queries based on terms across multiple taxonomies, for instance.
+Avoid multi-dimensional queries—post queries. Examples are querying on terms across multiple taxonomies, or querying multiple post meta keys.
+
+```php
+<?php
+// Don't do this:
+$args = [
+    'post_type' => 'post',
+    'tax_query' => [
+        'relation' => 'AND',
+        [
+            'taxonomy' => 'movie_genre',
+            'field'    => 'slug',
+            'terms'    => ['action', 'comedy'],
+        ),
+        [
+            'taxonomy' => 'actor',
+            'field'    => 'term_id',
+            'terms'    => [103, 115, 206],
+            'operator' => 'NOT IN',
+        ],
+    ],
+];
+
+$query = new WP_Query($args);
+```
 
 It's better to do a query with the smallest possible number of dimensions, and then filter out the results with PHP.
 
 ### Post status security
 
 When setting the `post_status` to anything other than `public`, always add the `'perm' => 'readable'` argument.
+
 This is due to a possible information disclosure vulnerability, which you can read more about here: [WP_Query docs](https://developer.wordpress.org/reference/classes/wp_query/#comment-2378).

@@ -26,7 +26,7 @@ The setup for Valet is really easy.
 
 When you type `echo $PATH`, you should get something like this:
 
-```sh
+```bash
 /Users/infinum/.composer/vendor/bin:/usr/local/sbin:/Users/infinum/wpcs/vendor/bin:/Users/infinum/.rbenv/shims:/Users/infinum/.rbenv/bin:/Users/infinum/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
 ```
 
@@ -34,7 +34,7 @@ If the `/Users/infinum/.composer/vendor/bin` part is missing, it means that you 
 
 If you are using Z shell, you need to edit your `/.zshrc` file, and add
 
-```sh
+```bash
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 ```
 
@@ -46,7 +46,7 @@ Valet has a built-in WordPress driver, so it supports running WordPress. You can
 
 The `park` option can be used to add a whole folder to Valet. Every folder in there will then be mapped to a site and get its own `.test` domain. So, if you add the `~/Sites` folder to Valet and have a subfolder in there named `wp-valet`, the content of that folder will be served when you visit `http://wp-valet.test` in your browser. No setup is required. The `link` option can be used to serve a single site, without adding a whole directory.
 
-```sh
+```bash
 $ mkdir ~/Sites
 $ cd ~/Sites
 $ valet park
@@ -54,7 +54,7 @@ $ valet park
 
 Then, you need to add the `wp-valet` folder and use [WP CLI](http://wp-cli.org/) to install WordPress.
 
-```sh
+```bash
 $ mkdir wp-valet
 $ cd wp-valet
 $ wp core download
@@ -68,13 +68,13 @@ And this is it. Once you do this, you should be able to go to `http://wp-valet.t
 
 In the odd case that installation does not work and you get the blue 404 screen, try checking whether you are connected to the MySQL database.
 
-```sh
+```bash
 brew services list
 ```
 
 You should see something like this:
 
-```sh
+```bash
 Name       Status  User          Plist
 dnsmasq    started root          /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 mysql      started infinum-denis /Users/infinum/Library/LaunchAgents/homebrew.mxcl.mysql.plist
@@ -85,14 +85,14 @@ postgresql started infinum-denis /Users/infinum/Library/LaunchAgents/homebrew.mx
 
 If MySQL is not running, start it with
 
-```sh
+```bash
 brew services start mysql
 ```
 
 Log into your MySQL with `mysql -u root` and create the desired database.
 
 
-```sh
+```bash
 create database db_name;
 grant all privileges on db_name.* to 'root'@'localhost' identified by "";
 flush privileges;

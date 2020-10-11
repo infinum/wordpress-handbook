@@ -2,23 +2,24 @@ Unit testing is a level of software testing where individual units/components of
 
 In terms of PHP and WordPress, a single 'unit' is a function or a class. Unit testing is dynamic testing of individual units in isolation. This means that the code has to be executed (dynamic). In contrast, static testing is checking for code smells, for which we use linters and code sniffers.
 
-Testing in isolation means that we only execute the code that we want to test and no other unit. We are not interested in coupling—this is what integration tests are for.
+Testing in isolation means that we only execute the code that we want to test and no other unit. We are not interested in coupling. That is what integration tests are for.
 
 An example of a _non-unit_ test would be:
 
 ```php
-function test_register_taxonomy() {
+function testRegisterTaxonomy()
+{
 
   $tax = rand_str();
 
-  $this->assertFalse( taxonomy_exists( $tax ) );
+  $this->assertFalse(taxonomy_exists($tax));
 
-  register_taxonomy( $tax, 'post' );
+  register_taxonomy($tax, 'post');
 
-  $this->assertTrue( taxonomy_exists( $tax ) );
-  $this->assertFalse( is_taxonomy_hierarchical( $tax ) );
+  $this->assertTrue(taxonomy_exists($tax));
+  $this->assertFalse(is_taxonomy_hierarchical($tax));
 
-  unset( $GLOBALS['wp_taxonomies'][ $tax ] );
+  unset($GLOBALS['wp_taxonomies'][$tax]);
 }
 ```
 
@@ -29,7 +30,8 @@ What if your code is dependent on some core functionality? In that case, we need
 For instance, let's say you have a method that will disable certain REST endpoints in your code. That looks like this:
 
 ```php
-public function disable_default_rest_fields( array $endpoints ) : array {
+public function disableDefaultRestFields(array $endpoints): array
+{
 
   // Disable users endpoint.
   if ( isset( $endpoints['/wp/v2/users'] ) ) {
@@ -57,65 +59,69 @@ public function disable_default_rest_fields( array $endpoints ) : array {
 }
 ```
 
-You are not interested whether this method is hooked on some action. The only thing you are interested in is that when you pass an array of endpoints to the `disable_default_rest_fields()` method, they don't contain the ones unset in the method. So you'll write a test that looks like this:
+You are not interested whether this method is hooked on some action. The only thing you are interested in is that when you pass an array of endpoints to the `disableDefaultRestFields()` method, they don't contain the ones unset in the method. So you'll write a test that looks like this:
 
 ```php
-class My_Test extends InitTestCase {
+class MyTest extends InitTestCase
+{
   /**
    * Initial setup for the test
    */
-  public function setUp() {
-    parent::setUp();
+  public function setUp(): void
+  {
+      parent::setUp();
 
-    // Setup mock endpoints array.
-    $this->endpoints = array(
-        '/wp/v2'                                 => array(),
-        '/wp/v2/pages'                           => array(),
-        '/wp/v2/media'                           => array(),
-        '/wp/v2/media/(?P<id>[\d]+)'             => array(),
-        '/wp/v2/types'                           => array(),
-        '/wp/v2/types/(?P<type>[\w-]+)'          => array(),
-        '/wp/v2/statuses'                        => array(),
-        '/wp/v2/statuses/(?P<status>[\w-]+)'     => array(),
-        '/wp/v2/taxonomies'                      => array(),
-        '/wp/v2/taxonomies/(?P<taxonomy>[\w-]+)' => array(),
-        '/wp/v2/users'                           => array(),
-        '/wp/v2/users/(?P<id>[\d]+)'             => array(),
-        '/wp/v2/users/me'                        => array(),
-        '/wp/v2/categories'                      => array(),
-        '/wp/v2/categories/(?P<id>[\d]+)'        => array(),
-        '/wp/v2/tags'                            => array(),
-        '/wp/v2/tags/(?P<id>[\d]+)'              => array(),
-        '/wp/v2/comments'                        => array(),
-        '/wp/v2/comments/(?P<id>[\d]+)'          => array(),
-        '/wp/v2/settings'                        => array(),
-    );
+      // Setup mock endpoints array.
+      $this->endpoints = [
+          '/wp/v2'                                 => [],
+          '/wp/v2/pages'                           => [],
+          '/wp/v2/media'                           => [],
+          '/wp/v2/media/(?P<id>[\d]+)'             => [],
+          '/wp/v2/types'                           => [],
+          '/wp/v2/types/(?P<type>[\w-]+)'          => [],
+          '/wp/v2/statuses'                        => [],
+          '/wp/v2/statuses/(?P<status>[\w-]+)'     => [],
+          '/wp/v2/taxonomies'                      => [],
+          '/wp/v2/taxonomies/(?P<taxonomy>[\w-]+)' => [],
+          '/wp/v2/users'                           => [],
+          '/wp/v2/users/(?P<id>[\d]+)'             => [],
+          '/wp/v2/users/me'                        => [],
+          '/wp/v2/categories'                      => [],
+          '/wp/v2/categories/(?P<id>[\d]+)'        => [],
+          '/wp/v2/tags'                            => [],
+          '/wp/v2/tags/(?P<id>[\d]+)'              => [],
+          '/wp/v2/comments'                        => [],
+          '/wp/v2/comments/(?P<id>[\d]+)'          => [],
+          '/wp/v2/settings'                        => [],
+      ];
   }
 
   /**
    * Tear down after the test ends
    */
-  public function tearDown() {
-    parent::tearDown();
+  public function tearDown(): void
+  {
+      parent::tearDown();
 
-    $this->endpoints = null;
+      $this->endpoints = null;
   }
 
   /**
    * Checks disabled rest endpoints
    */
-  public function test_disabled_rest_endpoints() {
-    $endpoints = $this->endpoints;
+  public function testRestEndpointsAreDisabled()
+  {
+      $endpoints = $this->endpoints;
 
-    $my_class = new My_Class();
+      $myClass = new MyClass();
 
-    $filtered_endpoints = $my_class->disable_default_rest_fields( $endpoints );
+      $filteredEndpoints = $myClass->disableDefaultRestFields($endpoints);
 
-    $this->assertArrayNotHasKey( '/wp/v2/users', $filtered_endpoints );
-    $this->assertArrayNotHasKey( '/wp/v2/users/(?P<id>[\d]+)', $filtered_endpoints );
-    $this->assertArrayNotHasKey( '/wp/v2/users/me', $filtered_endpoints );
-    $this->assertArrayNotHasKey( '/wp/v2/media', $filtered_endpoints );
-    $this->assertArrayNotHasKey( '/wp/v2/media/(?P<id>[\d]+)', $filtered_endpoints );
+      $this->assertArrayNotHasKey('/wp/v2/users', $filteredEndpoints);
+      $this->assertArrayNotHasKey('/wp/v2/users/(?P<id>[\d]+)', $filteredEndpoints);
+      $this->assertArrayNotHasKey('/wp/v2/users/me', $filteredEndpoints);
+      $this->assertArrayNotHasKey('/wp/v2/media', $filteredEndpoints);
+      $this->assertArrayNotHasKey('/wp/v2/media/(?P<id>[\d]+)', $filteredEndpoints);
   }
 }
 ```
@@ -149,7 +155,7 @@ This is why it's a good idea to wrap your outside dependencies in wrapper classe
 If you need to mock static methods in a class, you need to alias it:
 
 ```php
-$mock = \Mockery::mock('alias:Namespace\My_Class');
+$mock = \Mockery::mock('alias:Namespace\MyClass');
 ```
 
 Then, you create a mock class and add mocked static methods in it. This alias is used every time a call to a mocked class is found in the code that is being tested.
@@ -173,48 +179,53 @@ Taken from [Stack Overflow](https://stackoverflow.com/questions/31219542/what-is
 
 ```php
 class ClassToTest {
-  public function methodToTest() {
-    $myClass = new MyClass();
-    $result  = $myClass->someMethod();
+    public function methodToTest()
+    {
+        $myClass = new MyClass();
+        $result = $myClass->someMethod();
 
-    return $result;
-  }
+        return $result;
+    }
 }
 ```
 
 you would create an instance mock using `overload` and define the expectations like this:
 
 ```php
-public function testMethodToTest() {
-  $mock = Mockery::mock('overload:MyClass');
-  $mock->shouldreceive('someMethod')->andReturn('someResult');
+public function testMethodToTest()
+{
+    $mock = Mockery::mock('overload:MyClass');
+    $mock->shouldreceive('someMethod')->andReturn('someResult');
 
-  $classToTest = new ClassToTest();
-  $result      = $classToTest->methodToTest();
+    $classToTest = new ClassToTest();
+    $result = $classToTest->methodToTest();
 
-  $this->assertEquals('someResult', $result);
+    $this->assertEquals('someResult', $result);
 }
 ```
 
 `Alias` is used to mock public static methods. For example, if this code is to be tested:
 
 ```php
-class ClassToTest {
-  public function methodToTest() {
-    return MyClass::someStaticMethod();
-  }
+class ClassToTest
+{
+    public function methodToTest()
+    {
+        return MyClass::someStaticMethod();
+    }
 }
 ```
 
 you would create an alias mock using `alias` and define the expectations like this:
 
 ```php
-public function testNewMethodToTest() {
+public function testNewMethodToTest()
+{
   $mock = Mockery::mock('alias:MyClass');
   $mock->shouldreceive('someStaticMethod')->andReturn('someResult');
 
   $classToTest = new ClassToTest();
-  $result      = $classToTest->methodToTest();
+  $result = $classToTest->methodToTest();
 
   $this->assertEquals('someResult', $result);
 }

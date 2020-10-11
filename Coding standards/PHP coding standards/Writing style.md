@@ -7,11 +7,11 @@ Inline statements should have the opening and closing PHP tags on the same line.
 ```php
 <?php
 // Yes:
-<?php echo esc_html( $x ); ?>
+<?php echo esc_html($x); ?>
 
 // No:
 <?php
-echo esc_html( $x );
+echo esc_html($x);
 ?>
 ```
 
@@ -19,7 +19,7 @@ Writing conditionals, or control statements on a single line should be done with
 
 ```php
 <?php
-if ( $some_variable === true ) { ?>
+if ($some_variable === true) { ?>
   <div class="block"></div>
 <?php } ?>
 ```
@@ -29,14 +29,14 @@ Never write inline statements without braces. This is an extremely bad practice 
 ```php
 <?php
 // Bad code:
-if ( $some_variable === true )
+if ($some_variable === true)
   $variable = 'This is inside true statement';
 
 // Worse:
-if ( $foo ) bar();
+if ($foo) bar();
 
 // Good code:
-if ( $foo ) {
+if ($foo) {
   bar();
 }
 ```
@@ -49,10 +49,10 @@ Each multiple statement should be on its own line
 <?php
 // Yes:
 $x++;
-echo esc_html( $x );
+echo esc_html($x);
 
 // No:
-$x++; echo esc_html( $x ); ?>
+$x++; echo esc_html($x); ?>
 ```
 
 ### Strict comparison
