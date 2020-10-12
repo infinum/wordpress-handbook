@@ -5,25 +5,28 @@ In this case, the theme should consist of files that are the required minimum fo
 Usually, `functions.php` contains redirection so that the users cannot access the 'php' WordPress front.
 
 ```php
-add_action( 'template_redirect', 'inf_theme_redirect' );
-if ( ! function_exists( 'inf_theme_redirect' ) ) {
-  /**
-   * Check whether the user is logged in or is trying to access the front-end page.
-   * In either case, the user should be redirected to the WordPress admin page.
-   *
-   * @return void
-   */
-  function inf_theme_redirect() {
-    if ( ! is_user_logged_in() ) {
-      auth_redirect();
-    } elseif ( ! is_admin() ) {
-      wp_redirect( site_url( 'wp-admin' ) );
+add_action('template_redirect', 'infThemeRedirect');
+
+if (! function_exists('infThemeRedirect')) {
+    /**
+     * Check whether the user is logged in or is trying to access the front-end page.
+     * In either case, the user should be redirected to the WordPress admin page.
+     *
+     * @return void
+     */
+    function infThemeRedirect()
+    {
+        if (! is_user_logged_in()) {
+            auth_redirect();
+        } elseif (! is_admin()) {
+            wp_redirect(site_url('wp-admin'));
+        }
+
+        exit;
     }
-    exit;
-  }
 }
 ```
 
-The endpoints for the front-end app should be created using either [REST API](https://developer.wordpress.org/rest-api/) or the [Decoupled JSON Content plugin](https://github.com/infinum/decoupled-json-content).
+The endpoints for the front-end app should be created using either [REST API](https://developer.wordpress.org/rest-api/).
 
 This functionality should be defined in the plugin.

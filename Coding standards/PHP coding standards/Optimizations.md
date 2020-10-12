@@ -6,21 +6,31 @@ If possible, avoid using the `in_array()` check because it will traverse the ent
 
 ```php
 <?php
-$array = array(
-  'foo' => true,
-  'bar' => true,
-);
 
-if ( isset( $array['bar'] ) ) {
-  // value is present in the array.
+$array = [
+    'foo' => true,
+    'bar' => true,
+];
+
+if (isset($array['bar'])) {
+    // value is present in the array.
 };
+```
+
+If you want to keep the performance advantage of isset(), while keeping the NULL element correctly detected you can use this combination:
+
+```php
+if(isset($array['bar']) || array_key_exists('bar', $array)) {
+    // value is present in the array.
+}
 ```
 
 If you have no control over the created array (there are no distinguishable keys to choose from), set the third parameter in the `in_array()` function to `true`. This will force strict comparisons (value and type).
 
 ```php
 <?php
-if ( in_array( 'some value', $array, true ) ) {
+
+if (in_array('some value', $array, true)) {
   // code goes here.
 }
 ```
@@ -31,16 +41,16 @@ Avoid using `array_push()` when possible. Instead, just append directly to the a
 
 ```php
 <?php
-$my_array = array();
+$myArray = [];
 
 // Good.
-foreach ( $other_array as $new_key => $new_value ) {
-  $my_array[] = $new_value;
+foreach ($otherArray as $newKey => $newValue) {
+  $myArray[] = $newValue;
 }
 
 // Avoid if possible.
-foreach ( $other_array as $new_key => $new_value ) {
-  array_push( $my_array, $new_value );
+foreach ( $otherArray as $newKey => $newValue ) {
+  array_push($myArray, $newValue);
 }
 ```
 
@@ -50,9 +60,9 @@ This will avoid any unnecessary overhead of calling the PHP function, as PHP has
 
 Use [caching](https://10up.github.io/Engineering-Best-Practices/php/#the-object-cache) to speed up the site.
 
-Use the [`pre_get_posts`](https://developer.wordpress.org/reference/hooks/pre_get_posts/) hook to modify your queries in the back end and in the front end (search queries, etc.).
+Use the [`pre_get_posts`](https://developer.wordpress.org/reference/hooks/pre_get_posts/) hook to modify your queries in the back end and in the front end (search queries, etc.). Be careful to add guard checks so that you affect only the targeted queries.
 
-Use [transients](https://codex.wordpress.org/Transients_API) to further speed up your site.
+Use [transients](https://developer.wordpress.org/apis/handbook/transients/) to further speed up your site. If you use caching plugins, they will get stored in the memory instead of the database, so they get called even faster.
 
 ### I18n
 

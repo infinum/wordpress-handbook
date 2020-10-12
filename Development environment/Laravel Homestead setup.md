@@ -22,19 +22,19 @@ After everything is installed, we can begin with Homestead setup.
 
 First, add/download the `laravel/homestead` box to your Vagrant installation from the terminal:
 
-```sh
+```bash
 vagrant box add laravel/homestead
 ```
 
 Clone the Homestead repository into a directory that will hold all your Homestead projects:
 
-```sh
+```bash
 git clone https://github.com/laravel/homestead.git ~/homestead
 ```
 
 Go into the directory the repo was cloned into, and check out the latest stable release tag:
 
-```sh
+```bash
 cd ~/homestead
 
 # Checkout latest stable tag.
@@ -45,7 +45,7 @@ git checkout v8.4.0
 
 Next, run `init.sh` or `init.bat` depending on the system you are using. This will create a `Homestead.yml` file that will be used to configure the environment:
 
-```sh
+```bash
 # Mac OSX and Linux
 bash init.sh
 
