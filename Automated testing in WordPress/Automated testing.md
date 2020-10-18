@@ -14,7 +14,7 @@ When working with some third-party API integrations, they are useful because you
 
 There are different types of tests, and they all serve a different purpose. There is a concept called the test pyramid that groups software tests into departments based on speed of execution, distance from the code, development cost and reliability.
 
-![Test pyramid](/img/test-pyramid.png)
+![Test pyramid](/img/test-pyramid-wp.png)
 
 The basis of all the tests are unit tests. They are the easiest to perform. You test one piece of your code in isolation of other code. You depend on mocks. They are mostly used to validate that your methods and functions do what you want them to do. They are super fast (because you just run the code in isolation).
 
