@@ -1,6 +1,6 @@
 Integration tests are used to check how components work inside WordPress.
 
-The best way set up an integration test is to use either [Codeception]((https://codeception.com/for/wordpress)) or WP-CLI.
+The best way to set up an integration test is to use either [Codeception]((https://codeception.com/for/wordpress)) or WP-CLI.
 
 ## WP-CLI
 
@@ -41,7 +41,7 @@ vendor/bin/phpunit
 
 ### Testing AJAX callbacks
 
-WordPress test suite comes equipped with a way to test WP AJAX callbacks. In order to utilize it you'll need to create a test class that extends the `WP_Ajax_UnitTestCase` class.
+WordPress test suite comes equipped with a way to test WP AJAX callbacks. In order to utilize it, you'll need to create a test class that extends the `WP_Ajax_UnitTestCase` class.
 
 This class provides a method that handles AJAX request
 
@@ -49,7 +49,7 @@ This class provides a method that handles AJAX request
 $this->_handleAjax('ajax_action_name');
 ```
 
-What this will do is, it will run the `wp_ajax_*` action, and invoke the callback. In your AJAX callbacks you either use `wp_die` or `wp_send_json_*` functions to return the contents of the callback. Since `die` directive will kill the PHP execution, WordPress actually catches the `wp_die`s and prevents it from killing our tests.
+What this will do is, it will run the `wp_ajax_*` action, and invoke the callback. In your AJAX callbacks you either use `wp_die` or `wp_send_json_*` functions to return the contents of the callback. Since `die` directive will kill the PHP execution, WordPress  catches the `wp_die`s and prevents it from killing our tests.
 Instead of killing the script execution, it will throw the exception. There are two different exceptions that can be thrown:
 
 ```php
@@ -71,7 +71,7 @@ $this->setExpectedException('WPAjaxDieStopException');
 $this->_handleAjax('ajax_action_name');
 ```
 
-or, if you need to run some assertions afterwards you'd catch the exception it manually
+or, if you need to run some assertions afterward you'd catch the exception it manually
 
 ```php
 try {
