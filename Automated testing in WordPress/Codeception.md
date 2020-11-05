@@ -12,7 +12,7 @@ First, install the latest stable `WPBrowser` package via Composer in the root fo
 composer require --dev lucatume/wp-browser
 ```
 
-In order for your tests to work, you'll need to set up a test instance. You can use your preferred method of setting up development environments - Valet+, VVV, Docker, Local by Flywheel etc. It's important to have a working WordPress instance, so that you can run acceptance and integration tests on it.
+In order for your tests to work, you'll need to set up a test instance. You can use your preferred method of setting up development environments: Valet+, VVV, Docker, Local by Flywheel, etc. . It's important to have a working WordPress instance. That way you can run acceptance and integration tests on it.
 
 Then, while in the root of your plugin or theme where you've installed the Codeception, run
 
@@ -20,41 +20,48 @@ Then, while in the root of your plugin or theme where you've installed the Codec
 vendor/bin/codecept init wpbrowser
 ```
 
-This will set up a scaffolding for setting up various tests in your plugin/theme. By default you'll have: acceptance, functional, integration and unit tests set up.
+This will set up scaffolding for setting up various tests in your plugin/theme. By default, you'll have: acceptance, functional, integration, and unit tests set up.
 
 ### Setup
 
-Scaffold will add `.env.testing`, and `codeception.dist.yml` files to your project root, and a `tests` folder with sub folders for helpers and test suites.
+The scaffold will add `.env.testing`, and `codeception.dist.yml` files to your project root, and a `tests` folder with subfolders for helpers and test suites.
 
 #### .env.testing
 
 This is the test environment variable file. This file can be committed to the repository, but will need to be changed depending on the user setup. For instance, if you want to use VVV for running acceptance tests, and local installation for running integration tests, you can set it up like this:
 
 ```
-WP_ROOT_FOLDER="/your-user/vagrant-local/www/wordpress-test/public_html/"
+WP_ROOT_FOLDER="/your-folder/place-where-wp-is-installed/"
+
+# For acceptance and functional tests
+TEST_SITE_DB_DSN=mysql:host=localhost;dbname=wordpresstest
 TEST_SITE_WP_ADMIN_PATH="/wp-admin"
 TEST_SITE_DB_NAME="wordpresstest"
-TEST_SITE_DB_HOST="vvv.test"
-TEST_SITE_DB_USER="external"
-TEST_SITE_DB_PASSWORD="external"
+TEST_SITE_DB_HOST="localhost"
+TEST_SITE_DB_USER="root"
+TEST_SITE_DB_PASSWORD=
 TEST_SITE_TABLE_PREFIX="wp_"
 TEST_SITE_WP_URL="https://dev.wordpress.test/"
 TEST_SITE_WP_DOMAIN="dev.wordpress.test"
 TEST_SITE_ADMIN_EMAIL="admin@local.test"
 TEST_SITE_ADMIN_USERNAME="admin"
 TEST_SITE_ADMIN_PASSWORD="password"
+
+# For integration tests
 TEST_DB_NAME="wordpress-test"
 TEST_DB_HOST="localhost"
 TEST_DB_USER="root"
-TEST_DB_PASSWORD=""
+TEST_DB_PASSWORD=
 TEST_TABLE_PREFIX="wp_"
 ```
 
 You'll change these depending on what your setup looks like (documentation has the details for specific setups explained).
 
+> Make sure you are not using the local database where you are developing as all the data will be lost once you run the tests.
+
 #### codedeption.dist.yml
 
-This file is the main test suite definition file. It contains information about the paths, settings, coverage, etc. For instance it can look like this:
+This file is the main test suite definition file. It contains information about the paths, settings, coverage, etc. For instance, it can look like this:
 
 ```yml
 paths:
@@ -119,18 +126,17 @@ modules:
 
 ```
 
-It uses configuration set from the `.env.testing` file (the `%VAR%` variables). These shouldn't be changed here. You can define the plugin dependencies and which plugins you want to have activated on the site during the integration test run.
-You can also define the bootstrap file that will be run before test starts. In this case the Codeception will look for `_bootstrap.php` inside the `wpunit` folder.
+It uses the configuration from the `.env.testing` file (the `%VAR%` variables). These shouldn't be changed here. You can define the plugin dependencies and which plugins you want to have activated on the site during the integration test run.
+You can also define the bootstrap file that will be run before the test starts. In this case, the Codeception will look for `_bootstrap.php` inside the `wpunit` folder.
 
 #### Composer tips
 
-You can add composer scripts so that you can access certain test scripts easier. For instance you can add
+You can add composer scripts so that you can access certain test scripts easier. For instance, you can add
 
 ```json
 "scripts": {
-  "test:setup": "@php ./vendor/bin/codecept init wpbrowser",
-  "test:prepare": "@php ./vendor/bin/pcov clobber",
-  "test:revert": "@php ./vendor/bin/pcov unclobber",
+  "selenium:start": "selenium-server -port 4444",
+  "test:clean": "@php ./vendor/bin/codecept clean",
   "test:acceptance": "@php ./vendor/bin/codecept run acceptance",
   "test:functional": "@php ./vendor/bin/codecept run functional",
   "test:integration": "@php ./vendor/bin/codecept run wpunit",
@@ -139,13 +145,13 @@ You can add composer scripts so that you can access certain test scripts easier.
 },
 ```
 
-`test:setup` - a shorthand for setting up the `wpbrowser`. If you have used it already (and have test scaffolded) you don't need to run it.
-`test:prepare`- a shorthand for enabling [`pcov clobber`](https://github.com/krakjoe/pcov-clobber) utility for enabling `pcov` driver for code coverage generation
-`test:revert`- a shorthand for disabling `pcov clobber`
-`test:acceptance`- a shorthand way to run acceptance tests
-`test:functional`- a shorthand way to run functional tests
-`test:integration`- a shorthand way to run integration tests
-`test:coverage`- a shorthand way to run integration tests with code coverage (this run is usually slower than just test run)
+`selenium:start` - used for starting a selenium server - used for acceptance and functional tests.  
+`test:clean` - used to clean up the output directory and generated code.  
+`test:setup` - a shorthand for setting up the `wpbrowser`. If you have used it already (and have test scaffolded) you don't need to run it.  
+`test:acceptance`- a shorthand way to run acceptance tests.  
+`test:functional`- a shorthand way to run functional tests.  
+`test:integration`- a shorthand way to run integration tests.  
+`test:coverage`- a shorthand way to run integration tests with code coverage (this run is usually slower than just test run).  
 `test:generate-scenarios`- a shorthand way to generate user scenarios. You need to provide a suite for which a scenario can be generated (`acceptance`, `functional` or `integration`).
 
 You can also [autoload](https://getcomposer.org/doc/01-basic-usage.md#autoloading) your test folder using either `psr-4` or `classmap` autoloading process:
@@ -179,7 +185,7 @@ For in depth explanation check the [official wp-browser documentation](https://w
 Acceptance and functional tests are very similar, with a distinction that acceptance tests are __testing the functionality of the project from the viewpoint of the business user__.
 They are very similar to end to end (E2E) tests, but those are performed from the viewpoint of the QA engineer.
 
-In the context of Agile development, acceptance tests should correspond to the acceptance criteria of a user story. For example, we could have a story with an acceptance criteria that a custom post type called Books exists. An acceptance test for this story would look like:
+In the context of Agile development, acceptance tests should correspond to the acceptance criteria of a user story. For example, we could have a story with an acceptance criteria that a custom post type called `Books` exists. An acceptance test for this story would look like:
 
 ```php
 // tests/acceptance/CustomPostType
@@ -225,13 +231,13 @@ You can also write acceptance tests without classes, but they look neater this w
 
 The functional tests test the __functionality from the perspective of a developer__.
 
-Here you could test some custom validation rules, Ajax requests and similar.
+Here you could test some custom validation rules, Ajax requests, and similar.
 
 #### Integration tests
 
 These tests will __test code modules in the context of a WordPress app__.
 
-You would test each of your functionality (usually split across different functions) using integration tests. For instance, say we have created a custom rest route that will handle the contact form functionality - you would POST some data to it, and, depending on the data, expect some result. During this test a lot of your code functionalities will be tested - rest setup and existence of correct route, route validation, your business logic that handles data sent to the route, email sending, etc.
+You would test each of your functionality (usually split across different functions) using integration tests. For instance, say we have created a custom rest route that will handle the contact form functionality - you would POST some data to it, and, depending on the data, expect some result. During this test, a lot of your code functionalities will be tested - rest setup and the existence of the correct route, route validation, your business logic that handles data sent to the route, email sending, etc.
 
 In your `tests/wpunit/Routes` you could create a `ContactRouteTest.php` file
 
@@ -315,17 +321,17 @@ In the context of WordPress, integration might also mean testing that filters us
 
 #### Unit tests
 
-Unit test always __test single classes or functions (units) in isolation__.
+Unit tests always __test single classes or functions (units) in isolation__.
 
-Say we have a validator class that validates email. We would want to make sure that class works as expected, regardless if it's in the WordPress context or not. Unit tests is where stubbing/mocking/spying of dependencies is used to gain total control over the input and context the class is using.
+Say we have a validator class that validates email. We would want to make sure that class works as expected, regardless if it's in the WordPress context or not. Unit tests are where stubbing/mocking/spying of dependencies is used to gain total control over the input and context the class is using.
 
 ### Setting up acceptance/feature testing environment
 
-While wp-browser comes with a `WPBrowser` module which will help you run acceptance and functional tests, that module simulates a user interaction with the site **without JavaScript support**. If you need to test your project with JavaScript support, you'll need to use the `WPWebDriver` module.
+While wp-browser comes with a `WPBrowser` module which will help you run acceptance and functional tests, that module simulates user interaction with the site **without JavaScript support**. If you need to test your project with JavaScript support, you'll need to use the `WPWebDriver` module.
 
 Detailed instructions are located here: https://wpbrowser.wptestkit.dev/modules/wpwebdriver
 
-In order to run that module you'll need to set it up in your `suite.yml` files like
+In order to run that module, you'll need to set it up in your `suite.yml` files like
 
 ```yaml
 WPWebDriver:
@@ -346,7 +352,7 @@ WPWebDriver:
             args: ["--no-sandbox", "--headless", "--disable-gpu", "--user-agent=wp-browser", "allow-insecure-localhost", "--ignore-certificate-errors"]
 ```
 
-There is a catch, though. In order for it to run, you'll need a web driver and a framework in which you can run that web driver. In this case we'll use [Selenium](https://www.selenium.dev/). [Chrome Webdriver](https://sites.google.com/a/chromium.org/chromedriver/) should be installed, but doesn't have to be run, like Selenium.
+There is a catch, though. You'll need a web driver and a framework in which you can run that web driver. In this case, we'll use [Selenium](https://www.selenium.dev/). [Chrome Webdriver](https://sites.google.com/a/chromium.org/chromedriver/) should be installed, but doesn't have to be run, like Selenium.
 
 Selenium can be downloaded using `brew`
 
@@ -354,16 +360,16 @@ Selenium can be downloaded using `brew`
 brew install selenium-server-standalone
 ```
 
-While for Chrome webdriver you'd need to go to [downloads section](https://sites.google.com/a/chromium.org/chromedriver/downloads), and download **the same version of the driver as is your local Chrome**. This is important, because otherwise the tests won't be able to run - if you have v83 of Chrome, your webdriver has to be v83 as well.
+While for Chrome webdriver you'd need to go to [downloads section](https://sites.google.com/a/chromium.org/chromedriver/downloads), and download **the same version of the driver as is your local Chrome**. This is important because otherwise, the tests won't be able to run - if you have v83 of Chrome, your webdriver has to be v83 as well.
 Be careful about that when updating your local Chrome.
 
-After downloading the correct zip file, extract it and move it to local bin directory
+After downloading the correct zip file, extract it and move it to the local bin directory
 
 ```bash
 mv chromedriver /usr/local/bin
 ```
 
-Make sure you allow the driver in the MacOS security settings (Preference -> Security). You can test if it works by runnning
+Make sure you allow the driver in the MacOS security settings (Preference -> Security). You can test if it works by running
 
 ```bash
 chromedriver --version
