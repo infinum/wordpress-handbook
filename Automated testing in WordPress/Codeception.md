@@ -256,7 +256,7 @@ class ContactRouteTest extends WPTestCase
   private $request;
   private $route_name;
 
-  public function setUp()
+  public function setUp(): void
   {
     parent::setUp();
 
@@ -272,7 +272,7 @@ class ContactRouteTest extends WPTestCase
     $this->request = new \WP_REST_Request( 'POST', $this->route_name );
   }
 
-  public function tearDown()
+  public function tearDown(): void
   {
     // Test cleanup.
     global $wp_rest_server;
