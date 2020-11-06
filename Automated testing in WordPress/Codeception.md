@@ -12,7 +12,21 @@ First, install the latest stable `WPBrowser` package via Composer in the root fo
 composer require --dev lucatume/wp-browser
 ```
 
-In order for your tests to work, you'll need to set up a test instance. You can use your preferred method of setting up development environments: Valet+, VVV, Docker, Local by Flywheel, etc. . It's important to have a working WordPress instance. That way you can run acceptance and integration tests on it.
+If you want it to work with Codeception v4 you'll need to require these packages as well:
+
+```json
+"codeception/lib-innerbrowser": "^1.0",
+"codeception/module-asserts": "^1.1",
+"codeception/module-cli": "^1.0",
+"codeception/module-db": "^1.0",
+"codeception/module-filesystem": "^1.0",
+"codeception/module-phpbrowser": "^1.0",
+"codeception/module-rest": "^1.2",
+"codeception/module-webdriver": "^1.0",
+"codeception/util-universalframework": "^1.0",
+```
+
+You'll need to set up a test instance. You can use your preferred method of setting up development environments: Valet+, VVV, Docker, Local by Flywheel, etc. . It's important to have a working WordPress instance. That way you can run acceptance and integration tests on it.
 
 Then, while in the root of your plugin or theme where you've installed the Codeception, run
 
