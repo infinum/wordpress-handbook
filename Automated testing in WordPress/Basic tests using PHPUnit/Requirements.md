@@ -1,7 +1,7 @@
 In order to set up tests and run code coverage, you need to have certain software on your local Mac.
 
 1. Composer—to download test libraries and PHPUnit
-2. Xdebug or PCOV—to generate code coverage
+2. Xdebug or PCOV — to generate code coverage
 3. Node.js—if you want to write JS tests for your projects
 
 While Composer and Node should have been installed on your computer by now, the Xdebug module is most probably not installed.
@@ -16,7 +16,7 @@ which pecl
 /usr/local/bin/pecl
 ```
 
-Try to install xdebug:
+Try to install Xdebug:
 
 ```bash
 pecl install xdebug
@@ -129,7 +129,11 @@ The problem with using Xdebug to generate code coverage is that it is primarily 
 
 Luckily for us, there is a way to shorten that time and use less memory. [PCOV](https://github.com/krakjoe/pcov) is a self contained [CodeCoverage](https://github.com/sebastianbergmann/php-code-coverage) compatible driver for PHP7. It comes enabled on PHPUnit8 by default. However, since PHPUnit8 has introduced some typehints compatible with PHP 7.2 (or newer) only, we cannot (yet) use it for running the tests.
 
-We can install PCOV as an extension, and use [pcov-clobber](https://github.com/krakjoe/pcov-clobber) to run it on PHPUnit7.
+We can install PCOV as an extension, and use [pcov-clobber](https://github.com/krakjoe/pcov-clobber) to run it on PHPUnit 7.
+
+If you are using Codeception, you don't need `pcov-clobber`.
+
+Be careful where you are running your tests from. If you are running them locally, `pcov` must be installed on your local system. If you are running them in VVV or Homestead, it needs to be installed in your virtual machine.
 
 You can install PCOV using pecl
 
@@ -149,14 +153,16 @@ make test
 make install
 ```
 
+Make sure you note where the extension was installed as you'll need the installation path in your `php.ini`.
+
 Then, you need to add the following to your `php.ini`:
 
 ```bash
-extension=/usr/local/Cellar/php/7.3.7/pecl/20180731/pcov.so # This can vary on your system
+extension=/usr/local/Cellar/php/7.3.7/pecl/20180731/pcov.so # This can vary on your system!!!
 pcov.enabled = 1
 ```
 
-Finally, install the `pcov-clobber` in your project using composer:
+Finally, install the `pcov-clobber` in your project using Composer:
 
 ```bash
 composer require pcov/clobber --dev
