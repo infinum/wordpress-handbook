@@ -122,7 +122,7 @@ dev.multisite-sub.test/site-2
 ```
 
 Laravel Valet does not come with configuration for this setup out of the box. For this you will need to use a custom driver.
-Guide for the installation of the custom drivers can be found [here](https://laravel.com/docs/5.6/valet#custom-valet-drivers).
+Guide for the installation of the custom drivers can be found [here](https://laravel.com/docs/8.x/valet#custom-valet-drivers).
 
 There are multiple drivers available for Valet that enable multisite with sub-directories and they provide installation instructions:
 * [WordPress Multisite Subdirectory Valet Driver from Objectiv](https://github.com/Objectivco/WordPressMultisiteSubdirectoryValetDriver)
