@@ -130,7 +130,7 @@ There are multiple drivers available for Valet that enable multisite with sub-di
 
 One thing to note is that by enabling custom driver for this type of multisite, the configuration for sub-domain multisite will be overwritten and will not work.
 
-Other than installing custom drivers for sub-directory type of multisite, there is no difference in setting up this type of multisite from the sub-domain type of multisite.
+Other than installing custom drivers for sub-directory type of multisite, there is no difference in setting up this type of multisite from the sub-domain type of multisite. You won't need to register multiple domains or sub-domains as they don't apply for this type of multisite.
 
 ## Possible issues
 
