@@ -82,7 +82,7 @@ This type of multisite is more common and usually requested by the clients. It i
 
 Taking the above URLs as an example we can start installing the multisite. First, create a main domain for the site by navigating to the directory and running: `valet link dev.multisite-sub`.
 
-After that add additional domains with: `valet link site-1.dev.multisite-sub`.
+After that, add additional domains with: `valet link site-1.dev.multisite-sub`.
 
 To install multisite run: `wp core multisite-install --prompt` and fill all the necessary data.
 
