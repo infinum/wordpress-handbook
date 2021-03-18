@@ -78,7 +78,7 @@ site-1.dev.multisite-sub.test
 site-2.dev.multisite-sub.test
 ```
 
-This type of multisite is more common and usually requested by the clients. It is also a bit more complicated to set up. To achieve this some changes to the server configuration are required before the multisite can be installed and primarily you need to point multiple domains/subdomains to the same directory. Luckily, Valet is already prepared for that and has all the configurations for this type of multisite.
+This type of multisite is more common and usually requested by the clients. It is also a bit more complicated to set up. To achieve this some changes to the server configuration are required before the multisite can be installed. You need to point many domains/subdomains to the same directory. Luckily, Valet is already prepared for that and has all the configurations for this type of multisite.
 
 Taking the above URLs as an example we can start installing the multisite. First create a main domain for the site by navigating to the directory and running: `valet link dev.multisite-sub`.
 
