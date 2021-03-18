@@ -113,7 +113,7 @@ To add additional sites run: `wp site create --prompt` and fill all the necessar
 
 ### Multisite with sub-directories
 
-This type of multisite allows you to access sites with a sub-directories. The URLs will look like this:
+This type of multisite allows you to access sites with sub-directories. The URLs will look like this:
 
 ```bash
 dev.multisite-sub.test               # Main site
