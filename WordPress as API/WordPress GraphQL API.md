@@ -1,4 +1,4 @@
-WordPress REST API can be extended to support [GraphQL](https://graphql.org/). GraphQL is a query language for your API and it acts as a separate layer between WordPress REST API and application that is displaying data from WordPress.
+WordPress REST API can be extended to support [GraphQL](https://graphql.org/). GraphQL is a query language for your API and it acts as a separate layer between the WordPress REST API and the application using data from the API.
 
 With GraphQL we are enabling apps to define their own queries and what data will be retrieved from the API. GraphQL queries allow getting data from multiple resources at once, which is a big plus over the standard REST API way. With REST API you'd either have multiple routes and send requests to each one individually, or have a monolithic route that will already contain all the resources that you may need.
 
