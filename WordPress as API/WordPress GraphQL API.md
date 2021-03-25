@@ -4,7 +4,7 @@ With GraphQL we are enabling apps to define their own queries and what data will
 
 ### GraphQL in WordPress
 
-GraphQL in WordPress can be enables via [WPGraphQL plugin](https://www.wpgraphql.com/). It is a free plugin, hosted on the WordPress plugin repository. It comes with a pretty useful GraphiQL tool that allows you to preview GraphQL schema and test out some queries.
+GraphQL in WordPress can be enabled via the [WPGraphQL plugin](https://www.wpgraphql.com/). It is a free plugin, hosted on the WordPress plugin repository. It comes with a pretty useful _GraphiQL_ tool that allows you to preview GraphQL schema and test out some queries.
 
 ![GraphiQL initial view](../img/graphiql-1.png "GraphiQL initial view")
 
