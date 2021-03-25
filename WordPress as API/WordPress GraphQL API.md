@@ -8,7 +8,7 @@ GraphQL in WordPress can be enables via [WPGraphQL plugin](https://www.wpgraphql
 
 ![GraphiQL initial view](../img/graphiql-1.png "GraphiQL initial view")
 
-To test the queries click on resources on the left sidebar to drill down in their structure and see what is available. For example, to get all posts and show their title, link, excerpt and content, the query would look like this:
+To test the queries click on resources in the left sidebar. You can drill down in their structure and see what is available. For example, to get all posts and show their title, link, excerpt and content, the query would look like this:
 
 ```graphql
 query getAllPosts {
