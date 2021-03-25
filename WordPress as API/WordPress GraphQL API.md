@@ -68,7 +68,7 @@ To register your own custom type for a field that needs to provide multiple valu
 
 #### Adding new GraphQL fields
 
-To add additional fields to the registered types you'd use [register_graphql_fields](https://www.wpgraphql.com/functions/register_graphql_fields/) or [register_graphql_field](https://www.wpgraphql.com/functions/register_graphql_field/) functions inside the callback of [graphql_register_types](https://www.wpgraphql.com/actions/graphql_register_types/) action.
+To add additional fields to the registered types you can use [register_graphql_fields](https://www.wpgraphql.com/functions/register_graphql_fields/) or [register_graphql_field](https://www.wpgraphql.com/functions/register_graphql_field/) functions inside the callback of [graphql_register_types](https://www.wpgraphql.com/actions/graphql_register_types/) action.
 
 ```php
 add_action( 'graphql_register_types', [$this, 'register_field']);
