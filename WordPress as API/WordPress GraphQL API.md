@@ -25,7 +25,7 @@ query getAllPosts {
 
 ![GraphiQL query view](../img/graphiql-2.png "GraphiQL query view")
 
-To combine multiple resources in one query you just continue to select the in the sidebar or write them down in query editor. For this example we will query all post categories and all posts.
+To combine multiple resources in one query you can keep selecting resources the in the sidebar or add them in the query editor. For this example we will query all post categories and all posts.
 
 ![GraphiQL query view](../img/graphiql-3.png "GraphiQL query view")
 
