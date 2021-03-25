@@ -90,7 +90,7 @@ protected function register_field() {
 }
 ```
 
-The example above is for the field that returns a string value. You can register fields that will return more complex value. For example, you want to register image field that will return values of multiple images. For each image you will have URL of the image and the alt text.
+The example above is for the field that returns a string value. You can register fields that will return more complex values. For example, you might want to register an image field that will return values of multiple images. For each image you will have URL of the image and the alt text.
 
 To do that you need to first register a custom image type (remember that name must be unique) that will have two sub-fields: URL and alt text. In `register_graphql_field` function you will define a type of field as a list of image fields.
 
