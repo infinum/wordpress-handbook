@@ -73,7 +73,7 @@ To add additional fields to the registered types you can use [register_graphql_f
 ```php
 add_action( 'graphql_register_types', [$this, 'register_field']);
 
-protected function register_field() {
+public function register_field() {
 	if (function_exists('register_graphql_field')) {
 		register_graphql_field(
 			'Post', // Name of the GraphQL type.
