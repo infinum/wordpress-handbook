@@ -57,7 +57,7 @@ To add a custom post or a taxonomy types to the GraphQL schema you need to provi
 
 To add or remove post types or taxonomies that are created by default or by a third-party plugins, you will need to use [register_post_type_args](https://developer.wordpress.org/reference/hooks/register_post_type_args/) or [register_taxonomy_args](https://developer.wordpress.org/reference/hooks/register_taxonomy_args/) filter and return modified arguments array.
 
-GraphQL will use the single and plural name to register new GraphQL [types](https://graphql.org/learn/schema/#type-system) which will be used in queries.
+GraphQL will use the single and plural names to register new GraphQL [types](https://graphql.org/learn/schema/#type-system) which will be used in queries.
 
 #### Adding new GraphQL type
 
