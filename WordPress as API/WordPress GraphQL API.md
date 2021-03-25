@@ -59,7 +59,7 @@ To add or remove post types or taxonomies that are created by default or by a th
 
 GraphQL will use the single and plural names to register new GraphQL [types](https://graphql.org/learn/schema/#type-system) which will be used in queries.
 
-#### Adding new GraphQL type
+#### Adding a new GraphQL type
 
 WPGraphQL comes with a lot of registered types and you can use them to register more complex fields. Most of the time you'll use [scalar](https://www.wpgraphql.com/docs/default-types-and-fields/#scalars) (simple) types but you can register your own custom types. More on this can be read in this [documentation page](https://www.wpgraphql.com/docs/default-types-and-fields).
 
