@@ -37,7 +37,7 @@ To grasp some basic GraphQL concepts, read these chapters from the WPGraphQL doc
 * [Intro to GraphQL](https://www.wpgraphql.com/docs/intro-to-graphql/)
 * [WPGraphQL Concepts](https://www.wpgraphql.com/docs/wpgraphql-concepts/)
 
-### Adding new resources to the WordPress GraphQL
+### Adding new resources to WordPress GraphQL
 
 You can register new GraphQL types or add new fields to the existing GraphQL types.
 
