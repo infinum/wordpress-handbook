@@ -61,7 +61,7 @@ GraphQL will use the single and plural names to register new GraphQL [types](htt
 
 #### Adding a new GraphQL type
 
-WPGraphQL comes with a lot of registered types and you can use them to register more complex fields. Most of the time you'll use [scalar](https://www.wpgraphql.com/docs/default-types-and-fields/#scalars) (simple) types but you can register your own custom types. More on this can be read in this [documentation page](https://www.wpgraphql.com/docs/default-types-and-fields).
+WPGraphQL comes with a lot of registered types and you can use them to register more complex fields. Most of the time you'll use [scalar](https://www.wpgraphql.com/docs/default-types-and-fields/#scalars) (simple) types but you can register your own custom types. You can learn more about this in the [documentation](https://www.wpgraphql.com/docs/default-types-and-fields).
 
 To register your own custom type for a field that needs to provide multiple values you will need to use [register_graphql_object_type](https://www.wpgraphql.com/functions/register_graphql_object_type/) inside the callback of [graphql_register_types](https://www.wpgraphql.com/actions/graphql_register_types/) action. You will need to provide a unique name for this new type and scalar fields that will be contained in this object type.
 
