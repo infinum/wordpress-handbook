@@ -109,7 +109,7 @@ protected function register_field() {
 					],
 					'imageAlt' => [
 						'type' => 'String',
-						'description' => esc_html__('alt value of the image', 'your-textdomain'),
+						'description' => esc_html__('Image alt text', 'your-textdomain'),
 					],
 				],
 			]
