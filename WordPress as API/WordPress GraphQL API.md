@@ -6,7 +6,7 @@ With GraphQL we are enabling apps to define their own queries and what data will
 
 GraphQL in WordPress can be enabled via the [WPGraphQL plugin](https://www.wpgraphql.com/). It is a free plugin, hosted on the WordPress plugin repository. It comes with a pretty useful _GraphiQL_ tool that allows you to preview GraphQL schema and test out some queries.
 
-![GraphiQL initial view](../img/graphiql-1.png "GraphiQL initial view")
+![GraphiQL initial view](/img/graphiql-1.png "GraphiQL initial view")
 
 To test the queries click on resources in the left sidebar. You can drill down in their structure and see what is available. For example, to get all posts and show their title, link, excerpt and content, the query would look like this:
 
@@ -23,18 +23,20 @@ query getAllPosts {
 }
 ```
 
-![GraphiQL query view](../img/graphiql-2.png "GraphiQL query view")
+![GraphiQL query view](/img/graphiql-2.png "GraphiQL query view")
 
 To combine multiple resources in one query you can keep selecting resources the in the sidebar or add them in the query editor. For this example we will query all post categories and all posts.
 
-![GraphiQL query view](../img/graphiql-3.png "GraphiQL query view")
+![GraphiQL query view](/img/graphiql-3.png "GraphiQL query view")
 
 This is just the start of interacting with GraphiQL. More examples and guides can be found in the plugin's [documentation](https://www.wpgraphql.com/docs/).
 
 Apps that will use WordPress GraphQL API will need to send HTTP POST requests to the GraphQL endpoint and provide the query in request body. WPGraphQL plugin registers this endpoint and by default it is `http://your-domain.com/graphql/`.
 
 To grasp some basic GraphQL concepts, read these chapters from the WPGraphQL documentation:
+
 * [Intro to GraphQL](https://www.wpgraphql.com/docs/intro-to-graphql/)
+
 * [WPGraphQL Concepts](https://www.wpgraphql.com/docs/wpgraphql-concepts/)
 
 ### Adding new resources to WordPress GraphQL
@@ -55,7 +57,7 @@ To add a custom post or a taxonomy types to the GraphQL schema you need to provi
 ]
 ```
 
-To add or remove post types or taxonomies that are created by default or by a third-party plugins, you will need to use [register_post_type_args](https://developer.wordpress.org/reference/hooks/register_post_type_args/) or [register_taxonomy_args](https://developer.wordpress.org/reference/hooks/register_taxonomy_args/) filter and return modified arguments array.
+To add or remove post types or taxonomies that are created by default or by a third-party plugins, you will need to use [register\_post\_type\_args](https://developer.wordpress.org/reference/hooks/register_post_type_args/) or [register\_taxonomy\_args](https://developer.wordpress.org/reference/hooks/register_taxonomy_args/) filter and return modified arguments array.
 
 GraphQL will use the single and plural names to register new GraphQL [types](https://graphql.org/learn/schema/#type-system) which will be used in queries.
 
@@ -63,12 +65,12 @@ GraphQL will use the single and plural names to register new GraphQL [types](htt
 
 WPGraphQL comes with a lot of registered types and you can use them to register more complex fields. Most of the time you'll use [scalar](https://www.wpgraphql.com/docs/default-types-and-fields/#scalars) (simple) types but you can register your own custom types. You can learn more about this in the [documentation](https://www.wpgraphql.com/docs/default-types-and-fields).
 
-To register your own custom type for a field that needs to provide multiple values you will need to use [register_graphql_object_type](https://www.wpgraphql.com/functions/register_graphql_object_type/) inside the callback of [graphql_register_types](https://www.wpgraphql.com/actions/graphql_register_types/) action. You will need to provide a unique name for this new type and scalar fields that will be contained in this object type.
+To register your own custom type for a field that needs to provide multiple values you will need to use [register\_graphql\_object\_type](https://www.wpgraphql.com/functions/register_graphql_object_type/) inside the callback of [graphql\_register\_types](https://www.wpgraphql.com/actions/graphql_register_types/) action. You will need to provide a unique name for this new type and scalar fields that will be contained in this object type.
 
 
 #### Adding new GraphQL fields
 
-To add additional fields to the registered types you can use [register_graphql_fields](https://www.wpgraphql.com/functions/register_graphql_fields/) or [register_graphql_field](https://www.wpgraphql.com/functions/register_graphql_field/) functions inside the callback of [graphql_register_types](https://www.wpgraphql.com/actions/graphql_register_types/) action.
+To add additional fields to the registered types you can use [register\_graphql\_fields](https://www.wpgraphql.com/functions/register_graphql_fields/) or [register\_graphql\_field](https://www.wpgraphql.com/functions/register_graphql_field/) functions inside the callback of [graphql\_register\_types](https://www.wpgraphql.com/actions/graphql_register_types/) action.
 
 ```php
 add_action( 'graphql_register_types', [$this, 'register_field']);
