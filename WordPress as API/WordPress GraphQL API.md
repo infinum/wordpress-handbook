@@ -29,7 +29,7 @@ To combine multiple resources in one query you can keep selecting resources the 
 
 ![GraphiQL query view](/img/graphiql-3.png "GraphiQL query view")
 
-This is just a start of interacting with GraphiQL and more examples and guides can be found in plugins [documentation](https://www.wpgraphql.com/docs/).
+This is just the start of interacting with GraphiQL. More examples and guides can be found in the plugin's [documentation](https://www.wpgraphql.com/docs/).
 
 Apps that will use WordPress GraphQL API will need to send HTTP POST requests to the GraphQL endpoint and provide the query in request body. WPGraphQL plugin registers this endpoint and by default it is `http://your-domain.com/graphql/`.
 
@@ -75,7 +75,7 @@ To add additional fields to the registered types you can use [register\_graphql\
 ```php
 add_action( 'graphql_register_types', [$this, 'register_field']);
 
-protected function register_field() {
+public function register_field() {
 	if (function_exists('register_graphql_field')) {
 		register_graphql_field(
 			'Post', // Name of the GraphQL type.
