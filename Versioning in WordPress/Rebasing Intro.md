@@ -68,7 +68,7 @@ git push --force-with-lease origin
 
 which is a more secure way to avoid overwriting in case somebody else worked on the remote branch you've just rebased.
 
-That shouldn't be problematic because the good __rule of thumb__ is: If two people are working on a single feature branch, at the same time, don't rebase. Ever. You're going to change the commit hashes and the other person will get tons of conflicts or errors, and then they'll try to rebase, and you'll chase each other in circles and curse the day you did rebase 😅.
+That shouldn't be problematic because the good __rule of thumb__ is: If two people are working on a single feature branch (which you should never do, each person should work in it's own branch), at the same time, don't rebase. Ever. You're going to change the commit hashes and the other person will get tons of conflicts or errors, and then they'll try to rebase, and you'll chase each other in circles and curse the day you did rebase 😅.
 
 If many people are working on the __same__ feature, pull the changes and merge them in your branch, and then tell the person who is working with you to pull the changes.
 
