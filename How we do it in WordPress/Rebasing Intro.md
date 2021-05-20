@@ -58,7 +58,7 @@ If all is ok, the rebase will be successful, and you can push your branch with
 git push --force
 ```
 
-You need to use force push because you've changed the git history because the hashes of the git commits have changed.
+You need to use force push because you've changed the git history and the hashes of the git commits have changed.
 
 You can also use
 
