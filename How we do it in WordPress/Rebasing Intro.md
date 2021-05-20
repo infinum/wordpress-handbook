@@ -33,7 +33,7 @@ git rebase -i origin/staging
 
 You should see a commit message in the editor that you've set in the `.gitconfig` settings.
 
-You can quit (in nano it's cmd x, and in vim it's ctrl q if I'm not mistaken).
+You can quit (Cmd-X in Nano, Ctrl-Q in Vim if I'm not mistaken).
 
 Now the interactive rebase process has begun. If you have a conflict it will tell you which file is in the conflicted state. Fix the conflict and write
 
@@ -41,9 +41,9 @@ Now the interactive rebase process has begun. If you have a conflict it will tel
 git add .
 ```
 
-This is one of the rare cases you'll want to use the git add all command. Usually, __NEVER__ add all in one commit unless you have a small change on one feature. Otherwise, you are losing the granularity and breaking the single responsibility principle (SRP) of your commits. Remember, commits are telling a story. You should be able to read the commit history and understand what the developer was trying to do.
+This is one of the rare cases you'll want to use the `git add all` command. Usually, you should __NEVER__ add everything in one commit unless you have a small change on one feature. By doing that you are losing the granularity and breaking the single responsibility principle (SRP) of your commits. Remember, commits are telling a story. You should be able to read the commit history and understand what the developer was trying to do.
 
-⚠️ __DO NOT COMMIT!!!!!!__ So that means __don't type__ `git commit` command.
+⚠️ __DO NOT COMMIT!!!!!!__ (__don't type__ `git commit`).
 
 When you've fixed all the conflicts and added the fixed files, type
 
@@ -58,7 +58,7 @@ If all is ok, the rebase will be successful, and you can push your branch with
 git push --force
 ```
 
-You need to use force push because you've changed the git history because the hashes of the git commits have changed.
+You need to use force push because you've changed the git history and the hashes of the git commits have changed.
 
 You can also use
 
@@ -72,4 +72,4 @@ That shouldn't be problematic because the good __rule of thumb__ is: If two peop
 
 If many people are working on the __same__ feature, pull the changes and merge them in your branch, and then tell the person who is working with you to pull the changes.
 
-What are the advantages of rebasing? You have a nice commit history 🙂. Even tho you have branched the `feat2` branch from `feat1` branch, after rebasing on the `staging` branch, you'll have all the changes nice like if you've branched from the `staging` branch. The history is nice and linear, and not all over the place.
+What are the advantages of rebasing? You have a nice commit history 🙂. Even though you have branched the `feat2` branch from `feat1` branch, after rebasing on the `staging` branch, you'll have all the changes visible as if you've branched from the `staging` branch. The history is nice and linear, and not all over the place.
