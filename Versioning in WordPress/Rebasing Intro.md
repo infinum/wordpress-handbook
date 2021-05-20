@@ -41,7 +41,7 @@ Now the interactive rebase process has begun. If you have a conflict it will tel
 git add .
 ```
 
-This is one of the rare cases you'll want to use the git add all command. Usually, __NEVER__ add all in one commit unless you have a small change on one feature. Otherwise, you are losing the granularity and breaking the single responsibility principle (SRP) of your commits. Remember, commits are telling a story. You should be able to read the commit history and understand what the developer was trying to do.
+This is one of the rare cases you'll want to use the `git add all` command. Usually, you should __NEVER__ add everything in one commit unless you have a small change on one feature. By doing that you are losing the granularity and breaking the single responsibility principle (SRP) of your commits. Remember, commits are telling a story. You should be able to read the commit history and understand what the developer was trying to do.
 
 ⚠️ __DO NOT COMMIT!!!!!!__ So that means __don't type__ `git commit` command.
 
