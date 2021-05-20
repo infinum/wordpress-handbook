@@ -72,4 +72,4 @@ That shouldn't be problematic because the good __rule of thumb__ is: If two peop
 
 If many people are working on the __same__ feature, pull the changes and merge them in your branch, and then tell the person who is working with you to pull the changes.
 
-What are the advantages of rebasing? You have a nice commit history 🙂. Even tho you have branched the `feat2` branch from `feat1` branch, after rebasing on the `staging` branch, you'll have all the changes nice like if you've branched from the `staging` branch. The history is nice and linear, and not all over the place.
+What are the advantages of rebasing? You have a nice commit history 🙂. Even though you have branched the `feat2` branch from `feat1` branch, after rebasing on the `staging` branch, you'll have all the changes visible as if you've branched from the `staging` branch. The history is nice and linear, and not all over the place.
