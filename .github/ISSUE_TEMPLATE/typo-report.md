@@ -1,13 +1,13 @@
 ---
 name: Typo report
-about: You find a typo in one of the handbook pages
+about: You found a typo in one of the handbook pages
 title: "[Typo]"
 labels: Typo
 assignees: ''
 
 ---
 
-**What chapter is the typo in**
+**What chapter is the typo in?**
 Put a link and a name of the chapter
 
 **What is the typo, and what should be the solution?**
