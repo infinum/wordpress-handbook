@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 **Name of the chapter/subchapter**
-What should be the new name of the chapter? If it's a subchapter, add the name of the parent chapter as well. 
+What should be the name of the new chapter? If it's a subchapter, add the name of the parent chapter as well. 
 
 **Short description about what should be in the chapter**
 - Description of the process we follow
