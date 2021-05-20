@@ -1,6 +1,6 @@
 ---
 name: Typo report
-about: You find a typo in one of the handbook pages
+about: You found a typo in one of the handbook pages
 title: "[Typo]"
 labels: Typo
 assignees: ''
