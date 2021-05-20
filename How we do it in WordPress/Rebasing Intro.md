@@ -33,7 +33,7 @@ git rebase -i origin/staging
 
 You should see a commit message in the editor that you've set in the `.gitconfig` settings.
 
-You can quit (in nano it's cmd x, and in vim it's ctrl q if I'm not mistaken).
+You can quit (Cmd-X in Nano, Ctrl-Q in Vim if I'm not mistaken).
 
 Now the interactive rebase process has begun. If you have a conflict it will tell you which file is in the conflicted state. Fix the conflict and write
 
