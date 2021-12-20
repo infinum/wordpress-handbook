@@ -27,7 +27,8 @@ Yoast SEO plugin will warn if these are not properly set, but it's good to have 
 Make sure content editors are aware **not to put too large images**. Anything over 200 KB is considered large by Google Lighthouse and will be counted as a penalty when calculating a page score.
 
 
-Besides content, the client should set the proper meta description for every page and post, keywords for the post, and social images (OG images). These can all be set from the Yoast meta box at the bottom of the post/page.
+Besides content, the client should set proper meta descriptions for every page and post, keywords for posts, and social images (OG images). All of these can be set from the Yoast meta box at the bottom of the post/page.
+
 
 #### Developer notes
 
