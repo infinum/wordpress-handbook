@@ -34,7 +34,8 @@ Besides content, the client should set proper meta descriptions for every page a
 
 Developers should make sure that a correct permalink structure is set (Settings / Permalink Settings - post name), and that all Yoast settings are correctly set up (organization images, social details, Google verification code, etc.).
 
-By default, WordPress will generate a `robots.txt` file that will instruct the crawlers which pages should be crawled. You should add the `sitemap.xml` file to the `robots.txt` list as well. You can do that using the following snippet
+By default, WordPress will generate a `robots.txt` file that will instruct crawlers which pages should be crawled. You should add the `sitemap.xml` file to the `robots.txt` list as well. You can do that using the following snippet
+
 
 ```php
 <?php
