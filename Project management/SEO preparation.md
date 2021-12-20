@@ -14,7 +14,7 @@ When we are creating a new website, we need to make sure that the **client** is 
 - Having different heading sizes in the correct order (H1 -> H2 -> H3 -> H4)
 - No more than one H1 tag
 - Images in the content with set alt tags
-- Enough of inbound and outbound links
+- Enough inbound and outbound links
 - Set meta descriptions
 - Images shouldn't be too large
 - Set the OG images for the page/post
