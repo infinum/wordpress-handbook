@@ -19,7 +19,8 @@ When we are creating a new website, we need to make sure that the **client** is 
 - Images shouldn't be too large
 - Set the [Open Graph images](https://ogp.me/) (OG) for the page/post
 
-Don't use SVGs for the featured images or OG images, as they won't get rendered on the social networks and search results
+Don't use SVGs for featured images or OG images, as they won't be rendered on social networks and in search results
+
 
 Yoast SEO plugin will warn if these are not properly set, but it's good to have them in mind nonetheless.
 
