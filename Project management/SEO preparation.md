@@ -136,7 +136,7 @@ Given the size of the old website and the new website, we can list old links by 
 
 It is vital to have a good information architecture so that the users can find the information on the site quickly, and also that the related information is well connected. That way we can keep the user on the site for a longer period of time. If that is the intention of the site of course - some sites are presentational and should convey the information in a clear way. In that case, the [bounce rate](https://support.google.com/analytics/answer/1009409?hl=en) can be high, but then the site visits will also be high.
 
-We should **run the same checklist** (link to checklist here) as in the case of a new website, but we should take more care at the following:
+We should [**run the same checklist**](#basic-checklist) as in the case of a new website, but we should take more care at the following:
 
 Once the content is migrated, we should **check the redirect links immediately**. Using automated tools we should **fix all the redirections that are duplicated, or broken**.
 
