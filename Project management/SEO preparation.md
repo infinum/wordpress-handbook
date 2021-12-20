@@ -4,7 +4,7 @@ Even though we are using [Yoast SEO](https://wordpress.org/plugins/wordpress-seo
 
 We have two scenarios we'll have to cover:
 
-1. a new website without the prior existence on the internet
+1. a new website without prior existence on the Internet
 2. an existing website that we need to migrate and regain or improve their existing search ranking.
 
 ### New website
