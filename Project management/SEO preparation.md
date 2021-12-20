@@ -17,7 +17,7 @@ When we are creating a new website, we need to make sure that the **client** is 
 - Enough inbound and outbound links
 - Set meta descriptions
 - Images shouldn't be too large
-- Set the OG images for the page/post
+- Set the [Open Graph images](https://ogp.me/) (OG) for the page/post
 
 Don't use SVGs for the featured images or OG images, as they won't get rendered on the social networks and search results
 
