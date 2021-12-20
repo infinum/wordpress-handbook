@@ -133,7 +133,8 @@ They will give us information about the site's health (number of dead links, exi
 
 When migrating the content it's crucial to **get all the old links** from the website associated with the new website. That means that the old permalink should be added to the migration data, as well as some extra identifiers such as old post ID, and stored as metadata for every imported post.
 
-This will allow us to easily fetch all the new and old permalinks that we can easily add to the redirect list. Also, it would be good that the **old permalinks that had the biggest SEO score** on the old website **remain the same** on the new one if possible (if not prioritize that their redirects are set up correctly).
+This will allow us to easily fetch all the new and old permalinks that we can easily add to the redirect list. Also, it would be good that the **old permalinks that had the biggest SEO score** on the old website **remain the same** on the new one if possible (if not, prioritize that their redirects are set up correctly).
+
 
 Given the size of the old website and the new website, we can list old links by hand. Note that if you had a huge number of posts, this won't be workable (which is where storing these data as metadata becomes useful).
 
