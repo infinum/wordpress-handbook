@@ -6,7 +6,7 @@ Since we use dynamic blocks, we wanted to find a way to reuse logic and componen
 
 ## Blocks folder
 
-All Eightshift blocks are contained in the `src/blocks` folder. More in developer documentation about that folder can be found [here](https://infinum.github.io/eightshift-docs/docs/guides/blocks-structure).
+All Eightshift blocks are contained in the `src/blocks` folder. More in developer documentation about that folder can be found [here](https://infinum.github.io/eightshift-docs/docs/basics/blocks-structure).
 
 There are few key pieces of information to grasp.
 
