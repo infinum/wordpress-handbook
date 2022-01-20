@@ -113,3 +113,53 @@ Now you can install Xdebug again, and it should work as described in the previou
 A possible side effect of running Xdebug, especially if you enable profiler output in Xdebug settings in `php.ini`, is that the file can grow very large. To prevent this, just make sure you delete it every once in a while, or simply don't enable logging.
 
 ## Using Xdebug
+
+You can use Xdebug to debug your CLI scripts (tests for instance), or debug your web application.
+
+In order to debug the web application, you'll need a browser extension. In Chrome it's Xdebug helper, in FF it's Xdebug helper for Firefox.
+
+If you are using PhpStorm, setting up Xdebug is [straightforward](https://www.jetbrains.com/help/phpstorm/configuring-xdebug.html). In VSCode you'll need to install the PHP Debug extension, configre it, and then you should be able to set breakpoints in your code.
+
+Be sure to enable the helper and listener in your IDE.
+
+### Debugging CLI scripts
+
+When you want to debug the CLI scripts, such as automated tests or custom commands, you need to add a manual trigger:
+
+```bash
+XDEBUG_TRIGGER=yes CLI SCRIPT
+```
+
+This will instruct Xdebug to be triggered on the script run.
+
+#### WSL2 issues
+
+Windows Subsystem for Linux (WSL) works differently than MacOS system, because you need to set the correct external IP address for Xdebug to be able to 'listen' to the requests.
+
+To quickly find the external IP of your WSL you can type
+
+```bash
+ip route show default | awk '{print }'
+```
+
+in your WSL terminal. Then you need to add this IP address as your `xdebug.client_host` in you `php.ini` or `xdebug.ini` settings.
+
+After that make sure you restart your PHP server. You should be able to use XDebug normally.
+
+In order to debug the CLI scripts, you'll need to add additional environment variable
+
+```bash
+XDEBUG_TRIGGER=yes PHP_IDE_CONFIG=serverName=yourprojectname.test CLI SCRIPT
+```
+
+### Using Xdebug in Postman
+
+There are some instances where you'd like to debug the logic for your API calls.
+
+In this case you'll need to add a query parameter to your endpoint URL:
+
+```bash
+https://yoururl.test/wp-json/wp/v2/posts?XDEBUG_SESSION_START=PHPSTORM
+```
+
+The query parameter value can be changed according to your IDE.
