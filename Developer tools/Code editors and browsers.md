@@ -1,8 +1,10 @@
 ## Code editors and IDE
 
-We all have our prefered way of writing code. It's something you get accoustomed to, and it almost becomes a second-nature to you.
+We all have our preferred way of writing code. It's something you get accustomed to, and it almost becomes a second-nature to you.
 
-Over time you add a few shortcuts here and there. You discover some cool and useful plugins that will enhance your productivty.
+
+Over time you add a few shortcuts here and there. You discover some cool and useful plugins that will enhance your productivity.
+
 
 As time goes by you become well accustomed to your editor and it's a pain to switch to a new cool editor.
 
