@@ -14,7 +14,7 @@ We don't care what you use to write your code. Unless it's on paper. That's a bi
 
 Today you have a plethora of useful editors and IDEs you can develop your code on.
 
-We'll give you a list of editors/IDEs we are using, or that we used in the past (and they still occupy a special place in our hart).
+We'll give you a list of editors/IDEs we are using, or that we used in the past (and they still occupy a special place in our hearts).
 
 ### [VS Code](https://code.visualstudio.com/)
 
@@ -38,8 +38,6 @@ Before VS Code, there was Atom. It's a versatile editor that you can customize t
 
  ### Vim, Nano
 If you live in a terminal, the chances are you are using either [Vim](https://www.vim.org/) or [Nano](https://en.wikipedia.org/wiki/GNU_nano). You probably heard of Vim joke about people being [unable to exit it](https://stackoverflow.com/q/11828270/629127). It's not that hard, so you have no reason to fear it 😄
-
-## Browsers
 
 ## Browsers
 
