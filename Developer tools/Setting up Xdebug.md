@@ -142,7 +142,7 @@ To quickly find the external IP of your WSL you can type
 ip route show default | awk '{print }'
 ```
 
-in your WSL terminal. Then you need to add this IP address as your `xdebug.client_host` in you `php.ini` or `xdebug.ini` settings.
+in your WSL terminal. Then you need to add this IP address as your `xdebug.client_host` in your `php.ini` or `xdebug.ini` settings.
 
 After that make sure you restart your PHP server. You should be able to use XDebug normally.
 
