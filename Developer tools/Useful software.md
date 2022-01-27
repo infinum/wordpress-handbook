@@ -17,3 +17,7 @@ In the following list, we'll give some useful software and links that will speed
 [Table Plus](https://tableplus.com/) - Modern, native, and friendly GUI tool for relational databases: MySQL, PostgreSQL, SQLite & more
 
 [Notion](https://www.notion.so/) - Super useful tool to keep all your notes
+
+[Hover inspector for Chrome](https://chrome.google.com/webstore/detail/hover-inspector-like-in-z/jbhnejndccdjigppalbbiphlbaaehpln/related?hl=en) - Inspector is the tool which mimic display dimension between selected and hover element. It would be good for designers, QA
+
+[Accessibility checker for Firefox](https://addons.mozilla.org/en-US/firefox/addon/accessibility-checker/) - IBM Equal Access Accessibility Checker
