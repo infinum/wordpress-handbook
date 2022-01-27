@@ -10,6 +10,6 @@ We'll describe our development process here as well—setting the project locall
 
 When fixing typos or updating the handbook, create a new branch from the `master` branch. When you've finished working on it, do a PR towards a `staging` branch. 
 
-`staging` branch will be deployed to the https://beta.infinum.com/handbook/books/wordpress so that we can see if everything is displayed as we wanted. After all is ok, a release branch can be created and merged to the `master` branch, which will be deployed to the production: https://handbook.infinum.co/books/wordpress.
+`staging` branch will be deployed to the https://beta.infinum.com/handbook/books/wordpress so that we can see if everything is displayed as we wanted. After all is ok, a release branch can be created and merged to the `master` branch, which will be deployed to the production: https://infinum.com/handbook/wordpress.
 
 Any code that should be visible to employees only go to the private handbook repository (visible only to people at Infinum).
