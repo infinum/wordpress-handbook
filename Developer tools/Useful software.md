@@ -6,7 +6,7 @@ In the following list, we'll give some useful software and links that will speed
 
 [Diffchecker](https://www.diffchecker.com/) - Useful tool to check large amounts of diffs (PRs, texts, etc.)
 
-[Flycutt](https://apps.apple.com/us/app/flycut-clipboard-manager/id442160987?mt=12) - Simple clipboard manager for developers
+[Flycut](https://apps.apple.com/us/app/flycut-clipboard-manager/id442160987?mt=12) - Simple clipboard manager for developers
 
 [DevUtils](https://devutils.app/) - Powerful developer tools for your everyday tasks.
 
