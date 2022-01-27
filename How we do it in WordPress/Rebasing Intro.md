@@ -73,3 +73,13 @@ That shouldn't be problematic because the good __rule of thumb__ is: If two peop
 If many people are working on the __same__ feature, pull the changes and merge them in your branch, and then tell the person who is working with you to pull the changes.
 
 What are the advantages of rebasing? You have a nice commit history 🙂. Even though you have branched the `feat2` branch from `feat1` branch, after rebasing on the `staging` branch, you'll have all the changes visible as if you've branched from the `staging` branch. The history is nice and linear, and not all over the place.
+
+#### Husky notice
+
+We are using Husky for precommit checks, and if you have lint errors in one of your commits that could bite you in the ass. To avoid Husky running during rebasing run
+
+```bash
+HUSKY_SKIP_HOOKS=1 HUSKY=0 git rebase -i ...
+```
+
+These two are environment variables that should prevent Husky from running during rebasing.
