@@ -2,7 +2,7 @@ Codeception collects and shares recommended practices and solutions for testing 
 
 ## Codeception for WordPress
 
-You can find full installation instructions [here](https://codeception.com/for/wordpress) or in the [official documentation](https://wpbrowser.wptestkit.dev/) for wp-browser extension.
+You can find full installation instructions [here](https://wpbrowser.wptestkit.dev/).
 
 ### Installation
 
