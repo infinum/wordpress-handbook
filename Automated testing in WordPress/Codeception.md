@@ -2,7 +2,7 @@ Codeception collects and shares recommended practices and solutions for testing 
 
 ## Codeception for WordPress
 
-You can find full installation instructions [here](https://codeception.com/for/wordpress) or in the [official documentation](https://wpbrowser.wptestkit.dev/) for wp-browser extension.
+You can find full installation instructions [here](https://wpbrowser.wptestkit.dev/).
 
 ### Installation
 
@@ -205,8 +205,6 @@ In the context of Agile development, acceptance tests should correspond to the a
 // tests/acceptance/CustomPostType
 <?php
 
-declare(strict_types=1);
-
 namespace Tests\Acceptance\CustomPostType;
 
 use AcceptanceTester;
@@ -257,8 +255,6 @@ In your `tests/wpunit/Routes` you could create a `ContactRouteTest.php` file
 
 ```php
 <?php
-
-declare(strict_types=1);
 
 namespace Tests\WPUnit\Routes;
 

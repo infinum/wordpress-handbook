@@ -22,7 +22,7 @@ Test your site on different screen sizes. Test your code on different devices, e
 
 Use the site from the perspective of end user. Try to notice if things like visible hover and focus states are missing. Write accessible code. Try to use keyboard on your site and see if it's possible to navigate through it.
 
-Go through [predeployment checklist](https://handbook.infinum.co/books/frontend/javascript/predeployment-checklist) written in the frontend handbook.
+Go through [predeployment checklist](https://infinum.com/handbook/frontend/javascript/predeployment-checklist) written in the frontend handbook.
 
 ### Releasing the feature to QA/UAT
 

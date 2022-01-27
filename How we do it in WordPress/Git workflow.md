@@ -1,4 +1,4 @@
-> code*Commit early, commit often*
+> Commit early, commit often
 
 Naming a repository follows this pattern:
 
