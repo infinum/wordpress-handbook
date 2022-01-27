@@ -30,4 +30,4 @@ _As a content editor, I can create a new post, and add paragraphs, headings and 
 
 You get the gist.
 
-Having these predefined scenarios will help reduce bugs, and ensure that the app functions as intended. Once you deploy a new feature, the same script should be followed, to ensure the app is working as intended (developers didn't introduce a regression).
+Having these predefined scenarios will help reduce bugs and ensure that the app functions as intended. Once you deploy a new feature the same script should be followed to ensure the app is working as intended (developers didn't introduce a regression).

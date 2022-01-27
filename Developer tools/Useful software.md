@@ -8,7 +8,7 @@ In the following list, we'll give some useful software and links that will speed
 
 [Flycut](https://apps.apple.com/us/app/flycut-clipboard-manager/id442160987?mt=12) - Simple clipboard manager for developers
 
-[DevUtils](https://devutils.app/) - Powerful developer tools for your everyday tasks.
+[DevUtils](https://devutils.app/) - Powerful developer tools for your everyday tasks
 
 [Rectangle](https://rectangleapp.com/) - Move and resize windows in macOS using keyboard shortcuts or snap areas
 
@@ -18,6 +18,6 @@ In the following list, we'll give some useful software and links that will speed
 
 [Notion](https://www.notion.so/) - Super useful tool to keep all your notes
 
-[Hover inspector for Chrome](https://chrome.google.com/webstore/detail/hover-inspector-like-in-z/jbhnejndccdjigppalbbiphlbaaehpln/related?hl=en) - Inspector is the tool which mimic display dimension between selected and hover element. It would be good for designers, QA
+[Hover inspector for Chrome](https://chrome.google.com/webstore/detail/hover-inspector-like-in-z/jbhnejndccdjigppalbbiphlbaaehpln/related?hl=en) - Inspector is the tool which mimics display dimensions between selected and hovered element. It can be useful for designers and QA engineers
 
 [Accessibility checker for Firefox](https://addons.mozilla.org/en-US/firefox/addon/accessibility-checker/) - IBM Equal Access Accessibility Checker
