@@ -1,6 +1,6 @@
 [Pest](https://pestphp.com/) is a testing framework that mimics the syntax of [Jest](https://jestjs.io/).
 
-It's a wrapper around the PHPUnit testsuite with a more fluent syntax.
+It's a wrapper around the PHPUnit test suite with a more fluent syntax.
 
 Installing Pest is simple:
 
