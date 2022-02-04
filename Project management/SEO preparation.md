@@ -34,65 +34,16 @@ Besides content, the client should set proper meta descriptions for every page a
 
 Developers should make sure that a correct permalink structure is set (Settings / Permalink Settings - post name), and that all Yoast settings are correctly set up (organization images, social details, Google verification code, etc.).
 
-By default, WordPress will generate a `robots.txt` file that will instruct crawlers which pages should be crawled. You should add the `sitemap.xml` file to the `robots.txt` list as well. You can do that using the following snippet
 
+By default, WordPress will generate a `robots.txt` file that will instruct crawlers which pages should be crawled. You should add the `sitemap.xml` file to the `robots.txt` list as well. You can do that by adding `robots.txt` file in root directory of the site.
 
-```php
-<?php
+File should look like this (Replace `YOUR-SITE.URL` with the actual URL of your site).
 
-/**
- * The file that holds the SeoFunctionality class.
- *
- * @package ProjectNamespace\Seo;
- */
-
-declare(strict_types=1);
-
-namespace ProjectNamespace\Seo;
-
-use ProjectNamespaceVendor\EightshiftLibs\Services\ServiceInterface;
-
-/**
- * SeoFunctionality class.
- */
-class SeoFunctionality implements ServiceInterface
-
-{
-
-	/**
-	 * Register all the hooks
-	 *
-	 * @return void
-	 */
-
-	public function register(): void
-
-	{
-		\add_filter('robots_txt', [$this, 'robotsFilter'], 100, 2);
-	}
-
-	/**
-	 * Robots txt modification
-	 *
-	 * Add the sitemap to the robots.
-	 *
-	 * @param string $output The robots.txt output.
-	 * @param bool $public Whether the site is considered "public".
-	 *
-	 * @return string Modified output of the robots.txt file.
-	 */
-
-	public function robotsFilter(string $output, bool $public): string
-	{
-		$homeUrl = get_home_url();
-
-		$output .= "Sitemap: {$homeUrl}/sitemap_index.xml\n";
-
-		return $output;
-	}
-
-}
-
+```
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Sitemap: https://YOUR-SITE.URL/sitemap_index.xml
 ```
 
 
@@ -123,7 +74,7 @@ Once we check for the errors using automated tools (Lighthouse, Screaming Frog, 
 
 ### The existing website (content migration)
 
-We won't be covering the content migration itself here, as that is covered in the other chapter of the handbook (link will be added).
+We won't be covering the content migration itself here, as that is covered in the other [chapter of the handbook](handbook/wordpress/migration/research-before-migration).
 
 Here we'll cover things that developers need to be careful about when doing the migration.
 
