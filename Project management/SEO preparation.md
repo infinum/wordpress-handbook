@@ -134,7 +134,7 @@ Once we check for the errors using automated tools (Lighthouse, Screaming Frog, 
 
 ### The existing website (content migration)
 
-We won't be covering the content migration itself here, as that is covered in the other [chapter of the handbook](handbook/wordpress/migration/research-before-migration).
+We won't be covering the content migration itself here, as that is covered in the other [chapter of the handbook](/handbook/wordpress/migration/research-before-migration).
 
 Here we'll cover things that developers need to be careful about when doing the migration.
 
