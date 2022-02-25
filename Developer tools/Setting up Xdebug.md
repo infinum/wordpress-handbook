@@ -157,7 +157,7 @@ For webserver script debugging (e.g. integration test debugging), you can add th
 
 In the case of running script debugging that isn't tied to a specific domain (for instance you want to debug a phpcs sniff), the server name can be localhost, but it's important to correctly set up path mappings. For instance in the image below
 
-![Server settings for phpstomr](/img/wsl-xdebug.png)
+![Server settings for PhpStorm](/img/wsl-xdebug.png)
 
 The name of the server is `WSL`, host is localhost, but the port mappings between the local files and server files are specified (note that the local ones have `\\wsl$` prefix, while the server ones are the ones you get by typing `pwd` inside your terminal, like `/home/...`).
 
