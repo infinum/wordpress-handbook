@@ -151,6 +151,25 @@ In order to debug the CLI scripts, you'll need to add additional environment var
 ```bash
 XDEBUG_TRIGGER=yes PHP_IDE_CONFIG=serverName=yourprojectname.test CLI SCRIPT
 ```
+##### PhpStorm 
+
+For webserver script debugging (e.g. integration test debugging), you can add the URL to your server setup, and correct port mappings in the server settings, and it should work.
+
+In the case of running script debugging that isn't tied to a specific domain (for instance you want to debug a phpcs sniff), the server name can be localhost, but it's important to correctly set up path mappings. For instance in the image below
+
+![Server settings for phpstomr](/img/wsl-xdebug.png)
+
+The name of the server is `WSL`, host is localhost, but the port mappings between the local files and server files are specified (note that the local ones have `\\wsl$` prefix, while the server ones are the ones you get by typing `pwd` inside your terminal, like `/home/...`).
+
+Then running the script as 
+
+```bash
+XDEBUG_TRIGGER=yes PHP_IDE_CONFIG=serverName=WSL CLI SCRIPT
+```
+
+Will correctly trigger a breakpoint and you can debug your script as before.
+
+That is because from the PhpStorm's point of view, the WSL distribution is a server, so it needs to have the correct port mappings available so that it can connect the dots.
 
 ### Using Xdebug in Postman
 
