@@ -8,7 +8,7 @@ While Composer and Node should have been installed on your computer by now, the 
 
 ## Installing Xdebug
 
-For installing Xdebug follow the [Setting up Xdebug](/Developer tools/Setting up Xdebug.md) chapter.
+For installing Xdebug follow the [Setting up Xdebug](/wordpress/developer-tools/setting-up-xdebug) chapter.
 
 ## Installing PCOV
 
