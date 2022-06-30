@@ -200,7 +200,9 @@ If the process started successfully You will now see several options in the wind
 - Exceptions
 - Everything
 
-And you will see a little floating window where you can Pause/Stop the debugger or step trough the steps when debugging breakpoints.
+And you will see a small floating bar where you can Pause/Stop the debugger or step trough the steps when debugging breakpoints.
+
+While the debugger is running you can run unit tests or run your website (chrome php debug extension needed) and debugger will listen for anything you selected and show you the data in the VS Code debug view.
 
 ### Using Xdebug in Postman
 
