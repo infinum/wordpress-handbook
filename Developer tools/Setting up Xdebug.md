@@ -171,6 +171,37 @@ Will correctly trigger a breakpoint and you can debug your script as before.
 
 That is because from the PhpStorm's point of view, the WSL distribution is a server, so it needs to have the correct port mappings available so that it can connect the dots.
 
+##### Visual Studio Code 
+
+Install the PHP Debug extension published by Xdebug. The PHP Debug extension can also be found in VSCode's Extensions tab by searching for it.
+
+![PHP Debug Extension](/img/vsc-php-debug-extension.png)
+
+Once installed click on the Run tab and select "Add configuration...". Now, you'll need to pick the PHP environment. A new `launch.json` file will be added to the root directory by VSCode. By default it will contain 3 configurations. The one you need is the "Listen for Xdebug".
+
+Example of the "Listen for Xdebug" configuration:
+
+```json
+{
+    "name": "Listen for Xdebug",
+    "type": "php",
+    "request": "launch",
+    "port": 9003
+}
+```
+
+Start debugging by opening the debug mode tab. In the dropdown select "Listen for Xdebug" and click the green debug button next to the dropdown.
+
+If the process started successfully You will now see several options in the window, via which you can pick what logs Xdebugger will show like:
+
+- Notices
+- Warnings
+- Errors
+- Exceptions
+- Everything
+
+And you will see a little floating window where you can Pause/Stop the debugger or step trough the steps when debugging breakpoints.
+
 ### Using Xdebug in Postman
 
 There are some instances where you'd like to debug the logic for your API calls.
