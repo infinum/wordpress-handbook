@@ -192,7 +192,7 @@ Example of the "Listen for Xdebug" configuration:
 
 Start debugging by opening the debug mode tab. In the dropdown select "Listen for Xdebug" and click the green debug button next to the dropdown.
 
-If the process started successfully You will now see several options in the window, via which you can pick what logs Xdebugger will show like:
+If the process started successfully you will now see several options in the window, via which you can pick what logs Xdebugger will show like:
 
 - Notices
 - Warnings
