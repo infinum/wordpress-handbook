@@ -14,7 +14,7 @@ git --version
 
 You may get prompted to install Xcode Command Line Tools. Once you have them installed, you should have git on your system.
 
-In case it wasn't installed, you can install is by running
+In case it wasn't installed, you can install it with Homebrew by running
 
 ```bash
 HOMEBREW_NO_AUTO_UPDATE=1 brew install git
