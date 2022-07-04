@@ -7,13 +7,13 @@ As defined in the [official documentation](https://make.wordpress.org/core/handb
 At Infinum, we have developed our [own set of coding standards](https://github.com/infinum/coding-standards-wp). You can install them using `Composer`.
 
 ```bash
-composer require infinum/coding-standards-wp
+composer require infinum/eightshift-coding-standards
 ```
 
-If you want to run checks:
+If you want to run the checks
 
 ```bash
-vendor/bin/phpcs --standard=Infinum .
+vendor/bin/phpcs --standard=Eightshift .
 ```
 
 You can customize the commands and output with [additional commands](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage).
