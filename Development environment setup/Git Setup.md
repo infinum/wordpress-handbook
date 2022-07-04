@@ -167,7 +167,7 @@ Set the correct credentials, and feel free to tweak the settings a bit. You can 
 ```bash
 # An example global gitignore file
 #
-# Place a copy if this at ~/.gitignore_global
+# Place a copy of this at ~/.gitignore_global
 # Run `git config --global core.excludesfile ~/.gitignore_global`
 # Compiled source #
 ###################
