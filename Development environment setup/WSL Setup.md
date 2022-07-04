@@ -50,7 +50,7 @@ wsl --set-default-action 2
 In the case WSL is already installed you can check the list of available distros with `wsl --list --online` and you can run
 
 ```bash
-wsl --instal -d <DistroName>
+wsl --install -d <DistroName>
 ```
 
 to install a desired Linux distro.
