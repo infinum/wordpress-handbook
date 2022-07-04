@@ -20,7 +20,6 @@ In case it wasn't installed, you can install it with Homebrew by running
 HOMEBREW_NO_AUTO_UPDATE=1 brew install git
 ```
 
-Make sure you have [Homebrew](https://brew.sh/) set up before. 
 
 ### WSL and Linux
 
