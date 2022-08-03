@@ -1,6 +1,5 @@
-> Any fool can write code that a computer can understand. Good programmers write
-code that humans can understand.
-> 
+> Any fool can write code that a computer can understand. Good programmers write code that humans can understand.
+>
 > -- <cite>Martin Fowler et. all, Refactoring / Improving the Design of Existing Code</cite>
 
 There are several things to be mindful of when working on a project.
@@ -22,11 +21,11 @@ Test your site on different screen sizes. Test your code on different devices, e
 
 Use the site from the perspective of end user. Try to notice if things like visible hover and focus states are missing. Write accessible code. Try to use keyboard on your site and see if it's possible to navigate through it.
 
-Go through [predeployment checklist](https://infinum.com/handbook/frontend/javascript/predeployment-checklist) written in the frontend handbook.
+Go through [predeployment checklist](https://infinum.com/handbook/frontend/checklists#pre-deploy-checklist) written in the frontend handbook.
 
 ### Releasing the feature to QA/UAT
 
-Only when you've done all the requirements above should a QA engineer be assigned to do a thorough check. 
+Only when you've done all the requirements above should a QA engineer be assigned to do a thorough check.
 
 The following is an excerpt from the book by Robert C Martin 'Clean Coder'
 
