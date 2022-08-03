@@ -66,7 +66,7 @@ Use [transients](https://developer.wordpress.org/apis/handbook/transients/) to f
 
 ### I18n
 
-All text strings in a project have to be internationalized using core localization functions. You can check out this great guide to [internalization in WordPress](https://ottopress.com/2012/internationalization-youre-probably-doing-it-wrong/) by Samuel Wood.
+All text strings in a project have to be internationalized using core localization functions. You can check out this great guide to [internalization in WordPress](ottopress.com/2012/internationalization-youre-probably-doing-it-wrong/) by Samuel Wood.
 
 ### A11y
 
