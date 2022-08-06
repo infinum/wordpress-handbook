@@ -64,10 +64,6 @@ Use the [`pre_get_posts`](https://developer.wordpress.org/reference/hooks/pre_ge
 
 Use [transients](https://developer.wordpress.org/apis/handbook/transients/) to further speed up your site. If you use caching plugins, they will get stored in the memory instead of the database, so they get called even faster.
 
-### I18n
-
-All text strings in a project have to be internationalized using core localization functions. You can check out this great guide to [internalization in WordPress](ottopress.com/2012/internationalization-youre-probably-doing-it-wrong/) by Samuel Wood.
-
 ### A11y
 
 Accessibility is important. Always follow the official [WordPress a11y guidelines](https://make.wordpress.org/accessibility/handbook/).
