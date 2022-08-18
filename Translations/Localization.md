@@ -61,6 +61,31 @@ _Example - Batch:_
 wp i18n update-po src/I18n/languages/*.pot src/I18n/languages/
 ```
 
+### Create .json file
+If you need to make translations for javaScript files it can also be done with the CLI. Keep in mind that you shouldn't use the [--skip-js] flag when creating POT files in the first step because `.js` files need to be scanned for translations.
+
+This command creates multiple files, one file per source `.js` file. Presumably you want to localize only block editor scripts so we will use only the one file which is generated on build from the `public/applicationBlocksEditor.js` because it contains all necessary translations per locale.
+
+It is safe to use [--purge] flag to strip `.js` related translations from the PO file as they are not useful for MO binary file.
+
+_Command_: `wp i18n make-json <source> [<destination>]`
+
+_Example - Single:_
+```
+wp i18n make-json src/I18n/languages/fr_FR.po
+```
+
+_Example - Batch:_
+```bash
+wp i18n make-json src/I18n/languages/
+```
+
+If you're using the Eightshift Libs `I18n` class there is an action hook which registers the required `.json` file via the `wp_set_script_translations` function. It presumes the file will be located in the same folder as other localization files (src/I18n/languages) and named in the following format: `{textdomain}-{locale}-block-editor-scripts.json`. So in our example that would be `{textdomain}-fr_FR-{textdomain}-block-editor-scripts.json`.
+
+Find the `.json` which contains all the translations, rename it accordingly and remove other locale related files created by the `make-json` command. This file can be easily found as it contains "source" property with a path to the main JS file of interest which in our case is `applicationBlocksEditor.js`.
+
+You can test the result by changing the locale in the backend.
+
 ### Create .mo file(s)
 
 Last thing to do is to create the binary .mo file which is used by WordPress to output translations for the theme / plugin.
