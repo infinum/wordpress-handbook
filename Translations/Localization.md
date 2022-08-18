@@ -1,4 +1,4 @@
-> Localization describes the subsequent process of translating an internationalized plugin. Localization is often abbreviated as l10n (because there are 10 letters between the l and the n.)
+> Localization describes the subsequent process of translating an internationalized theme/plugin. Localization is often abbreviated as l10n (because there are 10 letters between the l and the n.)
 
 This is a handy up-to-date how-to for generating WordPress Theme/Plugin translation files with WP-CLI. The following workflow is covered: creating a POT (Portable Object Template) file, copying it to a PO (Portable Object) file where the `msgstr` sections are translated or updating pre-existing PO file and finally building the MO (Machine Object) file which is used by `gettext` functions to output translations to the user.
 
@@ -17,28 +17,20 @@ This is a handy up-to-date how-to for generating WordPress Theme/Plugin translat
 - Xdebug PHP extension with `develop` mode feature turned on can cause issues when running WP CLI I18n commands on the entire theme or plugin folder. Easiest way to get around this is to turn it off for the current session by prepending `XDEBUG_MODE=debug` to the command: `XDEBUG_MODE=debug wp i18n make-po <source> [<destination>]`.
 - The POT and PO files can easily be interchangeably renamed to change file types without issues.
 
-
-Most of the WP CLI i18n-command defaults are fine but you might want to add these flags:
-- `[--skip-js]` to exclude .js files altogether or,
-- `--exclude=public,assets` to exclude these folders.
-
 The Eightshift theme boilerplate folder structure for language files is used for examples: `src/I18n/languages/`.
 
 ## WP CLI Commands
 
 ### Create .pot file
 
->
-
-_Command_:\
-`wp i18n make-po <source> [<destination>]`
+_Command_: `wp i18n make-po <source> [<destination>]`
 
 _Example:_
 ```
 wp i18n make-pot . src/I18n/languages/fr_FR.pot --exclude=public,assets
 ```
 
-This will scan through entire current directory and output a fr_FR.pot file in the `src/I18n/languages` folder.
+This will scan through the entire current directory and output a fr_FR.pot file in the `src/I18n/languages` folder.
 
 ### Create .po file
 
@@ -57,8 +49,7 @@ _You may need to manually update wp i18n package (^2.4.0) for this to work: `wp 
 
 If there is a pre-existing `.po` file you can update it with new entries while keeping the existing translations.
 
-_Command_:\
-`wp i18n update-po <source> [<destination>]`
+_Command_: `wp i18n update-po <source> [<destination>]`
 
 _Example - Single:_
 ```
@@ -74,14 +65,14 @@ wp i18n update-po src/I18n/languages/*.pot src/I18n/languages/
 
 Last thing to do is to create the binary .mo file which is used by WordPress to output translations for the theme / plugin.
 
-_Command_:\ `wp i18n make-mo <source> [<destination>]`
+_Command_: `wp i18n make-mo <source> [<destination>]`
 
 _Example - Single:_
 ```
 wp i18n make-mo src/I18n/languages/fr_FR.po
 ```
 
-_Example - Batch_
+_Example - Batch:_
 ```bash
 for file in `find "src/I18n/languages/" -name "*.po"` ; do msgfmt -o ${file/.po/.mo} $file ; done
 ```
