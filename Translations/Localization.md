@@ -121,6 +121,7 @@ for file in `find "src/I18n/languages/" -name "*.po"` ; do msgfmt -o ${file/.po/
 ```
 
 ### Official docs:
-[Localization](https://developer.wordpress.org/plugins/internationalization/localization/)\
+[Localization](https://developer.wordpress.org/plugins/internationalization/localization/)
+
 [wp i18n command](https://developer.wordpress.org/cli/commands/i18n/) -
 [GitHub](https://github.com/wp-cli/i18n-command)
