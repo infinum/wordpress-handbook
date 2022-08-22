@@ -2,12 +2,13 @@
 
 This is a handy up-to-date how-to for generating WordPress theme/plugin translation files with WP CLI.
 
-The following steps are covered:
-    1. Create a POT (Portable Object Template) file
-    2. Create a PO (Portable Object) file where the `msgstr` sections are translated or
-    3. Update pre-existing PO file(s)
-    4. Create JSON file for JS internationalized strings
-    5. Build the MO (Machine Object) file which is used by `gettext` functions to output translations to the user
+The following steps are covered
+
+1. Create a POT (Portable Object Template) file
+2. Create a PO (Portable Object) file where the `msgstr` sections are translated or
+3. Update pre-existing PO file(s)
+4. Create JSON file for JS internationalized strings
+5. Build the MO (Machine Object) file which is used by `gettext` functions to output translations to the user
 
 ### Available commands
 
@@ -33,7 +34,8 @@ The Eightshift theme boilerplate folder structure for language files is used for
 _Command_: `wp i18n make-po <source> [<destination>]`
 
 _Example:_
-```
+
+```bash
 wp i18n make-pot . src/I18n/languages/fr_FR.pot --exclude=public,assets
 ```
 
@@ -44,7 +46,8 @@ This will scan through the entire current directory and output a `fr_FR.pot` fil
 Copy the `.pot` file in the same directory and change its file extension to `.po`.
 
 _Example:_
-```
+
+```bash
 cp src/I18n/languages/fr_FR.pot src/I18n/languages/fr_FR.po
 ```
 
@@ -59,12 +62,14 @@ If there is a pre-existing `.po` file you can update it with new entries while k
 _Command_: `wp i18n update-po <source> [<destination>]`
 
 _Example - Single:_
-```
+
+```bash
 wp i18n update-po src/I18n/languages/fr_FR.pot src/I18n/languages/fr_FR.po
 ```
 
 _Example - Batch:_
-```
+
+```bash
 wp i18n update-po src/I18n/languages/*.pot src/I18n/languages/
 ```
 
@@ -80,11 +85,13 @@ It is safe to use `[--purge]` flag to strip `.js` related translations from the 
 _Command_: `wp i18n make-json <source> [<destination>]`
 
 _Example - Single:_
-```
+
+```bash
 wp i18n make-json src/I18n/languages/fr_FR.po
 ```
 
 _Example - Batch:_
+
 ```bash
 wp i18n make-json src/I18n/languages/
 ```
@@ -102,11 +109,13 @@ Last thing to do is to create the binary `.mo` file which is used by WordPress t
 _Command_: `wp i18n make-mo <source> [<destination>]`
 
 _Example - Single:_
-```
+
+```bash
 wp i18n make-mo src/I18n/languages/fr_FR.po
 ```
 
 _Example - Batch:_
+
 ```bash
 for file in `find "src/I18n/languages/" -name "*.po"` ; do msgfmt -o ${file/.po/.mo} $file ; done
 ```
