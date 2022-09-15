@@ -31,7 +31,7 @@ The Eightshift theme boilerplate folder structure for language files is used for
 
 ### Create a `.pot` file
 
-_Command_: `wp i18n make-po <source> [<destination>]`
+_Command_: `wp i18n make-pot <source> [<destination>]`
 
 _Example:_
 
