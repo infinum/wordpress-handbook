@@ -86,7 +86,7 @@ More on writing good commit messages can be found [here](https://chris.beams.io/
 
 > Releases are deployable software iterations you can package and make available for a wider audience to download and use.
 
-When deploying to production site it is expected a bundled GitHub release is created. Releases also help us compare with previous iterations.
+When deploying the site to production, it is expected that a bundled GitHub release is created. Releases also help us compare with previous iterations.
 
 > Releases are based on [Git tags](https://git-scm.com/book/en/Git-Basics-Tagging), which mark a specific point in your repository's history.
 
