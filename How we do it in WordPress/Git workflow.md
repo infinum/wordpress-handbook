@@ -81,3 +81,30 @@ More on writing good commit messages can be found [here](https://chris.beams.io/
 **Don't use git add .** Review what you're adding to your repo—this is the #1 cause of making unwanted changes.
 
 [Here](https://wordpress.tv/2018/07/12/k-adam-white-what-we-forget-to-test/) you can watch a presentation on common issues and reasons for writing good commit messages.
+
+### Release Procedure
+
+> Releases are deployable software iterations you can package and make available for a wider audience to download and use.
+
+When deploying to production site it is expected a bundled GitHub release is created. Releases also help us compare with previous iterations.
+
+> Releases are based on [Git tags](https://git-scm.com/book/en/Git-Basics-Tagging), which mark a specific point in your repository's history.
+
+![GitHub Release - Eightshift Boilerplate](/img/github-release.png)
+
+Each Pull Request preceding a release needs to be tagged with the upcoming release tag (milestone). Although a final release can be created without this step, it is required so we can see all related steps and branches leading to the release. Tagging also provides an option to automatically add the markdown for all the merged pull requests from the diff and contributors of the release.
+
+When deciding which tag to chose for the next release be sure to follow the [SemVer](http://semver.org/) guidelines.
+
+For the actual step-by-step guide it is best to follow the [Creating a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) official guide.
+
+**When creating a release be sure to create a new tag with the same SemVer as the preceding PRs!**
+
+Releases usually contain either fixes, updates, additions or all of the above. So for the actual description it is best to create a section for each.
+
+For example:
+![GitHub Release - description](/img/github-release-description.png)
+
+Official docs:
+
+[GutHub](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
