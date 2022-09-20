@@ -107,4 +107,4 @@ For example:
 
 Official docs:
 
-[GutHub](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
+[GitHub](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
