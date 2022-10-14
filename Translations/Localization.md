@@ -15,7 +15,7 @@ The following steps are covered
 - [wp i18n make-pot](https://github.com/wp-cli/i18n-command#wp-i18n-make-pot)
 - [wp i18n make-json](https://github.com/wp-cli/i18n-command#wp-i18n-make-json)
 - [wp i18n make-mo](https://github.com/wp-cli/i18n-command#wp-i18n-make-mo)
-- [wp i18n update-po](https://github.com/wp-cli/i18n-command#wp-i18n-update-po) - ^2.4.0 WP CLI i18n-command [package](https://github.com/wp-cli/i18n-command) is required.
+- [wp i18n update-po](https://github.com/wp-cli/i18n-command#wp-i18n-update-po) - Available since WP CLI version ^2.7.0
 
 ### Useful notes
 - The following files and folders are excluded by default: `node_modules, .git, .svn, .CVS, .hg, vendor, Gruntfile.js, webpack.config.js, *.min.js`.
@@ -55,7 +55,7 @@ Translate the `msgstr` sections.
 
 ### Update `.po` file(s)
 
-_You may need to manually update wp i18n package (^2.4.0) for this to work: `wp package install git@github.com:wp-cli/i18n-command.git`._
+_If your WP CLI version is below ^2.7.0 you may need to manually update `wp i18n command` package (^2.4.0) for this to work: `wp package install git@github.com:wp-cli/i18n-command.git`._
 
 If there is a pre-existing `.po` file you can update it with new entries while keeping the existing translations.
 
