@@ -1,4 +1,4 @@
-As stated in [the official documentation](https://laravel.com/docs/5.4/valet), Valet is a Laravel development environment for Mac minimalists.
+As stated in [the official documentation](https://laravel.com/docs/valet), Valet is a Laravel development environment for Mac minimalists.
 
 Laravel Valet configures your Mac to always run Nginx in the background when your machine starts. Then, Valet proxies all requests on the `*.test` domain using DnsMasq to point to sites installed on your local machine.
 
@@ -10,9 +10,9 @@ The setup for Valet is really easy.
 
 * Install or update Homebrew to the latest version using the brew update.
 
-* Install PHP using Homebrew via `brew install php`.
+* Install PHP using Homebrew via `HOMEBREW_NO_AUTO_UPDATE=1 brew install php@7.4`.
 
-* If you don't have Composer installed, install it via `brew install composer`. Be sure to restart the shell and add the  `~/.composer/vendor/bin` directory in your system's "PATH" (see instructions below).
+* If you don't have Composer installed, install it via `HOMEBREW_NO_AUTO_UPDATE=1 brew install composer`. Be sure to restart the shell and add the  `~/.composer/vendor/bin` directory in your system's "PATH" (see instructions below).
 
 * Install Laravel via Composer: `composer global require laravel/installer`.
 
@@ -32,13 +32,13 @@ When you type `echo $PATH`, you should get something like this:
 
 If the `/Users/infinum/.composer/vendor/bin` part is missing, it means that you need to add the composer to the global system `$PATH`, so that it is available for use through your terminal.
 
-If you are using Z shell, you need to edit your `/.zshrc` file, and add
+If you are using zsh, you need to edit your `~/.zshrc` file, and add
 
 ```bash
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 ```
 
-to the list. Then you need to restart the terminal, and the composer should be added to your `$PATH`. If you are using `bash`, then you should do the same but in the `/.bash_profile` file.
+to the list. Then you need to restart the terminal, and the composer should be added to your `$PATH`. If you are using `bash`, then you should do the same but in the `~/.bash_profile`  or `~/.bashrc` file.
 
 ## Setting up the site
 
@@ -47,20 +47,22 @@ Valet has a built-in WordPress driver, so it supports running WordPress. You can
 The `park` option can be used to add a whole folder to Valet. Every folder in there will then be mapped to a site and get its own `.test` domain. So, if you add the `~/Sites` folder to Valet and have a subfolder in there named `wp-valet`, the content of that folder will be served when you visit `http://wp-valet.test` in your browser. No setup is required. The `link` option can be used to serve a single site, without adding a whole directory.
 
 ```bash
-$ mkdir ~/Sites
-$ cd ~/Sites
-$ valet park
+mkdir ~/Sites
+cd ~/Sites
+valet park
 ```
 
 Then, you need to add the `wp-valet` folder and use [WP CLI](http://wp-cli.org/) to install WordPress.
 
 ```bash
-$ mkdir wp-valet
-$ cd wp-valet
-$ wp core download
+mkdir wp-valet
+valet secure wp-valet
+cd wp-valet
+wp core download
+wp config create --prompt
 ```
 
-And this is it. Once you do this, you should be able to go to `http://wp-valet.test` and see the classic WordPress installation screen.
+And this is it. Once you do this, you should be able to go to `https://wp-valet.test` and see the classic WordPress installation screen.
 
 ## Setting up the multisite
 
@@ -68,9 +70,9 @@ Multisite is a WordPress feature that allows you to have multiple sites managed 
 
 To set up a multisite on Laravel Valet you'll start with a WordPress download, create a database and initialize the `wp-config.php`. Don't install WordPress yet, or use `valet park` command, as we will need to map multiple URLs to a single directory (depending on the type of Multisite).
 
-### Multisite with sub-domains
+### Multisite with subdomains
 
-This type of multisite allows you to access sites with a sub-domain. The URLs will look like this:
+This type of multisite allows you to access sites with a subdomain. The URLs will look like this:
 
 ```bash
 dev.multisite-sub.test               # Main site
@@ -103,7 +105,7 @@ This will install the main site of your multisite. More info on this WP CLI comm
 To add additional sites run: `wp site create --prompt` and fill all the necessary data. More info on this WP CLI command can be found [here](https://developer.wordpress.org/cli/commands/site/create/)
 
 ```bash
-1/6 --slug=<slug>: site-1              # This needs to match the sub-domain that you registered with Valet
+1/6 --slug=<slug>: site-1              # This needs to match the subdomain that you registered with Valet
 2/6 [--title=<title>]: Site Title
 3/6 [--email=<email>]: admin@mail.com  # This will add existing or create a new Administrator user for this site
 4/6 [--network_id=<network-id>]: 1     # Network to associate new site with
@@ -111,9 +113,9 @@ To add additional sites run: `wp site create --prompt` and fill all the necessar
 6/6 [--porcelain] (Y/n):
 ```
 
-### Multisite with sub-directories
+### Multisite with subdirectories
 
-This type of multisite allows you to access sites with sub-directories. The URLs will look like this:
+This type of multisite allows you to access sites with subdirectories. The URLs will look like this:
 
 ```bash
 dev.multisite-sub.test               # Main site
@@ -122,21 +124,21 @@ dev.multisite-sub.test/site-2
 ```
 
 Laravel Valet does not come with configuration for this setup out of the box. For this you will need to use a custom driver.
-Guide for the installation of the custom drivers can be found [here](https://laravel.com/docs/8.x/valet#custom-valet-drivers).
+Guide for the installation of the custom drivers can be found [here](https://laravel.com/docs/valet#custom-valet-drivers).
 
-There are multiple drivers available for Valet that enable multisite with sub-directories and they provide installation instructions:
+There are multiple drivers available for Valet that enable multisite with subdirectories and they provide installation instructions:
 * [WordPress Multisite Subdirectory Valet Driver from Objectiv](https://github.com/Objectivco/WordPressMultisiteSubdirectoryValetDriver)
 * [Roots Laravel Valet and Bedrock Multisite](https://roots.io/guides/laravel-valet-and-bedrock-multisite/)
 
-One thing to note is that by enabling custom driver for this type of multisite, the configuration for sub-domain multisite will be overwritten and will not work.
+One thing to note is that by enabling custom driver for this type of multisite, the configuration for subdomain multisite will be overwritten and will not work.
 
-Other than installing custom drivers for sub-directory type of multisite, there is no difference in setting up this type of multisite from the sub-domain type of multisite. You won't need to register multiple domains or sub-domains as they don't apply for this type of multisite.
+Other than installing custom drivers for subdirectory type of multisite, there is no difference in setting up this type of multisite from the subdomain type of multisite. You won't need to register multiple domains or subdomains as they don't apply for this type of multisite.
 
 ## Possible issues
 
 ### MySQL not started and database not set up
 
-In the odd case that installation does not work and you get the blue 404 screen, try checking whether you are connected to the MySQL database.
+In the odd case that installation does not work, and you get the blue 404 screen, try checking whether you are connected to the MySQL database.
 
 ```bash
 brew services list
@@ -159,8 +161,15 @@ If MySQL is not running, start it with
 brew services start mysql
 ```
 
-Log into your MySQL with `mysql -u root` and create the desired database.
+If you have `wp-config.php` present in your project you can try typing
 
+```bash
+wp db create
+```
+
+To create the desired database before installing WordPress. If not, you can manually create database first.
+
+Log into your MySQL with `mysql -u root` and create the desired database.
 
 ```bash
 create database db_name;
