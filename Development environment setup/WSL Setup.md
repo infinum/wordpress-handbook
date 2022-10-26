@@ -68,15 +68,57 @@ Once you've set up the terminal, follow the [Git Setup](./Git Setup.md) chapter,
 To have more flexibility in choosing your PHP version we are going to use `[phpenv](https://github.com/phpenv/phpenv)`. In your terminal app type the following:
 
 ```bash
-curl -L <https://raw.githubusercontent.com/phpenv/phpenv-installer/master/bin/phpenv-installer> | bash
+curl -L https://raw.githubusercontent.com/phpenv/phpenv-installer/master/bin/phpenv-installer | bash
 
 sudo apt update && sudo apt install -y build-essential re2c libxml2-dev libssl-dev libsqlite3-dev bison pkg-config libbz2-dev libcurl4-gnutls-dev libjpeg-dev libpng-dev libmcrypt-dev libtidy-dev libxslt1-dev zlib1g-dev libcurl4-openssl-dev libonig-dev php-imagick libedit-dev libreadline-dev libxslt-dev libzip-dev autoconf
+```
 
+The `sudo apt install` part will install all the necessary libs for the PHP to work.
+
+If you are getting
+
+```bash
+E: You must put some 'source' URIs in your sources.list
+```
+
+Error when installing the packages run the following:
+
+```bash
+sudo cp /etc/apt/sources.list /etc/apt/sources.list~
+sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
+sudo apt-get update
+```
+
+This should fix the missing sources for the packages
+
+If some package fails to install
+
+Try to install the package manually, and resolve the dependencies. After that you can rerun the `sudo apt update && sudo apt install -y build-essential...` command (you can just continue after the package that failed).
+
+Then run the following commands:
+
+```bash
 phpenv install 7.4.30
 phpenv global 7.4.30
 ```
 
-The `sudo apt install` part will install all the necessary libs for the PHP to work.
+At the time of writing, PHP 7.4 is still the most stable one to use with your WordPress app. This should improve in the 6.1+ versions of WordPress.
+
+Make sure you add `~/.phpenv/bin` to your `$PATH` for access to the phpenv command-line utility:
+
+```bash
+
+echo 'export PATH="$HOME/.phpenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(phpenv init -)"' >> ~/.bashrc
+```
+
+If you are using `zsh` replace `.bashrc` with `.zshrc`.
+
+Then, restart your shell using
+
+```bash
+exec $SHELL -l
+```
 
 After the installation, you'll need to check the user and group in the `~/.phpenv/versions/$VERSION/etc/php-fpm.d/*.conf` and change it to your current user (which you can check using `whoami` command).
 
@@ -86,7 +128,7 @@ Once you have php set up, you can install Composer using [phpenv-composer](https
 
 ```bash
 cd ~/.phpenv/plugins
-git clone <https://github.com/ngyuki/phpenv-composer.git>
+git clone https://github.com/ngyuki/phpenv-composer.git
 phpenv rehash
 phpenv global 7.4.30
 composer --version
@@ -100,12 +142,12 @@ To install and set up Nginx type the following commands in your terminal:
 
 ```bash
 sudo apt-get -y install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
-curl <https://nginx.org/keys/nginx_signing.key> | gpg --dearmor \\
+curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \\
     | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null
 gpg --dry-run --quiet --import --import-options import-show /usr/share/keyrings/nginx-archive-keyring.gpg
 
 echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \\
-<http://nginx.org/packages/ubuntu> `lsb_release -cs` nginx" \\
+http://nginx.org/packages/ubuntu `lsb_release -cs` nginx" \\
     | sudo tee /etc/apt/sources.list.d/nginx.list
 echo -e "Package: *\\nPin: origin nginx.org\\nPin: release o=nginx\\nPin-Priority: 900\\n" \\
     | sudo tee /etc/apt/preferences.d/99nginx
@@ -119,7 +161,7 @@ In order to set up your webserver, you should use nginx config. You can find goo
 nginx -s stop
 cd /etc
 mv nginx nginx-previous
-git clone <https://github.com/h5bp/server-configs-nginx.git> nginx
+git clone https://github.com/h5bp/server-configs-nginx.git nginx
 # install-specific edits
 nginx
 ```
@@ -137,7 +179,7 @@ You can modify the default template, located in `/etc/nginx/conf.d/templates/exa
 
 # Choose between www and non-www, listen on the wrong one and redirect to
 # the right one.
-# <https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/#server-name-if>
+# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/#server-name-if>
 server {
   listen [::]:443 ssl http2;
   listen 443 ssl http2;
@@ -207,9 +249,11 @@ Make sure you replace the `YOURUSERNAME` with your actual username. From the con
 
 The above template will be used to set up a new site.
 
-Whenever you are making changes to your Nginx config, you can test it using sudo `nginx -t` command. If you make an error, the test command will point it out.
+Whenever you are making changes to your Nginx config, you can test it using `sudo nginx -t` command. If you make an error, the test command will point it out.
 
 ### MySQL
+
+⚠️ Make sure you don't have MySQL installed on the system already (from some out of the box solutions like Local), as it will conflict with the WSL's installation and you probably won't be able to get it to work correctly.
 
 You can install MySQL 8 by typing the following:
 
@@ -219,7 +263,7 @@ sudo /etc/init.d/mysql start
 sudo mysql_secure_installation
 ```
 
-After setup just change the root password by logging in
+After setup just change the root password by logging in using `sudo mysql` command and running the following SQL:
 
 ```bash
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
@@ -227,18 +271,49 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
 
 Since it's for local development, you don't need to have a password set up.
 
+#### Troubleshooting MySQL authentication issues
+
+When trying to access mysql using the command line you may get an authentication error. In that case you may need to change the default authentication plugin using `mysql_native_password`. You'll need to find where your `my.cnf` configuration file is located.
+
+```bash
+mysql --help | grep cnf
+```
+
+You should get something like
+
+```bash
+                      order of preference, my.cnf, $MYSQL_TCP_PORT,
+/etc/my.cnf /etc/mysql/my.cnf /opt/homebrew/etc/my.cnf ~/.my.cnf
+```
+
+Open your `my.cnf` file (using `sudo`), and add:
+
+```bash
+default_authentication_plugin=mysql_native_password
+```
+
+#### MySQL reports cannot change directory to /nonexistent: No such file or directory
+
+This means that the `mysql` user is looking for a home directory which hasn't been assigned. In that case execute:
+
+```bash
+sudo service mysql stop
+sudo usermod -d /var/lib/mysql/ mysql
+sudo service mysql start
+```
+
 ### NodeJS
 
 To install and use NodeJS, you can use [nvm](https://github.com/nvm-sh/nvm):
 
 ```bash
-curl -o- <https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh> | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 ```
 
 or
 
 ```bash
-wget -qO- <https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh> | bash
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 ```
 
 if `curl` isn't available.
@@ -258,7 +333,7 @@ Node v16 is the current (at the time of writing) the latest stable version (LTS)
 WP-CLI is our bread and butter, so you should install it on your system. You can do it by typing the following commands in your terminal:
 
 ```bash
-curl -O <https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar>
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 php wp-cli.phar --info
 chmod +x wp-cli.phar
 sudo mv wp-cli.phar /usr/local/bin/wp
@@ -272,23 +347,30 @@ In order to quickly be able to add the sites you can add the following functions
 # WP-CLI site setup
 # Usage create-site {folder name} {database name} {site title}
 create-site () {
-  mkdir $1 && cd $1
-  wp core download --skip-content;
-  wp config create --dbname=$2 --dbuser=root;
-  wp config set DB_HOST "127.0.0.1"
-  mkdir wp-content && mkdir wp-content/themes && mkdir wp-content/plugins;
-  (
+  if [ $1 ]
+  then
+    mkdir $1 && cd $1
+    wp core download --skip-content;
+    wp config create --dbname=$2 --dbuser=root;
+    wp config set DB_HOST "127.0.0.1"
+    mkdir wp-content && mkdir wp-content/themes && mkdir wp-content/plugins;
+    (
       wp db create || true
       wp core install --url="$1"".test" --title=$3 --admin_user=admin --admin_password=password --admin_email=admin@sitetitle.com
-  )
-  cd /etc/nginx/conf.d
-  sudo cp templates/example.com.conf .$1.test.conf
-  sudo sed -i "s/example/$1/g" .$1.test.conf
-  sudo mv .$1.test.conf $1.test.conf
-  make-certificate $1.test
-  restart-server
-  cd "$HOME/Sites/$1"
-  # ADD SITE TO etc/hosts on Windows: C:\\Windows\\System32\\drivers\\etc\\hosts !!!!
+    )
+    cd /etc/nginx/conf.d
+    sudo cp templates/example.com.conf .$1.test.conf
+    sudo sed -i "s/example/$1/g" .$1.test.conf
+    sudo mv .$1.test.conf $1.test.conf
+    make-certificate $1.test
+    restart-server
+    cd "$HOME/Sites/$1"
+    wp search-replace http://$1.test https://$1.test
+    # ADD SITE TO etc/hosts on Windows: C:\\Windows\\System32\\drivers\\etc\\hosts !!!!
+   else
+    echo 'Missing arguments!'
+    echo 'Usage: site-create {folder-name} {database_name} {site title}'
+  fi
 }
 
 # Restart server
@@ -301,7 +383,7 @@ restart-server() {
   # Restart PHP-FPM
   sudo ~/.phpenv/versions/$PHP_VERSION/etc/init.d/php-fpm restart
   # Restart/Start Mailhog - optional, if you have Mailhog installed
-  sudo service mailhog restart
+  # sudo service mailhog restart
 }
 
 # Generate a self-signed SSL certificate
@@ -321,24 +403,24 @@ Once you've added it, don't forget to run `exec $SHELL` to 'restart' your shell.
 Then, in your `~/Sites` folder you can just type:
 
 ```bash
-create-site infinum-academy infinum_academy "Infinum Academy WordPress Project"
+create-site infinum-project infinum_project "Infinum WordPress Project"
 ```
 
 This command will:
 
-1. Create a directory called `infinum-academy`
+1. Create a directory called `infinum-project`
 2. Download WordPress core
 3. Create wp-config.php file
-4. Create a database called `infinum_academy`
-5. Install WordPress that will point to `infinum-academy.test` URL
+4. Create a database called `infinum_project`
+5. Install WordPress that will point to `infinum-project.test` URL
 6. Setup Nginx template
 7. Create SSL certificate for the site (Just fill in the details, it's self-signed certificate)
 8. Restart the local server so that everything is connected
 
-Last piece of puzzle to do is to go to the `C:\\Windows\\System32\\drivers\\etc\\hosts` file, and add the site to the hosts file
+Last piece of puzzle to do is to go to the `C:\Windows\System32\drivers\etc\hosts` file, and add the site to the hosts file
 
 ```bash
-127.0.0.1 infinum-academy.test
+127.0.0.1 infinum-project.test
 ```
 
 This part cannot be automated from the terminal, because you'd have to allow terminal to access the Windows system, and that's a security risk.
@@ -350,7 +432,7 @@ Because WSL is a subsystem, there are some things you need to keep an eye out fo
 ### Exposing hosts to your browser
 
 In order to have the URLs exposed to your browser you need to modify your hosts file.
-You should open the notepad program with administrator access and open the `C:\\Windows\\System32\\drivers\\etc\\hosts` file.
+You should open the notepad program with administrator access and open the `C:\Windows\System32\drivers\etc\hosts` file.
 
 Then, at the end of the file, you should just manually add
 
@@ -394,7 +476,16 @@ sudo chattr +i resolv.conf
 
 Then in the Powershell run `wsl --shutdown` and restart the WSL2.
 
+Additionally, you may need to run the powershell as an admin and type the following commands
+
+```bash
+Set-NetAdapterAdvancedProperty -InterfaceDescription 'Hyper-V Virtual Ethernet Adapter' -DisplayName 'Large Send Offload Version 2 (IPv6)' -DisplayValue 'Disabled' -IncludeHidden
+Set-NetAdapterAdvancedProperty -InterfaceDescription 'Hyper-V Virtual Ethernet Adapter' -DisplayName 'Large Send Offload Version 2 (IPv4)' -DisplayValue 'Disabled' -IncludeHidden
+```
+
+The name of the adapter (`Hyper-V Virtual Ethernet Adapter`) might be different. [Link to full explanation](https://github.com/microsoft/WSL/issues/4901#issuecomment-1192517363).
+
 ## Useful links
 
-[https://linuxize.com/post/using-the-ssh-config-file/](https://linuxize.com/post/using-the-ssh-config-file/)[https://madebydenis.com/my-development-setup/](https://madebydenis.com/my-development-setup/)
-**Note**
+[https://linuxize.com/post/using-the-ssh-config-file/](https://linuxize.com/post/using-the-ssh-config-file/)  
+[https://madebydenis.com/my-development-setup/](https://madebydenis.com/my-development-setup/)
