@@ -32,7 +32,7 @@ Another way of using Docker is to use `Dockerfile`, which is especially useful w
 
 ```dockerfile
 # Stage 0, build app
-FROM php:7.2-fpm as build-container
+FROM php:7.4-fpm as build-container
 
 RUN curl -sS https://getcomposer.org/installer | php \
   && chmod +x composer.phar && mv composer.phar /usr/local/bin/composer
@@ -60,7 +60,7 @@ RUN cp /build/wp-config.php.template /build/wp-config.php
 RUN bash /build/scripts/build-plugins.sh
 
 # Stage 1, build app container
-FROM php:7.2-fpm
+FROM php:7.4-fpm
 
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
@@ -75,7 +75,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install -j$(nproc) mysqli \
     && docker-php-ext-install gd mysqli opcache zip
 
-ADD https://downloads.wordpress.org/release/wordpress-4.9.8-no-content.zip /var/www/latest.zip
+ADD https://wordpress.org/wordpress-latest.zip /var/www/latest.zip
 RUN cd /var/www && unzip latest.zip && rm latest.zip
 RUN rm -rf /var/www/html
 RUN mkdir -p /var/www/html/ \
@@ -92,7 +92,7 @@ CMD ["exec","php-fpm"]
 
 This Dockerfile will first build a local container with PHP, composer, and node. At that stage, your theme/plugins can be built. It also contains the `RUN bash bin/build-plugins.sh` command. You can replace this with your installation script (be it for plugins or theme). You'll place composer and npm builds in that shell script.
 
-After that, you'll build the WordPress container and copy the plugins built in the previous stage. You can modify this to your liking. Beside this, you'll probably need a Docker image for nginx. But we won't be going into too much detail about it.
+After that, you'll build the WordPress container and copy the plugins built in the previous stage. You can modify this to your liking. Besides this, you'll probably need a Docker image for nginx. But we won't be going into too much detail about it.
 
 If you named this file `Dockerfile`, you'll run
 
@@ -127,27 +127,15 @@ Running the `docker run` with `-d` means that you are detaching it, and you can 
 
 Here are some useful Docker commands you might use.
 
-List all containers
+| What it does                | Command                          |
+|-----------------------------|----------------------------------|
+| List all containers         | `docker ps -as`                  |
+| List all images             | `docker images`                  |
+| Stop all running containers | `docker stop $(docker ps -aq)`   |
+| Remove all containers       | `docker rm $(docker ps -a -q)`   |
+| Remove all images           | `docker rmi $(docker images -q)` |
 
-`docker ps -as`
-
-List all images
-
-`docker images`
-
-Stop all running containers
-
-`docker stop $(docker ps -aq)`
-
-Remove all containers
-
-`docker rm $(docker ps -a -q)`
-
-Remove all images
-
-`docker rmi $(docker images -q)`
-
-Prune the system from unused images, containers, and networks [documentation link](https://docs.docker.com/config/pruning/#prune-everything)
+To prune the system from unused images, containers, and networks [documentation link](https://docs.docker.com/config/pruning/#prune-everything) use
 
 `docker system prune`
 
