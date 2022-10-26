@@ -3,9 +3,7 @@ Xdebug is an indispensible tool when working on PHP projects. It's a very powerf
 Assuming you have installed the latest stable PHP version using [Homebrew](https://brew.sh/), you should use `pecl` to install the Xdebug. [Pecl](https://pecl.php.net/) is a repository for PHP extensions. First, make sure you have it installed (even though it comes with the Homebrew PHP version).
 
 ```bash
-which pecl
-
-/usr/local/bin/pecl
+which pecl # should output /usr/local/bin/pecl
 ```
 
 Try to install Xdebug:
@@ -14,15 +12,30 @@ Try to install Xdebug:
 pecl install xdebug
 ```
 
+If you have M1 mac, you can check your PHP architecture with this command:
+
+```bash
+file `which php`
+```
+
+If that says `arm64e`, then you need to run:
+```bash
+arch -arm64 sudo pecl install xdebug
+```
+And if it's `x86_64`, then you need to run:
+
+```bash
+arch -x86_64 sudo pecl install xdebug
+```
+
 That can be done in two ways: your installation passes, and you get a message like this:
 
 ### Successful installation
 
 ```bash
 ...
-
 Build process completed successfully
-Installing '/usr/local/Cellar/php@7.4/7.4.16/pecl/20200930/xdebug.so'
+Installing '/usr/local/Cellar/php@7.4/7.4.30/pecl/20200930/xdebug.so'
 install ok: channel://pecl.php.net/xdebug-3.0.4
 Extension xdebug enabled in php.ini
 ```
@@ -32,11 +45,11 @@ In this case, all you need to check is whether PHP has linked the module correct
 ```bash
 php -v
 
-PHP 7.4.16 (cli) (built: Mar  4 2021 20:52:51) ( NTS )
+PHP 7.4.30 (cli) (built: Mar  4 2021 20:52:51) ( NTS )
 Copyright (c) The PHP Group
 Zend Engine v3.4.0, Copyright (c) Zend Technologies
-    with Zend OPcache v7.4.16, Copyright (c), by Zend Technologies
-    with Xdebug v3.0.4, Copyright (c) 2002-2021, by Derick Rethans
+    with Zend OPcache v7.4.30, Copyright (c), by Zend Technologies
+    with Xdebug v3.1.5, Copyright (c) 2002-2021, by Derick Rethans
 ```
 
 If you get an error message, you'll need to find your `php.ini` file.
@@ -59,7 +72,6 @@ Go to `/usr/local/etc/php/7.4/php.ini` and edit it by adding
 [xdebug]
 zend_extension="xdebug.so"
 xdebug.mode=debug,develop
-xdebug.client_port=9003
 ```
 
 at the end of the `php.ini` file.
@@ -72,16 +84,16 @@ When installing Xdebug, you might get the following error:
 
 ```bash
 Build process completed successfully
-Installing '/usr/local/Cellar/php@7.4/7.4.16/pecl/20200930/xdebug.so'
+Installing '/usr/local/Cellar/php@7.4/7.4.30/pecl/20200930/xdebug.so'
 
 Warning: mkdir(): File exists in System.php on line 294
-PHP Warning:  mkdir(): File exists in /usr/local/Cellar/php/7.4.16/share/php/pear/System.php on line 294
+PHP Warning:  mkdir(): File exists in /usr/local/Cellar/php/7.4.30/share/php/pear/System.php on line 294
 
-Warning: mkdir(): File exists in /usr/local/Cellar/php/7.4.16/share/php/pear/System.php on line 294
-ERROR: failed to mkdir /usr/local/Cellar/php/7.4.16/pecl/20180731
+Warning: mkdir(): File exists in /usr/local/Cellar/php/7.4.30/share/php/pear/System.php on line 294
+ERROR: failed to mkdir /usr/local/Cellar/php/7.4.30/pecl/20180731
 ```
 
-Go to your PHP installation folder (`/usr/local/Cellar/php/7.4.16/`, for instance) and type
+Go to your PHP installation folder (`/usr/local/Cellar/php/7.4.30/`, for instance) and type
 
 ```bash
 ls -all
@@ -100,7 +112,7 @@ drwxr-xr-x   3 infinum-denis  staff    96B Jul  3 13:30 sbin
 drwxr-xr-x   4 infinum-denis  staff   128B Jul  3 13:30 share
 ```
 
-You can see that `pecl` is symlinked to `/usr/local/lib/php/pecl`, but `which pecl` specified `/usr/local/bin/pecl`, which is itself a symlink to `/usr/local/Cellar/php/7.4.16/bin/pecl`. Therefore, you need to remove the symlink.
+You can see that `pecl` is symlinked to `/usr/local/lib/php/pecl`, but `which pecl` specified `/usr/local/bin/pecl`, which is itself a symlink to `/usr/local/Cellar/php/7.4.30/bin/pecl`. Therefore, you need to remove the symlink.
 
 ```bash
 unlink pecl
@@ -116,7 +128,7 @@ A possible side effect of running Xdebug, especially if you enable profiler outp
 
 You can use Xdebug to debug your CLI scripts (tests for instance), or debug your web application.
 
-In order to debug the web application, you'll need a browser extension. In Chrome it's Xdebug helper, in FF it's Xdebug helper for Firefox.
+In order to debug the web application, you'll need a browser extension. In Chrome, it's Xdebug helper, in FF it's Xdebug helper for Firefox.
 
 If you are using PhpStorm, setting up Xdebug is [straightforward](https://www.jetbrains.com/help/phpstorm/configuring-xdebug.html). In VSCode you'll need to install the PHP Debug extension, configre it, and then you should be able to set breakpoints in your code.
 
