@@ -10,7 +10,7 @@ All development details can be found on:
 
 Gutenberg gives us the ability to create blocks we are going to use on the front end and the back end for the website. We have two kinds of blocks at our disposal.
 
-### 1. Standard blocks.
+### 1. Regular or static blocks.
 
 When we talk about standard blocks, we refer to blocks for which you need to provide the `edit` and `save` details in the JavaScript part of the block. The `edit` option defines the layout and functionalities a block will have when you use it in the editor. The `save` option specifies how the output is going to be saved in the database upon saving the page.
 
@@ -19,8 +19,7 @@ We never use this type of block because saving HTML markup in the database does 
 The upside is that you write, edit, and save the part in JavaScript, and you are generally faster this way.
 
 More development details can be found in the [WordPress Handbook](https://developer.wordpress.org/block-editor/tutorials/block-tutorial/writing-your-first-block-type/).
-
-
+ 
 ### 2. Dynamic blocks.
 
 This approach defines the edit part of the block in JavaScript and the front-end part in PHP. Registration is mostly the same, but there are some differences in the `save` method. In the `save` method, you use `return null`, which tells Gutenberg to save only the block comments with filled attributes data and not the HTML markup in the database.
@@ -31,4 +30,4 @@ More development details can be found in the [WordPress Handbook](https://develo
 
 ## Documentation
 
-Read the [eightshift-docs](https://infinum.github.io/eightshift-docs/) to get started with project development.
+Read the [eightshift-docs](https://eightshift.com/) to get started with project development.
