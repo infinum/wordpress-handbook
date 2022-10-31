@@ -98,9 +98,11 @@ Try to install the package manually, and resolve the dependencies. After that yo
 Then run the following commands:
 
 ```bash
-phpenv install 7.4.30
+PHP_BUILD_CONFIGURE_OPTS="--with-webp" phpenv install 7.4.30
 phpenv global 7.4.30
 ```
+
+The `PHP_BUILD_CONFIGURE_OPTS="--with-webp"` part will enable the WebP support in your PHP.
 
 At the time of writing, PHP 7.4 is still the most stable one to use with your WordPress app. This should improve in the 6.1+ versions of WordPress.
 
