@@ -8,3 +8,4 @@ For more details follow the [official documentation](https://herd.laravel.com/do
 
 - If you used any other setup before you should make sure that you don't have any other services running on the same ports as Laravel Herd. If you do, you should stop them before starting Laravel Herd. Also clean up your Mac before starting Laravel Herd.
 
+- Don't worry about __composer__, __node__, __php__ packages because Laravel Herd will install everything for you.
