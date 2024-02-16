@@ -6,35 +6,13 @@ You can set your own dev server on macOS or any Unix based system. You'll need t
 
 A web service stack based on Linux, Apache, MySQL, and PHP is known as a LAMP stack. The Nginx one is known as the LEMP stack.
 
-If you want to use a local dev environment you can also check [Laravel Valet](https://laravel.com/docs/valet), or [Valet Plus](https://github.com/weprovide/valet-plus). If you are on Windows computer you may try [Valet WSL](https://github.com/valeryan/valet-wsl).
-
-### App based dev solutions
-
-If you want to use simple solutions that only include the bare minimum (server config), you can use [WAMP](https://www.wampserver.com/en/), [MAMP](https://www.mamp.info/en/), [XAMPP](https://www.apachefriends.org/index.html), or [Local by Flywheel](https://localwp.com/).
-
-### Vagrant based  dev environments
-
-We do recommend more WordPress-friendly solutions. One such solution is [Varying Vagrant Vagrants](https://varyingvagrantvagrants.org/). It is a Vagrant configuration focused on WordPress development. The advantage of VVV over MAMP or XAMPP is that it comes bundled with a WordPress-ready server configuration and software packages, such as `php-fpm`, `WP-CLI`, `Composer`, `NodeJs`, and other useful packages.
-
-Another advantage of using Vagrant is that it is configured independently of your machine because it runs on a virtual machine. This way, everyone on your team will develop in the same environment.
-
-[Homestead](https://laravel.com/docs/homestead) is another such dev environment which uses Vagrant.
-
-### Docker based solutions
-
-[WP Local Docker](https://github.com/10up/wp-local-docker-v2) is another development environment you can use.
-
-The main difference between Vagrant and Docker is that Vagrant uses virtual machines to run environments independent of the host machine via [VirtualBox](https://www.virtualbox.org/) or [VMware](http://www.vmware.com/). Each environment has its own virtual machine.
-Docker, on the other hand, uses 'containers' that include your application and all of its dependencies, but shares the operating system with other containers. They are isolated processes on the host operating system but are not tied to any specific infrastructure.
-
-**Vagrant** is easier to set up and get up and running but can be resource-intensive (RAM and space on the disk).
-**Docker** is a bit harder to understand and set up, but it is much faster and uses less CPU and RAM than Vagrant.
+At Infinum we use [Laravel Herd](https://herd.laravel.com/) as it provides a simple way to set up a local development environment.
 
 ### Default local TLD
 
-When setting up local projects it's important to **avoid using the reserved `.dev` top-level domain (TLD)**. At Infinum, we chose `.test`, as all our local TLD. VVV and Laravel Valet will set sites up with `.test` by default, in other solutions, you need to make sure to set this up yourself.
+When setting up local projects it's important to **avoid using the reserved `.dev` top-level domain (TLD)**. At Infinum, we chose `.test`, as all our local TLD because Laravel Herd works using this TLD.
 
-If the client project has a production URL 
+If the client project has a production URL:
 
 ```
 https://clientproject.com
