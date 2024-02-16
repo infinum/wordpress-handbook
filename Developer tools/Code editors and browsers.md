@@ -28,14 +28,6 @@ When it comes to any kind of PHP refactoring, PhpStorm is the king.
 
 It is a paid product, that comes with a 30 day free trial.
 
-### [Sublime Text](https://www.sublimetext.com/)
-
-Like VS Code, Sublime is an excellent IDE with plethora of plugins, and add-ons.
-
-### [Atom](https://atom.io/)
-
-Before VS Code, there was Atom. It's a versatile editor that you can customize to your liking. It's so popular that it inspired icon sets for both [VS Code](https://marketplace.visualstudio.com/items?itemName=emroussel.atom-icons) and [PhpStorm](https://plugins.jetbrains.com/plugin/10044-atom-material-icons)
-
 ### Vim, Nano
 
 If you live in a terminal, the chances are you are using either [Vim](https://www.vim.org/) or [Nano](https://en.wikipedia.org/wiki/GNU_nano). You probably heard of Vim joke about people being [unable to exit it](https://stackoverflow.com/q/11828270/629127). It's not that hard, so you have no reason to fear it 😄
