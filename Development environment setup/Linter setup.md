@@ -62,9 +62,8 @@ npm run lintStyle
 For composer checks you can run:
 
 ```bash
-composer analyze // PHPStan
-composer standards:check // PHPCS
-composer standards:fix // PHPCBF
+composer test:types // PHPStan
+composer test:standards // PHPCS
 ```
 
 _Note: These scripts can be renamed in your project._
