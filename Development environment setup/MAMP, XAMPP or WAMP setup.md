@@ -4,7 +4,7 @@ Setting up MAMP, XAMPP or WAMP is as easy as downloading and installing them.
 
 [XAMPP install](https://www.apachefriends.org/index.html)
 
-[WAMP install](http://www.wampserver.com/en/)
+[WAMP install](https://www.wampserver.com/en/)
 
 Just follow the instructions and install them.
 

@@ -177,4 +177,4 @@ Once we fixed all that we should wait a few days to check the new data from the 
 
 Our blocks are SEO-ready out of the box with the Yoast plugin. Since we are using dynamic blocks, we created a helper that will parse the content and pass it using JavaScript to Yoast so that it performs the correct SEO analysis.
 
-For more information check the [blocks documentation](https://infinum.github.io/eightshift-docs/docs/basics/helpers-javascript/#yoastseo).
+For more information check the [blocks documentation](https://eightshift.com/docs/basics/helpers-javascript/#yoastseo).

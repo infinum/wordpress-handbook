@@ -1,4 +1,4 @@
-[Eightshift docs](https://infinum.github.io/eightshift-docs/) is the site that is used as the main documentation for the Eightshift Development kit. 
+[Eightshift docs](https://eightshift.com/) is the site that is used as the main documentation for the Eightshift Development kit. 
 
 Besides the official documentation for our blocks and PHP part of the library, the site holds
 

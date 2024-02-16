@@ -6,7 +6,7 @@ In our projects we include several static analysis linters.
 
 #### PHP_CodeSniffer
 
-[PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/) is a script that will tokenize your PHP files and based on selected rulesets, detect violations of coding standards.
+[PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/) is a script that will tokenize your PHP files and based on selected rulesets, detect violations of set coding standards.
 
 It also includes the `phpcbf` script that will automatically correct coding standard violations when possible.
 
@@ -26,7 +26,7 @@ if ($someCode  === 'yes') { //... }
 
 #### PHPStan
 
-[PHPStan](https://phpstan.org) is a static analysis tool that will parse your code (not tokenize like phpcs), and try to infer types that go in your code and out of your code, either from docblocks or arguments, and warn you if something is off. For instance, passing integer from one function to another function as argument when the expected argument type is a string.
+[PHPStan](https://phpstan.org) is a static analysis tool that will parse your code (not tokenize like phpcs), and try to infer types that go in your code and out of your code, either from doc-blocks or arguments, and warn you if something is off. For instance, passing integer from one function to another function as argument when the expected argument type is a string.
 
 It does what compilers do in compiled languages like Java, but faster, and you can configure it or extend it.
 
@@ -66,3 +66,5 @@ composer analyze // PHPStan
 composer standards:check // PHPCS
 composer standards:fix // PHPCBF
 ```
+
+_Note: These scripts can be renamed in your project._

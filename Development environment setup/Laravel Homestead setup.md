@@ -1,6 +1,6 @@
 Homestead is an official, pre-packaged Vagrant box from the Laravel team. Its default approach is to have multiple sites set up on a single Vagrant instance, which makes adding new sites a trivial task. For more advanced requirements, each site can also be set up on its own instance.
 
-Homestead runs on any Windows, Mac, or Linux system and includes the Nginx web server, PHP 7.3, PHP 7.2, PHP 7.1, MySQL, PostgreSQL, Redis, Memcached, Node, etc. For a full list of features, check out the [official documentation](https://laravel.com/docs/8.x/homestead)
+Homestead runs on any Windows, Mac, or Linux system and includes the Nginx web server, PHP 7.3, PHP 7.2, PHP 7.1, MySQL, PostgreSQL, Redis, Memcached, Node, etc. For a full list of features, check out the [official documentation](https://laravel.com/docs/homestead)
 
 ## Installing Laravel Homestead
 
@@ -8,13 +8,12 @@ As any other Vagrant box, Homestead requires a few prerequisites installed:
 
 * [Vagrant](https://www.vagrantup.com/downloads.html)
 * [Git](https://git-scm.com/downloads)
-* Either one of the following: [VirtualBox](https://www.virtualbox.org/wiki/Downloads), [VMWare](https://my.vmware.com/en/web/vmware/downloads)<sup>1</sup>, [Parallels](https://www.parallels.com/products/desktop/)<sup>2</sup>, or [Hyper-V](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)
+* Either one of the following: [VirtualBox](https://www.virtualbox.org/wiki/Downloads), [VMWare](https://my.vmware.com/en/web/vmware/downloads)[^1], [Parallels](https://www.parallels.com/products/desktop/)[^2], or [Hyper-V](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)
 
-<sup>1 Requires the purchase of both VMware Fusion / Workstation and the VMware Vagrant plug-in.</sup>
+[^1]: Requires the purchase of both VMware Fusion / Workstation and the VMware Vagrant plug-in.
 
-<sup>2 Not free but has a free trial period and requires a free Vagrant plug-in.</sup>
-
-<sup>If you want to use one of the paid options, you can use your education budget to cover the cost. For more information, consult your team lead.</sup>
+[^2]: Not free but has a free trial period and requires a free Vagrant plug-in.
+If you want to use one of the paid options, you can use your education budget to cover the cost. For more information, consult your team lead.
 
 For the easiest setup, use [VirtualBox](https://www.virtualbox.org/wiki/Downloads) — it is free, multi-platform, and regularly updated.
 
@@ -38,9 +37,9 @@ Go into the directory the repo was cloned into, and check out the latest stable 
 cd ~/homestead
 
 # Checkout latest stable tag.
-# At the time of writing v8.4.0 is latest stable version
+# At the time of writing v13.3.1 is latest stable version
 # Check the latest version on https://github.com/laravel/homestead/releases
-git checkout v8.4.0
+git checkout v13.3.1
 ```
 
 Next, run `init.sh` or `init.bat` depending on the system you are using. This will create a `Homestead.yml` file that will be used to configure the environment:
@@ -106,7 +105,7 @@ The IP address is by default defined in `Homestead.yml`, but you can change it t
 
 Note for Windows users: You'll need to change permissions on the `hosts` file to give the current user write access to that file.
 
-The last thing in the basic configuration is database property. With this, we define all databases that will be created on server startup or reprovision.
+The last thing in the basic configuration is database property. With this, we define all databases that will be created on server startup or re-provision.
 
 ```yml
 databases:
@@ -118,7 +117,7 @@ Another thing to note is that the default Homestead database name is `homestead`
 
 ## Using Homestead
 
-When we are done with the Homestead configuration, we can start the server with the `vagrant up` command, stop the server with `vagrant halt`, and restart it with `vagrant reload`. If something is changed in `Homestead.yml`, the configuration server will need to be reprovisioned so that all changes in the configuration are visible on our sites. Use `vagrant reload --provision` to reprovision a server.
+When we are done with the Homestead configuration, we can start the server with the `vagrant up` command, stop the server with `vagrant halt`, and restart it with `vagrant reload`. If something is changed in `Homestead.yml`, the configuration server will need to be re-provisioned so that all changes in the configuration are visible on our sites. Use `vagrant reload --provision` to re-provision a server.
 
 Now you have everything you need to run your WordPress site. Download the instance of WordPress in your preferred way and set it up in `wp-config.php`. To finish the installation, go to your local site URL (e.g., `wordpress.test`).
 

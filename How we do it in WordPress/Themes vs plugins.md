@@ -32,7 +32,7 @@ Themes usually handle presentational logic, while plugins handle business logic.
 
 ### Documentation
 
-Read the [eightshift-docs](https://infinum.github.io/eightshift-docs/) to get started with project development.
+Read the [eightshift-docs](https://eightshift.com/) to get started with project development.
 
 #### When should I create a plugin?
 

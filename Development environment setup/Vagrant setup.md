@@ -93,7 +93,7 @@ In our case, we connect via Wi-Fi, so choose 1. If you're connecting via Etherne
 
 Here at Infinum, we use [eightshift-boilerplate](https://github.com/infinum/eightshift-boilerplate) to kick-start our development. It is a modern method that uses [Webpack](https://webpack.js.org/) to bundle your assets.
 
-By using it, you'll be able to use [BrowserSync](https://www.npmjs.com/package/browser-sync-webpack-plugin) to test the development in your browser and on a mobile phone. Follow the instructions in the [Eightshift docs](https://infinum.github.io/eightshift-docs/), and you should be able to easily inspect your site without much hassle.
+By using it, you'll be able to use [BrowserSync](https://www.npmjs.com/package/browser-sync-webpack-plugin) to test the development in your browser and on a mobile phone. Follow the instructions in the [Eightshift docs](https://eightshift.com/), and you should be able to easily inspect your site without much hassle.
 
 ## Adding new sites
 
