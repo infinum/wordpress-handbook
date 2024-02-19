@@ -4,5 +4,6 @@ Besides the official documentation for our blocks and PHP part of the library, t
 
 - Storybook with block and component examples
 - Sass documentation for all the custom mixins, function and placeholders
+- Eightshift Forms documentation
 - Blog posts with useful tutorials
 - Showcase of sites created using the Eightshift Development kit

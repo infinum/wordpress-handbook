@@ -8,11 +8,7 @@ with allowed characters `[a-z\-]`. `technology` is usually `wordpress`, but can 
 
 Your repository should consist of several main branches: `main`, `develop`, `staging` and some optional: `preproduction`, `edge`, and `feature` (depending on the project).
 
-### Project setup
-
-Before each project starts, the lead developer should fill out the Project Setup Sheet that specifies what language and framework will be used, versions, necessary scripts, deployment setup, server requirements, etc.
-
-### Modified Git flow
+## Modified Git flow
 
 Before the DevOps set up deploy scripts and any kind of CI/CD (Continuous Integration/Continuous Deployment), a team lead will create an empty project from the project template. This template contains all the instructions on setting up the project.
 
@@ -38,13 +34,13 @@ The `main` branch has to be tagged according to [SemVer](http://semver.org/) bef
 
 The `main` branch is usually protected so that it is not possible to merge directly to it. Merges to `main` are done periodically when new features are ready to be released.
 
-Make sure to correctly label your releases. It would be best if all the features in Productive are tagged accordinly as well: features that will be in the initial release should be tagged with version `1.0.0`, any feature after that will increase the second version number, and any bugfix the third number.
+Make sure to correctly label your releases. It would be best if all the features in Productive are tagged accordingly as well: features that will be in the initial release should be tagged with version `1.0.0`, any feature after that will increase the second version number, and any bugfix the third number.
 
 If some feature won't be ready for production, but you've already merged it to staging it's crucial that that PR is labeled correctly so that the release branch can contain only the relevant commits.
 
 **Staging should never be directly merged to production!**
 
-### Conflict resolution 
+## Conflict resolution 
 
 > In case of conflicts, don't panic
 
@@ -78,7 +74,7 @@ More on writing good commit messages can be found [here](https://chris.beams.io/
 
 [Here](https://wordpress.tv/2018/07/12/k-adam-white-what-we-forget-to-test/) you can watch a presentation on common issues and reasons for writing good commit messages.
 
-### Release Procedure
+## Release Procedure
 
 > Releases are deployable software iterations you can package and make available for a wider audience to download and use.
 
