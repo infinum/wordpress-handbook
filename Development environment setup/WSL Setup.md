@@ -384,8 +384,6 @@ restart-server() {
   sudo service nginx restart
   # Restart PHP-FPM
   sudo ~/.phpenv/versions/$PHP_VERSION/etc/init.d/php-fpm restart
-  # Restart/Start Mailhog - optional, if you have Mailhog installed
-  # sudo service mailhog restart
 }
 
 # Generate a self-signed SSL certificate
