@@ -26,10 +26,6 @@ If you want to, you can install [Xdebug](https://xdebug.org/) - a debugger and p
 
 In addition to that, you can use the [Query Monitor](https://wordpress.org/plugins/query-monitor/) for debugging your database queries, hooks, conditionals, and much more.
 
-## Documentation
-
-Read the [eightshift-docs](https://eightshift.com/) to get started with project development.
-
 ### When should I create a plugin?
 
 When working on enterprise projects, it is easier to bundle the usual plugin content (custom post types, taxonomies, API calls) to the theme instead of a separate plugin. Enterprise projects won't change much over time, so it's useful to have all code in one central place.
