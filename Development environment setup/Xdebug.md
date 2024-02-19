@@ -1,6 +1,6 @@
 Xdebug is an indispensible tool when working on PHP projects. It's a very powerful debugger which can be used for code coverage when running tests as well.
 
-If you have Laravel Herd Pro installed, Xdebug is already installed and configured for you. If you don't have Laravel Herd Pro, you can install Xdebug manually.
+If you have Laravel Herd Pro installed, Xdebug is already installed and configured for you. If you don't have Laravel Herd Pro, you can install Xdebug manually with a little bit of effort.
 
 ## Visual Studio Code 
 
