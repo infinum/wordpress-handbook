@@ -104,7 +104,6 @@ phpenv global 7.4.30
 
 The `PHP_BUILD_CONFIGURE_OPTS="--with-webp"` part will enable the WebP support in your PHP.
 
-At the time of writing, PHP 7.4 is still the most stable one to use with your WordPress app. This should improve in the 6.1+ versions of WordPress.
 
 Make sure you add `~/.phpenv/bin` to your `$PATH` for access to the phpenv command-line utility:
 
@@ -255,7 +254,7 @@ Whenever you are making changes to your Nginx config, you can test it using `sud
 
 ### MySQL
 
-⚠️ Make sure you don't have MySQL installed on the system already (from some out of the box solutions like Local), as it will conflict with the WSL's installation and you probably won't be able to get it to work correctly.
+⚠️ Make sure you don't have MySQL installed on the system already (from some out-of-the-box solutions like Local), as it will conflict with the WSL's installation and you probably won't be able to get it to work correctly.
 
 You can install MySQL 8 by typing the following:
 
