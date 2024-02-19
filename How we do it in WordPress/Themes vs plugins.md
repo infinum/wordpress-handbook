@@ -2,10 +2,6 @@
 
 WordPress has evolved a lot since its beginnings. Apart from being a simple blog CMS, you can use it for other purposes — enterprise solutions for banks and large news portals, eCommerce solutions, web apps, etc.
 
-Here at Infinum, we are always looking to advance our knowledge of modern technologies. This is why we've developed a [eightshift-boilerplate](https://github.com/infinum/eightshift-boilerplate). This is sort of a backbone solution to start your project. It uses [Webpack](https://webpack.js.org/) to bundle your files, [Sass](http://sass-lang.com/) for modern and quick styling using [BEM methodology](http://getbem.com/), [ESLint](http://eslint.org/) for JavaScript check, and [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) for checking PHP files.
-
-the PHP written in it is done using object oriented PHP. That means that we are taking care of the code architecture. We want to write clean code. That is why we are using dependency injection container (DIC) to manage dependencies. Autowiring classes in the DIC and autoloading them using Composer. We emphasize in writing a code that can be tested using automated tests.
-
 Be careful not to pack too many custom functionalities in your theme. All custom functionalities should be placed in a plugin.
 
 ### Front end and back end
