@@ -486,5 +486,5 @@ The name of the adapter (`Hyper-V Virtual Ethernet Adapter`) might be different.
 
 ## Useful links
 
-[https://linuxize.com/post/using-the-ssh-config-file/](https://linuxize.com/post/using-the-ssh-config-file/)  
-[https://madebydenis.com/my-development-setup/](https://madebydenis.com/my-development-setup/)
+* [https://linuxize.com/post/using-the-ssh-config-file/](https://linuxize.com/post/using-the-ssh-config-file/)
+* [https://madebydenis.com/my-development-setup/](https://madebydenis.com/my-development-setup/)
