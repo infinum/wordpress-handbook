@@ -28,13 +28,6 @@ Write plugins only if you don't find a good free or paid plugin online. For inst
 
 Reverse logic also applies — if a plugin for some functionality already exists, but it has a lot of unnecessary overhead code that you don't need, it would be better to write your own plugin (if the time and budget constraints of the project allow it, of course).
 
-## Useful links
-
-* [Debugging and profiling PHP with Xdebug](https://www.sitepoint.com/debugging-and-profiling-php-with-xdebug/)
-* [View Xdebug cachegrind files on MacOS](http://nickology.com/2014/04/16/view-xdebug-cachegrind-files-on-mac-os/)
-* [Testing WordPress performance](https://codex.wordpress.org/Testing_WordPress_Performance)
-* [Code debugging in VVV](https://github.com/Varying-Vagrant-Vagrants/VVV/wiki/Code-Debugging)
-
 ## Approved plugins
 
 You can use the plugins from [this page](/eightshift-development/approved-plugins) in your projects without any additional approval. If you want to use a plugin that is not on this list, please consult with the team.
