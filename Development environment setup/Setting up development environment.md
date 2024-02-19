@@ -26,4 +26,4 @@ https://clientproject.test
 
 In the following chapters, you'll learn how to set up various environments.
 
-Keep in mind that you should use `https` for your local development url as well. This is important because some browsers require `https` for certain features to work, and it's also a good practice to have your local environment as close to the production environment as possible.
+Make sure to set up HTTPS for your local development as well. This is important because some browser APIs and features will behave differently on HTTP, and you want to mimic the production environment as closely as possible.
