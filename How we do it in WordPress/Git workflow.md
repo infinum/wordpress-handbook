@@ -14,7 +14,7 @@ Before the DevOps set up deploy scripts and any kind of CI/CD (Continuous Integr
 
 Always branch off the `main` branch into a feature branch, and never commit directly to it. The `main` is usually protected against that, but better safe than sorry.
 
-**The main branch is always deployable**
+**The main branch should always be deployable**
 
 When submitting a patch, fix or a new feature, always open a new branch and pull from the `main` branch. For example, a feature would be:
 
@@ -96,3 +96,7 @@ For example:
 Official docs:
 
 [GitHub](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
+
+## Project specific Git flow
+
+If you project uses a different Git flow, make sure to document it in the project's README file.
