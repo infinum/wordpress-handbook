@@ -2,8 +2,7 @@ Here are some useful links that will help you during the onboarding, but will al
 
 ## WordPress
 
-[WordPress Developer Reference](https://developer.wordpress.org/reference/)
-
+* [WordPress Developer Reference](https://developer.wordpress.org/reference/)
 * [WordPress Core Handbook](https://make.wordpress.org/core/handbook/)
 * [WordPress Themes Handbook](https://make.wordpress.org/themes/handbook/)
 * [WordPress Plugins Handbook](https://make.wordpress.org/plugins/handbook/)
@@ -13,7 +12,6 @@ Here are some useful links that will help you during the onboarding, but will al
 ## Infinum
 
 * [Infinum Handbooks](https://handbook.infinum.co/)
-
 * [Eightshift Docs](https://eightshift.com/)
 * [Eightshift Boilerplate](https://github.com/infinum/eightshift-boilerplate)
 * [Eightshift Boilerplate Plugin](https://github.com/infinum/eightshift-boilerplate-plugin)

@@ -7,3 +7,5 @@ This is especially useful when you want to watch for any asynchronous calls, suc
 If you want to, you can install [Xdebug](https://xdebug.org/) - a debugger and profiler tool for PHP. It is really useful because you get better-looking error messages, profiling and breakpoints in your PHP code.
 
 In addition to that, you can use the [Query Monitor](https://wordpress.org/plugins/query-monitor/) for debugging your database queries, hooks, conditionals, and much more.
+
+**Make sure Query Monitor plugin is never active on production enviroment**
