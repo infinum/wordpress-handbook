@@ -6,7 +6,8 @@ In our projects we include several static analysis linters.
 
 #### PHP_CodeSniffer
 
-[PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/) is a script that will tokenize your PHP files and based on selected rulesets, detect violations of set coding standards.
+[PHP_CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer) is a script that will tokenize your PHP files and based on selected rulesets, detect violations of set coding standards.
+
 
 It also includes the `phpcbf` script that will automatically correct coding standard violations when possible.
 

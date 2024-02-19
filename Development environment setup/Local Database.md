@@ -4,4 +4,4 @@ After installation you only need to start __mysql__ service.
 
 By default all your databases will be available at `localhost:3306`.
 
-For previewing the databases we recommend using [TablePlus](https://tableplus.com/) or any other database management tool.
+For previewing the databases we recommend using [Sequel Ace](https://sequel-ace.com/), [TablePlus](https://tableplus.com/) or any other database management tool.
