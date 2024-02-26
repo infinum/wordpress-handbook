@@ -274,7 +274,7 @@ Since it's for local development, you don't need to have a password set up.
 
 #### Troubleshooting MySQL authentication issues
 
-When trying to access mysql using the command line you may get an authentication error. In that case you may need to change the default authentication plugin using `mysql_native_password`. You'll need to find where your `my.cnf` configuration file is located.
+When trying to access MySQL using the command line you may get an authentication error. In that case you may need to change the default authentication plugin using `mysql_native_password`. You'll need to find where your `my.cnf` configuration file is located.
 
 ```bash
 mysql --help | grep cnf
@@ -431,7 +431,7 @@ Because WSL is a subsystem, there are some things you need to keep an eye out fo
 ### Exposing hosts to your browser
 
 In order to have the URLs exposed to your browser you need to modify your hosts file.
-You should open the notepad program with administrator access and open the `C:\Windows\System32\drivers\etc\hosts` file.
+Open Notepad (or a similar text editor) with administrator access and open the `C:\Windows\System32\drivers\etc\hosts` file.
 
 Then, at the end of the file, you should just manually add
 
@@ -475,7 +475,7 @@ sudo chattr +i resolv.conf
 
 Then in the Powershell run `wsl --shutdown` and restart the WSL2.
 
-Additionally, you may need to run the powershell as an admin and type the following commands
+Additionally, you may need to run PowerShell as an admin and type the following commands:
 
 ```bash
 Set-NetAdapterAdvancedProperty -InterfaceDescription 'Hyper-V Virtual Ethernet Adapter' -DisplayName 'Large Send Offload Version 2 (IPv6)' -DisplayValue 'Disabled' -IncludeHidden

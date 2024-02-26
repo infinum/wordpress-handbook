@@ -65,7 +65,7 @@ Then running the script as
 XDEBUG_TRIGGER=yes PHP_IDE_CONFIG=serverName=WSL CLI SCRIPT
 ```
 
-Will correctly trigger a breakpoint and you can debug your script as before.
+will correctly trigger a breakpoint and you can debug your script as before.
 
 That is because from the PhpStorm's point of view, the WSL distribution is a server, so it needs to have the correct port mappings available so that it can connect the dots.
 

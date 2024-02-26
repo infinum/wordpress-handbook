@@ -24,7 +24,7 @@ No, unless they are poorly coded. But our coding standards are high, so this usu
 
 ### Should I write a plugin for everything, or can I use ready-made plugins from the wordpress.org repository?
 
-Write plugins only if you don't find a good free or paid plugin online. For instance, there is no need to write your own SEO plugin when a good plugin is already available—([Yoast SEO](https://wordpress.org/plugins/wordpress-seo/)).
+Write plugins only if you don't find a good free or paid plugin online. For instance, there is no need to write your own SEO plugin when a good plugin is already available (e.g. [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/)).
 
 Reverse logic also applies — if a plugin for some functionality already exists, but it has a lot of unnecessary overhead code that you don't need, it would be better to write your own plugin (if the time and budget constraints of the project allow it, of course).
 

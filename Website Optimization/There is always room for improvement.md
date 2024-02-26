@@ -30,7 +30,7 @@ A low-cost hosting plan is probably using cheaper to run and less optimized serv
 
 Uncompressed JS and CSS files and large, unoptimized image files are common issues showing up in test reports. There is a chance that problems like this can never be fully resolved. Assets can always be smaller in size and more optimized. But finding a balance where assets won't lose in quality and still load fast, could be considered as a good compromise.
 
-#### 3. No website cache
+#### 3. No caching
 
 All dynamic website technologies talk to the database server each time a user visits the website. Caching resolves this issue by storing web pages for quick retrieval, bypassing the call to the database, and most of the backend programming logic. Not having caching means every request will be freshly loaded from the server which will end up with a slower server response.
 
@@ -48,7 +48,9 @@ A _Content Delivery Network_ (CDN) is a network of datacenters in multiple locat
 
 #### 3. Reducing HTTP requests
 
-All the resources a website is using are fetched from the server via HTTP requests, making them a major factor in how fast a web page loads. The fewer HTTP requests, the faster the page will load. One important method and the first step to reducing the number of HTTP requests is to combine multiple scripts into a single script and combine CSS styles into one stylesheet. Don't overdo it, though, sometimes 2 requests are better than 1 if the one request is very large in size!
+All the resources a website is using are fetched from the server via HTTP requests, making them a major factor in how fast a web page loads. Fewer the HTTP requests, faster the page will load. One important method and the first step to reducing the number of HTTP requests is to combine multiple scripts into a single script and combine CSS styles into one stylesheet. Don't overdo it, though, sometimes 2 requests are better than 1 if the one request is very large in size!
+
+HTTP/2 made this less of an issue, allowing a bit more freedom in code splitting.
 
 #### 4. Keeping mobile in mind
 

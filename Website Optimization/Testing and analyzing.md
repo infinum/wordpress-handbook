@@ -24,7 +24,7 @@ These are factors almost all tools provide in reports. For ideal performance, th
 
 ### Lighthouse
 
-Lighthouse is an open-source tool for testing web pages with audits for performance, accessibility, progressive web apps, SEO, and more. It can be run from Chrome DevTools, command line, node package, or WebUI.
+Lighthouse is an open-source tool for testing web pages with audits for performance, accessibility, progressive web apps, SEO, and more. It can be run from your browser's DevTools (in Chrome and Edge, and probably other Chromium browsers), command line, node package, or WebUI.
 
 Scores:
 - 0-49: poor

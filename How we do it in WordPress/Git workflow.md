@@ -97,7 +97,7 @@ Official docs:
 
 [GitHub](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
 
-## Project specific Git flow
+## Project-specific Git flow
 
 If you project uses a different Git flow, make sure to document it in the project's README file.
 
