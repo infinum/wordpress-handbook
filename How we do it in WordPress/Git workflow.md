@@ -6,61 +6,53 @@ Naming a repository follows this pattern:
 
 with allowed characters `[a-z\-]`. `technology` is usually `wordpress`, but can be some other PHP framework like `laravel` or `symfony`.
 
-Your repository should consist of several main branches: `master`, `develop`, `staging` and some optional: `preproduction`, `edge`, and `feature` (depending on the project).
+Your repository should consist of several main branches: `main`, `develop`, `staging` and some optional: `preproduction`, `edge`, and `feature` (depending on the project).
 
-### Project setup
+## Modified Git flow
 
-Before each project starts, the lead developer should fill out the Project Setup Sheet that specifies what language and framework will be used, versions, necessary scripts, deployment setup, server requirements, etc.
+Before the DevOps set up deploy scripts and any kind of CI/CD (Continuous Integration/Continuous Deployment), a team lead will create an empty project from the project template. This template contains all the instructions on setting up the project.
 
-### Modified Git flow
+Always branch off the `main` branch into a feature branch, and never commit directly to it. The `main` is usually protected against that, but better safe than sorry.
 
-Before the DevOps set up deploy scripts and any kind of CI/CD (Continuous Integration/Continuous Deployment), a `master` branch should be filled with the initial setup. Ideally, this should contain a renamed theme using the boilerplate and, possibly, the minimum necessary plugins so that the developers can work without always having to merge the branch with the plugins in it.
+**The main branch should always be deployable**
 
-In the case that the `master` branch contains only the theme, a feature branch called `feature/add-update-plugins` which holds the necessary plugins should be made. It is used for updates and for adding new plugins from the wordpress.org repository or paid plugins, such as ACF Pro.
-
-Always branch off the `master` branch into a feature branch, and never commit directly to it. The master is usually protected against that, but better safe than sorry.
-
-**The master branch is always deployable**
-
-When submitting a patch, fix or a new feature, always open a new branch and pull from the `master` branch. For example, a feature would be:
+When submitting a patch, fix or a new feature, always open a new branch and pull from the `main` branch. For example, a feature would be:
 
 `feature/adding-new-user-roles`.
 
-After that, create a pull request to `staging` and `master` (and/or `preproduction`), and assign a reviewer.
+After that, create a pull request to `staging`, and assign a reviewer.
 
-Every merge is done via pull requests. Manual merges are prohibited (or not possible in the case of a `master` branch).
+Every merge is done via pull requests. Manual merges are prohibited (or not possible in the case of a `main` branch).
 
-If the branch you want to work on depends on a branch that is still being worked on, pull the changes from that branch into your branch to get updates (cherry pick). Be sure to track the changes on that branch.
+If the branch you want to work on depends on a branch that is still being worked on, pull the changes from that branch into your branch to get updates (cherry-pick or rebase on top of it). Be sure to track the changes on that branch.
 
-The `staging` branch is usually connected with a staging server using build and deploy scripts. After the tests are completed, the features should be merged with the `master` and `preproduction` branches.
+The `staging` branch is usually connected with a staging server using build and deploy scripts. After the tests by the QA are completed, the `release/X.Y.Z` branch can be made from the `main` branch, where all the features will be cherry-picked into. That way we are reducing the possibility of conflicts.
 
 ![Code flow](/img/code-flow.png)
 
-The `master` branch has to be tagged according to [SemVer](http://semver.org/) before the release. A short introduction to SemVer can be found [here](https://www.sitepoint.com/semantic-versioning-why-you-should-using/).
+The `main` branch has to be tagged according to [SemVer](http://semver.org/) before the release. A short introduction to SemVer can be found [here](https://www.sitepoint.com/semantic-versioning-why-you-should-using/).
 
-The `master` branch is usually protected so that it is not possible to merge directly to it. Merges to `master` are done periodically when new features are ready to be released.
+The `main` branch is usually protected so that it is not possible to merge directly to it. Merges to `main` are done periodically when new features are ready to be released.
 
-The `preproduction` branch should be linked to the preproduction server so that the client can enter content that will be merged to the production once ready. The `preproduction` is a 1:1 clone of the `master` and should contain only working and production-ready code.
+Make sure to correctly label your releases. It would be best if all the features in Productive are tagged accordingly as well: features that will be in the initial release should be tagged with version `1.0.0`, any feature after that will increase the second version number, and any bugfix the third number.
 
-Once the project is in production, you should make a branch from the `master` branch every time you create a feature. When you think it's ready, submit a PR to the `master`, `preproduction`, and `staging` branch, and tag (label) it accordingly. Once the testing is completed and feature branches are ready, the lead developer will deploy them to the `master` branch.
+If some feature won't be ready for production, but you've already merged it to staging it's crucial that that PR is labeled correctly so that the release branch can contain only the relevant commits.
 
-It's the same with the pre-release. If you are working on a feature that depends on another feature merged to the staging branch, pull that branch to your branch to get the desired features.
+**Staging should never be directly merged to production!**
 
-![Git flow](/img/gitflow.png)
+## Conflict resolution 
 
-**In case of conflicts, don't panic**
+> In case of conflicts, don't panic
 
-Once you have fixed the possible issues in the PR, make sure the conflicts are fixed.
+Conflicts happen when two separate branches made a change to the same line in a file (or delete a file in one branch). When you're working alone on a project the conflict usually happens when you merged one change to one branch, and hadn't synced the new branch where you are developing a new feature.
 
-**Don't fix conflicts on GitHub**. Use terminal. Say you have two PRs open—one to the `staging` and one to the `master` branch. In case of conflicts on the PR toward the staging branch, you will want to do the following:
+Trying to merge such changes would mean one version would be overwritten, so in this case Git will say it cannot automatically merge changes, but must choose which change you want to include.
 
-```bash
-git checkout staging
-git merge --no-ff feature/conflict-branch-name
-git push staging
-```
+**Don't fix conflicts on GitHub**.
 
-Once you have merged the feature branch to staging, you'll have conflicts. Fix them, commit them, and push to staging. This won't impact the other PR to the master. If you use the first GitHub suggestion or their edit tool, you will merge the entire staging branch to your feature branch, and that will impact the PR to the master branch (a bunch of unwanted commits and messed up history).
+If you try to fix a conflict on GitHub, the GitHub will simply merge the branch you want to merge your changes to, and close your PR when the conflict is fixed. Which kinda makes the review process moot.
+
+The best way to fix conflicts (if you are working alone on a branch) is to rebase on top of the branch you want to merge to. That way you will be able to fix any conflict and the commit will look cleaner.
 
 If you're not sure what to do, ask someone who is. 🙂
 
@@ -82,23 +74,19 @@ More on writing good commit messages can be found [here](https://chris.beams.io/
 
 [Here](https://wordpress.tv/2018/07/12/k-adam-white-what-we-forget-to-test/) you can watch a presentation on common issues and reasons for writing good commit messages.
 
-### Release Procedure
+## Release Procedure
 
 > Releases are deployable software iterations you can package and make available for a wider audience to download and use.
 
-When deploying the site to production, it is expected that a bundled GitHub release is created. Releases also help us compare with previous iterations.
+When deploying the site to production, it is expected that a bundled GitHub release is created. Releases also help us keep track of merged features.
 
 > Releases are based on [Git tags](https://git-scm.com/book/en/Git-Basics-Tagging), which mark a specific point in your repository's history.
 
 ![GitHub Release - Eightshift Boilerplate](/img/github-release.png)
 
-Each Pull Request preceding a release needs to be tagged with the upcoming release tag (milestone). Although a final release can be created without this step, it is required so we can see all related steps and branches leading to the release. Tagging also provides an option to automatically add the markdown for all the merged pull requests from the diff and contributors of the release.
-
-When deciding which tag to chose for the next release be sure to follow the [SemVer](http://semver.org/) guidelines.
+Every PR preceding a release needs to be labeled with the upcoming release tag (milestone). Labeling provides an option to automatically add the markdown for all the merged pull requests from the diff and contributors of the release. Which can be useful if when combined with well written commit messages. 
 
 For the actual step-by-step guide it is best to follow the [Creating a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) official guide.
-
-**When creating a release be sure to create a new tag with the same SemVer as the preceding PRs!**
 
 Releases usually contain either fixes, updates, additions or all of the above. So for the actual description it is best to create a section for each.
 
@@ -108,3 +96,16 @@ For example:
 Official docs:
 
 [GitHub](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
+
+## Project-specific Git flow
+
+If you project uses a different Git flow, make sure to document it in the project's README file.
+
+## Important
+
+All of these bullet points are important, and could result in a disciplinary action if not followed.
+
+* You should never commit any sensitive data to the repository. This includes passwords, API keys, and other sensitive data. If you need to use sensitive data in your project, use environment variables.
+* Never merge PRs without a review. If you are the only one working on the project, ask someone to review your PR.
+* If you see a a PR that is merged without a review, report it to the team lead.
+* Main branch should always be protected, and no one should be able to merge directly to it. If you see that you can merge directly to the main branch, report it to the team lead.

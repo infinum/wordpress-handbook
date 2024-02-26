@@ -14,9 +14,9 @@ Developers must also work with designers in crafting reusable components, making
 #### Security
 
 The security is the top priority that must always taken care of. It's a __continuous process__. The developer must always ensure his code is of top quality. Tools like linters, phpcs and phpstan help, but the final say has the code reviewer.
-We must follow the recomended practices, as well as watching the [OWASP](https://www.owasp.org/index.php/Main_Page) list of security issues. The developer must also be mindful when using third party plugins, as they can have security issues. This is where site like [WPScan Vulnerability Database](https://wpvulndb.com/) can be useful.
+We must follow the recommended practices, as well as watching the [OWASP](https://www.owasp.org/index.php/Main_Page) list of security issues. The developer must also be mindful when using third party plugins, as they can have security issues. This is where site like [WPScan Vulnerability Database](https://wpvulndb.com/) can be useful.
 Security must also be maintained on the server as well in the code. You should coordinate with DevOps on this matter (handling CORS, adding security headers to nginx etc.).
-For more details check the [security chapter in the handbook](https://infinum.com/handbook/wordpress/Security%20in%20WordPress/Security).
+For more details check the [security chapter in the handbook](/project-management/security/security-in-wordpress).
 
 #### Project setup
 

@@ -233,8 +233,8 @@ public function testNewMethodToTest()
 
 ## Useful links
 
-[Top 10 PHPUnit Tips and tricks by Juliette Reinders Folmer](https://speakerdeck.com/jrf/my-top-10-phpunit-tips-and-tricks-e6ea54ce-2515-4ea9-aacf-9bf7ab3b3141)  
-[Unit Tests for PHP code](https://inpsyde.com/en/php-unit-tests-without-wordpress/)  
-[An Introduction To Automated Testing Of WordPress Plugins With PHPUnit](https://www.smashingmagazine.com/2017/12/automated-testing-wordpress-plugins-phpunit/)  
-[Unit Tests for WordPress Plugins](https://pippinsplugins.com/unit-tests-wordpress-plugins-introduction/)  
-[An Introduction to Unit Testing (for WordPress)](https://tfrommen.de/an-introduction-to-unit-testing-for-wordpress/)
+* [Top 10 PHPUnit Tips and tricks by Juliette Reinders Folmer](https://speakerdeck.com/jrf/my-top-10-phpunit-tips-and-tricks-e6ea54ce-2515-4ea9-aacf-9bf7ab3b3141)
+* [Unit Tests for PHP code](https://inpsyde.com/en/php-unit-tests-without-wordpress/)
+* [An Introduction To Automated Testing Of WordPress Plugins With PHPUnit](https://www.smashingmagazine.com/2017/12/automated-testing-wordpress-plugins-phpunit/)
+* [Unit Tests for WordPress Plugins](https://pippinsplugins.com/unit-tests-wordpress-plugins-introduction/)
+* [An Introduction to Unit Testing (for WordPress)](https://tfrommen.de/an-introduction-to-unit-testing-for-wordpress/)
