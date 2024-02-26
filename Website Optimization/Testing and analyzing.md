@@ -66,9 +66,9 @@ When caching is turned off and you can track some real user performance metrics 
 
 In real-life situations, visitors are coming to the website on any number of devices and browsers. As there is an overwhelming combination of screen sizes, devices, operating systems and browsers to choose from, and tools are usually putting limits to test time and resources, it is important to start by establishing the intended range of configurations that need to be supported. We can’t test them all, so we need to make sure to test as many variations as possible to cover the largest pool of users.
 
-For a good reference point, [GlobalStats](http://gs.statcounter.com/) gives up-to-date statistics on market share for operating systems, browser usage, and even what screen size is being used to view pages. Additionally, if the client can provide their own usage analytics, the specifications can be narrowed down even further.
+For a good reference point, [GlobalStats](https://gs.statcounter.com/) gives up-to-date statistics on market share for operating systems, browser usage, and even what screen size is being used to view pages. Additionally, if the client can provide their own usage analytics, the specifications can be narrowed down even further.
 
-Advanced options like selecting different mobile devices (iPhone, Samsung, Google Pixel, and more), mobile browsers (Chrome, Firefox, Safari...), along with bandwidth throttling options (2G/3G/4G) are usually additional features that require creating an account or paying subscription.
+Advanced options like selecting different mobile devices (iPhone, Samsung, Google Pixel, etc.), mobile browsers (Chrome, Firefox, Safari, etc.), along with bandwidth throttling options (2G/3G/4G) are usually additional features that require creating an account or paying subscription.
 
 ### How to read data?
 
@@ -90,7 +90,7 @@ In this case, there are not many critical areas. Just an excessive DOM size warn
 
 ### Mobile vs. desktop
 
-When running a speed test for a mobile device and a desktop device, you could notice quite the difference in performance results. This can happen for several reasons. Mobile device users are going to be greatly impacted by their connection speed (3G/4G/5G, Wi-Fi, etc.). Another reason can be how the page styles are loaded. Mobile devices render CSS differently compared to desktop devices, such as resizing images and considerations around viewport/screen sizes. Not to forget, mobile devices simply aren't as powerful as desktop computers.
+When running a speed test for a mobile device and a desktop device, you could notice quite the difference in performance results. This can happen for several reasons. Mobile device users are going to be greatly impacted by their connection speed (3G/4G/5G, Wi-Fi, etc.). Another reason can be how the page styles are loaded. Mobile devices render CSS differently compared to desktop devices, such as resizing images and considerations around viewport/screen sizes. Not to forget, mobile devices often are not as powerful as desktop computers.
 
 It’s recommended to use a test tool that can run tests on various mobile devices, as such tests will provide more real-world results.
 
