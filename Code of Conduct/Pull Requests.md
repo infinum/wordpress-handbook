@@ -53,6 +53,16 @@ You should indicate how you classify your concern. All threads are considered bl
 
 You should request changes if you have one or more unresolved blocking or red flag threads. You should not block merging if you only have unresolved (but addressed) non-blocking concerns or nitpicks.
 
+## Comment resolution process
+
+When a comment is added to the PR, we shouldn't let it block the feature or bug from being released. Follow these rules about resolving the comments:
+
+* Person who left the comment should resolve it
+* Limit the discussion to 5-10 comments, if you can't find a common ground, schedule a meeting with a team to discuss it
+* Scheduling a meeting should only be warranted if there are issues with the code that could influence security or something that could impact the performance of the app
+* Leave a note on the type of the concern you are having
+* In case of minor differences, code owners can resolve comments in order to keep the PR moving
+
 ## Merging
 
 You can merge if:
@@ -61,3 +71,5 @@ You can merge if:
 * there are no unresolved conversations on the blocking or red flag level, following rules for resolving, **and**
 * all non-blocking concerns have been addressed with indication of future plans for improvement, **and** all automated checks are successful
 * **or**, with a comment indicating approval from another project owner, you are a project owner consciously making the decision to merge without addressing the requested changes, unresolved conversations and/or CI/CD checks
+
+*Credit to: Mario Borna Mjertan for the document*
