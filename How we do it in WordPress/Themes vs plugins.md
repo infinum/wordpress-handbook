@@ -2,7 +2,7 @@
 
 WordPress has evolved a lot since its beginnings. Apart from being a simple blog CMS, you can use it for other purposes — enterprise solutions for banks and large news portals, eCommerce solutions, web apps, etc.
 
-Be careful not to pack too many custom functionalities in your theme. All custom functionalities should be placed in a plugin.
+Be careful not to pack too many custom functionalities in your theme. A lot of often-used functionalities are already in the **Eightshift Utils** plugin. If you need to implement a functionality that could benefit other projects, consider adding it to the Utils plugin.
 
 ## Plugin development
 

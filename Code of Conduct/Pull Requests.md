@@ -1,4 +1,4 @@
-All pull requests must go through at least one reviewers (two is better), and must get approval from all people who've reviewed it at any point.
+All pull requests must go through at least one reviewer (two is better), and must get approval from all people who've reviewed it at any point.
 
 The committer can designate reviewers themselves, but anyone is free to review any code and code owners should be consulted for parts of the codebase that have code owners.
 
@@ -55,7 +55,7 @@ You should request changes if you have one or more unresolved blocking or red fl
 
 ## Comment resolution process
 
-When a comment is added to the PR, we shouldn't let it block the feature or bug from being released. Follow these rules about resolving the comments:
+When a comment is added to the PR, we shouldn't let it block the feature or bugfix from being released. Follow these rules about resolving the comments:
 
 * Person who left the comment should resolve it
 * Limit the discussion to 5-10 comments, if you can't find a common ground, schedule a meeting with a team to discuss it

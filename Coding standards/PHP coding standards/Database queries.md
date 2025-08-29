@@ -1,4 +1,4 @@
-Querying the database should be done using a `WP_Query` object [Don't use query_posts()](https://wordpress.stackexchange.com/a/1755/58895). It can affect other queries on the page because it reassigns the `global wp_query` object.
+Querying the database should be done using a `WP_Query` object. [Don't use query_posts()](https://wordpress.stackexchange.com/a/1755/58895). It can affect other queries on the page because it reassigns the `global wp_query` object.
 
 You can optimize your query by removing unnecessary queries.
 

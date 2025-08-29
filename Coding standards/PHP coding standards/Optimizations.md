@@ -66,4 +66,4 @@ Use [transients](https://developer.wordpress.org/apis/handbook/transients/) to f
 
 ### A11y
 
-Accessibility is important. Always follow the official [WordPress a11y guidelines](https://make.wordpress.org/accessibility/handbook/).
+Accessibility is important. Always follow the official [WordPress a11y guidelines](https://make.wordpress.org/accessibility/handbook/) and Infinum's [Accessibility Handbook](https://infinum.com/handbook/accessibility).
