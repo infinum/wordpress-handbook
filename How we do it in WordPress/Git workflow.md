@@ -102,6 +102,6 @@ If you project uses a different Git flow, make sure to document it in the projec
 All of these bullet points are important, and could result in a disciplinary action if not followed.
 
 * You should never commit any sensitive data to the repository. This includes passwords, API keys, and other sensitive data. If you need to use sensitive data in your project, use environment variables.
-* **NEVER merge PRs without a review.** If you are the only one working on the project, ask someone to review your PR.
+* **NEVER merge PRs to `main` (default) branch without a review.** If you are the only one working on the project, ask someone to review your PR.
 * If you see a a PR that is merged without a review, report it to the team lead.
 * Main branch should always be protected, and no one should be able to merge directly to it. If you see that you can merge directly to the main branch, report it to the team lead.
