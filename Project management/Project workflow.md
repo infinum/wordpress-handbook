@@ -26,7 +26,7 @@ In this stage developers work with DevOps to set up the agreed upon architecture
 - Will the project be hosted on ready hosted solutions (Kinsta, Pantheon etc.), or will it be on our AWS accounts?
 - Are we going to use any AWS functionality (S3 buckets, KMS, Amazon Rekognition), or services like Redis?
 
-This all depends on the complexity of the project of course. DevOps will help the developer set up a CI/CD pipeline (usually on SemaphoreCI). Team lead will set up a GitHub repository for you.
+This all depends on the complexity of the project of course. DevOps will help the developer set up a CI/CD pipeline (GitHub Actions). Team lead will set up a GitHub repository for you.
 
 #### Development start
 
@@ -48,7 +48,7 @@ After all agreed upon features for a single version are completed, a final secur
 
 #### Production deploy (project handover)
 
-Pushing to master and tagging the version is the final step. After this DevOps can either set up a direct CI/CD pipeline to the production environment, or can do the deployment manually (depending on the project).
+Pushing to the main branch and tagging the version is the final step. After this DevOps can either set up a direct CI/CD pipeline to the production environment, or can do the deployment manually (depending on the project).
 After that we should migrate the content from preproduction (source of truth) and the project is live and handed over to a client.
 
 Depending on the client and company agreement, the project can be completely handed over to a client, or we can still maintain it and work on it.

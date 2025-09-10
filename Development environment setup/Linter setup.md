@@ -60,6 +60,11 @@ npm run lintJs
 npm run lintStyle
 ```
 
+On more recent projects we started using `bun` instead of `npm` as a package manager. The above commands will be the same, but you will use `bun` instead of `npm`, e.g.
+```bash
+bun run lint
+```
+
 For composer checks you can run:
 
 ```bash
