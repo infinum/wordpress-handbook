@@ -22,6 +22,4 @@ In the following list, we'll give some useful software and links that will speed
 
 [Accessibility checker for Firefox](https://addons.mozilla.org/en-US/firefox/addon/accessibility-checker/) - IBM Equal Access Accessibility Checker
 
-[Laravel Herd](https://herd.laravel.com/) - Provides a simple way to set up a local development environment. Installation on a clean setup is really easy you just download the installer and run it. It will install all the necessary software and set up the environment for you.
-
-
+[Laravel Herd](https://herd.laravel.com/) - Provides a simple way to set up a local development environment. Installation on a clean setup is really easy - you just download the installer and run it. It will install all the necessary software and set up the environment for you.

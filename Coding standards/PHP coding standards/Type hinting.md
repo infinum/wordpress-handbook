@@ -1,4 +1,4 @@
-Type declarations allow functions to require that parameters are of a certain type at call time. If the given value is of the incorrect type, then an error is generated. In PHP 5, this will be a recoverable fatal error, while PHP 7 will throw a `TypeError` exception. We don't use or encourage using PHP < 7 in our projects.
+Type declarations allow functions to require that parameters are of a certain type at call time. If the given value is of the incorrect type, then an error is generated. In PHP 5, this will be a recoverable fatal error, while PHP 7 will throw a `TypeError` exception. We don't use or encourage using officially unsupported PHP versions in our projects. Check [Supported Versions](https://www.php.net/supported-versions.php)
 
 To specify a type declaration, the type name should be added before the parameter name. The declaration can be made to accept `NULL` values if the default value of the parameter is set to `NULL`.
 

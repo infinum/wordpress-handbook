@@ -4,7 +4,7 @@ For more details follow the [official documentation for MacOS](https://herd.lara
 
 ## Tips and tricks
 
-- Laravel Herd has a Pro version that provides additional features like debugging, profiling, and more. Contact you Team Lead to get more information about it.
+- Laravel Herd has a Pro version that provides additional features like debugging, profiling, and more. Contact your Team Lead to get more information about it.
 
 - If you used any other setup before you should make sure that you don't have any other services running on the same ports as Laravel Herd. If you do, you should stop them before starting Laravel Herd. Also clean up your Mac before starting Laravel Herd.
 

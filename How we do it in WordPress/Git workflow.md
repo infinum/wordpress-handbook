@@ -20,19 +20,15 @@ When submitting a patch, fix or a new feature, always open a new branch and pull
 
 `feature/adding-new-user-roles`.
 
-After that, create a pull request to `staging`, and assign a reviewer.
+When you get at least one approve, you can locally merge the branch into the staging branch and then push it to the remote repository. The `staging` branch is usually connected with a staging server using build and deploy scripts.
 
-Every merge is done via pull requests. Manual merges are prohibited (or not possible in the case of a `main` branch).
+Once you get confirmation from QA and/or the client that the feature is ready for production, you can merge it in GitHub to the `main` branch. Manual merges and direct pushes from the local `main` branch are not possible in the case of a `main` branch.
 
 If the branch you want to work on depends on a branch that is still being worked on, pull the changes from that branch into your branch to get updates (cherry-pick or rebase on top of it). Be sure to track the changes on that branch.
-
-The `staging` branch is usually connected with a staging server using build and deploy scripts. After the tests by the QA are completed, the `release/X.Y.Z` branch can be made from the `main` branch, where all the features will be cherry-picked into. That way we are reducing the possibility of conflicts.
 
 ![Code flow](/img/code-flow.png)
 
 The `main` branch has to be tagged according to [SemVer](http://semver.org/) before the release. A short introduction to SemVer can be found [here](https://www.sitepoint.com/semantic-versioning-why-you-should-using/).
-
-The `main` branch is usually protected so that it is not possible to merge directly to it. Merges to `main` are done periodically when new features are ready to be released.
 
 Make sure to correctly label your releases. It would be best if all the features in Productive are tagged accordingly as well: features that will be in the initial release should be tagged with version `1.0.0`, any feature after that will increase the second version number, and any bugfix the third number.
 
@@ -40,7 +36,7 @@ If some feature won't be ready for production, but you've already merged it to s
 
 **Staging should never be directly merged to production!**
 
-## Conflict resolution 
+## Conflict resolution
 
 > In case of conflicts, don't panic
 
@@ -84,7 +80,7 @@ When deploying the site to production, it is expected that a bundled GitHub rele
 
 ![GitHub Release - Eightshift Boilerplate](/img/github-release.png)
 
-Every PR preceding a release needs to be labeled with the upcoming release tag (milestone). Labeling provides an option to automatically add the markdown for all the merged pull requests from the diff and contributors of the release. Which can be useful if when combined with well written commit messages. 
+Every PR preceding a release needs to be labeled with the upcoming release tag (milestone). Labeling provides an option to automatically add the markdown for all the merged pull requests from the diff and contributors of the release. Which can be useful if when combined with well written commit messages.
 
 For the actual step-by-step guide it is best to follow the [Creating a release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) official guide.
 
@@ -106,6 +102,6 @@ If you project uses a different Git flow, make sure to document it in the projec
 All of these bullet points are important, and could result in a disciplinary action if not followed.
 
 * You should never commit any sensitive data to the repository. This includes passwords, API keys, and other sensitive data. If you need to use sensitive data in your project, use environment variables.
-* Never merge PRs without a review. If you are the only one working on the project, ask someone to review your PR.
+* **NEVER merge PRs to `main` (default) branch without a review.** If you are the only one working on the project, ask someone to review your PR.
 * If you see a a PR that is merged without a review, report it to the team lead.
 * Main branch should always be protected, and no one should be able to merge directly to it. If you see that you can merge directly to the main branch, report it to the team lead.
