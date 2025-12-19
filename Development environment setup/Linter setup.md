@@ -37,32 +37,31 @@ Because of that, it goes perfectly with PHPCS. Since it can understand context i
 
 For JS linting we are using [ESLint](https://eslint.org/). It's a static analyzer. It works similarly to PHPStan, parsing code to abstract syntax tree (AST) and finding patterns in code.
 
-### SCSS
+### CSS
 
-For SCSS files we are using [Stylelint](https://stylelint.io/).
-It's a style sheet linter written in JS useful to finding scss inconsistencies and errors.
+For CSS files we are also using [ESlint](https://eslint.org/blog/2025/02/eslint-css-support/).
+CSS linting is accomplished using the [@eslint/css](https://npmjs.com/package/@eslint/css) plugin, which is an officially supported language plugin.
+
+### Tailwind
+
+To keep class lists consistent (and avoid noisy diffs), enable [Automatic Class Sorting with Prettier](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier).
 
 ### Running linters
 
 You can run individual linter or all of them at once.
 
-Once you've set up a project, you'll have `npm` and `composer` scripts at your disposal. Running
+Once you've set up a project, you'll have `bun` and `composer` scripts at your disposal. Running
 
 ```bash
-npm run lint
+bun run lint
 ```
 will run JS, CSS and coding standards check.
 
-You have individual `npm` checks:
+You have individual `bun` checks:
 
 ```bash
-npm run lintJs
-npm run lintStyle
-```
-
-On more recent projects we started using `bun` instead of `npm` as a package manager. The above commands will be the same, but you will use `bun` instead of `npm`, e.g.
-```bash
-bun run lint
+bun run lintJs
+bun run lintStyle
 ```
 
 For composer checks you can run:

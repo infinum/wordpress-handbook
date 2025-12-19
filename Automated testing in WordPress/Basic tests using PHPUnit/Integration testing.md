@@ -1,6 +1,6 @@
 Integration tests are used to check how components work inside WordPress.
 
-The best way to set up an integration test is to use either [WPBrowser]((https://wpbrowser.wptestkit.dev/)) or WP-CLI.
+The best way to set up an integration test is to use either [WPBrowser](https://wpbrowser.wptestkit.dev/) or WP-CLI.
 
 ## WP-CLI
 
@@ -117,6 +117,4 @@ AJAX tests are slow because all the default AJAX callbacks in WordPress core get
 ## Useful links
 
 * [Codeception for WordPress - wp-browser](https://wpbrowser.wptestkit.dev/)
-* [Four WordPress Integration Testing Easy Pieces](https://www.theaveragedev.com/four-wordpress-integration-testing-easy-pieces/)
 * [Integration Tests with WordPress & PHPUnit](https://aaemnnost.tv/2016/07/29/integration-tests-wordpress-phpunit/)
-* [WP Ajax Plugin Unit Testing](https://codesymphony.co/author/jdgrimesdev/page/4/)

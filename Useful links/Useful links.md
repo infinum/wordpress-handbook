@@ -11,7 +11,7 @@ Here are some useful links that will help you during the onboarding, but will al
 
 ## Infinum
 
-* [Infinum Handbooks](https://handbook.infinum.co/)
+* [Infinum Handbooks](https://infinum.com/handbook/)
 * [Eightshift Docs](https://eightshift.com/)
 * [Eightshift Boilerplate](https://github.com/infinum/eightshift-boilerplate)
 * [Eightshift Boilerplate Plugin](https://github.com/infinum/eightshift-boilerplate-plugin)
@@ -24,11 +24,8 @@ Here are some useful links that will help you during the onboarding, but will al
 * [PHP Tutorial for Beginners](https://www.guru99.com/php-tutorials.html)
 * [Beginner PHP and MySQL Tutorial](https://www.udemy.com/course/php-mysql-tutorial/)
 * [PHP For Beginners](https://www.udemy.com/course/php-for-beginners-/)
-* [TheCodingMachine PHP Tips and Tricks](https://bestpractices.thecodingmachine.com/php/development_environment.html)
 * [Refactoring Guru](https://refactoring.guru/)
-* [PHP 7 Zend Certification study guide (2017)](https://www.php-books.com/book/php-7-zend-certification-study-guide-ace-the-zce-2017-php-exam)
 * [Debugging and profiling PHP with Xdebug](https://www.sitepoint.com/debugging-and-profiling-php-with-xdebug/)
-* [View Xdebug cachegrind files on MacOS](http://nickology.com/2014/04/16/view-xdebug-cachegrind-files-on-mac-os/)
 * [Testing WordPress performance](https://codex.wordpress.org/Testing_WordPress_Performance)
 * [Code debugging in VVV](https://github.com/Varying-Vagrant-Vagrants/VVV/wiki/Code-Debugging)
 

@@ -14,7 +14,7 @@ Every file should have introductory documentation that describes the contents of
  */
 ```
 
-We follow the [DocBlock](https://phpdoc.org/docs/latest/guides/docblocks.html) format of comments.
+We follow the [DocBlock](https://docs.phpdoc.org/guide/guides/docblocks.html#more-on-docblocks) format of comments.
 
 Every class should have documentation above it, and the methods inside should also be documented.
 

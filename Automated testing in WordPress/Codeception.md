@@ -159,13 +159,13 @@ You can add composer scripts so that you can access certain test scripts easier.
 },
 ```
 
-`selenium:start` - used for starting a selenium server - used for acceptance and functional tests.  
-`test:clean` - used to clean up the output directory and generated code.  
-`test:setup` - a shorthand for setting up the `wpbrowser`. If you have used it already (and have test scaffolded) you don't need to run it.  
-`test:acceptance`- a shorthand way to run acceptance tests.  
-`test:functional`- a shorthand way to run functional tests.  
-`test:integration`- a shorthand way to run integration tests.  
-`test:coverage`- a shorthand way to run integration tests with code coverage (this run is usually slower than just test run).  
+`selenium:start` - used for starting a selenium server - used for acceptance and functional tests.
+`test:clean` - used to clean up the output directory and generated code.
+`test:setup` - a shorthand for setting up the `wpbrowser`. If you have used it already (and have test scaffolded) you don't need to run it.
+`test:acceptance`- a shorthand way to run acceptance tests.
+`test:functional`- a shorthand way to run functional tests.
+`test:integration`- a shorthand way to run integration tests.
+`test:coverage`- a shorthand way to run integration tests with code coverage (this run is usually slower than just test run).
 `test:generate-scenarios`- a shorthand way to generate user scenarios. You need to provide a suite for which a scenario can be generated (`acceptance`, `functional` or `integration`).
 
 You can also [autoload](https://getcomposer.org/doc/01-basic-usage.md#autoloading) your test folder using either `psr-4` or `classmap` autoloading process:
@@ -192,7 +192,7 @@ Classmap:
 
 ### Levels of testing
 
-For in depth explanation check the [official wp-browser documentation](https://wpbrowser.wptestkit.dev/levels-of-testing).
+For in depth explanation check the [official wp-browser documentation](https://wpbrowser.wptestkit.dev/v3/levels-of-testing/).
 
 #### Acceptance tests
 
@@ -237,7 +237,7 @@ class BooksCustomPostTypeCest
 }
 ```
 
-You can also write acceptance tests without classes, but they look neater this way (Cest format). The official [Codeception documentation](https://codeception.com/docs/02-GettingStarted) has a good introduction about the syntax, and some detailed explanation of the [Cest classes](https://codeception.com/docs/07-AdvancedUsage#Cest-Classes).
+You can also write acceptance tests without classes, but they look neater this way (Cest format). The official [Codeception documentation](https://codeception.com/docs/GettingStarted) has a good introduction about the syntax, and some detailed explanation of the [Cest classes](https://codeception.com/docs/AdvancedUsage).
 
 #### Functional tests
 
@@ -339,7 +339,7 @@ Say we have a validator class that validates email. We would want to make sure t
 
 While wp-browser comes with a `WPBrowser` module which will help you run acceptance and functional tests, that module simulates user interaction with the site **without JavaScript support**. If you need to test your project with JavaScript support, you'll need to use the `WPWebDriver` module.
 
-Detailed instructions are located here: https://wpbrowser.wptestkit.dev/modules/wpwebdriver
+Detailed instructions are located here: https://wpbrowser.wptestkit.dev/v3/modules/WPWebDriver/
 
 In order to run that module, you'll need to set it up in your `suite.yml` files like
 
@@ -362,7 +362,7 @@ WPWebDriver:
             args: ["--no-sandbox", "--headless", "--disable-gpu", "--user-agent=wp-browser", "allow-insecure-localhost", "--ignore-certificate-errors"]
 ```
 
-There is a catch, though. You'll need a web driver and a framework in which you can run that web driver. In this case, we'll use [Selenium](https://www.selenium.dev/). [Chrome Webdriver](https://sites.google.com/a/chromium.org/chromedriver/) should be installed, but doesn't have to be run, like Selenium.
+There is a catch, though. You'll need a web driver and a framework in which you can run that web driver. In this case, we'll use [Selenium](https://www.selenium.dev/). [Chrome Webdriver](https://developer.chrome.com/docs/chromedriver) should be installed, but doesn't have to be run, like Selenium.
 
 Selenium can be downloaded using `brew`
 
@@ -370,7 +370,7 @@ Selenium can be downloaded using `brew`
 brew install selenium-server-standalone
 ```
 
-While for Chrome webdriver you'd need to go to [downloads section](https://sites.google.com/a/chromium.org/chromedriver/downloads), and download **the same version of the driver as is your local Chrome**. This is important because otherwise, the tests won't be able to run - if you have v83 of Chrome, your webdriver has to be v83 as well.
+While for Chrome webdriver you'd need to go to [downloads section](https://googlechromelabs.github.io/chrome-for-testing/), and download **the same version of the driver as is your local Chrome**. This is important because otherwise, the tests won't be able to run - if you have v83 of Chrome, your webdriver has to be v83 as well.
 Be careful about that when updating your local Chrome.
 
 After downloading the correct zip file, extract it and move it to the local bin directory
@@ -385,7 +385,7 @@ Make sure you allow the driver in the MacOS security settings (Preference -> Sec
 chromedriver --version
 
 ChromeDriver 83.0.4103.39 (ccbf011cb2d2b19b506d844400483861342c20cd-refs/branch-heads/4103@{#416})
-``` 
+```
 
 Similarly, you can do for Selenium
 

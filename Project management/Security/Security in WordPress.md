@@ -88,8 +88,6 @@ The local SonarQube can be accessed through the browser on `localhost:9000`.
 
 ![sonarqube](/img/sonarqube.png)
 
-[Analyzing with scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) tutorial.
-
 You can log in as admin with the `admin` user and `admin` password. You can add the project by going to `Administration->Projects`. You may be prompted to enter a token name and generate a token. Be sure to remember that token because it will be used when creating a `sonar-project.properties` file which is necessary to run the scan.
 
 You'll also need to install the Java Virtual Machine (JVM) and `sonar-scanner` using brew.

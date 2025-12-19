@@ -1,6 +1,6 @@
-At Infinum we use [Laravel Herd](https://herd.laravel.com/) as it provides a simple way to set up a local development environment. Herd is availabele for macOS and Windows.  Installation on a clean setup is really easy you just [download the installer for MacOS](https://herd.laravel.com/docs/1/getting-started/installation) or [download the installer for Windows](https://herd.laravel.com/docs/windows/1/getting-started/installation) and run it. It will install all the necessary software and set up the environment for you.
+At Infinum we use [Laravel Herd](https://herd.laravel.com/) as it provides a simple way to set up a local development environment. Herd is availabele for macOS and Windows.  Installation on a clean setup is really easy you just [download the installer for MacOS](https://herd.laravel.com/docs/macos/getting-started/installation) or [download the installer for Windows](https://herd.laravel.com/docs/windows/getting-started/installation) and run it. It will install all the necessary software and set up the environment for you.
 
-For more details follow the [official documentation for MacOS](https://herd.laravel.com/docs/1/getting-started/about-herd) or [official documentation for Windows](https://herd.laravel.com/docs/windows/1/getting-started/about-herd)
+For more details follow the [official documentation for MacOS](https://herd.laravel.com/docs/macos/sites/managing-sites) or [official documentation for Windows](https://herd.laravel.com/docs/windows/sites/managing-sites)
 
 ## Tips and tricks
 

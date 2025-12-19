@@ -11,7 +11,7 @@ You can optimize your query by removing unnecessary queries.
 
 Direct database calls should be discouraged (`$wpdb`), as well as using `get_posts()`. But use them if you cannot avoid them. `$wpdb` is mostly used if you are creating and using custom database tables. `get_posts()` should be avoided, because its results are not cached.
 
-You can read more about uncached calls in the [WordPress VIP documentation](https://wpvip.com/documentation/vip-go/uncached-functions/).
+You can read more about uncached calls in the [WordPress VIP documentation](https://docs.wpvip.com/caching/uncached-functions/).
 
 Don't use `post__not_in`. If you need to skip posts, do it in PHP
 
@@ -43,7 +43,7 @@ if ( $customQuery->have_posts() ) {
 ?>
 ```
 
-Try to avoid post meta queries if possible, that is, **don't try to fetch posts by their post meta**. Instead, use [taxonomies](https://codex.wordpress.org/Taxonomies) to group posts. Taxonomy queries are fast and won't affect your performance.
+Try to avoid post meta queries if possible, that is, **don't try to fetch posts by their post meta**. Instead, use [taxonomies](https://wordpress.org/documentation/article/taxonomies/) to group posts. Taxonomy queries are fast and won't affect your performance.
 
 On the other hand, fetching post meta if you know the post ID or if you are in a post/page is fast and can be used anytime.
 

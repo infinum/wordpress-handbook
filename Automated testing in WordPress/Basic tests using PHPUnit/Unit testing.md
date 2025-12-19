@@ -132,11 +132,11 @@ For more information on unit testing, read [this article](https://tfrommen.de/an
 
 ## Brain Monkey
 
-Writing mocks and unit tests from scratch takes a lot of time. That's why we use ready-made packages. One such package is [Brain Monkey](https://brain-wp.github.io/BrainMonkey/).
+Writing mocks and unit tests from scratch takes a lot of time. That's why we use ready-made packages. One such package is [Brain Monkey](https://giuseppe-mazzapica.gitbook.io/brain-monkey/).
 
 Brain Monkey allows you to mock WordPress functions (just like any PHP function) and check what they are called inside your code.
 
-You can find more details about using Brain Monkey in the [official documentation](https://brain-wp.github.io/BrainMonkey/docs/wordpress-setup.html).
+You can find more details about using Brain Monkey in the [official documentation](https://giuseppe-mazzapica.gitbook.io/brain-monkey/wordpress-specific-tools/wordpress-why-bother).
 
 ## WP_Mock
 
@@ -236,5 +236,4 @@ public function testNewMethodToTest()
 * [Top 10 PHPUnit Tips and tricks by Juliette Reinders Folmer](https://speakerdeck.com/jrf/my-top-10-phpunit-tips-and-tricks-e6ea54ce-2515-4ea9-aacf-9bf7ab3b3141)
 * [Unit Tests for PHP code](https://inpsyde.com/en/php-unit-tests-without-wordpress/)
 * [An Introduction To Automated Testing Of WordPress Plugins With PHPUnit](https://www.smashingmagazine.com/2017/12/automated-testing-wordpress-plugins-phpunit/)
-* [Unit Tests for WordPress Plugins](https://pippinsplugins.com/unit-tests-wordpress-plugins-introduction/)
 * [An Introduction to Unit Testing (for WordPress)](https://tfrommen.de/an-introduction-to-unit-testing-for-wordpress/)

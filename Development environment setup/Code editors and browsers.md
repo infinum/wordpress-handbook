@@ -16,6 +16,10 @@ Today you have a plethora of useful editors and IDEs you can develop your code o
 
 We'll give you a list of editors/IDEs we are using, or that we used in the past (and they still occupy a special place in our hearts).
 
+### [Cursor](https://cursor.com/)
+
+Cursor is an AI-powered code editor that understands your codebase and helps you code faster through natural language. Just describe what you want to build or change and Cursor will generate the code for you.
+
 ### [VS Code](https://code.visualstudio.com/)
 
 A versatile and probably the most used editor in the world at the moment. It's free and has tons of useful plugins you can use. Super useful, especially when writing JS code.

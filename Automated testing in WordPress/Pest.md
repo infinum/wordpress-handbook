@@ -20,7 +20,7 @@ After that you can run Pest with:
 ./vendor/bin/pest
 ```
 
-We are using Pest for unit testing purposes on the [Eightshift libs](https://github.com/infinum/eightshift-libs/tree/develop/tests).
+We are using Pest for unit testing purposes on the [Eightshift libs](https://github.com/infinum/eightshift-libs/tree/main/tests).
 
 Writing tests is really simple. You can use either `it` or `test` function
 

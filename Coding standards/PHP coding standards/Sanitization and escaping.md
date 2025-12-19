@@ -1,4 +1,4 @@
-We follow WordPress [VIP's guidelines](https://vip.wordpress.com/documentation/vip/best-practices/security/validating-sanitizing-escaping/)
+We follow WordPress [VIP's guidelines](https://docs.wpvip.com/security/validating-sanitizing-and-escaping/)
 
 1. Never trust user input.
 2. Escape as late as possible.
@@ -10,7 +10,7 @@ We follow WordPress [VIP's guidelines](https://vip.wordpress.com/documentation/v
 
 Every output **has to be escaped**. Even translatable strings. This means that instead of using `__()` and  `_e()`, we have to use `esc_html__()`, `esc_html_e()`, `esc_attr__()`, `esc_attr_e()`, `wp_kses()`, `wp_kses_post()`, and other escaping functions.
 
-When writing data to the database, be sure to [sanitize](https://developer.wordpress.org/themes/theme-security/data-sanitization-escaping/) the variables
+When writing data to the database, be sure to [sanitize](https://docs.wpvip.com/security/validating-sanitizing-and-escaping/#h-sanitizing-cleaning-user-input) the variables
 
 `sanitize_text_field( wp_unslash( $_POST['my_data'] ) )`
 
