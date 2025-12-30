@@ -52,9 +52,9 @@ We are using [Eightshift ESLint](https://github.com/infinum/eightshift-frontend-
 bun lintJs
 ```
 
-### CSS
+### CSS/SCSS
 
-For CSS files we are also using [ESlint](https://eslint.org/blog/2025/02/eslint-css-support/).
+For CSS/SCSS files we are also using [ESlint](https://eslint.org/blog/2025/02/eslint-css-support/).
 CSS linting is accomplished using the [@eslint/css](https://npmjs.com/package/@eslint/css) plugin, which is an officially supported language plugin.
 
 We are using [Eightshift CSS Linter](https://github.com/infinum/eightshift-frontend-libs-tailwind/tree/main/linters) for our projects. Check your project `package.json` file for the correct command, but you can usually them with the following command:
