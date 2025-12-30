@@ -1,5 +1,4 @@
 > Any fool can write code that a computer can understand. Good programmers write code that humans can understand.
->
 > -- <cite>Martin Fowler et. all, Refactoring / Improving the Design of Existing Code</cite>
 
 There are several things to be mindful of when working on a project.

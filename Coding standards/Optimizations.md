@@ -5,8 +5,6 @@ Below are some useful optimizations that you should be mindful of, when writing 
 If possible, avoid using the `in_array()` check because it will traverse the entire array and check whether the value of the array is present in the array. Instead, look up by key and use the `isset()` check.
 
 ```php
-<?php
-
 $array = [
     'foo' => true,
     'bar' => true,
@@ -28,8 +26,6 @@ if(isset($array['bar']) || array_key_exists('bar', $array)) {
 If you have no control over the created array (there are no distinguishable keys to choose from), set the third parameter in the `in_array()` function to `true`. This will force strict comparisons (value and type).
 
 ```php
-<?php
-
 if (in_array('some value', $array, true)) {
   // code goes here.
 }
@@ -40,7 +36,6 @@ if (in_array('some value', $array, true)) {
 Avoid using `array_push()` when possible. Instead, just append directly to the array.
 
 ```php
-<?php
 $myArray = [];
 
 // Good.

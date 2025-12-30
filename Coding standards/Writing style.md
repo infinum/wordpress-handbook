@@ -5,7 +5,6 @@ Below is the list of some code style we agreed upon. These are subjected to chan
 Inline statements should have the opening and closing PHP tags on the same line.
 
 ```php
-<?php
 // Yes:
 <?php echo esc_html($x); ?>
 
@@ -18,8 +17,7 @@ echo esc_html($x);
 Writing conditionals, or control statements on a single line should be done with braces.
 
 ```php
-<?php
-if ($some_variable === true) { ?>
+<?php if ($some_variable === true) { ?>
   <div class="block"></div>
 <?php } ?>
 ```
@@ -27,7 +25,6 @@ if ($some_variable === true) { ?>
 Never write inline statements without braces. This is an extremely bad practice because it produces code that is hard to read and maintain.
 
 ```php
-<?php
 // Bad code:
 if ($some_variable === true)
   $variable = 'This is inside true statement';
@@ -46,13 +43,12 @@ if ($foo) {
 Each multiple statement should be on its own line
 
 ```php
-<?php
 // Yes:
 $x++;
 echo esc_html($x);
 
 // No:
-$x++; echo esc_html($x); ?>
+$x++; echo esc_html($x);
 ```
 
 ### Strict comparison

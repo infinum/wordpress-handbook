@@ -3,8 +3,6 @@ Although we cannot write fully functional code because PHP is not a functional p
 Functions are first-class citizens in PHP:
 
 ```php
-<?php
-
 // Function as a variable.
 $functionName = function() {
   return 42;
@@ -45,8 +43,6 @@ Even though looping through iterable objects is generally faster if you use `for
 Applying a function to all elements:
 
 ```php
-<?php
-
 // Old way (imperative):
 foreach ($iterable as $iterableKey => $iterableValue) {
   $iterable[$iterableKey] = strtoupper($iterableValue);
@@ -63,8 +59,6 @@ $result = array_map('strtoupper', $iterable);
 Reduce an array to a single value:
 
 ```php
-<?php
-
 // Old way (imperative):
 $result = 0;
 $intArray = [1,2,3,4,5,6];
@@ -91,8 +85,6 @@ Iterating over an array, but returning only those results that pass some conditi
 [array_filter manual](https://php.net/manual/en/function.array-filter.php)
 
 ```php
-<?php
-
 // Old way (imperative):
 $result = [];
 $intArray = [1,2,3,4,5,6];
@@ -117,8 +109,6 @@ $result = array_filter($intArray, fn($item) => $item % 2 === 0);
 Using anonymous functions for actions and filters could be problematic because it makes them very hard to unhook later on.
 
 ```php
-<?php
-
 add_action('init', function() {
   call_function();
 }, 10 );
@@ -127,8 +117,6 @@ add_action('init', function() {
 Do this instead:
 
 ```php
-<?php
-
 add_action('init', 'myCallableFunction', 10);
 
 function myCallableFunction()
@@ -150,8 +138,6 @@ It's a slight distinction, but one that bears mentioning.
 A closure is essentially the same as a lambda, but unlike a lambda, it can access variables outside the scope that it was created in.
 
 ```php
-<?php
-
 // Set a multiplier.
  $multiplier = 3;
 
@@ -173,7 +159,6 @@ A lambda is a function which can be treated like a variable. It is a function th
 Memoization is an optimization technique used to cache function results. If we have a pure function (one that has no side effects), we can cache the result the first time we run it and then just use cache. We can use static variables:
 
 ```php
-<?php
 function factorial($n)
 {
   static $cache = []; // Notice the static keyword!
@@ -193,7 +178,6 @@ function factorial($n)
 We can generalize this using a helper function:
 
 ```php
-<?php
 
 function memoize($func)
 {
@@ -215,8 +199,6 @@ function memoize($func)
 and then do:
 
 ```php
-<?php
-
 $factorial = function($n) use(&$factorial) {
   if($n === 1) {
     return 1;
@@ -236,4 +218,3 @@ var_dump($memFactorial(5)); // int(120).
 [Functional Programming in PHP](https://www.liip.ch/en/blog/functional-programming-in-php)  
 [Functional PHP](https://apiumhub.com/tech-blog-barcelona/functional-php/)  
 [Functional Programming in PHP, 2nd Edition](https://www.phparch.com/books/functional-programming-in-php/)
-

@@ -10,18 +10,18 @@ At Infinum we use [Laravel Herd](https://herd.laravel.com/) as it provides a sim
 
 ### Default local TLD
 
-When setting up local projects it's important to **avoid using the reserved `.dev` top-level domain (TLD)**. At Infinum, we chose `.test`, as our local TLD of choice. Laravel Herd uses `.test` by default, so no additional config is needed.
+At Infinum, we use `.test` as our local TLD of choice as it is the default TLD used by Laravel Herd.
 
 If the client project has a production URL:
 
 ```
-https://clientproject.com
+https://infinum.com
 ```
 
-your local environment should be 
+your local environment should be
 
 ```
-https://clientproject.test
+https://infinum.test
 ```
 
 In the following chapters, you'll learn how to set up various environments.

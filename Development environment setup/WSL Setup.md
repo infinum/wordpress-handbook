@@ -1,3 +1,5 @@
+**This chapter is not fully tested so use with caution.**
+
 There are several ways of setting up your dev environment on Windows OS. The one we opted to showcase here is using the Windows Subsystem for Linux (we'll use WSL2 or just WSL through this document).
 Under the hood is a plain Ubuntu 20.04, so you should be able to set up the entire LEMP stack without a problem.
 
@@ -103,7 +105,6 @@ phpenv global 7.4.30
 ```
 
 The `PHP_BUILD_CONFIGURE_OPTS="--with-webp"` part will enable the WebP support in your PHP.
-
 
 Make sure you add `~/.phpenv/bin` to your `$PATH` for access to the phpenv command-line utility:
 
@@ -486,5 +487,5 @@ The name of the adapter (`Hyper-V Virtual Ethernet Adapter`) might be different.
 
 ## Useful links
 
-* [https://linuxize.com/post/using-the-ssh-config-file/](https://linuxize.com/post/using-the-ssh-config-file/)
-* [https://madebydenis.com/my-development-setup/](https://madebydenis.com/my-development-setup/)
+- [https://linuxize.com/post/using-the-ssh-config-file/](https://linuxize.com/post/using-the-ssh-config-file/)
+- [https://madebydenis.com/my-development-setup/](https://madebydenis.com/my-development-setup/)

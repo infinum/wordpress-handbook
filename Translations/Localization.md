@@ -18,6 +18,7 @@ The following steps are covered
 - [wp i18n update-po](https://github.com/wp-cli/i18n-command#wp-i18n-update-po) - Available since WP CLI version ^2.7.0
 
 ### Useful notes
+
 - The following files and folders are excluded by default: `node_modules, .git, .svn, .CVS, .hg, vendor, Gruntfile.js, webpack.config.js, *.min.js`.
 - By default, the "Text Domain" header of the plugin or theme is used. If the header is not specified you'll need to add an argument to the CLI command with text-domain it should search for: `[--domain=<domain>]`.
 - when naming translation files use the [WP Locales](https://make.wordpress.org/polyglots/teams/) naming convention. Example for creating files for French language translation: fr_FR.pot, fr_FR.po, fr_FR.mo.
@@ -74,6 +75,7 @@ wp i18n update-po src/I18n/languages/*.pot src/I18n/languages/
 ```
 
 ### Create the JSON file
+
 If you need to make translations for JavaScript files it can also be done with the CLI.
 
 ⚠️ Keep in mind that you shouldn't use the `[--skip-js]` flag when creating POT files in the first step because `.js` files need to be scanned for translations.
@@ -122,6 +124,6 @@ for file in `find "src/I18n/languages/" -name "*.po"` ; do msgfmt -o ${file/.po/
 
 ### Official docs:
 
-* [Localization](https://developer.wordpress.org/plugins/internationalization/localization/)
-* [wp i18n command](https://developer.wordpress.org/cli/commands/i18n/) -
-* [GitHub](https://github.com/wp-cli/i18n-command)
+- [Localization](https://developer.wordpress.org/plugins/internationalization/localization/)
+- [wp i18n command](https://developer.wordpress.org/cli/commands/i18n/) -
+- [GitHub](https://github.com/wp-cli/i18n-command)

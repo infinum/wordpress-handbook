@@ -6,7 +6,7 @@ Naming a repository follows this pattern:
 
 with allowed characters `[a-z\-]`. `technology` is usually `wordpress`, but can be some other PHP framework like `laravel` or `symfony`.
 
-Your repository should consist of several main branches: `main`, `develop`, `staging` and some optional: `preproduction`, `edge`, and `feature` (depending on the project).
+Your repository should consist of several main branches: `main`, `staging` and some optional: `preproduction`, `edge`, and `feature` (depending on the project).
 
 ## Modified Git flow
 

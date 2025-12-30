@@ -18,8 +18,10 @@ In the following list, we'll give some useful software and links that will speed
 
 [Notion](https://www.notion.so/) - Super useful tool to keep all your notes
 
-[Hover inspector for Chrome](https://chrome.google.com/webstore/detail/hover-inspector-like-in-z/jbhnejndccdjigppalbbiphlbaaehpln/related?hl=en) - Inspector is the tool which mimics display dimensions between selected and hovered element. It can be useful for designers and QA engineers
-
 [Accessibility checker for Firefox](https://addons.mozilla.org/en-US/firefox/addon/accessibility-checker/) - IBM Equal Access Accessibility Checker
 
 [Laravel Herd](https://herd.laravel.com/) - Provides a simple way to set up a local development environment. Installation on a clean setup is really easy - you just download the installer and run it. It will install all the necessary software and set up the environment for you.
+
+[BrowserStack](https://www.browserstack.com/) - BrowserStack is a cloud-based cross-browser testing tool that allows you to test your website or application on different browsers and devices.
+
+[Raycast](https://www.raycast.com/) - Raycast is a blazingly fast, totally extendable launcher. It lets you complete tasks, get information, and browse the web faster than ever before.

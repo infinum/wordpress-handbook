@@ -2,9 +2,7 @@
 
 We all have our preferred way of writing code. It's something you get accustomed to, and it almost becomes a second nature to you.
 
-
 Over time you add a few shortcuts here and there. You discover some cool and useful plugins that will enhance your productivity.
-
 
 As time goes by you become well accustomed to your editor and it's a pain to switch to a new cool editor.
 
@@ -39,5 +37,3 @@ If you live in a terminal, the chances are you are using either [Vim](https://ww
 ## Browsers
 
 Like with browsers, you can use what your heart desires. Except Internet Explorer. [It's dead and should stay that way](https://docs.microsoft.com/en-us/lifecycle/announcements/internet-explorer-11-end-of-support) 😅.
-
-[Chrome](https://www.google.com/chrome/), [Firefox](https://www.mozilla.org/en-US/firefox/new/), [Safari](https://www.apple.com/safari/), or [Edge](https://www.microsoft.com/en-us/edge), use whatever you feel most comfortable with.
