@@ -6,9 +6,9 @@ The application security core concepts are primarily concerned with reducing the
 
 The core security process is also known as the 'CIA triad':
 
-* Confidentiality
-* Integrity
-* Availability
+- Confidentiality
+- Integrity
+- Availability
 
 _Confidentiality_ means protecting sensitive data from improper disclosure, which can have legal and contractual consequences for you or the company you work for. One of the things you can do to mitigate this and ensure the confidentiality of your application is to mask and obfuscate access to the application by using passwords, make view-based access controls for accessing the database, and use encryption when dealing with data transfer and storage.
 
@@ -20,7 +20,7 @@ _Availability_ is the prevention of data or system destruction and the ability t
 
 Risk can be defined as the likelihood (probability) of a threat exploiting a vulnerability, thereby causing damage to an asset.
 
-Risks will regulate the number of controls (limitations) that will be used to reduce the risk to the organization. Risk can be good or bad;  investments are risky, but can pay off if you've made a good one.
+Risks will regulate the number of controls (limitations) that will be used to reduce the risk to the organization. Risk can be good or bad; investments are risky, but can pay off if you've made a good one.
 
 Risk is not eliminated, it is managed. We need to assess the possible risks, respond to them, and monitor them. All this constitutes the risk context or frame.
 
@@ -56,15 +56,7 @@ Read more here: https://aws.amazon.com/blogs/security/using-iam-roles-to-distrib
 
 ### Code sniffer
 
-The first tool to install in every project is [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/).
-
-Boilerplate already comes bundled with [coding standards](https://github.com/infinum/coding-standards-wp) which depend on the code sniffer. You can install the coding standards using composer:
-
-```bash
-composer require infinum/coding-standards-wp --dev
-```
-
-The code sniffer tokenizes your code against a set of sniffs that look for certain common practices and possible security issues.
+Boilerplate already comes bundled with [coding standards](https://github.com/infinum/eightshift-coding-standards) which depend on the code sniffer.
 
 ### SonarQube
 
@@ -72,162 +64,6 @@ SonarQube is an open-source quality management platform. It does a static code a
 
 It can be run from Docker. You can find the installation instructions [here](https://hub.docker.com/_/sonarqube/).
 
-You have to [install Docker](https://docs.docker.com/docker-for-mac/install/) first. After that, pull the SonarQube Docker image.
-
-```bash
-docker pull sonarqube
-```
-
-and start the SonarQube server
-
-```bash
-docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
-```
-
-The local SonarQube can be accessed through the browser on `localhost:9000`.
-
-![sonarqube](/img/sonarqube.png)
-
-[Analyzing with scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) tutorial.
-
-You can log in as admin with the `admin` user and `admin` password. You can add the project by going to `Administration->Projects`. You may be prompted to enter a token name and generate a token. Be sure to remember that token because it will be used when creating a `sonar-project.properties` file which is necessary to run the scan.
-
-You'll also need to install the Java Virtual Machine (JVM) and `sonar-scanner` using brew.
-
-```bash
-brew update
-brew cask install java
-
-brew install sonar-scanner
-```
-
-You'll have to add a `sonar-project.properties` file in the root of the project (`public_html`) that looks something like this:
-
-```
-sonar.projectKey=project-key
-sonar.projectName=Project Name
-sonar.projectVersion=1.0.0
-sonar.login=4CqVnlU9PzqKUjBqaHu3oGiPhHAv1PrC4pRrhgOA
-
-sonar.sources=wp-content/themes/,wp-content/plugins/
-```
-
-After that, you should go to the project root and run `sonar-scanner`.
-
-In the event of a failure, you can capture the output in a log file with
-
-```bash
-sonar-scanner -X &> ~/Desktop/sonar-log.txt
-```
-
-After the scan is finished (it takes a while), you will see the report in the SonarQube UI.
-
-![sonarqube report](/img/sonarqube-report.png)
-
-If you already have an existing Docker image, you can start it with
-
-```bash
-docker start sonarqube
-```
-
-and you can stop it with
-
-```bash
-docker stop sonarqube
-```
 ### WPScan
 
 [WPScan](https://wpscan.org/) is a WordPress scanning tool that runs on Docker.
-
-To install WPScan on your Mac, you need to have Docker installed. After you've installed Docker, pull the image with
-
-```bash
-docker pull wpscanteam/wpscan
-```
-
-Start the scan with
-
-```bash
-docker run -it --rm wpscanteam/wpscan --url https://yourblog.com [options]
-```
-
-You should replace `https://yourblog.com` with your local installation of WordPress. You can see the list of options [here](https://github.com/wpscanteam/wpscan#wpscan-arguments). You can also leave it empty.
-
-That will run WPScan and provide an output that looks something like this (output may vary):
-
-```bash
-_______________________________________________________________
-        __          _______   _____
-        \ \        / /  __ \ / ____|
-         \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
-          \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \
-           \  /\  /  | |     ____) | (__| (_| | | | |
-            \/  \/   |_|    |_____/ \___|\__,_|_| |_|
-
-        WordPress Security Scanner by the WPScan Team
-                       Version 2.9.4
-          Sponsored by Sucuri - https://sucuri.net
-      @_WPScan_, @ethicalhack3r, @erwan_lr, @_FireFart_
-_______________________________________________________________
-
-[i] The remote host tried to redirect to: http://my-test-site.test/wp-login.php?redirect_to=http%3A%2F%2Fmy-test-site.test%2F&reauth=1
-[?] Do you want follow the redirection ? [Y]es [N]o [A]bort, default: [N] >N
-[+] URL: http://my-test-site.test/
-[+] Started: Fri Jun  8 13:45:40 2018
-
-[+] Interesting header: SERVER: nginx
-[+] XML-RPC Interface available under: http://my-test-site.test/xmlrpc.php   [HTTP 405]
-[+] API exposed: http://my-test-site.test/wp-json/   [HTTP 200]
-[!] Full Path Disclosure (FPD) in 'http://my-test-site.test/wp-includes/rss-functions.php':
-
-[+] Enumerating WordPress version ...
-
-[+] WordPress version 4.9.6 (Released on 2018-05-17) identified from links opml, advanced fingerprinting
-
-[+] Enumerating plugins from passive detection ...
-[+] No plugins found passively
-
-[+] Finished: Fri Jun  8 13:48:27 2018
-[+] Elapsed time: 00:02:46
-[+] Requests made: 61
-[+] Memory used: 35.848 MB
-```
-## Useful hardening code snippets
-
-### Remove WP version from generator in head
-```
-  /**
-   * Return empty string in the 'wp_generator'
-   *
-   * @return string Returns an empty string.
-   */
-  public function empty_generator_version() : string {
-    return '';
-  }
-```
-Hooks into (`$security` is a class containing the `empty_generator_version` method):
-```
-$this->loader->add_filter( 'the_generator', $security, 'empty_generator_version' );
-```
-
-### Remove WP version from scripts
-```
-  /**
-   * Remove the version number from all enqueued scripts
-   *
-   * @param  string $src Source string of the enqueued file.
-   * @return string      Modified string without the version in the enqueued file.
-   */
-  public function remove_version_scripts_styles( string $src ) : string {
-    if ( strpos( $src, 'ver=' ) ) {
-      $src = remove_query_arg( 'ver', $src );
-    }
-
-    return $src;
-  }
-```
-Hooks into (`$security` is a class containing the `remove_version_scripts_styles` method):
-```
-$this->loader->add_filter( 'style_loader_src', $security, 'remove_version_scripts_styles', 9999 );
-$this->loader->add_filter( 'script_loader_src', $security, 'remove_version_scripts_styles', 9999 );
-```

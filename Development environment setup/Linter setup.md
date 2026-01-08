@@ -4,12 +4,9 @@ In our projects we include several static analysis linters.
 
 ### PHP
 
-#### PHP_CodeSniffer
+#### PHPCS
 
 [PHP_CodeSniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer) is a script that will tokenize your PHP files and based on selected rulesets, detect violations of set coding standards.
-
-
-It also includes the `phpcbf` script that will automatically correct coding standard violations when possible.
 
 It can tokenize and check JS and CSS, but we don't use it for checking those file types.
 
@@ -25,6 +22,12 @@ vs
 if ($someCode  === 'yes') { //... }
 ```
 
+We are using [Eightshift Coding Standards](https://github.com/infinum/eightshift-coding-standards) for our projects. Check your project `composer.json` file for the correct command, but you can usually run them with the following command:
+
+```bash
+composer test:standards
+```
+
 #### PHPStan
 
 [PHPStan](https://phpstan.org) is a static analysis tool that will parse your code (not tokenize like phpcs), and try to infer types that go in your code and out of your code, either from doc-blocks or arguments, and warn you if something is off. For instance, passing integer from one function to another function as argument when the expected argument type is a string.
@@ -33,43 +36,35 @@ It does what compilers do in compiled languages like Java, but faster, and you c
 
 Because of that, it goes perfectly with PHPCS. Since it can understand context it's an essential tool for preventing bugs that can happen by type juggling for instance.
 
+We are using [PHPStan](https://phpstan.org) for our projects. Check your project `composer.json` file for the correct command, but you can usually run them with the following command:
+
+```bash
+composer test:types
+```
+
 ### JavaScript
 
 For JS linting we are using [ESLint](https://eslint.org/). It's a static analyzer. It works similarly to PHPStan, parsing code to abstract syntax tree (AST) and finding patterns in code.
 
-### SCSS
-
-For SCSS files we are using [Stylelint](https://stylelint.io/).
-It's a style sheet linter written in JS useful to finding scss inconsistencies and errors.
-
-### Running linters
-
-You can run individual linter or all of them at once.
-
-Once you've set up a project, you'll have `npm` and `composer` scripts at your disposal. Running
+We are using [Eightshift ESLint](https://github.com/infinum/eightshift-frontend-libs-tailwind/tree/main/linters) for our projects. Check your project `package.json` file for the correct command, but you can usually run them with the following command:
 
 ```bash
-npm run lint
+bun lintJs
 ```
-will run JS, CSS and coding standards check.
 
-You have individual `npm` checks:
+### CSS/SCSS
+
+For CSS/SCSS files we are also using [ESlint](https://eslint.org/blog/2025/02/eslint-css-support/).
+CSS linting is accomplished using the [@eslint/css](https://npmjs.com/package/@eslint/css) plugin, which is an officially supported language plugin.
+
+We are using [Eightshift CSS Linter](https://github.com/infinum/eightshift-frontend-libs-tailwind/tree/main/linters) for our projects. Check your project `package.json` file for the correct command, but you can usually them with the following command:
 
 ```bash
-npm run lintJs
-npm run lintStyle
+bun lintStyle
 ```
 
-On more recent projects we started using `bun` instead of `npm` as a package manager. The above commands will be the same, but you will use `bun` instead of `npm`, e.g.
-```bash
-bun run lint
-```
+### Prettier
 
-For composer checks you can run:
+Prettier is a code formatter that can be used to format your code according to the rules of the project. We are using [Eightshift Prettier](https://github.com/infinum/eightshift-frontend-libs-tailwind/blob/main/.prettierrc) for our projects. Check your project `.prettierrc` file, as formatting is done automatically on save in your editor.
 
-```bash
-composer test:types // PHPStan
-composer test:standards // PHPCS
-```
-
-_Note: These scripts can be renamed in your project._
+To keep class lists consistent (and avoid noisy diffs), enable [Automatic Class Sorting with Prettier](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) in your project.

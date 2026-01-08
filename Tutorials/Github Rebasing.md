@@ -1,6 +1,6 @@
 The following is a quick rebasing how to and when tutorial.
 
-__Scenario__: You've made a feature (`feat1`) and you need this feature for some other feature (`feat2`), so that you can continue your work. You can create a new branch from the feature branch and continue developing. During your development time, you've made a PR for the original feature.
+**Scenario**: You've made a feature (`feat1`) and you need this feature for some other feature (`feat2`), so that you can continue your work. You can create a new branch from the feature branch and continue developing. During your development time, you've made a PR for the original feature.
 The PR has been approved and you merge it to the `staging` branch.
 
 Now you can rebase the new feature to the `staging` branch.
@@ -41,9 +41,9 @@ Now the interactive rebase process has begun. If you have a conflict it will tel
 git add .
 ```
 
-This is one of the rare cases you'll want to use the `git add all` command. Usually, you should __NEVER__ add everything in one commit unless you have a small change on one feature. By doing that you are losing the granularity and breaking the single responsibility principle (SRP) of your commits. Remember, commits are telling a story. You should be able to read the commit history and understand what the developer was trying to do.
+This is one of the rare cases you'll want to use the `git add all` command. Usually, you should **NEVER** add everything in one commit unless you have a small change on one feature. By doing that you are losing the granularity and breaking the single responsibility principle (SRP) of your commits. Remember, commits are telling a story. You should be able to read the commit history and understand what the developer was trying to do.
 
-⚠️ __DO NOT COMMIT!!!!!!__ (__don't type__ `git commit`).
+⚠️ **DO NOT COMMIT!!!!!!** (**don't type** `git commit`).
 
 When you've fixed all the conflicts and added the fixed files, type
 
@@ -51,7 +51,7 @@ When you've fixed all the conflicts and added the fixed files, type
 git rebase --continue
 ```
 
-You may need to fix some more conflicts, but maybe you won't. 
+You may need to fix some more conflicts, but maybe you won't.
 If all is ok, the rebase will be successful, and you can push your branch with
 
 ```bash
@@ -68,9 +68,9 @@ git push --force-with-lease origin
 
 which is a more secure way to avoid overwriting in case somebody else worked on the remote branch you've just rebased.
 
-That shouldn't be problematic because the good __rule of thumb__ is: If two people are working on a single feature branch (which you should never do, each person should work in it's own branch), at the same time, don't rebase. Ever. You're going to change the commit hashes and the other person will get tons of conflicts or errors, and then they'll try to rebase, and you'll chase each other in circles and curse the day you did rebase 😅.
+That shouldn't be problematic because the good **rule of thumb** is: If two people are working on a single feature branch (which you should never do, each person should work in it's own branch), at the same time, don't rebase. Ever. You're going to change the commit hashes and the other person will get tons of conflicts or errors, and then they'll try to rebase, and you'll chase each other in circles and curse the day you did rebase 😅.
 
-If many people are working on the __same__ feature, pull the changes and merge them in your branch, and then tell the person who is working with you to pull the changes.
+If many people are working on the **same** feature, pull the changes and merge them in your branch, and then tell the person who is working with you to pull the changes.
 
 What are the advantages of rebasing? You have a nice commit history 🙂. Even though you have branched the `feat2` branch from `feat1` branch, after rebasing on the `staging` branch, you'll have all the changes visible as if you've branched from the `staging` branch. The history is nice and linear, and not all over the place.
 

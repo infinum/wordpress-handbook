@@ -1,6 +1,7 @@
 Infinum's Eightshift Boilerplate is the basis of every WordPress-based project we work on at Infinum.
 
-The repository can be found [here](https://github.com/infinum/eightshift-boilerplate).
+The repository for theme can be found [here](https://github.com/infinum/eightshift-boilerplate).
+The repository for plugin can be found [here](https://github.com/infinum/eightshift-boilerplate-plugin).
 
 ## General info
 

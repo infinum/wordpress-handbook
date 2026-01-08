@@ -27,6 +27,7 @@ These are factors almost all tools provide in reports. For ideal performance, th
 Lighthouse is an open-source tool for testing web pages with audits for performance, accessibility, progressive web apps, SEO, and more. It can be run from your browser's DevTools (in Chrome and Edge, and probably other Chromium browsers), command line, node package, or WebUI.
 
 Scores:
+
 - 0-49: poor
 - 50-89: needs improvement
 - 90-100: good
@@ -44,6 +45,7 @@ Scores:
 Each website test tool offers different functionalities and features, so it can be a bit difficult to come up with a strategy that will produce quality results to act upon. That raises the question: _What is the right approach for testing?_
 
 Proper testing should include several things:
+
 - testing from different locations
 - testing with and without cache
 - testing on multiple devices

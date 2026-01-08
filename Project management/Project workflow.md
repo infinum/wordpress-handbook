@@ -9,11 +9,11 @@ The stages of the project life cycle are the following:
 This is the phase that developers, designers, PM and client agree on what the requirements of the project are.
 Between project start and actual development can pass considerable amount of time. This is the project exploration phase.
 Designers usually have many meetings and workshops with the client where they discuss the way the web/app should look like. In this phase developers focus on architecture of the project. Production environments and infrastructure (AWS, hosted solutions etc.). Functionality the site might need (plugins, etc.) and licenses.
-Developers must also work with designers in crafting reusable components, making sure all the designs are doable in the given time frame. Designers can be creative, but that usually means longer development time).
+Developers must also work with designers in crafting reusable components, making sure all the designs are doable in the given time frame. Designers can be creative, but that usually means longer development time.
 
 #### Security
 
-The security is the top priority that must always taken care of. It's a __continuous process__. The developer must always ensure his code is of top quality. Tools like linters, phpcs and phpstan help, but the final say has the code reviewer.
+The security is the top priority that must always taken care of. It's a **continuous process**. The developer must always ensure his code is of top quality. Tools like linters, phpcs and phpstan help, but the final say has the code reviewer.
 We must follow the recommended practices, as well as watching the [OWASP](https://www.owasp.org/index.php/Main_Page) list of security issues. The developer must also be mindful when using third party plugins, as they can have security issues. This is where site like [WPScan Vulnerability Database](https://wpvulndb.com/) can be useful.
 Security must also be maintained on the server as well in the code. You should coordinate with DevOps on this matter (handling CORS, adding security headers to nginx etc.).
 For more details check the [security chapter in the handbook](/project-management/security/security-in-wordpress).
@@ -21,6 +21,7 @@ For more details check the [security chapter in the handbook](/project-managemen
 #### Project setup
 
 In this stage developers work with DevOps to set up the agreed upon architecture. For example:
+
 - How will the staging server look like?
 - Are we using docker?
 - Will the project be hosted on ready hosted solutions (Kinsta, Pantheon etc.), or will it be on our AWS accounts?
@@ -30,8 +31,7 @@ This all depends on the complexity of the project of course. DevOps will help th
 
 #### Development start
 
-Sometimes we get legacy projects that we need to migrate to WordPress. In that case we first assess what the DB structure looks like. It's easier to migrate from WordPress to WordPress of course. If the data needs to be migrated from a non WP database, we usually use [WP All Import](http://www.wpallimport.com/) plugin for this (since it's powerful).
-After this, and in the case of new projects, we set up a theme or a plugin (for decoupled projects) using our [boilerplate](https://github.com/infinum/eightshift-boilerplate/).
+Sometimes we get legacy projects that we need to migrate to WordPress. In that case we first assess what the DB structure looks like. It's easier to migrate from WordPress to WordPress of course. If the data needs to be migrated from a non WP database, we usually use our [Eightshift Migrations plugin](https://github.com/infinum/eightshift-migrations) for this.
 
 #### Project reviews
 

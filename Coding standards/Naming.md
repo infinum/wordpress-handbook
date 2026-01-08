@@ -1,7 +1,5 @@
 > There are only two hard things in Computer Science: cache invalidation and naming things.
-> 
 > -- <cite>Phil Karlton</cite>
-
 
 ### File naming
 
@@ -9,7 +7,7 @@ File names should be written in lowercase letters with `-` as a separator betwee
 
 Files containing a class should be named like the class `{Classname}.php`. There should always be only one class per file. The first letter should be capitalized.
 
-Use [eightshift-boilerplate](https://github.com/infinum/eightshift-boilerplate) as a basis for any template-based website. You should follow the existing structure of the theme there.
+Use [eightshift-boilerplate](https://github.com/infinum/eightshift-libs) as a basis for any template-based website. You should follow the existing structure of the theme there.
 
 ### Naming conventions
 
@@ -100,10 +98,10 @@ function functionName($var) {... }
 
 Always add visibility keywords to methods and properties inside classes (`public`, `private`, and `protected`).
 
-* `public` scope is used to make that variable/function available from anywhere; other classes and instances of the object.
+- `public` scope is used to make that variable/function available from anywhere; other classes and instances of the object.
 
-* `private` scope is used when you want your variable/function to be visible in its own class only.
+- `private` scope is used when you want your variable/function to be visible in its own class only.
 
-* `protected` scope is used when you want to make your variable/function visible in all classes that extend the current class, including the parent class.
+- `protected` scope is used when you want to make your variable/function visible in all classes that extend the current class, including the parent class.
 
-If you are working on projects with latest PHP version, use latest features. This means that you should add constant visibiliy modifiers as well if you are working on PHP >= 7.1
+If you are working on projects with latest PHP version, use latest features. This means that you should add constant visibility modifiers as well if you are working on PHP >= 7.1

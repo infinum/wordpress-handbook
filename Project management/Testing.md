@@ -16,7 +16,7 @@ This is the manual part of the testing and benefits from having a 'script' of so
 
 As described in [Atlassian's agile coach documentation](https://www.atlassian.com/agile/project-management/user-stories):
 
->  User stories are one of the core components of an agile program. > They help provide a user-focused framework for daily work — which drives collaboration, creativity, and a better product overall.
+> User stories are one of the core components of an agile program. > They help provide a user-focused framework for daily work — which drives collaboration, creativity, and a better product overall.
 
 Having a user story gives clear instruction on what action needs to happen, and what outcome is expected.
 

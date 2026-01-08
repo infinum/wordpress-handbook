@@ -1,8 +1,6 @@
 Every file should have introductory documentation that describes the contents of the file. `functions.php` should have a description block about the theme/project.
 
 ```php
-<?php
-
 /**
  * Theme Name: Project name
  * Description: A short project description
@@ -14,17 +12,13 @@ Every file should have introductory documentation that describes the contents of
  */
 ```
 
-We follow the [DocBlock](https://phpdoc.org/docs/latest/guides/docblocks.html) format of comments.
+We follow the [DocBlock](https://docs.phpdoc.org/guide/guides/docblocks.html#more-on-docblocks) format of comments.
 
 Every class should have documentation above it, and the methods inside should also be documented.
 
 ```php
-<?php
-
 /**
  * Starts the list before the elements are added.
- *
- * @since 3.0.0
  *
  * @see Walker::start_lvl()
  *

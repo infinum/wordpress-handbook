@@ -8,13 +8,11 @@ Be careful not to pack too many custom functionalities in your theme. A lot of o
 
 Plugin development doesn't really differ from the theme development. You can use our boilerplate with libs to build a plugin in pretty much the same way you'd build a theme.
 
-Themes usually handle presentational logic, while plugins handle business logic.
-
 ### When should I create a plugin?
 
 When working on enterprise projects, it is easier to bundle the usual plugin content (custom post types, taxonomies, API calls) to the theme instead of a separate plugin. Enterprise projects won't change much over time, so it's useful to have all code in one central place.
 
-If, however, there is some functionality that can be reused in other projects (GDPR plugin or something similar), it is better to put that functionality in a separate plugin.
+If, however, there is some functionality that can be reused in other projects (Forms plugin or something similar), it is better to put that functionality in a separate plugin.
 
 Be aware that plugin code executes ([action reference](https://codex.wordpress.org/Plugin_API/Action_Reference)) before the theme to avoid possible issues.
 

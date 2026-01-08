@@ -30,20 +30,20 @@ As a reviewer, and a committer, you should keep your cool and leave your ego at 
 
 When starting a PR review thread, you should consider how you would classify your concern.
 
-* **nitpick**
-	* a trivial concern that does not block merging
-	* nitpicks can be dismissed trivially as well, but should be well-intentioned as feedback and well-received from the committer
-	* example: documentation readme is poorly written
-* **non-blocking**
-	* a minor concern that does not block merging
-	* **the committer must address non-blocking concerns as well, and leave a comment indicating whether and in which way they plan to address them in the future**
-	* example: block example attributes are not properly set up, lint rules failing in unmodified files,
-* **blocking**
-	* a concern that you will block merging until it's addressed
-	* examples: lint rules failing in modified files, indent slips, `// todo` or `console.log` left in the code, code style practices, non-logical properties used, etc
-* **red flag**
-	* a large concern that needs to be fixed before merging
-	* examples: variable gets interpolated into SQL query without escaping etc.
+- **nitpick**
+  - a trivial concern that does not block merging
+  - nitpicks can be dismissed trivially as well, but should be well-intentioned as feedback and well-received from the committer
+  - example: documentation readme is poorly written
+- **non-blocking**
+  - a minor concern that does not block merging
+  - **the committer must address non-blocking concerns as well, and leave a comment indicating whether and in which way they plan to address them in the future**
+  - example: block example attributes are not properly set up, lint rules failing in unmodified files,
+- **blocking**
+  - a concern that you will block merging until it's addressed
+  - examples: lint rules failing in modified files, indent slips, `// todo` or `console.log` left in the code, code style practices, non-logical properties used, etc
+- **red flag**
+  - a large concern that needs to be fixed before merging
+  - examples: variable gets interpolated into SQL query without escaping etc.
 
 You should not resolve threads until your comments are appropriately resolved, using opposing arguments (making you change your mind) or commits addressing your comments (appeasing your concerns).
 
@@ -57,19 +57,17 @@ You should request changes if you have one or more unresolved blocking or red fl
 
 When a comment is added to the PR, we shouldn't let it block the feature or bugfix from being released. Follow these rules about resolving the comments:
 
-* Person who left the comment should resolve it
-* Limit the discussion to 5-10 comments, if you can't find a common ground, schedule a meeting with a team to discuss it
-* Scheduling a meeting should only be warranted if there are issues with the code that could influence security or something that could impact the performance of the app
-* Leave a note on the type of the concern you are having
-* In case of minor differences, code owners can resolve comments in order to keep the PR moving
+- Person who left the comment should resolve it
+- Limit the discussion to 5-10 comments, if you can't find a common ground, schedule a meeting with a team to discuss it
+- Scheduling a meeting should only be warranted if there are issues with the code that could influence security or something that could impact the performance of the app
+- Leave a note on the type of the concern you are having
+- In case of minor differences, code owners can resolve comments in order to keep the PR moving
 
 ## Merging
 
 You can merge if:
 
-* there are no reviewers requesting changing, **and**
-* there are no unresolved conversations on the blocking or red flag level, following rules for resolving, **and**
-* all non-blocking concerns have been addressed with indication of future plans for improvement, **and** all automated checks are successful
-* **or**, with a comment indicating approval from another project owner, you are a project owner consciously making the decision to merge without addressing the requested changes, unresolved conversations and/or CI/CD checks
-
-*Credit to: Mario Borna Mjertan for the document*
+- there are no reviewers requesting changing, **and**
+- there are no unresolved conversations on the blocking or red flag level, following rules for resolving, **and**
+- all non-blocking concerns have been addressed with indication of future plans for improvement, **and** all automated checks are successful
+- **or**, with a comment indicating approval from another project owner, you are a project owner consciously making the decision to merge without addressing the requested changes, unresolved conversations and/or CI/CD checks
