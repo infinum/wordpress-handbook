@@ -12,4 +12,4 @@ Laravel Herd Pro provides a simple way to dump your variables and objects. You c
 
 Query Monitor is a plugin that allows you to debug your database queries, hooks, conditionals, and much more. You can use the [Query Monitor documentation](https://wordpress.org/plugins/query-monitor/) to learn more about it.
 
-**Make sure Query Monitor plugin is always turned off on production enviroment when you are not debugging**
+**Make sure Query Monitor plugin is always turned off on production environment when you are not debugging.**
