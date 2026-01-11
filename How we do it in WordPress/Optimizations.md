@@ -36,7 +36,7 @@ Always use Query Monitor to check what is happening with the queries and profili
 
 ### 6. Setup caching for the project.
 
-For none AWS projects we use WP Rocket plugin for caching, and for AWS projects we use CloudFront in combination with Eightshift Utils plugin for caching.
+For non-AWS projects we use WP Rocket plugin for caching, and for AWS projects we use CloudFront in combination with Eightshift Utils plugin for caching.
 
 ### 7. Run Lighthouse and PageSpeed Insights tests.
 
