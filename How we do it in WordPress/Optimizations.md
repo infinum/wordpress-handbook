@@ -42,4 +42,4 @@ For non-AWS projects we use WP Rocket plugin for caching, and for AWS projects w
 
 You should always run Lighthouse and PageSpeed Insights tests to check the performance of the website.
 
-For more information check the [Testing and analyzing](/how-we-do-it-in-wordpress/optimizations/testing-and-analyzing) documentation.
+For more information check the [Testing and analyzing](/how-we-do-it-in-wordpress/testing-and-analyzing) documentation.
