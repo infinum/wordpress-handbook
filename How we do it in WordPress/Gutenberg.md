@@ -3,9 +3,10 @@ Gutenberg is a new editor introduced in WordPress version 5.0 that was released 
 You can create blocks that you can preview and live edit from the back end without refreshing the front-end part of the website for every change.
 
 All development details can be found on:
+
 - [Github](https://github.com/WordPress/gutenberg/)
 - [Handbook](https://developer.wordpress.org/block-editor/)
 
 ## Documentation
 
-Read the [eightshift-docs](https://eightshift.com/) to get started with project development.
+Read the [Eightshift Docs](https://eightshift.com/) to get started with project development.

@@ -31,6 +31,6 @@ public function start_lvl( &$output, $depth = 0, $args = array() ) {
 }
 ```
 
-When documneting your code, take your time to make a sensible documentation. Most of the time, methods can be written in a way that they are self-documenting.
+When documenting your code, take your time to make a sensible documentation. Most of the time, methods can be written in a way that they are self-documenting.
 
 In some cases, when you're dealing with a complex business logic, you'd write the functionality in more details. That way, when you're handing the project off, or need to revisit it in six months, you'll know what that code does.

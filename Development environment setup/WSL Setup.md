@@ -1,4 +1,4 @@
-**This chapter is not fully tested so use with caution.**
+> This chapter might not be fully up to date (in Jan 2026) - proceed with caution!
 
 There are several ways of setting up your dev environment on Windows OS. The one we opted to showcase here is using the Windows Subsystem for Linux (we'll use WSL2 or just WSL through this document).
 Under the hood is a plain Ubuntu 20.04, so you should be able to set up the entire LEMP stack without a problem.
