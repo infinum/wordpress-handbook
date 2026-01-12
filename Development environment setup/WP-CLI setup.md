@@ -19,7 +19,10 @@ Make sure you are familiar with all of the availabilities of the WP-CLI tool as 
 
 ### Local installation
 
-WP-CLI can be installed on your local machine by following the instructions in the [WP-CLI documentation](https://developer.wordpress.org/cli/commands/).
+WP-CLI can be installed on your local machine in a couple of ways, here are some:
+
+- by following the instructions in the [WP-CLI documentation](https://developer.wordpress.org/cli/commands/)
+- via Homebrew with `brew install wp-cli` command
 
 ### Remote installation
 
