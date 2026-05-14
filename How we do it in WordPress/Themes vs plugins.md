@@ -28,4 +28,4 @@ Reverse logic also applies — if a plugin for some functionality already exists
 
 ## Approved plugins
 
-You can use the plugins from [this page](/eightshift-development/approved-plugins) in your projects without any additional approval. If you want to use a plugin that is not on this list, please consult with the team.
+You can use the plugins from [this page](/wordpress/eightshift-development/approved-plugins) in your projects without any additional approval. If you want to use a plugin that is not on this list, please consult with the team.

@@ -22,7 +22,7 @@ You should always optimize the assets to load only images used. This will reduce
 
 You should always optimize the WP_Query to load only the posts needed within the context of the page. This will reduce the number of requests and speed up the page load time.
 
-For more information about WP_Query, check the [WP_Query documentation](/how-we-do-it-in-wordpress/coding-standards/php-coding-standards/optimizations).
+For more information about WP_Query, check the [WP_Query documentation](/wordpress/how-we-do-it-in-wordpress/coding-standards/php-coding-standards/optimizations).
 
 ### 4. Optimizing the database queries.
 
@@ -42,4 +42,4 @@ For non-AWS projects we use WP Rocket plugin for caching, and for AWS projects w
 
 You should always run Lighthouse and PageSpeed Insights tests to check the performance of the website.
 
-For more information check the [Testing and analyzing](/how-we-do-it-in-wordpress/testing-and-analyzing) documentation.
+For more information check the [Testing and analyzing](/wordpress/how-we-do-it-in-wordpress/testing-and-analyzing) documentation.
